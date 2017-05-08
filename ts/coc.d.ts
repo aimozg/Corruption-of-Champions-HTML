@@ -5,18 +5,39 @@
 
 declare type int = number;
 
+declare interface HTMLElement {
+	tooltipHeader?: string;
+	tooltipText?: string;
+}
+
 declare function cleanupAfterCombat():void;
 declare function combatRoundOver():void;
-declare function doNext(fn:Function):void;
-declare function refreshStats():void;
-declare function showUpDown(arrow:String,direction:"up"|"down"):void;
 
 declare class Amily extends Creature {
 
 }
 declare class Creature {
+	public name:string;
+	public str:number;
+	public tou:number;
+	public spe:number;
+	public inte:number;
+	public lib:number;
+	public sens:number;
+	public cor:number;
+	public HP:number;
+	public lust:number;
+	public lustVuln:number;
+	public fatigue:number;
+	public level:number;
+	public XP:number;
+	public gems:number;
 	public armor:Item;
 	public weapon:Item;
+	public maxHP():number;
+	public minLust():number;
+	public maxLust():number;
+	public maxFatigue():number;
 	public pregnancyAdvance():void;
 }
 declare namespace Inventory {
@@ -48,4 +69,4 @@ declare let time: {
 	hours:number;
 	days:number;
 }
-
+declare let use12Hours:boolean;

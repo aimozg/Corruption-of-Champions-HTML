@@ -99,7 +99,8 @@ function lookupStatusEffects(id:string):StatusEffectType|undefined {
 function createCallBackFunction<A1,R>(func:(arg1:A1)=>R, arg1:A1):()=>R;
 function createCallBackFunction<A1,A2,R>(func:(arg1:A1,arg2:A2)=>R, arg1:A1, arg2:A2):()=>R;
 function createCallBackFunction<A1,A2,A3,R>(func:(arg1:A1,arg2:A2,arg3:A3)=>R, arg1:A1, arg2:A2, arg3:A3):()=>R;
-function createCallBackFunction(func:Function, arg1?:any, arg2?:any, arg3?:any):Function {
+function createCallBackFunction(func:Function, arg1?:any, arg2?:any, arg3?:any):()=>any;
+function createCallBackFunction(func:Function, arg1?:any, arg2?:any, arg3?:any):()=>any {
 	if (arg1 != undefined) {
 		if (arg2 != undefined) {
 			if (arg3 != undefined) {
