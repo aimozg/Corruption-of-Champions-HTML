@@ -6,10 +6,8 @@
 declare type int = number;
 
 declare function cleanupAfterCombat():void;
-declare function clearOutput():void;
 declare function combatRoundOver():void;
 declare function doNext(fn:Function):void;
-declare function outputText(text:string):void;
 declare function refreshStats():void;
 declare function showUpDown(arrow:String,direction:"up"|"down"):void;
 
