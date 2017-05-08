@@ -35,9 +35,6 @@ declare class PerkType {
 declare class Player extends Creature {
 
 }
-declare class StatusEffectType {
-
-}
 declare const StatusEffectIDs: { [index: string]: StatusEffectType };
 
 declare let hyperHappy: boolean;

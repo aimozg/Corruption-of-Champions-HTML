@@ -1,20 +1,22 @@
-function StatusEffect(type, val1, val2, val3, val4) {
-    //Default values
-    if (type == undefined) type = 0; //Fixed now
-    if (val1 == undefined) val1 = 0;
-    if (val2 == undefined) val2 = 0;
-    if (val3 == undefined) val3 = 0;
-    if (val4 == undefined) val4 = 0;
-    //Variables
-    this.stype = type;
-    this.value1 = val1;
-    this.value2 = val2;
-    this.value3 = val3;
-    this.value4 = val4;
-}
-
-function StatusEffectType(id) {
-    //Variables
-    this.id = id;
-    StatusEffectIDs[this.id] = this;
-}
+var StatusEffectType = (function () {
+    function StatusEffectType(id) {
+        this.id = id;
+        StatusEffectIDs[this.id] = this;
+    }
+    return StatusEffectType;
+}());
+var StatusEffect = (function () {
+    function StatusEffect(stype, value1, value2, value3, value4) {
+        if (value1 === void 0) { value1 = 0; }
+        if (value2 === void 0) { value2 = 0; }
+        if (value3 === void 0) { value3 = 0; }
+        if (value4 === void 0) { value4 = 0; }
+        this.stype = stype;
+        this.value1 = value1;
+        this.value2 = value2;
+        this.value3 = value3;
+        this.value4 = value4;
+    }
+    return StatusEffect;
+}());
+//# sourceMappingURL=statusEffectClass.js.map
