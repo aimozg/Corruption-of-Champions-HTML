@@ -30,7 +30,6 @@ declare namespace PerkLib {
 declare class Player extends Creature {
 
 }
-declare const StatusEffectIDs: { [index: string]: StatusEffectType };
 
 declare let hyperHappy: boolean;
 declare let monster: Creature;
