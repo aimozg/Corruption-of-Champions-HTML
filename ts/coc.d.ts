@@ -63,6 +63,7 @@ declare let amily: Amily;
 declare let hyperHappy: boolean;
 declare let monster: Creature;
 declare let player: Player;
+declare let shiftKeyDown: boolean;
 declare let tamanipreg: Tamani;
 declare let time: {
 	minutes:number;
