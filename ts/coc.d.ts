@@ -29,9 +29,6 @@ declare namespace PerkLib {
 	export const Tank2:PerkType;
 	export const WizardsFocus:PerkType;
 }
-declare class PerkType {
-
-}
 declare class Player extends Creature {
 
 }
