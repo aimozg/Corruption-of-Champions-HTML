@@ -83,22 +83,22 @@ function lookupItem(id:string):Item|undefined {
 	return ItemLib[id];
 }
 
-function lookupKeyItem(id):KeyItem|undefined {
+function lookupKeyItem(id:string):KeyItemType|undefined {
 	return KeyItemIDs[id];
 }
 
-function lookupPerk(id):PerkType|undefined {
+function lookupPerk(id:string):PerkType|undefined {
 	return PerkIDs[id];
 }
 
-function lookupStatusEffects(id):StatusEffectClass|undefined {
+function lookupStatusEffects(id:string):StatusEffectType|undefined {
 	return StatusEffectIDs[id];
 }
 
 //Function
-function createCallBackFunction<A1,R>(func:(A1)=>R, arg1:A1):()=>R;
-function createCallBackFunction<A1,A2,R>(func:(A1,A2)=>R, arg1:A1, arg2:A2):()=>R;
-function createCallBackFunction<A1,A2,A3,R>(func:(A1,A2,A3)=>R, arg1:A1, arg2:A2, arg3:A3):()=>R;
+function createCallBackFunction<A1,R>(func:(arg1:A1)=>R, arg1:A1):()=>R;
+function createCallBackFunction<A1,A2,R>(func:(arg1:A1,arg2:A2)=>R, arg1:A1, arg2:A2):()=>R;
+function createCallBackFunction<A1,A2,A3,R>(func:(arg1:A1,arg2:A2,arg3:A3)=>R, arg1:A1, arg2:A2, arg3:A3):()=>R;
 function createCallBackFunction(func:Function, arg1?:any, arg2?:any, arg3?:any):Function {
 	if (arg1 != undefined) {
 		if (arg2 != undefined) {
