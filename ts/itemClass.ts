@@ -104,13 +104,15 @@ class Item {
 	}
 }
 
-const Items = {
-	NOTHING: new Item("Nothing", "NOTHING!", "nothing", ITEM_TYPE_MATERIAL)
-};
+namespace Items {
+	export const NOTHING = new Item("Nothing", "NOTHING!", "nothing", ITEM_TYPE_MATERIAL)
+	Items.NOTHING.description   = "You know, you are not supposed to see this tooltip. Please let Kitteh6660 know so he can fix it.";
+	Items.NOTHING.equipmentName = "nothing";
+	Items.NOTHING.verb          = "punch";
+	Items.NOTHING.value         = -1;
+	Items.NOTHING.defense       = 0;
+	Items.NOTHING.attack        = 0;
+	export namespace Weapons {
 
-Items.NOTHING.description   = "You know, you are not supposed to see this tooltip. Please let Kitteh6660 know so he can fix it.";
-Items.NOTHING.equipmentName = "nothing";
-Items.NOTHING.verb          = "punch";
-Items.NOTHING.value         = -1;
-Items.NOTHING.defense       = 0;
-Items.NOTHING.attack        = 0;
+	}
+}
