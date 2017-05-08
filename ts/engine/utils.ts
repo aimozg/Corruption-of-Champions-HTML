@@ -120,3 +120,9 @@ function createCallBackFunction(func:Function, arg1?:any, arg2?:any, arg3?:any):
 		func();
 	}
 }
+
+function createMapFromPairs<V>(src:[string|number,V][]): {[index:string]:V} {
+	let result: {[index:string]:V} = {};
+	for (let i = 0; i < src.length; i++) result[src[i][0]] = src[i][1];
+	return result;
+}

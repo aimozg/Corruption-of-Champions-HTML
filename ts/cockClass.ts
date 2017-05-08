@@ -2,7 +2,7 @@ class Cock {
 	//Special, for dog and dragon cocks
 	public knotMultiplier = 1;
 	//Other
-	public pierced        = false;
+	public isPierced      = false;
 	public sock           = "";
 
 	public constructor(public cockLength    = 5.5,
@@ -71,8 +71,8 @@ function fixCock(cock:Cock):Cock { // Fix any undefined numbers.
 		cock.cockThickness = 1;
 	if (cock.knotMultiplier == undefined)
 		cock.knotMultiplier = 1;
-	if (cock.pierced == undefined)
-		cock.pierced = false;
+	if (cock.isPierced == undefined)
+		cock.isPierced = false;
 	if (cock.sock == undefined)
 		cock.sock = "";
 	return cock;

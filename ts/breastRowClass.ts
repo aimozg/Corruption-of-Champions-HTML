@@ -6,7 +6,7 @@ class BreastRow {
 	public fuckable            = false;
 	public nippleLength        = 0.25;
 
-	constructor(public breastSize       = 2,
+	constructor(public breastRating       = 2,
 				public nipplesPerBreast = 2) {
 	}
 }
@@ -17,8 +17,8 @@ class BreastRow {
 function unfuckBreastRow(breastRow:BreastRow):BreastRow { //Fix any undefined numbers.
 	if (breastRow.breasts == undefined)
 		breastRow.breasts = 2;
-	if (breastRow.breastSize == undefined)
-		breastRow.breastSize = 0;
+	if (breastRow.breastRating == undefined)
+		breastRow.breastRating = 0;
 	if (breastRow.lactationMultiplier == undefined)
 		breastRow.lactationMultiplier = 0;
 	if (breastRow.milkFullness == undefined)

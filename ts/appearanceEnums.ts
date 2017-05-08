@@ -219,7 +219,8 @@ enum CockTypesEnum {
 	RHINO,
 	ECHIDNA,
 }
-
+const CockGroupMammal: CockTypesEnum[] = [CockTypesEnum.HORSE,CockTypesEnum.DOG,CockTypesEnum.CAT,CockTypesEnum.KANGAROO,CockTypesEnum.FOX,CockTypesEnum.PIG,CockTypesEnum.RHINO,CockTypesEnum.ECHIDNA];
+const CockGroupReptile: CockTypesEnum[] = [CockTypesEnum.LIZARD,CockTypesEnum.DRAGON];
 //Vagina Type
 enum VaginaTypesEnum {
 	HUMAN,

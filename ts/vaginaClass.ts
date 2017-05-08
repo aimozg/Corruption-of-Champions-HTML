@@ -1,6 +1,7 @@
 class Vagina {
 	public clitLength = 0.25;
 	public clitPierced = 0;
+	public labiaPierced = 0;
 	constructor(public vaginalWetness:number=1,
 				public vaginalLooseness:number=0,
 				public virgin:boolean=false,
