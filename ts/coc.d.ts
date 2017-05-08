@@ -5,15 +5,11 @@
 
 declare type int = number;
 
-declare function capitalize(s:string):string;
-declare function capitalizeFirstLetter(s:string):string;
 declare function cleanupAfterCombat():void;
 declare function clearOutput():void;
 declare function combatRoundOver():void;
 declare function doNext(fn:Function):void;
-declare function lookupItem(id:string):Item|null;
 declare function outputText(text:string):void;
-declare function rand(n:int):int;
 declare function refreshStats():void;
 declare function showUpDown(arrow:String,direction:"up"|"down"):void;
 
