@@ -60,14 +60,5 @@ declare class Tamani extends Creature {
 }
 
 declare let amily: Amily;
-declare let hyperHappy: boolean;
 declare let monster: Creature;
-declare let player: Player;
-declare let shiftKeyDown: boolean;
 declare let tamanipreg: Tamani;
-declare let time: {
-	minutes:number;
-	hours:number;
-	days:number;
-}
-declare let use12Hours:boolean;
