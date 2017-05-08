@@ -1,12 +1,12 @@
-function Ass(wetness, looseness, virgin) {
-    //Because WebStorm complains!
-    if (wetness == undefined) wetness = 1;
-    if (looseness == undefined) looseness = 0;
-    if (virgin == undefined) virgin = false;
-	//Base info
-	this.analWetness = wetness;
-	this.analLooseness = looseness;
-	//Virginity info
-	this.virgin = virgin;
-}
-Ass.constructor = Ass;
+var Ass = (function () {
+    function Ass(analWetness, analLooseness, virgin) {
+        if (analWetness === void 0) { analWetness = 1; }
+        if (analLooseness === void 0) { analLooseness = 1; }
+        if (virgin === void 0) { virgin = false; }
+        this.analWetness = analWetness;
+        this.analLooseness = analLooseness;
+        this.virgin = virgin;
+    }
+    return Ass;
+}());
+//# sourceMappingURL=assClass.js.map
