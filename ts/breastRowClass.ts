@@ -11,7 +11,10 @@ class BreastRow {
 	}
 }
 
-function unfuckBreastRow(breastRow) { //Fix any undefined numbers.
+/**
+ * @deprecated
+ */
+function unfuckBreastRow(breastRow:BreastRow):BreastRow { //Fix any undefined numbers.
 	if (breastRow.breasts == undefined)
 		breastRow.breasts = 2;
 	if (breastRow.breastSize == undefined)

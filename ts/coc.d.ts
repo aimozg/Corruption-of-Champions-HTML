@@ -43,6 +43,7 @@ declare class StatusEffectClass {
 }
 declare const StatusEffectIDs: { [index: string]: StatusEffectClass };
 
+declare let hyperHappy: boolean;
 declare let monster: Creature;
 declare let player: Player;
 
