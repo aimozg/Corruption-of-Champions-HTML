@@ -44,13 +44,6 @@ declare namespace Inventory {
 	function takeItem(oldItem:Item,returnTo:Function):void;
 	function inventoryMenu():void;
 }
-declare const PerkIDs: { [index: string]: PerkType };
-declare namespace PerkLib {
-	export const Spellpower:PerkType;
-	export const Tank:PerkType;
-	export const Tank2:PerkType;
-	export const WizardsFocus:PerkType;
-}
 declare class Player extends Creature {
 
 }

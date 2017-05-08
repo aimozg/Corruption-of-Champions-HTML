@@ -170,6 +170,7 @@ function creditsScreen() {
     creditsContents += "<ul>";
     creditsContents += "<li> Kitteh6660 (Main coder)</li>";
     creditsContents += "<li> Mattibun</li>";
+    creditsContents += "<li> aimozg (TypeScript edition)</li>";
     creditsContents += "</ul>";
 
     /*creditsContents += "<b><u>Game Mod Contributors:</u></b>";
