@@ -16,6 +16,11 @@ declare function combatRoundOver():void;
 declare class Amily extends Creature {
 
 }
+declare namespace ConsumableEffects {
+	function hairDye():void;
+	function skinOil():void;
+	function bodyLotion():void;
+}
 declare class Creature {
 	public name:string;
 	public str:number;

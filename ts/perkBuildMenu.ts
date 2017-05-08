@@ -1,5 +1,6 @@
 namespace PerkMenuBuilder {
-	let perksAvailable:PerkType[] = [];
+	let perksAvailable: PerkType[] = [];
+
 	export function buildPerkList() {
 		perksAvailable = [];
 		//Strength Perks
@@ -18,7 +19,7 @@ namespace PerkMenuBuilder {
 
 		//Corruption Perks
 
-		return perksAvailable.filter(p=>player.findPerk(p)<0);
+		return perksAvailable.filter(p => player.findPerk(p) < 0);
 	}
 
-	}
+}
