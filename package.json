@@ -1,0 +1,14 @@
+{
+  "name": "coc-html",
+  "version": "0.1.3",
+  "description": "Corruption of Champions: HTML Edition",
+  "main": "index.js",
+  "keywords": [
+    "nsfw"
+  ],
+  "author": "aimozg",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "typescript": "^2.3.2"
+  }
+}
