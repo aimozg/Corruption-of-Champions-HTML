@@ -25,15 +25,27 @@ declare namespace Inventory {
 	function takeItem(oldItem:Item,returnTo:Function):void;
 	function inventoryMenu():void;
 }
+declare class KeyItem extends Item {
+
+}
+declare const KeyItemIDs: { [index: string]: KeyItem };
+declare const PerkIDs: { [index: string]: PerkType };
 declare namespace PerkLib {
-	export const Spellpower:string;
-	export const Tank:string;
-	export const Tank2:string;
-	export const WizardsFocus:string;
+	export const Spellpower:PerkType;
+	export const Tank:PerkType;
+	export const Tank2:PerkType;
+	export const WizardsFocus:PerkType;
+}
+declare class PerkType {
+
 }
 declare class Player extends Creature {
 
 }
+declare class StatusEffectClass {
+
+}
+declare const StatusEffectIDs: { [index: string]: StatusEffectClass };
 
 declare let monster: Creature;
 declare let player: Player;
