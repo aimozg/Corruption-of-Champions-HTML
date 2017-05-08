@@ -17,7 +17,7 @@ class Item {
 	public description: string;
 	public value: number;
 
-	public consumeEffect: Function | null = null;
+	public consumeEffect: (()=>any) | null = null;
 	//Equipment values that can be set
 	public equipmentName: string          = "";
 	public attack: number                 = 0;
