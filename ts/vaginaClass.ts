@@ -1,20 +1,14 @@
-function Vagina(wetness, looseness, virgin, vagType) {
-    //Because WebStorm complains!
-	if (wetness == undefined) wetness = 1;
-	if (looseness == undefined) looseness = 0;
-	if (virgin == undefined) virgin = false;
-    if (vagType == undefined) vagType = 0;
-	//Base info
-	this.type = vagType;
-    this.clitLength = 0.25;
-	this.vaginalWetness = wetness;
-	this.vaginalLooseness = looseness;
-	this.virgin = virgin;
-    //Misc
-    this.clitPierced = 0;
+class Vagina {
+	public clitLength = 0.25;
+	public clitPierced = 0;
+	constructor(public vaginalWetness:number=1,
+				public vaginalLooseness:number=0,
+				public virgin:boolean=false,
+				public type:VaginaTypesEnum = VaginaTypesEnum.HUMAN) {
+	}
 }
 
-function fixVagina(pussy) { //Fix any undefined numbers.
+function fixVagina(pussy:Vagina):Vagina { //Fix any undefined numbers.
     if (pussy.type == undefined)
         pussy.type = 0;
     if (pussy.clitLength == undefined)
