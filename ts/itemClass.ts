@@ -73,9 +73,7 @@ class Item {
 		return true;
 	}
 
-	public useText():string {
-		return "";
-	};
+	public useText = ()=>false;
 
 	public equipItem() {
 		clearOutput();

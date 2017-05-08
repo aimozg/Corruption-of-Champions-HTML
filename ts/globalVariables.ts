@@ -45,6 +45,8 @@ let exploration = {
 
 //NPC variables
 //var flags = [0] * 3000; //For legacy purposes only.
-let gameFlags = {
+let gameFlags:{
+	[index:string]:number
+} = {
 
 };

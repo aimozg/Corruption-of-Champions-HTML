@@ -76,12 +76,22 @@ declare class Creature {
 	public biggestLactation():number;
 	public cumQ():number;
 	public biggestTitRow():number;
+	public averageBreastSize():number;
 	public cockTotal():number;
 	public cockDescript(index?:number):string;
 	public cockAdjective(index?:number):string;
+	public nippleDescript(index?:number):string;
 	public vaginaType():VaginaTypesEnum;
 	public findPerk(perk:PerkType):number;
 	public findStatusEffect(set:StatusEffectType):number;
+	public dynStats(stats:string,val:number):void;
+	public dynStats(...stats:[string,number][]):void;
+	public changeHP(val:number,output:boolean):void;
+	public changeLust(amount:number, display?:boolean, newpg?:boolean, resisted?:boolean):void;
+	public modFem(goal:number,strength:number):string;
+	public refillHunger(val:number):void;
+	public growTits(amount:number,rowsGrown:number,display:boolean, growthType:number):void;
+	public slimeFeed():void;
 }
 declare namespace Inventory {
 	function takeItem(oldItem:Item,returnTo:Function):void;
@@ -98,5 +108,6 @@ declare class Tamani extends Creature {
 }
 
 declare let amily: Amily;
+declare let inCombat: boolean;
 declare let monster: Creature;
 declare let tamanipreg: Tamani;
