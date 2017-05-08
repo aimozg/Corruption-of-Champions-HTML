@@ -22,7 +22,7 @@ let mainFontSizeArray = ["0.6em", "0.7em", "0.8em", "0.9em", "1em", "1.1em", "1.
 let mainFontSizeIndex = 4; //Goes from 0 to 8. Will be used to pick font size from array.
 
 //Core variables
-let player;// = new Player();
+let player:Player;// = new Player();
 let playerMenu = null;
 let gameStarted = false; //Determine if game has already started
 let shiftKeyDown = false;

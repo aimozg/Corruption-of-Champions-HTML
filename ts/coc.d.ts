@@ -39,6 +39,7 @@ declare class Creature {
 	public maxLust():number;
 	public maxFatigue():number;
 	public pregnancyAdvance():void;
+	public findPerk(perk:PerkType):number;
 }
 declare namespace Inventory {
 	function takeItem(oldItem:Item,returnTo:Function):void;
