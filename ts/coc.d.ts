@@ -44,7 +44,6 @@ declare namespace Inventory {
 	function takeItem(oldItem:Item,returnTo:Function):void;
 	function inventoryMenu():void;
 }
-declare const KeyItemIDs: { [index: string]: KeyItemType };
 declare const PerkIDs: { [index: string]: PerkType };
 declare namespace PerkLib {
 	export const Spellpower:PerkType;
