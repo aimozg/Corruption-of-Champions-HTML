@@ -22,7 +22,6 @@ enum BeardStyle {
 	NORMAL,
 	GOATEE,
 }
-//Face Type
 enum FaceType{
 	HUMAN,
 	HORSE,
@@ -56,6 +55,7 @@ enum TongueType{
 	DRACONIC,
 	ECHIDNA,
 }
+const TongueGroupLong = [TongueType.SNAKE, TongueType.DEMONIC, TongueType.DRACONIC];
 enum EyeType{
 	HUMAN,
 	FOUR_SPIDER_EYES,
@@ -139,6 +139,10 @@ enum TailType{
 	ECHIDNA,
 	DEER,
 }
+const TailGroupLong = [
+	TailType.DOG, TailType.DEMONIC, TailType.COW, TailType.SHARK, TailType.CAT, TailType.LIZARD, TailType.KANGAROO,
+	TailType.FOX, TailType.DRACONIC, TailType.RACCOON, TailType.MOUSE, TailType.FERRET, TailType.SCORPION
+];
 enum LowerBodyType{
 	HUMAN,
 	HOOFED,
@@ -180,6 +184,8 @@ enum WingType{
 	DRACONIC_LARGE,
 	GIANT_DRAGONFLY,
 }
+const WingTypeFlyable = [WingType.BEE_LIKE_LARGE, WingType.BAT_LIKE_LARGE, WingType.FEATHERED_LARGE,
+	WingType.DRACONIC_LARGE, WingType.GIANT_DRAGONFLY];
 enum PiercingType{
 	NONE,
 	STUD,

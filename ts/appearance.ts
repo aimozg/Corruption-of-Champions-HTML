@@ -197,9 +197,11 @@ namespace Appearance {
 		let options;
 		let rando           = 0;
 		//Size descriptors 33% chance
+		let row             = i_creature.breastRows[i_rowNum];
+		let nippleLength    = row.nippleLength;
 		if (rand(4) == 0) {
 			//TINAHHHH
-			if (i_creature.nippleLength < .25) {
+			if (nippleLength < .25) {
 				options = ["tiny ",
 					"itty-bitty ",
 					"teeny-tiny ",
@@ -207,7 +209,7 @@ namespace Appearance {
 				description += randomChoice(options);
 			}
 			//Prominant
-			if (i_creature.nippleLength >= .4 && i_creature.nippleLength < 1) {
+			if (nippleLength >= .4 && nippleLength < 1) {
 				options = ["prominent ",
 					"pencil eraser-sized ",
 					"eye-catching ",
@@ -216,7 +218,7 @@ namespace Appearance {
 				description += randomChoice(options);
 			}
 			//Big 'uns
-			if (i_creature.nippleLength >= 1 && i_creature.nippleLength < 2) {
+			if (nippleLength >= 1 && nippleLength < 2) {
 				options = ["forwards-jutting ",
 					"over-sized ",
 					"fleshy ",
@@ -224,7 +226,7 @@ namespace Appearance {
 				description += randomChoice(options);
 			}
 			//'Uge
-			if (i_creature.nippleLength >= 2 && i_creature.nippleLength < 3.2) {
+			if (nippleLength >= 2 && nippleLength < 3.2) {
 				options = ["elongated ",
 					"massive ",
 					"awkward ",
@@ -233,7 +235,7 @@ namespace Appearance {
 				description += randomChoice(options);
 			}
 			//Massive
-			if (i_creature.nippleLength >= 3.2) {
+			if (nippleLength >= 3.2) {
 				options = ["bulky ",
 					"ponderous ",
 					"thumb-sized ",
@@ -341,20 +343,20 @@ namespace Appearance {
 		choice     = rand(5);
 		if (choice == 0) description += "nipple";
 		if (choice == 1) {
-			if (i_creature.nippleLength < .5) description += "perky nipple";
+			if (nippleLength < .5) description += "perky nipple";
 			else description += "cherry-like nub";
 		}
 		if (choice == 2) {
 			if (i_creature.hasFuckableNipples()) description += "fuckable nip";
 			else {
-				if (i_creature.biggestLactation() >= 1 && i_creature.nippleLength >= 1) description += "teat";
+				if (i_creature.biggestLactation() >= 1 && nippleLength >= 1) description += "teat";
 				else description += "nipple";
 			}
 		}
 		if (choice == 3) {
 			if (i_creature.hasFuckableNipples()) description += "nipple-hole";
 			else {
-				if (i_creature.biggestLactation() >= 1 && i_creature.nippleLength >= 1) description += "teat";
+				if (i_creature.biggestLactation() >= 1 && nippleLength >= 1) description += "teat";
 				else description += "nipple";
 			}
 		}
@@ -1321,11 +1323,12 @@ namespace Appearance {
 	export function clitDescription(i_creature: Creature): string {
 		let description     = "";
 		let options;
+		let clitLength      = i_creature.vaginas[0].clitLength;
 		let haveDescription = false;
 		//Length Adjective - 50% chance
 		if (rand(2) == 0) {
 			//small clits!
-			if (i_creature.clitLength <= .5) {
+			if (clitLength <= .5) {
 				options = ["tiny ",
 					"little ",
 					"petite ",
@@ -1334,11 +1337,11 @@ namespace Appearance {
 				description += randomChoice(options);
 			}
 			//"average".
-			if (i_creature.clitLength > .5 && i_creature.clitLength < 1.5) {
+			if (clitLength > .5 && clitLength < 1.5) {
 				//no size comment
 			}
 			//Biggies!
-			if (i_creature.clitLength >= 1.5 && i_creature.clitLength < 4) {
+			if (clitLength >= 1.5 && clitLength < 4) {
 				options = ["large ",
 					"large ",
 					"substantial ",
@@ -1347,7 +1350,7 @@ namespace Appearance {
 				description += randomChoice(options);
 			}
 			//'Uge
-			if (i_creature.clitLength >= 4) {
+			if (clitLength >= 4) {
 				options = ["monster ",
 					"tremendous ",
 					"colossal ",

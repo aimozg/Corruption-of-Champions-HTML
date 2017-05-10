@@ -1,4 +1,4 @@
-type AttrName = "str"|"tou"|"spe"|"inte"|"lib"|"sens"|"cor"|"lust";
+type AttrName = "str" | "tou" | "spe" | "inte" | "lib" | "sens" | "cor" | "lust";
 class Creature {
 	//Name and references
 	public a                             = "";
@@ -87,6 +87,7 @@ class Creature {
 	public ballSize                      = 0;
 	public hoursSinceCum                 = 0;
 	public cumMultiplier                 = 0;
+	public fertility                     = 10;
 	//Vaginas
 	public vaginas: Vagina[]             = [];
 	//Ass
@@ -102,19 +103,19 @@ class Creature {
 	// Pregnancy
 	public pregnancyType: PregnancyType     = 0;
 	public pregnancyIncubation              = 0;
-	public pregnancyEventArr:number[]       = [];
+	public pregnancyEventArr: number[]      = [];
 	public pregnancyEventNum                = 0;
 	public buttPregnancyType: PregnancyType = 0;
 	public buttPregnancyIncubation          = 0;
-	public buttPregnancyEventArr:number[]   = [];
+	public buttPregnancyEventArr: number[]  = [];
 	public buttPregnancyEventNum            = 0;
 	//Victory/defeat
 	public victory: () => void              = cleanupAfterCombat;
 	public defeat: () => void               = cleanupAfterCombat;
 
 	//------------
-// COMBAT
-//------------
+	// COMBAT
+	//------------
 	public doAI(): void {
 		switch (rand(4)) {
 			default:
@@ -204,8 +205,8 @@ class Creature {
 		let temp = 50;
 		temp += this.tou * 2;
 		temp += this.bonusHP;
-		if (this.findPerk(PerkLib.Tank) >= 0) temp += 50;
-		if (this.findPerk(PerkLib.Tank2) >= 0) temp += this.tou;
+		if (this.hasPerk(PerkLib.Tank)) temp += 50;
+		if (this.hasPerk(PerkLib.Tank2)) temp += this.tou;
 		if (this == player) {
 			temp += this.level * 15;
 			if (temp < 50) temp = 50;
@@ -219,6 +220,7 @@ class Creature {
 	public maxLust(): number {
 		return 100;
 	}
+
 	public minLust(): number {
 		return 0;
 	}
@@ -231,7 +233,7 @@ class Creature {
 		return this.HP / this.maxHP();
 	}
 
-//Combat
+	//Combat
 	public baseDamage(): number {
 		let baseDmg = this.str + this.weapon.attack;
 		if (baseDmg < 10) baseDmg = 10; //Clamp minimum damage to 10 if under.
@@ -247,13 +249,11 @@ class Creature {
 	public spellMod(): number {
 		let multiplier = 1;
 		//Permanent base increase
-		if (this.findPerk(PerkLib.Spellpower) >= 0) {
+		if (this.hasPerk(PerkLib.Spellpower)) {
 			multiplier += 0.5;
 		}
 		//Others
-		if (this.findPerk(PerkLib.WizardsFocus) >= 0) {
-			multiplier += this.perkValue(PerkLib.WizardsFocus, 1);
-		}
+		multiplier += this.perkValue(PerkLib.WizardsFocus, 1, 0);
 		return multiplier;
 	}
 
@@ -280,7 +280,7 @@ class Creature {
 		return Math.round(xpGained);
 	}
 
-//Stats Change
+	//Stats Change
 	public modStats(stat: AttrName, mod: number): void;
 	public modStats(...statmod: [AttrName, number][]): void;
 	public modStats(): void {
@@ -295,7 +295,7 @@ class Creature {
 			//Skip if resisted or noBimbo
 			if (attribute == "resisted" || attribute == "nobimbo") continue;
 			//Apply modifiers
-			var a:AttrName = attribute;
+			var a: AttrName = attribute;
 			this[a] += mod;
 			//Constrain values to min and max
 			if (this[a] > 100) this[a] = 100;
@@ -415,11 +415,11 @@ class Creature {
 
 		//--PERKS--
 		//Take damage you masochist!
-		if (this.findPerk(PerkLib.Masochist) >= 0 && this.lib >= 60) {
+		if (this.hasPerk(PerkLib.Masochist) && this.lib >= 60) {
 			mult *= 0.8;
 			if (this == player && !displayMode) this.changeLust(2, false);
 		}
-		/*if (this.findPerk(PerkLib.ImmovableObject) >= 0 && this.tou >= 75) {
+		/*if (this.hasPerk(PerkLib.ImmovableObject) && this.tou >= 75) {
 		 mult *= 0.9;
 		 }*/
 
@@ -490,7 +490,7 @@ class Creature {
 		outputText(" ");
 	}
 
-//ORGASMS!!!!
+	//ORGASMS!!!!
 	public orgasm(): void {
 		this.changeLust(-this.lust);
 		this.hoursSinceCum = 0;
@@ -541,105 +541,114 @@ class Creature {
 		return sum;
 	}
 
-//------------
-// STATS/PERKS
-//------------
-//Perks
+	//------------
+	// STATS/PERKS
+	//------------
+	//Perks
 	public createPerk(ptype: PerkType,
-					  value1: number = 0,
-					  value2: number = 0,
-					  value3: number = 0,
-					  value4: number = 0): void {
+	                  value1: number = 0,
+	                  value2: number = 0,
+	                  value3: number = 0,
+	                  value4: number = 0): void {
 		let newKeyItem = new Perk(ptype, value1, value2, value3, value4);
 		this.perks.push(newKeyItem);
-		this.perks.sort((a, b) => a.perkName > b.perkName ? 1 : a.perkName < b.perkName ? -1 : 0);
+		this.perks = _.sortBy(this.perks, p => p.perkName)
 	}
 
 	public removePerk(ptype: PerkType): boolean {
-		let counter = this.perks.length;
-		//Various Errors preventing action
-		if (this.perks.length <= 0) {
-			return false;
-		}
-		while (counter > 0) {
-			counter--;
-			if (this.perks[counter].ptype == ptype) {
-				this.perks.splice(counter, 1);
-				return true;
-			}
+		let counter = this.indexOfPerk(ptype);
+		if (counter >= 0) {
+			this.perks.splice(counter, 1);
+			return true;
 		}
 		return false;
 	}
 
 	public indexOfPerk(ptype: PerkType): number {
-		return this.perks.map()
-		if (ptype == undefined)
-			return -1;
-		for (var counter = 0; counter < this.perks.length; counter++) {
-			if (this.perks[counter].ptype.id == ptype.id)
-				return counter;
-		}
-		return -1;
+		return _.findIndex(this.perks, p => p.ptype == ptype);
 	}
 
+	public findPerkByType(ptype: PerkType): Perk | undefined {
+		return _.find(this.perks, p => p.ptype == ptype);
+	}
 
-//Status Effects
+	public hasPerk(ptype: PerkType): boolean {
+		return this.indexOfPerk(ptype) >= 0;
+	}
+
+	public perkValue(ptype: PerkType, vidx: 1 | 2 | 3 | 4, defval: number): number {
+		let p = this.findPerkByType(ptype);
+		return p ? p.value(vidx) : defval;
+	}
+
+	//Status Effects
 	public createStatusEffect(stype: StatusEffectType,
-							  value1: number = 0,
-							  value2: number = 0,
-							  value3: number = 0,
-							  value4: number = 0): void {
+	                          value1: number = 0,
+	                          value2: number = 0,
+	                          value3: number = 0,
+	                          value4: number = 0): void {
 		this.statusEffects.push(new StatusEffect(stype, value1, value2, value3, value4));
+		this.statusEffects = _.sortBy(this.statusEffects, s => s.stype)
 	}
 
 	public removeStatusEffect(stype: StatusEffectType): void {
-		let counter = this.findStatusEffect(stype);
+		let counter = this.indexOfStatusEffect(stype);
 		if (counter < 0) return;
 		this.statusEffects.splice(counter, 1);
 	}
 
-	public findStatusEffect(stype: StatusEffectType): number {
-		if (stype == undefined)
-			return -1;
-		for (let counter = 0; counter < this.statusEffects.length; counter++) {
-			if (this.statusEffects[counter].stype == stype)
-				return counter;
-		}
-		return -1;
+	public indexOfStatusEffect(stype: StatusEffectType): number {
+		return _.findIndex(this.statusEffects, s => s.stype == stype);
 	}
 
-//-------
-// Key Items
-//-------
-
-//Create a new Key Item
-	public createKeyItem(keyName: KeyItemType, value1: number, value2: number, value3: number, value4: number): void {
-		let newKeyItem = new KeyItem(keyName, value1, value2, value3, value4);
-		this.keyItems.push(newKeyItem);
+	public findStatusEffectByType(stype: StatusEffectType): StatusEffect | undefined {
+		return _.find(this.statusEffects, s => s.stype == stype);
 	}
 
-//Remove a Key Item
+	public hasStatusEffect(stype: StatusEffectType): boolean {
+		return this.indexOfStatusEffect(stype) >= 0;
+	}
+
+	public statusEffectValue(ptype: StatusEffectType, vidx: 1 | 2 | 3 | 4, defval: number): number {
+		let s = this.findStatusEffectByType(ptype);
+		return s ? s.value(vidx) : defval;
+	}
+
+	//-------
+	// Key Items
+	//-------
+
+	public createKeyItem(ktype: KeyItemType,
+	                     value1: number = 0,
+	                     value2: number = 0,
+	                     value3: number = 0,
+	                     value4: number = 0): void {
+		this.keyItems.push(new KeyItem(ktype, value1, value2, value3, value4));
+		this.keyItems = _.sortBy(this.keyItems, k => k.ktype)
+	}
+
 	public removeKeyItem(ktype: KeyItemType): void {
-		let counter = this.hasKeyItem(ktype);
+		let counter = this.indexOfKeyItem(ktype);
 		if (counter < 0) return;
-		this.statusEffects.splice(counter, 1);
+		this.keyItems.splice(counter, 1);
 	}
 
-//Check if a Key Item exists
-	public hasKeyItem(ktype: KeyItemType): number {
-		if (ktype == undefined)
-			return -1;
-		for (let counter = 0; counter < this.keyItems.length; counter++) {
-			if (this.keyItems[counter].ktype.id == ktype.id)
-				return counter;
-		}
-		return -1;
+	public indexOfKeyItem(ktype: KeyItemType): number {
+		return _.findIndex(this.keyItems, k => k.ktype == ktype);
+	}
+
+	public findKeyItemByType(ktype: KeyItemType): KeyItem | undefined {
+		return _.find(this.keyItems, k => k.ktype == ktype);
+	}
+
+	public hasKeyItem(ktype: KeyItemType): boolean {
+		return this.indexOfKeyItem(ktype) >= 0;
 	}
 
 
-//------------
-// SEXUAL UTIL
-//------------
+	//------------
+	// SEXUAL UTIL
+	//------------
 	public hasCock(): boolean {
 		return (this.cocks.length > 0);
 	}
@@ -708,13 +717,13 @@ class Creature {
 		else if (this.lowerBody == 3)
 			bonus = 20;
 		//Wet pussy provides 20 point boost
-		//if (this.findPerk(PerkLib.WetPussy) >= 0) bonus += 20;
-		//if (this.findPerk(PerkLib.HistorySlut) >= 0) bonus += 20;
-		//if (this.findPerk(PerkLib.OneTrackMind) >= 0) bonus += 10;
-		//if (this.findPerk(PerkLib.Cornucopia) >= 0) bonus += 30;
-		//if (this.findPerk(PerkLib.FerasBoonWideOpen) >= 0) bonus += 25;
-		//if (this.findPerk(PerkLib.FerasBoonMilkingTwat) >= 0) bonus += 40;
-		let bonusVCap = this.statusEffectValue(StatusEffects.BonusVCapacity, 1);
+		//if (this.hasPerk(PerkLib.WetPussy)) bonus += 20;
+		//if (this.hasPerk(PerkLib.HistorySlut)) bonus += 20;
+		//if (this.hasPerk(PerkLib.OneTrackMind)) bonus += 10;
+		//if (this.hasPerk(PerkLib.Cornucopia)) bonus += 30;
+		//if (this.hasPerk(PerkLib.FerasBoonWideOpen)) bonus += 25;
+		//if (this.hasPerk(PerkLib.FerasBoonMilkingTwat)) bonus += 40;
+		let bonusVCap = this.statusEffectValue(StatusEffects.BonusVCapacity, 1, 0);
 		let total     = (bonus + bonusVCap + 8 * this.vaginas[0].vaginalLooseness * this.vaginas[0].vaginalLooseness) * (1 + this.vaginas[0].vaginalWetness / 10);
 		return total;
 	}
@@ -724,11 +733,11 @@ class Creature {
 		//Centaurs = +30 capacity
 		if (this.lowerBody == LowerBodyType.CENTAUR)
 			bonus = 30;
-		//if (this.findPerk(PerkLib.HistorySlut) >= 0) bonus += 20;
-		//if (this.findPerk(PerkLib.Cornucopia) >= 0) bonus += 30;
-		//if (this.findPerk(PerkLib.OneTrackMind) >= 0) bonus += 10;
+		//if (this.hasPerk(PerkLib.HistorySlut)) bonus += 20;
+		//if (this.hasPerk(PerkLib.Cornucopia)) bonus += 30;
+		//if (this.hasPerk(PerkLib.OneTrackMind)) bonus += 10;
 		if (this.ass.analWetness > 0) bonus += 15;
-		let bonusACap = this.statusEffectValue(StatusEffects.BonusACapacity, 1);
+		let bonusACap = this.statusEffectValue(StatusEffects.BonusACapacity, 1, 0);
 		let total     = ((bonus + bonusACap + 6 * this.ass.analLooseness * this.ass.analLooseness) * (1 + this.ass.analWetness / 10));
 		return total;
 	}
@@ -761,7 +770,7 @@ class Creature {
 		return false;
 	}
 
-//Milky goodness!
+	//Milky goodness!
 	public lactationSpeed(): number {
 		//Lactation * breastSize x 10 (milkPerBreast) determines scene
 		return this.biggestLactation() * this.biggestTitSize() * 10;
@@ -791,7 +800,7 @@ class Creature {
 		 this.removeStatusEffect(StatusEffects.LactationReduc2);
 		 if (this.findStatusEffect(StatusEffects.LactationReduc3) >= 0)
 		 this.removeStatusEffect(StatusEffects.LactationReduc3);
-		 if (this.findPerk(PerkLib.Feeder) >= 0) {
+		 if (this.hasPerk(PerkLib.Feeder)) {
 		 //You've now been milked, reset the timer for that
 		 this.addStatusValue(StatusEffects.Feeder, 1, 1);
 		 this.changeStatusValue(StatusEffects.Feeder, 2, 0);
@@ -894,7 +903,7 @@ class Creature {
 		//if (this.findStatusEffect(StatusEffects.LactationEndurance) < 0) this.createStatusEffect(StatusEffects.LactationEndurance, 1, 0, 0, 0);
 		total = this.biggestTitSize() * 10 * this.averageLactation() * this.totalBreasts();
 		//total = this.biggestTitSize() * 10 * this.averageLactation() * this.statusEffectValue(StatusEffects.LactationEndurance, 1) * this.totalBreasts();
-		//if (this.findPerk(PerkLib.MilkMaid) >= 0) total += 200 + (this.perkValue(PerkLib.MilkMaid, 1) * 100);
+		//if (this.hasPerk(PerkLib.MilkMaid)) total += 200 + (this.perkValue(PerkLib.MilkMaid, 1) * 100);
 		//if (this.statusEffectValue(StatusEffects.LactationReduction, 1) >= 48)total *= 1.5;
 		if (total > Number.MAX_VALUE)
 			total = Number.MAX_VALUE;
@@ -918,7 +927,7 @@ class Creature {
 		//If realistic mode is enabled, limits cum to capacity.
 		if (hungerEnabled) {
 			lustCoefficient = (this.lust + 50) / 5;
-			//if (this.findPerk(PerkLib.PilgrimsBounty) >= 0) lustCoefficient = 30;
+			//if (this.hasPerk(PerkLib.PilgrimsBounty)) lustCoefficient = 30;
 			let percent     = 0;
 			percent         = lustCoefficient + (this.hoursSinceCum + 10);
 			if (percent > 100)
@@ -928,26 +937,26 @@ class Creature {
 			return (percent / 100) * this.cumCapacity();
 		}
 		//Pilgrim's bounty maxes lust coefficient
-		//if (this.findPerk(PerkLib.PilgrimsBounty) >= 0) lustCoefficient = 150 / 10;
+		//if (this.hasPerk(PerkLib.PilgrimsBounty)) lustCoefficient = 150 / 10;
 		if (this.balls == 0)
 			quantity = Math.floor(1.25 * 2 * this.cumMultiplier * 2 * lustCoefficient * (this.hoursSinceCum + 10) / 24) / 10;
 		else
 			quantity = Math.floor(this.ballSize * this.balls * this.cumMultiplier * 2 * lustCoefficient * (this.hoursSinceCum + 10) / 24) / 10;
-		//if (this.findPerk(PerkLib.BroBody) >= 0) quantity *= 1.3;
-		//if (this.findPerk(PerkLib.FertilityPlus) >= 0) quantity *= 1.5;
-		//if (this.findPerk(PerkLib.FertilityMinus) >= 0 && this.lib < 25) quantity *= 0.7;
-		if (this.findPerk(PerkLib.MessyOrgasms) >= 0) quantity *= 1.5;
-		//if (this.findPerk(PerkLib.OneTrackMind) >= 0) quantity *= 1.1;
-		if (this.findPerk(PerkLib.MaraesGiftStud) >= 0) quantity += 350;
-		//if (this.findPerk(PerkLib.FerasBoonAlpha) >= 0) quantity += 200;
-		//if (this.findPerk(PerkLib.MagicalVirility) >= 0) quantity += 200;
-		//if (this.findPerk(PerkLib.FerasBoonSeeder) >= 0) quantity += 1000;
+		//if (this.hasPerk(PerkLib.BroBody)) quantity *= 1.3;
+		//if (this.hasPerk(PerkLib.FertilityPlus)) quantity *= 1.5;
+		//if (this.hasPerk(PerkLib.FertilityMinus) && this.lib < 25) quantity *= 0.7;
+		if (this.hasPerk(PerkLib.MessyOrgasms)) quantity *= 1.5;
+		//if (this.hasPerk(PerkLib.OneTrackMind)) quantity *= 1.1;
+		if (this.hasPerk(PerkLib.MaraesGiftStud)) quantity += 350;
+		//if (this.hasPerk(PerkLib.FerasBoonAlpha)) quantity += 200;
+		//if (this.hasPerk(PerkLib.MagicalVirility)) quantity += 200;
+		//if (this.hasPerk(PerkLib.FerasBoonSeeder)) quantity += 1000;
 		//if (this.findPerk("Elven Bounty") >= 0) quantity += 250;
 
 		//quantity += this.perkValue(PerkLib.ElvenBounty, 1);
-		//if (this.findPerk(PerkLib.BroBody) >= 0) quantity += 200;
-		//if (this.findPerk(PerkLib.SatyrSexuality) >= 0) quantity += 50;
-		quantity += this.statusEffectValue(StatusEffects.Rut, 1);
+		//if (this.hasPerk(PerkLib.BroBody)) quantity += 200;
+		//if (this.hasPerk(PerkLib.SatyrSexuality)) quantity += 50;
+		quantity += this.statusEffectValue(StatusEffects.Rut, 1, 0);
 		//quantity *= (1 + (2 * this.perkValue(PerkLib.PiercedFertite, 1)) / 100);
 		//if (jewelryEffectId == JewelryLib.MODIFIER_FERTILITY)
 		//	quantity *= (1 + (jewelryEffectMagnitude / 100));
@@ -969,18 +978,18 @@ class Creature {
 		else
 			cumCap += Math.pow(((4 / 3) * Math.PI), 3) * 2; // * cumMultiplier
 		//Alter capacity by perks.
-		//if (this.findPerk(PerkLib.BroBody) >= 0) cumCap *= 1.3;
-		//if (this.findPerk(PerkLib.FertilityPlus) >= 0) cumCap *= 1.5;
-		//if (this.findPerk(PerkLib.FertilityMinus) >= 0 && this.lib < 25) cumCap *= 0.7;
-		if (this.findPerk(PerkLib.MessyOrgasms) >= 0) cumCap *= 1.5;
-		//if (this.findPerk(PerkLib.OneTrackMind) >= 0) cumCap *= 1.1;
-		if (this.findPerk(PerkLib.MaraesGiftStud) >= 0) cumCap += 350;
-		//if (this.findPerk(PerkLib.FerasBoonAlpha) >= 0) cumCap += 200;
-		//if (this.findPerk(PerkLib.MagicalVirility) >= 0) cumCap += 200;
-		//if (this.findPerk(PerkLib.FerasBoonSeeder) >= 0) cumCap += 1000;
+		//if (this.hasPerk(PerkLib.BroBody)) cumCap *= 1.3;
+		//if (this.hasPerk(PerkLib.FertilityPlus)) cumCap *= 1.5;
+		//if (this.hasPerk(PerkLib.FertilityMinus) && this.lib < 25) cumCap *= 0.7;
+		if (this.hasPerk(PerkLib.MessyOrgasms)) cumCap *= 1.5;
+		//if (this.hasPerk(PerkLib.OneTrackMind)) cumCap *= 1.1;
+		if (this.hasPerk(PerkLib.MaraesGiftStud)) cumCap += 350;
+		//if (this.hasPerk(PerkLib.FerasBoonAlpha)) cumCap += 200;
+		//if (this.hasPerk(PerkLib.MagicalVirility)) cumCap += 200;
+		//if (this.hasPerk(PerkLib.FerasBoonSeeder)) cumCap += 1000;
 		//cumCap += this.perkValue(PerkLib.ElvenBounty, 1);
-		//if (this.findPerk(PerkLib.BroBody) >= 0) cumCap += 200;
-		cumCap += this.statusEffectValue(StatusEffects.Rut, 1);
+		//if (this.hasPerk(PerkLib.BroBody)) cumCap += 200;
+		cumCap += this.statusEffectValue(StatusEffects.Rut, 1, 0);
 		//cumCap *= (1 + (2 * this.perkValue(PerkLib.PiercedFertite, 1)) / 100);
 		//Alter capacity by accessories.
 		//if (jewelryEffectId == JewelryLib.MODIFIER_FERTILITY) cumCap *= (1 + (jewelryEffectMagnitude / 100));
@@ -992,22 +1001,23 @@ class Creature {
 		return cumCap;
 	}
 
-	public get inHeat(): boolean { return this.findStatusEffect(StatusEffects.Heat) >= 1; } // Setting to 0 was causing heat messages for the Imp scene.
-
+	public get inHeat(): boolean {
+		return this.hasStatusEffect(StatusEffects.Heat);
+	}
 
 	public get inRut(): boolean {
-		return this.findStatusEffect(StatusEffects.Rut) >= 0;
+		return this.hasStatusEffect(StatusEffects.Rut);
 	}
 
 
 	public bonusFertility(): number {
 		let counter = 0;
-		if (this.inHeat) counter += this.statusEffectValue(StatusEffects.Heat, 1);
-		//if (this.findPerk(PerkLib.FertilityPlus) >= 0) counter += 15;
-		//if (this.findPerk(PerkLib.FertilityMinus) >= 0 && this.lib < 25) counter -= 15;
-		//if (this.findPerk(PerkLib.MaraesGiftFertility) >= 0) counter += 50;
-		//if (this.findPerk(PerkLib.FerasBoonBreedingBitch) >= 0) counter += 30;
-		//if (this.findPerk(PerkLib.MagicalFertility) >= 0) counter += 10;
+		counter += this.statusEffectValue(StatusEffects.Heat, 1, 0);
+		//if (this.hasPerk(PerkLib.FertilityPlus)) counter += 15;
+		//if (this.hasPerk(PerkLib.FertilityMinus) && this.lib < 25) counter -= 15;
+		//if (this.hasPerk(PerkLib.MaraesGiftFertility)) counter += 50;
+		//if (this.hasPerk(PerkLib.FerasBoonBreedingBitch)) counter += 30;
+		//if (this.hasPerk(PerkLib.MagicalFertility)) counter += 10;
 		//counter += this.perkValue(PerkLib.ElvenBounty, 2);
 		//counter += this.perkValue(PerkLib.PiercedFertite, 1);
 		//if (jewelryEffectId == JewelryLib.MODIFIER_FERTILITY)
@@ -1036,7 +1046,7 @@ class Creature {
 		return -1;
 	}
 
-//Breasts Getter functions
+	//Breasts Getter functions
 	public biggestTitSize(): number {
 		if (this.breastRows.length == 0)
 			return -1;
@@ -1075,7 +1085,7 @@ class Creature {
 		return this.cockArea(index);
 	}
 
-//Find the second biggest dick and it's area.
+	//Find the second biggest dick and it's area.
 	public biggestCockArea2(): any {
 		if (this.cocks.length <= 1)
 			return 0;
@@ -1354,7 +1364,7 @@ class Creature {
 		return index;
 	}
 
-//Find the second biggest dick's index.
+	//Find the second biggest dick's index.
 	public biggestCockIndex2(): number {
 		if (this.cocks.length <= 1)
 			return 0;
@@ -1967,7 +1977,7 @@ class Creature {
 		let temp2 = 0;
 		let temp3 = 0;
 		//Chance for "big tits" perked characters to grow larger!
-		//if (this.findPerk(PerkLib.BigTits) >= 0 && rand(3) == 0 && amount < 1) amount = 1;
+		//if (this.hasPerk(PerkLib.BigTits) && rand(3) == 0 && amount < 1) amount = 1;
 
 		// Needs to be a number, since uint will round down to 0 prevent growth beyond a certain point
 		let temp = this.breastRows.length;
@@ -1990,7 +2000,7 @@ class Creature {
 				if (!hyperHappy) {
 					//Diminishing returns!
 					if (this.breastRows[temp2].breastRating > 3) {
-						/*if (this.findPerk(PerkLib.BigTits) >= 0) {
+						/*if (this.hasPerk(PerkLib.BigTits)) {
 						 temp /= 1.3;
 						 } else */
 						temp /= 1.5;
@@ -1998,19 +2008,19 @@ class Creature {
 
 					// WHy are there three options here. They all have the same result.
 					if (this.breastRows[temp2].breastRating > 7) {
-						/*if (this.findPerk(PerkLib.BigTits) >= 0) {
+						/*if (this.hasPerk(PerkLib.BigTits)) {
 						 temp /= 1.5;
 						 } else */
 						temp /= 2;
 					}
 					if (this.breastRows[temp2].breastRating > 9) {
-						/*if (this.findPerk(PerkLib.BigTits) >= 0) {
+						/*if (this.hasPerk(PerkLib.BigTits)) {
 						 temp /= 1.5;
 						 } else */
 						temp /= 2;
 					}
 					if (this.breastRows[temp2].breastRating > 12) {
-						/*if (this.findPerk(PerkLib.BigTits) >= 0) {
+						/*if (this.hasPerk(PerkLib.BigTits)) {
 						 temp /= 1.5;
 						 } else */
 						temp /= 2;
@@ -2026,19 +2036,19 @@ class Creature {
 		if (!hyperHappy) {
 			//Diminishing returns!
 			if (this.breastRows[0].breastRating > 3) {
-				/*if (this.findPerk(PerkLib.BigTits) >= 0) {
+				/*if (this.hasPerk(PerkLib.BigTits)) {
 				 amount /= 1.3;
 				 } else */
 				amount /= 1.5;
 			}
 			if (this.breastRows[0].breastRating > 7) {
-				/*if (this.findPerk(PerkLib.BigTits) >= 0) {
+				/*if (this.hasPerk(PerkLib.BigTits)) {
 				 amount /= 1.5;
 				 } else */
 				amount /= 2;
 			}
 			if (this.breastRows[0].breastRating > 12) {
-				/*if (this.findPerk(PerkLib.BigTits) >= 0) {
+				/*if (this.hasPerk(PerkLib.BigTits)) {
 				 amount /= 1.5;
 				 } else */
 				amount /= 2;
@@ -2185,7 +2195,8 @@ class Creature {
 		if (/*this.findPerk(PerkLib.FerasBoonMilkingTwat) < 0 || */this.vaginas[0].vaginalLooseness <= VAGINA_LOOSENESS_NORMAL) {
 			//cArea > capacity = autostreeeeetch.
 			if (cArea >= this.vaginalCapacity()) {
-				if (this.vaginas[0].vaginalLooseness >= VAGINA_LOOSENESS_CLOWN_CAR) {}
+				if (this.vaginas[0].vaginalLooseness >= VAGINA_LOOSENESS_CLOWN_CAR) {
+				}
 				else this.vaginas[0].vaginalLooseness++;
 				stretched = true;
 			}
@@ -2207,9 +2218,10 @@ class Creature {
 		//Delay anti-stretching
 		if (cArea >= 0.5 * this.vaginalCapacity()) {
 			//Cunt Stretched used to determine how long since last enlargement
-			if (this.findStatusEffect(StatusEffects.CuntStretched) < 0) this.createStatusEffect(StatusEffects.CuntStretched, 0, 0, 0, 0);
+			let s = this.findStatusEffectByType(StatusEffects.CuntStretched);
+			if (!s) this.createStatusEffect(StatusEffects.CuntStretched, 0, 0, 0, 0);
 			//Reset the timer on it to 0 when restretched.
-			else this.changeStatusValue(StatusEffects.CuntStretched, 1, 0);
+			else s.value1 = 0;
 		}
 		return stretched;
 	}
@@ -2240,11 +2252,13 @@ class Creature {
 		let stretched = false;
 		//cArea > capacity = autostreeeeetch half the time.
 		if (cArea >= this.analCapacity() && rand(2) == 0) {
-			if (this.ass.analLooseness >= 5) {}
+			if (this.ass.analLooseness >= 5) {
+			}
 			else this.ass.analLooseness++;
 			stretched = true;
 			//Reset butt stretchin recovery time
-			if (this.findStatusEffect(StatusEffects.ButtStretched) >= 0) this.changeStatusValue(StatusEffects.ButtStretched, 1, 0);
+			var s     = this.findStatusEffectByType(StatusEffects.ButtStretched);
+			if (s) s.value1 = 0;
 		}
 		//If within top 10% of capacity, 25% stretch
 		if (cArea < this.analCapacity() && cArea >= 0.9 * this.analCapacity() && rand(4) == 0) {
@@ -2264,9 +2278,8 @@ class Creature {
 		//Delay un-stretching
 		if (cArea >= 0.5 * this.analCapacity()) {
 			//Butt Stretched used to determine how long since last enlargement
-			if (this.findStatusEffect(StatusEffects.ButtStretched) < 0) this.createStatusEffect(StatusEffects.ButtStretched, 0, 0, 0, 0);
-			//Reset the timer on it to 0 when restretched.
-			else this.changeStatusValue(StatusEffects.ButtStretched, 1, 0);
+			let s = this.findStatusEffectByType(StatusEffects.ButtStretched);
+			if (!s) this.createStatusEffect(StatusEffects.ButtStretched, 0, 0, 0, 0);
 		}
 		return stretched;
 	}
@@ -2284,9 +2297,9 @@ class Creature {
 // GENDER UTIL
 //------------
 	public genderText(male: string   = "man",
-					  female: string = "woman",
-					  futa: string   = "futa",
-					  eunuch: string = "eunuch"): string {
+	                  female: string = "woman",
+	                  futa: string   = "futa",
+	                  eunuch: string = "eunuch"): string {
 		//Main function
 		if (this.vaginas.length > 0) {
 			if (this.cocks.length > 0) return futa;
@@ -2759,8 +2772,7 @@ class Creature {
 			Changed = true;
 		}
 		//Fix if it went out of bounds!
-		if (this.findPerk(PerkLib.Androgyny) < 0)
-			this.fixFemininity();
+		if (!this.hasPerk(PerkLib.Androgyny)) this.fixFemininity();
 		//Abort if nothing changed!
 		if (!Changed)
 			return "";
@@ -2975,37 +2987,32 @@ class Creature {
 	}
 
 	public hasLongTail(): boolean {
-		//7 - shark tail!
-		//8 - catTAIIIIIL
-		//9 - lizard tail
-		//10 - bunbuntail
-		//11 - harpybutt
-		//12 - rootail
-		//13 - foxtail
-		//14 - dagron tail
-		if (this.isNaga())
-			return true;
-		if (this.tailType == 2 || this.tailType == 3 || this.tailType == 4 || this.tailType == 7 || this.tailType == 8 || this.tailType == 9 || this.tailType == 12 || this.tailType == 13 || this.tailType == 14 || this.tailType == 15 || this.tailType == 16 || this.tailType == 17 || this.tailType == 18 || this.tailType == 20)
-			return true;
-		return false;
+		return this.isNaga() || _.contains(TailGroupLong, this.tailType);
 	}
 
 	public hasLongTongue(): boolean {
-		if (this.tongueType == TongueType.SNAKE || this.tongueType == TongueType.DEMONIC || this.tongueType == TongueType.DRACONIC)
-			return true;
-		return false;
+		return _.contains(TongueGroupLong, this.tongueType);
 	}
 
 	public canFly(): boolean {
 		//web also makes false!
 		//if (this.findStatusEffect(StatusEffects.Web) >= 0) return false;
-		return this.wingType == WingType.BEE_LIKE_LARGE || this.wingType == WingType.BAT_LIKE_LARGE || this.wingType == WingType.FEATHERED_LARGE || this.wingType == WingType.DRACONIC_LARGE || this.wingType == WingType.GIANT_DRAGONFLY;
+		return _.contains(WingTypeFlyable, this.wingType);
 	}
 
-//------------
-// DESCRIPTORS
-//------------
-//Cawks!
+	//------------
+	// DESCRIPTORS
+	//------------
+	//Cawks!
+	public cockAdjective(index: number = this.biggestCockIndex()): string {
+		let cock      = this.cocks[index];
+		let isPierced = (this.cocks.length == 1) && (cock.isPierced); //Only describe as pierced or sock covered if the creature has just one cock
+		let hasSock   = (this.cocks.length == 1) && (cock.sock != "");
+		let isGooey   = (this.skinType == SkinType.GOO);
+		return Appearance.cockAdjective(cock.cockType, cock.cockLength, cock.cockThickness,
+			this.lust, this.cumQ(), isPierced, hasSock, isGooey);
+	}
+
 	public cockDescript(x: number = 0): string {
 		return Appearance.cockDescript(this, x);
 	}
@@ -3018,7 +3025,7 @@ class Creature {
 		return Appearance.multiCockDescriptLight(this);
 	}
 
-//BALLZ!
+	//BALLZ!
 
 	public ballDescript(): string {
 		return Appearance.ballsDescription(false, false, this);
@@ -3051,7 +3058,7 @@ class Creature {
 		return Appearance.clitDescription(this);
 	}
 
-//Boobies!
+	//Boobies!
 	public chestDesc(): any {
 		if (this.biggestTitSize() < 1) return "chest";
 		return Appearance.biggestBreastSizeDescript(this);
@@ -3070,7 +3077,7 @@ class Creature {
 		return Appearance.nippleDescription(this, rowNum);
 	}
 
-//Hair and beard ahoy!
+	//Hair and beard ahoy!
 	public hairDescript(): string {
 		return Appearance.hairDescription(this);
 	}
@@ -3083,7 +3090,7 @@ class Creature {
 		return Appearance.hairOrFur(this);
 	}
 
-//Body descriptors!
+	//Body descriptors!
 	public hipDescript(): string {
 		return Appearance.hipDescription(this);
 	}
@@ -3100,7 +3107,7 @@ class Creature {
 		return Appearance.buttDescription(this);
 	}
 
-//Other parts!
+	//Other parts!
 	public tongueDescript(): string {
 		return Appearance.tongueDescription(this);
 	}
@@ -3117,20 +3124,24 @@ class Creature {
 		return Appearance.wingsDescript(this);
 	}
 
-//---------
-// PREGNANCY UTILS
-//---------
+	//---------
+	// PREGNANCY UTILS
+	//---------
 
-	public isPregnant(): boolean { return this.pregnancyType != 0; };
+	public isPregnant(): boolean {
+		return this.pregnancyType != 0;
+	};
 
-	public isButtPregnant(): boolean { return this.buttPregnancyType != 0; };
+	public isButtPregnant(): boolean {
+		return this.buttPregnancyType != 0;
+	};
 
 //fertility must be >= random(0-beat)
 //If arg == 1 then override any contraceptives and guarantee fertilization
 //If arg == -1, no chance of fertilization.
 	public knockUp(type: PregnancyType = 0, incubation: number = 0, beat: number = 100, arg: number = 0): void {
 		//Contraceptives cancel!
-		if (this.findStatusEffect(StatusEffects.Contraceptives) >= 0 && arg < 1) return;
+		if (this.hasStatusEffect(StatusEffects.Contraceptives) && arg < 1) return;
 		// Originally commented out
 		let bonus = 0;
 //If arg = 1 (always pregnant), bonus = 9000
@@ -3144,7 +3155,7 @@ class Creature {
 
 //Chance for eggs fertilization - ovi elixir and imps excluded!
 		if (type != PREGNANCY_IMP && type != PREGNANCY_OVIELIXIR_EGGS && type != PREGNANCY_ANEMONE) {
-			if (this.findPerk(PerkLib.SpiderOvipositor) >= 0 || this.findPerk(PerkLib.BeeOvipositor) >= 0) {
+			if (this.hasPerk(PerkLib.SpiderOvipositor) || this.hasPerk(PerkLib.BeeOvipositor)) {
 				if (this.totalFertility() + bonus > Math.floor(Math.random() * beat)) {
 					this.fertilizeEggs();
 				}
@@ -3152,9 +3163,9 @@ class Creature {
 		}
 	};
 
-	public buttKnockUp(type:PregnancyType=0, incubation:number=0, beat:number=100, arg:number=0): void {
+	public buttKnockUp(type: PregnancyType = 0, incubation: number = 0, beat: number = 100, arg: number = 0): void {
 		//Contraceptives cancel!
-		if (this.findStatusEffect(StatusEffects.Contraceptives) >= 0 && arg < 1)
+		if (this.hasStatusEffect(StatusEffects.Contraceptives) && arg < 1)
 			return;
 		let bonus = 0;
 		//If arg = 1 (always pregnant), bonus = 9000
@@ -3168,7 +3179,7 @@ class Creature {
 	};
 
 //The more complex buttKnockUp function used by the player is defined in Character.as
-	public buttKnockUpForce(type:PregnancyType=0, incubation:number=0, event:number[]=[]): void {
+	public buttKnockUpForce(type: PregnancyType = 0, incubation: number = 0, event: number[] = []): void {
 		//Functionality
 		this.buttPregnancyType       = type;
 		this.buttPregnancyIncubation = (type == 0 ? 0 : incubation * 60); //Won't allow incubation time without pregnancy type
@@ -3183,7 +3194,7 @@ class Creature {
 	};
 
 
-	public knockUpForce(type:PregnancyType=0, incubation:number=0, event:number[]=[]): void {
+	public knockUpForce(type: PregnancyType = 0, incubation: number = 0, event: number[] = []): void {
 		//Functionality
 		this.pregnancyType       = type;
 		this.pregnancyIncubation = (type == 0 ? 0 : incubation * 60); //Won't allow incubation time without pregnancy type
@@ -3199,7 +3210,7 @@ class Creature {
 	};
 
 // More for compatibility, though knockUpForce will take care of this too.
-	public eventFill(events:number[]): void {
+	public eventFill(events: number[]): void {
 		this.pregnancyEventArr = [];
 		for (const event of events) this.pregnancyEventArr.push(event * 60);
 	}
