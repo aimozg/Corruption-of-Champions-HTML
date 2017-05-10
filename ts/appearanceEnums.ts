@@ -184,8 +184,36 @@ enum WingType{
 	DRACONIC_LARGE,
 	GIANT_DRAGONFLY,
 }
-const WingTypeFlyable = [WingType.BEE_LIKE_LARGE, WingType.BAT_LIKE_LARGE, WingType.FEATHERED_LARGE,
-	WingType.DRACONIC_LARGE, WingType.GIANT_DRAGONFLY];
+namespace WingType {
+	export function data(w: WingType): { fly: boolean } {
+		switch (w) {
+			case WingType.NONE:
+				return {fly: false};
+			case WingType.BEE_LIKE_SMALL:
+				return {fly: false};
+			case WingType.BEE_LIKE_LARGE:
+				return {fly: true};
+			case WingType.HARPY:
+				return {fly: false};
+			case WingType.IMP:
+				return {fly: false};
+			case WingType.BAT_LIKE_TINY:
+				return {fly: false};
+			case WingType.BAT_LIKE_LARGE:
+				return {fly: true};
+			case WingType.SHARK_FIN:
+				return {fly: false};
+			case WingType.FEATHERED_LARGE:
+				return {fly: true};
+			case WingType.DRACONIC_SMALL:
+				return {fly: false};
+			case WingType.DRACONIC_LARGE:
+				return {fly: true};
+			case WingType.GIANT_DRAGONFLY:
+				return {fly: true};
+		}
+	}
+}
 enum PiercingType{
 	NONE,
 	STUD,

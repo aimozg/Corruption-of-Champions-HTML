@@ -2997,7 +2997,7 @@ class Creature {
 	public canFly(): boolean {
 		//web also makes false!
 		//if (this.findStatusEffect(StatusEffects.Web) >= 0) return false;
-		return _.contains(WingTypeFlyable, this.wingType);
+		return WingType.data(this.wingType).fly;
 	}
 
 	//------------
