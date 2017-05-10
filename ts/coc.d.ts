@@ -55,9 +55,6 @@ declare namespace Inventory {
 	function takeItem(oldItem:Item,returnTo:Function):void;
 	function inventoryMenu():void;
 }
-declare class Player extends Creature {
-
-}
 declare namespace StatusEffects {
 	const BlackNipples:StatusEffectType;
 }
