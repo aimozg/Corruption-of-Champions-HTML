@@ -276,7 +276,7 @@ GoblinScene.victoryAgainstGoblin = function() {
 			if (player.findStatusEffect(StatusEffects.Feeder) >= 0) { //CHECK THIS STATUS EFFECT!
 				addButton(5, "Breastfeed", GoblinScene.giveGoblinAMilkMustache, null, null, null, "TO BE ADDED");
 			}
-			if (player.tailType == TAIL_TYPE_SPIDER_ADBOMEN && player.cockThatFits(monster.vaginalCapacity()) >= 0) {
+			if (player.tailType == TailType.SPIDER_ADBOMEN && player.cockThatFits(monster.vaginalCapacity()) >= 0) {
 				addButton(6, "SpiderCondom", GoblinScene.goblinCondomed, 0, null, null, "TO BE ADDED"); // Pass argument to do Spider condom
 			}
 			else if (player.hasItem(Items.Consumables.Condom) && player.cockThatFits(monster.vaginalCapacity()) >= 0) {
@@ -460,7 +460,7 @@ GoblinScene.goblinFemaleRape = function() {
 		//outputText(images.showImage("goblin-win-female-naga-rapedfem"));
 		outputText("You slither over to the helpless goblin, who watches you half in fear, half in curiosity. ");
 		//[Has fangs:
-		if (player.faceType == FACE_SNAKE_FANGS) outputText("You bare your fangs at her and the curiosity disappears. She turns to run, but your tail is faster than she is.");
+		if (player.faceType == FaceType.SNAKE_FANGS) outputText("You bare your fangs at her and the curiosity disappears. She turns to run, but your tail is faster than she is.");
 		//[No fangs:
 		else outputText("You smile at her and the fear disappears. She's still wary though, and you make sure to grab her with your tail before she changes her mind about you.");
 		outputText("<br><br>");

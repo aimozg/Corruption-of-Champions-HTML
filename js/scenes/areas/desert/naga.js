@@ -43,7 +43,7 @@ function Naga() {
     this.tallness = rand(12) + 55;
     this.hipRating = HIP_RATING_CURVY;
     this.buttRating = BUTT_RATING_LARGE;
-    this.lowerBody = LOWER_BODY_TYPE_NAGA;
+    this.lowerBody = LowerBodyType.NAGA;
     this.skinTone = "bronzed";
     this.hairColor = "sandy-blonde";
     this.hairLength = 15;
@@ -200,7 +200,7 @@ NagaScene.nagaEncounterSex = function(prompt) {
             outputText("You slide over the hot sand of the desert, enjoying the soft hiss that it makes as your scaled body slides over it. You see a strange yet familiar shape in the distance, and as you approach you realize that it is the naga from before. You quickly slither up behind her and wrap your arms around her. You can feel her tense up momentarily, before recognizing that it's you and turning herself to face you. \"<i>You came back!</i>\" She wraps her arms around your waist and you draw her closer to you.<br><br>");
         }
         outputText("She lets out a soft moan and leans her head forward, pressing her lips against yours. You squeeze her body even more firmly against yours in response, the tips of your tails wrapping around one another. You open your mouth slightly and press your tongue against her lips. She offers no resistance and you begin caressing the inside of her mouth with your tongue, circling her fangs as she uses her own tongue to gently stroke ");
-        if (player.faceType == FACE_SNAKE_FANGS) //If player has fangs
+        if (player.faceType == FaceType.SNAKE_FANGS) //If player has fangs
             outputText("your own.");
         else //Player has no fangs
             outputText("the inside of your mouth.");
@@ -263,7 +263,7 @@ NagaScene.nagaEncounterSex = function(prompt) {
     else if (player.hasVagina()) { //Pussies
         outputText("The kiss continues and you can feel your " + player.breastDescript(0) + " pressing against her own. You kiss her harder, pressing your body as close to her as you can, enjoying the feeling of your two bodies entwined together. You wrap your tail around hers, trying to make every part of your body touch every part of hers.  The feeling of her scaled tail rubbing against your body sends shivers of ecstasy down your spine. You pull away from her mouth and move your head to kiss at her neck, ");
         //(if player has fangs)
-        if (player.faceType == FACE_SNAKE_FANGS) outputText("carefully nibbling at it so as to not break the skin.  ");
+        if (player.faceType == FaceType.SNAKE_FANGS) outputText("carefully nibbling at it so as to not break the skin.  ");
         else outputText("nibbling gently at it.  ");
         outputText("Traveling down, you pause at her collarbone, letting go of her hips to bring your hands up to her perfectly rounded breasts. A moan escapes the naga's lips as you massage her erect nipples. Your mouth continues its trek down the naga's supple body and you make sure to pause on each breast, circling inward and stopping on each nipple to suck gently on them.<br><br>");
         outputText("Once more your hands move down the naga's body, making their way across her sides as your mouth simultaneously kisses at the smooth flesh of her exposed belly. Goose pimples slowly begin to appear, denoting how much she enjoys it. You pause at her hips, hovering over the slit at her crotch. One of your hands slide down to the slit and you start to stroke at it gently as you kiss at the area around it. Your partner shudders a bit, overcome by the sensations. Slowly you slide a finger into her, hearing a gasp of pleasure as you move it around inside her.  ");
@@ -346,7 +346,7 @@ NagaScene.nagaRapeChoice = function() {
             addButton(0, "As Male", NagaScene.nagaVictoryMale, null, null, null, "TO BE ADDED.");
             addButton(1, "As Female", NagaScene.nagaVictoryFemale, null, null, null, "TO BE ADDED.");
         }
-        if (player.lowerBody == LOWER_BODY_TYPE_GOO) {
+        if (player.lowerBody == LowerBodyType.GOO) {
             addButton(2, "Gooey Rape", NagaScene.gooNagaRape, null, null, null, "TO BE ADDED.");
         }
         if (eggs != null)
@@ -382,7 +382,7 @@ NagaScene.nagaVictoryGenderless = function() {
         outputText("But you can't give up now. You've gotten this far, now you need to finish the deed. At the end of this, there WILL be sex.<br><br>");
         outputText("You thrust yourself on top of her and roughly open the scaly covering at her crotch, revealing her awaiting pussy. You bring your mouth over her opening and thrust your tongue deep inside. A mix between a whimper and a moan escapes the naga's lips as you twist your tongue deeper inside her, as though trying to taste every part of her.<br><br>");
         //(If player has no fangs)
-        if (player.faceType != FACE_SNAKE_FANGS) {
+        if (player.faceType != FaceType.SNAKE_FANGS) {
             outputText("You feel her start to thrust her hips into your face to try to gain more pleasure, but you won't be having ANY of that. You quickly take your tongue out of her and move your way up to her breasts, groping at them and biting at her nipples. The naga cries out in pain and tries to push your head away. You give her one last bite, hard enough to draw blood from her before getting up.<br><br>");
             outputText("The naga quickly slithers out from under you with an angry hiss, a hand pressed to her now bleeding breast. You chuckle at this and the naga turns to glare at you. There is a sudden pain on the back of your legs and your view shifts to looking at the sky above you. It takes a moment for you to realize that the scaly bitch has just tripped you with her tail before slithering away.<br><br>");
         }

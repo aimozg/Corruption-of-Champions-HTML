@@ -39,7 +39,7 @@ function Imp() {
     this.skinTone = "red";
     this.hairColor = "black";
     this.hairLength = 5;
-	this.wingType = WING_TYPE_IMP;
+	this.wingType = WingType.IMP;
 	//Sexual characteristics
     this.createCock(rand(2) + 11, 2.5, CockTypesEnum.DEMON);
     this.balls = 2;
@@ -239,7 +239,7 @@ ImpScene.rapeImpWithDick = function(condomed) {
 	//outputText(images.showImage("imp-win-male-fuck"), false);
 	if (player.cocks.length == 1) {
 		outputText("With a demonic smile you grab the insensible imp and lift him from the ground by his neck. The reduced airflow doesn't seem to slow his feverish masturbation at all, and only serves to make him harder.", true);
-		//if (player.lowerBody != LOWER_BODY_TYPE_CENTAUR) {
+		//if (player.lowerBody != LowerBodyType.CENTAUR) {
 			outputText(" You casually unclasp your " + player.armorName + " and reveal your " + player.cockDescript(x) + ", ");
 			if (player.breastRows.length > 0 && player.breastRows[0].breastRating > 2) outputText("smashing him against your " + player.breastDescript(0) + " while you jerk hard on your " + player.cockDescript(x) + ", bringing it to a full, throbbing erection.");
 			else outputText("stroking it to full hardness languidly.");
@@ -259,7 +259,7 @@ ImpScene.rapeImpWithDick = function(condomed) {
 	//Multicock
 	if (player.cocks.length >= 2) {
 		outputText("With a demonic smile you grab the insensible imp and lift him from the ground by his neck. The reduced airflow doesn't seem to slow his feverish masturbation at all, and only serves to make him harder.", true);
-		//if (player.lowerBody != LOWER_BODY_TYPE_CENTAUR) {
+		//if (player.lowerBody != LowerBodyType.CENTAUR) {
 			outputText(" You casually unclasp your " + player.armorName + " and reveal your " + player.multiCockDescriptLight() + ", ");
 			if (player.breastRows.length > 0 && player.breastRows[0].breastRating > 2) outputText("smashing him against your " + player.breastDescript(0) + " while you jerk hard on one of your " + player.cockDescript(x) + "s, bringing it to a full, throbbing erection.");
 			else outputText("stroking one of your members to full hardness languidly.");

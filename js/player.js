@@ -11,20 +11,20 @@ function Player() {
 	this.gender = 0; //0 genderless, 1 male, 2 female, 3 hermaphrodite
 	this.tallness = 60; //Height in inches
 	this.skinTone = "light";
-	this.skinType = SKIN_TYPE_PLAIN;
+	this.skinType = SkinType.PLAIN;
 	this.skinAdj = "";
-	this.hairType = HAIR_NORMAL;
+	this.hairType = HairType.NORMAL;
 	this.hairColor = "brown";
 	this.hairLength = 1;
-	this.beardType = BEARD_NORMAL;
+	this.beardType = BeardStyle.NORMAL;
 	this.beardLength = 0;
 	this.furColor = "none";
 	
-	this.earType = EARS_HUMAN;
-	this.tailType = TAIL_TYPE_NONE;
+	this.earType = EarType.HUMAN;
+	this.tailType = TailType.NONE;
 	this.tailVenom = 0;
 	this.tailRecharge = 0;
-	this.lowerBody = LOWER_BODY_TYPE_HUMAN;
+	this.lowerBody = LowerBodyType.HUMAN;
 	
 	this.tone = 50;
 	this.thickness = 50;
@@ -118,7 +118,7 @@ Player.prototype.race = function() {
     //Determine race type:
     var race = "human";
     if (this.catScore() >= 4) {
-        if (this.isTaur() && this.lowerBody == LOWER_BODY_TYPE_CAT) {
+        if (this.isTaur() && this.lowerBody == LowerBodyType.CAT) {
             race = "cat-taur";
             if (this.faceType == 0)
                 race = "sphinx-morph"; // no way to be fully feral anyway
@@ -142,7 +142,7 @@ Player.prototype.race = function() {
             race = "tanuki-morph";
     }
     if (this.dogScore() >= 4) {
-        if (this.isTaur() && this.lowerBody == LOWER_BODY_TYPE_DOG)
+        if (this.isTaur() && this.lowerBody == LowerBodyType.DOG)
             race = "dog-taur";
         else {
             race = "dog-morph";
@@ -151,7 +151,7 @@ Player.prototype.race = function() {
         }
     }
     if (this.foxScore() >= 4) {
-        if (this.isTaur() && this.lowerBody == LOWER_BODY_TYPE_FOX)
+        if (this.isTaur() && this.lowerBody == LowerBodyType.FOX)
             race = "fox-taur";
         else if (this.skinType == 1)
             race = "fox-morph";
@@ -171,7 +171,7 @@ Player.prototype.race = function() {
         if (this.isTaur())
             race = "centaur-morph";
         else
-        if (this.hornType == HORNS_UNICORN)
+        if (this.hornType == HornType.UNICORN)
             race = "unicorn-morph";
         else
             race = "equine-morph";
@@ -265,11 +265,11 @@ Player.prototype.race = function() {
     //</mod>
     if (this.lowerBody == 3)
         race = "naga";
-    if (this.lowerBody == LOWER_BODY_TYPE_HOOFED && this.isTaur()) {
-        if (this.wingType == WING_TYPE_FEATHERED_LARGE) race = "pegataur";
+    if (this.lowerBody == LowerBodyType.HOOFED && this.isTaur()) {
+        if (this.wingType == WingType.FEATHERED_LARGE) race = "pegataur";
         else race = "centaur";
     }
-    if (this.lowerBody == LOWER_BODY_TYPE_PONY)
+    if (this.lowerBody == LowerBodyType.PONY)
         race = "pony-kin";
     if (this.gooScore() >= 3) {
         race = "goo-";
@@ -386,9 +386,9 @@ Player.prototype.sandTrapScore = function() {
         counter++;
     if (this.hasVagina() && this.vaginaType() == 5)
         counter++;
-    if (this.eyeType == EYES_BLACK_EYES_SAND_TRAP)
+    if (this.eyeType == EyeType.BLACK_EYES_SAND_TRAP)
         counter++;
-    if (this.wingType == WING_TYPE_GIANT_DRAGONFLY)
+    if (this.wingType == WingType.GIANT_DRAGONFLY)
         counter++;
     if (this.findStatusEffect(StatusEffects.Uniball) >= 0)
         counter++;
@@ -425,12 +425,12 @@ Player.prototype.beeScore = function() {
 //Determine Ferret Rating!
 Player.prototype.ferretScore = function() {
     var counter = 0;
-    if (this.faceType == FACE_FERRET_MASK) counter++;
-    if (this.faceType == FACE_FERRET) counter+=2;
-    if (this.earType == EARS_FERRET) counter++;
-    if (this.tailType == TAIL_TYPE_FERRET) counter++;
-    if (this.lowerBody == LOWER_BODY_TYPE_FERRET) counter++;
-    if (this.skinType == SKIN_TYPE_FUR && counter > 0) counter++;
+    if (this.faceType == FaceType.FERRET_MASK) counter++;
+    if (this.faceType == FaceType.FERRET) counter+=2;
+    if (this.earType == EarType.FERRET) counter++;
+    if (this.tailType == TailType.FERRET) counter++;
+    if (this.lowerBody == LowerBodyType.FERRET) counter++;
+    if (this.skinType == SkinType.FUR && counter > 0) counter++;
     return counter;
 }
 //Determine Dog Rating
@@ -610,13 +610,13 @@ Player.prototype.horseScore = function() {
 Player.prototype.kitsuneScore = function() {
     var kitsuneCounter = 0;
     //If the character has fox ears, +1
-    if (this.earType == EARS_FOX)
+    if (this.earType == EarType.FOX)
         kitsuneCounter++;
     //If the character has a fox tail, +1
-    if (this.tailType == TAIL_TYPE_FOX)
+    if (this.tailType == TailType.FOX)
         kitsuneCounter++;
     //If the character has two or more fox tails, +2
-    if (this.tailType == TAIL_TYPE_FOX && this.tailVenom >= 2)
+    if (this.tailType == TailType.FOX && this.tailVenom >= 2)
         kitsuneCounter += 2;
     //If the character has tattooed skin, +1
     //9999
@@ -625,7 +625,7 @@ Player.prototype.kitsuneScore = function() {
         kitsuneCounter++;
     //If the character's kitsune score is greater than 0 and:
     //If the character has a normal face, +1
-    if (kitsuneCounter > 0 && (this.faceType == FACE_HUMAN || this.faceType == FACE_FOX))
+    if (kitsuneCounter > 0 && (this.faceType == FaceType.HUMAN || this.faceType == FaceType.FOX))
         kitsuneCounter++;
     //If the character's kitsune score is greater than 1 and:
     //If the character has "blonde","black","red","white", or "silver" hair, +1
@@ -635,21 +635,21 @@ Player.prototype.kitsuneScore = function() {
     if (kitsuneCounter > 0 && this.femininity >= 40)
         kitsuneCounter++;
     //If the character has fur, scales, or gooey skin, -1
-    //if (this.skinType == SKIN_TYPE_FUR && !InCollection(furColor, KitsuneScene.basicKitsuneFur) && !InCollection(furColor, KitsuneScene.elderKitsuneColors))
+    //if (this.skinType == SkinType.FUR && !InCollection(furColor, KitsuneScene.basicKitsuneFur) && !InCollection(furColor, KitsuneScene.elderKitsuneColors))
     //    kitsuneCounter--;
-    if (this.skinType > SKIN_TYPE_FUR)
+    if (this.skinType > SkinType.FUR)
         kitsuneCounter -= this.skinType; // -2 sor scales, -3 for goo
     //If the character has abnormal legs, -1
-    if (this.lowerBody != LOWER_BODY_TYPE_HUMAN && this.lowerBody != LOWER_BODY_TYPE_FOX)
+    if (this.lowerBody != LowerBodyType.HUMAN && this.lowerBody != LowerBodyType.FOX)
         kitsuneCounter--;
     //If the character has a nonhuman face, -1
-    if (this.faceType != FACE_HUMAN && this.faceType != FACE_FOX)
+    if (this.faceType != FaceType.HUMAN && this.faceType != FaceType.FOX)
         kitsuneCounter--;
     //If the character has ears other than fox ears, -1
-    if (this.earType != EARS_FOX)
+    if (this.earType != EarType.FOX)
         kitsuneCounter--;
     //If the character has tail(s) other than fox tails, -1
-    if (this.tailType != TAIL_TYPE_FOX)
+    if (this.tailType != TailType.FOX)
         kitsuneCounter--;
 
     return kitsuneCounter;
@@ -659,25 +659,25 @@ Player.prototype.kitsuneScore = function() {
 //Determine Dragon Rating
 Player.prototype.dragonScore = function() {
     var dragonCounter = 0;
-    if (this.faceType == FACE_DRAGON)
+    if (this.faceType == FaceType.DRAGON)
         dragonCounter++;
-    if (this.earType == EARS_DRAGON)
+    if (this.earType == EarType.DRAGON)
         dragonCounter++;
-    if (this.tailType == TAIL_TYPE_DRACONIC)
+    if (this.tailType == TailType.DRACONIC)
         dragonCounter++;
-    if (this.tongueType == TONGUE_DRACONIC)
+    if (this.tongueType == TongueType.DRACONIC)
         dragonCounter++;
     if (this.countCocksOfType(CockTypesEnum.DRAGON) > 0)
         dragonCounter++;
-    if (this.wingType == WING_TYPE_DRACONIC_SMALL || this.wingType == WING_TYPE_DRACONIC_LARGE)
+    if (this.wingType == WingType.DRACONIC_SMALL || this.wingType == WingType.DRACONIC_LARGE)
         dragonCounter++;
-    if (this.lowerBody == LOWER_BODY_TYPE_DRAGON)
+    if (this.lowerBody == LowerBodyType.DRAGON)
         dragonCounter++;
-    if (this.horns > 0 && (this.hornType == HORNS_DRACONIC_X2 || this.hornType == HORNS_DRACONIC_X4_12_INCH_LONG))
+    if (this.horns > 0 && (this.hornType == HornType.DRACONIC_X2 || this.hornType == HornType.DRACONIC_X4_12_INCH_LONG))
         dragonCounter++;
-    if (this.skinType == SKIN_TYPE_SCALES && dragonCounter > 0)
+    if (this.skinType == SkinType.SCALES && dragonCounter > 0)
         dragonCounter++;
-    if (this.hornType == HORNS_DRACONIC_X4_12_INCH_LONG || this.hornType == HORNS_DRACONIC_X2)
+    if (this.hornType == HornType.DRACONIC_X4_12_INCH_LONG || this.hornType == HornType.DRACONIC_X2)
         dragonCounter++;
     if (this.findPerk(PerkLib.Dragonfire) >= 0)
         dragonCounter++;
@@ -687,19 +687,19 @@ Player.prototype.dragonScore = function() {
 //Goblinscore
 Player.prototype.goblinScore = function() {
     var horseCounter = 0;
-    if (this.earType == EARS_ELFIN)
+    if (this.earType == EarType.ELFIN)
         horseCounter++;
     if (this.skinTone == "pale yellow" || this.skinTone == "grayish-blue" || this.skinTone == "green" || this.skinTone == "dark green")
         horseCounter++;
     if (horseCounter > 0)
     {
-        if (this.faceType == FACE_HUMAN)
+        if (this.faceType == FaceType.HUMAN)
             horseCounter++;
         if (this.tallness < 48)
             horseCounter++;
         if (this.hasVagina())
             horseCounter++;
-        if (this.lowerBody == LOWER_BODY_TYPE_HUMAN)
+        if (this.lowerBody == LowerBodyType.HUMAN)
             horseCounter++;
     }
     return horseCounter;
@@ -708,7 +708,7 @@ Player.prototype.goblinScore = function() {
 //Gooscore
 Player.prototype.gooScore = function() {
     var gooCounter = 0;
-    if (this.hairType == HAIR_GOO)
+    if (this.hairType == HairType.GOO)
         gooCounter++;
     if (this.skinAdj == "slimy")
         gooCounter++;
@@ -724,9 +724,9 @@ Player.prototype.gooScore = function() {
 //Nagascore
 Player.prototype.nagaScore = function() {
     var nagaCounter = 0;
-    if (this.faceType == FACE_SNAKE_FANGS)
+    if (this.faceType == FaceType.SNAKE_FANGS)
         nagaCounter++;
-    if (this.tongueType == TONGUE_SNAKE)
+    if (this.tongueType == TongueType.SNAKE)
         nagaCounter++;
     if (nagaCounter > 0 && this.antennae == 0)
         nagaCounter++;
@@ -738,19 +738,19 @@ Player.prototype.nagaScore = function() {
 //Bunnyscore
 Player.prototype.bunnyScore = function() {
     var bunnyCounter = 0;
-    if (this.faceType == FACE_BUNNY)
+    if (this.faceType == FaceType.BUNNY)
         bunnyCounter++;
-    if (this.tailType == TAIL_TYPE_RABBIT)
+    if (this.tailType == TailType.RABBIT)
         bunnyCounter++;
-    if (this.earType == EARS_BUNNY)
+    if (this.earType == EarType.BUNNY)
         bunnyCounter++;
-    if (this.lowerBody == LOWER_BODY_TYPE_BUNNY)
+    if (this.lowerBody == LowerBodyType.BUNNY)
         bunnyCounter++;
     //More than 2 balls reduces bunny score
     if (this.balls > 2 && bunnyCounter > 0)
         bunnyCounter--;
     //Human skin on bunmorph adds
-    if (this.skinType == SKIN_TYPE_PLAIN && bunnyCounter > 1)
+    if (this.skinType == SkinType.PLAIN && bunnyCounter > 1)
         bunnyCounter++;
     //No wings and antennae a plus
     if (bunnyCounter > 0 && this.antennae == 0)
@@ -763,19 +763,19 @@ Player.prototype.bunnyScore = function() {
 //Harpyscore
 Player.prototype.harpyScore = function() {
     var harpy = 0;
-    if (this.armType == ARM_TYPE_HARPY)
+    if (this.armType == ArmType.HARPY)
         harpy++;
-    if (this.hairType == HAIR_FEATHER)
+    if (this.hairType == HairType.FEATHER)
         harpy++;
-    if (this.wingType == WING_TYPE_FEATHERED_LARGE)
+    if (this.wingType == WingType.FEATHERED_LARGE)
         harpy++;
-    if (this.tailType == TAIL_TYPE_HARPY)
+    if (this.tailType == TailType.HARPY)
         harpy++;
-    if (this.lowerBody == LOWER_BODY_TYPE_HARPY)
+    if (this.lowerBody == LowerBodyType.HARPY)
         harpy++;
-    if (harpy >= 2 && this.faceType == FACE_HUMAN)
+    if (harpy >= 2 && this.faceType == FaceType.HUMAN)
         harpy++;
-    if (harpy >= 2 && (this.earType == EARS_HUMAN || this.earType == EARS_ELFIN))
+    if (harpy >= 2 && (this.earType == EarType.HUMAN || this.earType == EarType.ELFIN))
         harpy++;
     return harpy;
 }
@@ -785,15 +785,15 @@ Player.prototype.kangaScore = function() {
     var kanga = 0;
     if (this.countCocksOfType(CockTypesEnum.KANGAROO) > 0)
         kanga++;
-    if (this.earType == EARS_KANGAROO)
+    if (this.earType == EarType.KANGAROO)
         kanga++;
-    if (this.tailType == TAIL_TYPE_KANGAROO)
+    if (this.tailType == TailType.KANGAROO)
         kanga++;
-    if (this.lowerBody == LOWER_BODY_TYPE_KANGAROO)
+    if (this.lowerBody == LowerBodyType.KANGAROO)
         kanga++;
-    if (this.faceType == FACE_KANGAROO)
+    if (this.faceType == FaceType.KANGAROO)
         kanga++;
-    if (kanga >= 2 && this.skinType == SKIN_TYPE_FUR)
+    if (kanga >= 2 && this.skinType == SkinType.FUR)
         kanga++;
     return kanga;
 }
@@ -801,13 +801,13 @@ Player.prototype.kangaScore = function() {
 //sharkscore
 Player.prototype.sharkScore = function() {
     var sharkCounter = 0;
-    if (this.faceType == FACE_SHARK_TEETH)
+    if (this.faceType == FaceType.SHARK_TEETH)
         sharkCounter++;
-    if (this.wingType == WING_TYPE_SHARK_FIN)
+    if (this.wingType == WingType.SHARK_FIN)
         sharkCounter++;
-    if (this.tailType == TAIL_TYPE_SHARK)
+    if (this.tailType == TailType.SHARK)
         sharkCounter++;
-    if (this.skinType == SKIN_TYPE_PLAIN && (this.skinTone == "rough gray" || player.skinTone == "orange and black striped"))
+    if (this.skinType == SkinType.PLAIN && (this.skinTone == "rough gray" || player.skinTone == "orange and black striped"))
         sharkCounter++;
     return sharkCounter;
 }
@@ -815,11 +815,11 @@ Player.prototype.sharkScore = function() {
 //Determine Mutant Rating
 Player.prototype.mutantScore = function() {
     var mutantCounter = 0;
-    if (this.faceType > FACE_HUMAN)
+    if (this.faceType > FaceType.HUMAN)
         mutantCounter++;
-    if (this.skinType > SKIN_TYPE_PLAIN)
+    if (this.skinType > SkinType.PLAIN)
         mutantCounter++;
-    if (this.tailType > TAIL_TYPE_NONE)
+    if (this.tailType > TailType.NONE)
         mutantCounter++;
     if (this.cockTotal() > 1)
         mutantCounter++;
@@ -829,25 +829,25 @@ Player.prototype.mutantScore = function() {
         mutantCounter++;
     if (this.breastRows.length > 1)
         mutantCounter++;
-    if (this.faceType == FACE_HORSE)
+    if (this.faceType == FaceType.HORSE)
     {
-        if (this.skinType == SKIN_TYPE_FUR)
+        if (this.skinType == SkinType.FUR)
             mutantCounter--;
-        if (this.tailType == TAIL_TYPE_HORSE)
+        if (this.tailType == TailType.HORSE)
             mutantCounter--;
     }
-    if (this.faceType == FACE_DOG)
+    if (this.faceType == FaceType.DOG)
     {
-        if (this.skinType == SKIN_TYPE_FUR)
+        if (this.skinType == SkinType.FUR)
             mutantCounter--;
-        if (this.tailType == TAIL_TYPE_DOG)
+        if (this.tailType == TailType.DOG)
             mutantCounter--;
     }
-    if (this.faceType == FACE_CAT)
+    if (this.faceType == FaceType.CAT)
     {
-        if (this.skinType == SKIN_TYPE_FUR)
+        if (this.skinType == SkinType.FUR)
             mutantCounter--;
-        if (this.tailType == TAIL_TYPE_CAT)
+        if (this.tailType == TailType.CAT)
             mutantCounter--;
     }
     return mutantCounter--;
@@ -857,7 +857,7 @@ Player.prototype.mutantScore = function() {
 Player.prototype.sirenScore = function()
 {
     var sirenCounter = 0;
-    if (this.faceType == FACE_SHARK_TEETH && this.tailType == TAIL_TYPE_SHARK && this.wingType == WING_TYPE_FEATHERED_LARGE && this.armType == ARM_TYPE_HARPY)
+    if (this.faceType == FaceType.SHARK_TEETH && this.tailType == TailType.SHARK && this.wingType == WingType.FEATHERED_LARGE && this.armType == ArmType.HARPY)
         sirenCounter+= 4;
     if (this.hasVagina() && sirenCounter > 0)
         sirenCounter++;
@@ -868,13 +868,13 @@ Player.prototype.sirenScore = function()
 
 Player.prototype.pigScore = function() {
     var pigCounter = 0;
-    if (this.earType == EARS_PIG)
+    if (this.earType == EarType.PIG)
         pigCounter++;
-    if (this.tailType == TAIL_TYPE_PIG)
+    if (this.tailType == TailType.PIG)
         pigCounter++;
-    if (this.faceType == FACE_PIG || FACE_BOAR)
+    if (this.faceType == FaceType.PIG || FaceType.BOAR)
         pigCounter++;
-    if (this.lowerBody == LOWER_BODY_TYPE_CLOVEN_HOOFED)
+    if (this.lowerBody == LowerBodyType.CLOVEN_HOOFED)
         pigCounter += 2;
     if (this.countCocksOfType(CockTypesEnum.PIG) > 0)
         pigCounter++;
@@ -883,14 +883,14 @@ Player.prototype.pigScore = function() {
 
 Player.prototype.satyrScore = function() {
     var satyrCounter = 0;
-    if (this.lowerBody == LOWER_BODY_TYPE_HOOFED)
+    if (this.lowerBody == LowerBodyType.HOOFED)
         satyrCounter++;
-    if (this.tailType == TAIL_TYPE_GOAT)
+    if (this.tailType == TailType.GOAT)
         satyrCounter++;
     if (satyrCounter >= 2) {
-        if (this.earType == EARS_ELFIN)
+        if (this.earType == EarType.ELFIN)
             satyrCounter++;
-        if (this.faceType == FACE_HUMAN)
+        if (this.faceType == FaceType.HUMAN)
             satyrCounter++;
         if (this.countCocksOfType(CockTypesEnum.HUMAN) > 0)
             satyrCounter++;
@@ -902,13 +902,13 @@ Player.prototype.satyrScore = function() {
 
 Player.prototype.rhinoScore = function() {
     var rhinoCounter = 0;
-    if (this.earType == EARS_RHINO)
+    if (this.earType == EarType.RHINO)
         rhinoCounter++;
-    if (this.tailType == TAIL_TYPE_RHINO)
+    if (this.tailType == TailType.RHINO)
         rhinoCounter++;
-    if (this.faceType == FACE_RHINO)
+    if (this.faceType == FaceType.RHINO)
         rhinoCounter++;
-    if (this.hornType == HORNS_RHINO)
+    if (this.hornType == HornType.RHINO)
         rhinoCounter++;
     if (rhinoCounter >= 2 && this.skinTone == "gray")
         rhinoCounter++;
@@ -919,17 +919,17 @@ Player.prototype.rhinoScore = function() {
 
 Player.prototype.echidnaScore = function() {
     var echidnaCounter = 0;
-    if (this.earType == EARS_ECHIDNA)
+    if (this.earType == EarType.ECHIDNA)
         echidnaCounter++;
-    if (this.tailType == TAIL_TYPE_ECHIDNA)
+    if (this.tailType == TailType.ECHIDNA)
         echidnaCounter++;
-    if (this.faceType == FACE_ECHIDNA)
+    if (this.faceType == FaceType.ECHIDNA)
         echidnaCounter++;
-    if (this.tongueType == TONGUE_ECHIDNA)
+    if (this.tongueType == TongueType.ECHIDNA)
         echidnaCounter++;
-    if (this.lowerBody == LOWER_BODY_TYPE_ECHIDNA)
+    if (this.lowerBody == LowerBodyType.ECHIDNA)
         echidnaCounter++;
-    if (echidnaCounter >= 2 && this.skinType == SKIN_TYPE_FUR)
+    if (echidnaCounter >= 2 && this.skinType == SkinType.FUR)
         echidnaCounter++;
     if (echidnaCounter >= 2 && this.hasCock() && this.countCocksOfType(CockTypesEnum.ECHIDNA) > 0)
         echidnaCounter++;
@@ -938,17 +938,17 @@ Player.prototype.echidnaScore = function() {
 
 Player.prototype.deerScore = function() {
     var deerCounter = 0;
-    if (this.earType == EARS_DEER)
+    if (this.earType == EarType.DEER)
         deerCounter++;
-    if (this.tailType == TAIL_TYPE_DEER)
+    if (this.tailType == TailType.DEER)
         deerCounter++;
-    if (this.faceType == FACE_DEER)
+    if (this.faceType == FaceType.DEER)
         deerCounter++;
-    if (this.lowerBody == LOWER_BODY_TYPE_CLOVEN_HOOFED || this.lowerBody == LOWER_BODY_TYPE_DEERTAUR)
+    if (this.lowerBody == LowerBodyType.CLOVEN_HOOFED || this.lowerBody == LowerBodyType.DEERTAUR)
         deerCounter++;
-    if (this.hornType == HORNS_ANTLERS && this.horns >= 4)
+    if (this.hornType == HornType.ANTLERS && this.horns >= 4)
         deerCounter++;
-    if (deerCounter >= 2 && this.skinType == SKIN_TYPE_FUR)
+    if (deerCounter >= 2 && this.skinType == SkinType.FUR)
         deerCounter++;
     if (deerCounter >= 3 && this.countCocksOfType(CockTypesEnum.HORSE) > 0)
         deerCounter++;
@@ -958,17 +958,17 @@ Player.prototype.deerScore = function() {
 //Dragonne
 Player.prototype.dragonneScore = function() {
     var dragonneCounter = 0;
-    if (this.faceType == FACE_CAT)
+    if (this.faceType == FaceType.CAT)
         dragonneCounter++;
-    if (this.earType == EARS_CAT)
+    if (this.earType == EarType.CAT)
         dragonneCounter++;
-    if (this.tailType == TAIL_TYPE_CAT)
+    if (this.tailType == TailType.CAT)
         dragonneCounter++;
-    if (this.tongueType == TONGUE_DRACONIC)
+    if (this.tongueType == TongueType.DRACONIC)
         dragonneCounter++;
-    if (this.wingType == WING_TYPE_DRACONIC_LARGE || this.wingType == WING_TYPE_DRACONIC_SMALL)
+    if (this.wingType == WingType.DRACONIC_LARGE || this.wingType == WingType.DRACONIC_SMALL)
         dragonneCounter++;
-    if (this.lowerBody == LOWER_BODY_TYPE_CAT)
+    if (this.lowerBody == LowerBodyType.CAT)
         dragonneCounter++;
     if (this.skinType == 2 && dragonneCounter > 0)
         dragonneCounter++;
@@ -978,20 +978,20 @@ Player.prototype.dragonneScore = function() {
 //Manticore
 Player.prototype.manticoreScore = function() {
     var catCounter = 0;
-    if (this.faceType == FACE_CAT)
+    if (this.faceType == FaceType.CAT)
         catCounter++;
-    if (this.earType == EARS_CAT)
+    if (this.earType == EarType.CAT)
         catCounter++;
-    if (this.tailType == TAIL_TYPE_SCORPION)
+    if (this.tailType == TailType.SCORPION)
         catCounter += 2;
-    if (this.lowerBody == LOWER_BODY_TYPE_CAT)
+    if (this.lowerBody == LowerBodyType.CAT)
         catCounter++;
     if (catCounter >= 4) {
-        if (this.hornType == HORNS_DEMON || this.hornType == HORNS_DRACONIC_X2 || this.hornType == HORNS_DRACONIC_X4_12_INCH_LONG)
+        if (this.hornType == HornType.DEMON || this.hornType == HornType.DRACONIC_X2 || this.hornType == HornType.DRACONIC_X4_12_INCH_LONG)
             catCounter++;
-        if (this.wingType == WING_TYPE_BAT_LIKE_TINY || this.wingType == WING_TYPE_DRACONIC_SMALL)
+        if (this.wingType == WingType.BAT_LIKE_TINY || this.wingType == WingType.DRACONIC_SMALL)
             catCounter++;
-        if (this.wingType == WING_TYPE_BAT_LIKE_LARGE || this.wingType == WING_TYPE_DRACONIC_LARGE)
+        if (this.wingType == WingType.BAT_LIKE_LARGE || this.wingType == WingType.DRACONIC_LARGE)
             catCounter += 2;
     }
     //Fur only counts if some canine features are present
@@ -1364,7 +1364,7 @@ Player.prototype.clearStatuses = function() {
 }
 
 Player.prototype.setFurColor = function(colorArray) {
-    if (this.skinType == SKIN_TYPE_FUR) {
+    if (this.skinType == SkinType.FUR) {
         this.furColor = colorArray[rand(colorArray.length)];
     }
 }

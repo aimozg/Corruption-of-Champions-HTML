@@ -11,7 +11,7 @@ namespace Appearance {
 	}
 
 	export function hairOrFur(i_creature: Creature): string {
-		return i_creature.skinType == SKIN_TYPE_FUR ? "fur" : "hair";
+		return i_creature.skinType == SkinType.FUR ? "fur" : "hair";
 	}
 
 	export function hairDescription(i_creature: Creature): string {
@@ -61,11 +61,11 @@ namespace Appearance {
 		//
 		//If furry and longish hair sometimes call it a mane (50%)
 		if (i_creature.skinType == 1 && i_creature.hairLength > 3 && rand(2) == 0) {
-			if (i_creature.hairType == HAIR_FEATHER) description += "feather-";
-			else if (i_creature.hairType == HAIR_GHOST) description += "transparent ";
-			else if (i_creature.hairType == HAIR_GOO) description += "goo-";
-			else if (i_creature.hairType == HAIR_ANEMONE) description += "tentacle-";
-			else if (i_creature.hairType == HAIR_QUILL) description += "quill-";
+			if (i_creature.hairType == HairType.FEATHER) description += "feather-";
+			else if (i_creature.hairType == HairType.GHOST) description += "transparent ";
+			else if (i_creature.hairType == HairType.GOO) description += "goo-";
+			else if (i_creature.hairType == HairType.ANEMONE) description += "tentacle-";
+			else if (i_creature.hairType == HairType.QUILL) description += "quill-";
 			description += "mane";
 			return description;
 		}
@@ -76,11 +76,11 @@ namespace Appearance {
 		 return descript;
 		 }*/
 		//If nothing else used, use hair!
-		if (i_creature.hairType == HAIR_FEATHER) description += "feather-";
-		else if (i_creature.hairType == HAIR_GHOST) description += "transparent ";
-		else if (i_creature.hairType == HAIR_GOO) description += "goo-";
-		else if (i_creature.hairType == HAIR_ANEMONE) description += "tentacle-";
-		else if (i_creature.hairType == HAIR_QUILL) description += "quill-";
+		if (i_creature.hairType == HairType.FEATHER) description += "feather-";
+		else if (i_creature.hairType == HairType.GHOST) description += "transparent ";
+		else if (i_creature.hairType == HairType.GOO) description += "goo-";
+		else if (i_creature.hairType == HairType.ANEMONE) description += "tentacle-";
+		else if (i_creature.hairType == HairType.QUILL) description += "quill-";
 		description += "hair";
 
 		return description;
@@ -150,9 +150,7 @@ namespace Appearance {
 		else return "tongue";
 	}
 
-	export function breastDescript(size: number, lactation: number): string {
-		//Default parameters
-		if (lactation == undefined) lactation = 0;
+	export function breastDescript(size: number, lactation: number=0): string {
 		//Main function
 		if (size < 1) return "flat breasts";
 		let descript = (rand(2) == 0 ? breastSize(size) : ""); //Add a description of the breast size 50% of the time
@@ -459,7 +457,7 @@ namespace Appearance {
 		}
 		let isPierced = (creature.cocks.length == 1) && (creature.cocks[cockIndex].isPierced); //Only describe as isPierced or sock covered if the creature has just one cock
 		let hasSock   = (creature.cocks.length == 1) && (creature.cocks[cockIndex].sock != "");
-		let isGooey   = (creature.skinType == SKIN_TYPE_GOO);
+		let isGooey   = (creature.skinType == SkinType.GOO);
 		return cockDescription(cockType, creature.cocks[cockIndex].cockLength, creature.cocks[cockIndex].cockThickness, creature.lust, creature.cumQ(), isPierced, hasSock, isGooey);
 	}
 
@@ -1031,7 +1029,7 @@ namespace Appearance {
 	 * @param    i_withArticle    Show description with article in front
 	 * @return    Full description of balls
 	 */
-	export function ballsDescription(i_forcedSize: number,
+	export function ballsDescription(i_forcedSize: boolean,
 									 i_plural: boolean,
 									 i_creature: Creature,
 									 i_withArticle: boolean = false) {
@@ -1886,233 +1884,233 @@ namespace Appearance {
 
 	const DEFAULT_GENDER_NAMES     = createMapFromPairs(
 		[
-			[GENDER_NONE, "genderless"],
-			[GENDER_MALE, "male"],
-			[GENDER_FEMALE, "female"],
-			[GENDER_HERM, "hermaphrodite"]
+			[Gender.NONE, "genderless"],
+			[Gender.MALE, "male"],
+			[Gender.FEMALE, "female"],
+			[Gender.HERM, "hermaphrodite"]
 		]
 	);
 	const DEFAULT_SKIN_NAMES       = createMapFromPairs(
 		[
-			[SKIN_TYPE_PLAIN, "skin"],
-			[SKIN_TYPE_FUR, "fur"],
-			[SKIN_TYPE_SCALES, "scales"],
-			[SKIN_TYPE_GOO, "goo"],
-			[SKIN_TYPE_UNDEFINED, "undefined flesh"]
+			[SkinType.PLAIN, "skin"],
+			[SkinType.FUR, "fur"],
+			[SkinType.SCALES, "scales"],
+			[SkinType.GOO, "goo"],
+			[SkinType.UNDEFINED, "undefined flesh"]
 		]
 	);
 	const DEFAULT_SKIN_DESCS       = createMapFromPairs(
 		[
-			[SKIN_TYPE_PLAIN, "skin"],
-			[SKIN_TYPE_FUR, "fur"],
-			[SKIN_TYPE_SCALES, "scales"],
-			[SKIN_TYPE_GOO, "skin"],
-			[SKIN_TYPE_UNDEFINED, "skin"]
+			[SkinType.PLAIN, "skin"],
+			[SkinType.FUR, "fur"],
+			[SkinType.SCALES, "scales"],
+			[SkinType.GOO, "skin"],
+			[SkinType.UNDEFINED, "skin"]
 		]
 	);
 	const DEFAULT_HAIR_NAMES       = createMapFromPairs(
 		[
-			[HAIR_NORMAL, "normal"],
-			[HAIR_FEATHER, "feather"],
-			[HAIR_GHOST, "transparent"],
-			[HAIR_GOO, "goopy"],
-			[HAIR_ANEMONE, "tentacle"],
-			[HAIR_QUILL, "quill"]
+			[HairType.NORMAL, "normal"],
+			[HairType.FEATHER, "feather"],
+			[HairType.GHOST, "transparent"],
+			[HairType.GOO, "goopy"],
+			[HairType.ANEMONE, "tentacle"],
+			[HairType.QUILL, "quill"]
 		]
 	);
 	const DEFAULT_BEARD_NAMES      = createMapFromPairs(
 		[
-			[BEARD_NORMAL, "normal"],
-			[BEARD_GOATEE, "goatee"]
+			[BeardStyle.NORMAL, "normal"],
+			[BeardStyle.GOATEE, "goatee"]
 		]
 	);
 	const DEFAULT_FACE_NAMES       = createMapFromPairs(
 		[
-			[FACE_HUMAN, "human"],
-			[FACE_HORSE, "horse"],
-			[FACE_DOG, "dog"],
-			[FACE_COW_MINOTAUR, "cow"],
-			[FACE_SHARK_TEETH, "shark"],
-			[FACE_SNAKE_FANGS, "snake"],
-			[FACE_CAT, "cat"],
-			[FACE_LIZARD, "lizard"],
-			[FACE_BUNNY, "bunny"],
-			[FACE_KANGAROO, "kangaroo"],
-			[FACE_SPIDER_FANGS, "spider"],
-			[FACE_FOX, "fox"],
-			[FACE_DRAGON, "dragon"],
-			[FACE_RACCOON_MASK, "raccoon mask"],
-			[FACE_RACCOON, "racoon"],
-			[FACE_BUCKTEETH, "buckteeth"],
-			[FACE_MOUSE, "mouse"],
-			[FACE_FERRET_MASK, "ferret mask"],
-			[FACE_FERRET, "ferret"],
-			[FACE_PIG, "pig"],
-			[FACE_BOAR, "boar"],
-			[FACE_RHINO, "rhino"],
-			[FACE_ECHIDNA, "echidna"],
-			[FACE_DEER, "deer"]
+			[FaceType.HUMAN, "human"],
+			[FaceType.HORSE, "horse"],
+			[FaceType.DOG, "dog"],
+			[FaceType.COW_MINOTAUR, "cow"],
+			[FaceType.SHARK_TEETH, "shark"],
+			[FaceType.SNAKE_FANGS, "snake"],
+			[FaceType.CAT, "cat"],
+			[FaceType.LIZARD, "lizard"],
+			[FaceType.BUNNY, "bunny"],
+			[FaceType.KANGAROO, "kangaroo"],
+			[FaceType.SPIDER_FANGS, "spider"],
+			[FaceType.FOX, "fox"],
+			[FaceType.DRAGON, "dragon"],
+			[FaceType.RACCOON_MASK, "raccoon mask"],
+			[FaceType.RACCOON, "racoon"],
+			[FaceType.BUCKTEETH, "buckteeth"],
+			[FaceType.MOUSE, "mouse"],
+			[FaceType.FERRET_MASK, "ferret mask"],
+			[FaceType.FERRET, "ferret"],
+			[FaceType.PIG, "pig"],
+			[FaceType.BOAR, "boar"],
+			[FaceType.RHINO, "rhino"],
+			[FaceType.ECHIDNA, "echidna"],
+			[FaceType.DEER, "deer"]
 		]
 	);
 	const DEFAULT_TONGUE_NAMES     = createMapFromPairs(
 		[
-			[TONGUE_HUMAN, "human"],
-			[TONGUE_SNAKE, "snake"],
-			[TONGUE_DEMONIC, "demonic"],
-			[TONGUE_DRACONIC, "draconic"],
-			[TONGUE_ECHIDNA, "echidna"]
+			[TongueType.HUMAN, "human"],
+			[TongueType.SNAKE, "snake"],
+			[TongueType.DEMONIC, "demonic"],
+			[TongueType.DRACONIC, "draconic"],
+			[TongueType.ECHIDNA, "echidna"]
 		]
 	);
 	const DEFAULT_EYES_NAMES       = createMapFromPairs(
 		[
-			[EYES_HUMAN, "human"],
-			[EYES_FOUR_SPIDER_EYES, "4 spider"],
-			[EYES_BLACK_EYES_SAND_TRAP, "sandtrap black"]
+			[EyeType.HUMAN, "human"],
+			[EyeType.FOUR_SPIDER_EYES, "4 spider"],
+			[EyeType.BLACK_EYES_SAND_TRAP, "sandtrap black"]
 		]
 	);
 	const DEFAULT_EARS_NAMES       = createMapFromPairs(
 		[
-			[EARS_HUMAN, "human"],
-			[EARS_HORSE, "horse"],
-			[EARS_DOG, "dog"],
-			[EARS_COW, "cow"],
-			[EARS_ELFIN, "elfin"],
-			[EARS_CAT, "cat"],
-			[EARS_LIZARD, "lizard"],
-			[EARS_BUNNY, "bunny"],
-			[EARS_KANGAROO, "kangaroo"],
-			[EARS_FOX, "fox"],
-			[EARS_DRAGON, "dragon"],
-			[EARS_RACCOON, "raccoon"],
-			[EARS_MOUSE, "mouse"],
-			[EARS_FERRET, "ferret"],
-			[EARS_PIG, "pig"],
-			[EARS_RHINO, "rhino"],
-			[EARS_ECHIDNA, "echidna"],
-			[EARS_DEER, "deer"]
+			[EarType.HUMAN, "human"],
+			[EarType.HORSE, "horse"],
+			[EarType.DOG, "dog"],
+			[EarType.COW, "cow"],
+			[EarType.ELFIN, "elfin"],
+			[EarType.CAT, "cat"],
+			[EarType.LIZARD, "lizard"],
+			[EarType.BUNNY, "bunny"],
+			[EarType.KANGAROO, "kangaroo"],
+			[EarType.FOX, "fox"],
+			[EarType.DRAGON, "dragon"],
+			[EarType.RACCOON, "raccoon"],
+			[EarType.MOUSE, "mouse"],
+			[EarType.FERRET, "ferret"],
+			[EarType.PIG, "pig"],
+			[EarType.RHINO, "rhino"],
+			[EarType.ECHIDNA, "echidna"],
+			[EarType.DEER, "deer"]
 		]
 	);
 	const DEFAULT_HORNS_NAMES      = createMapFromPairs(
 		[
-			[HORNS_NONE, "non-existant"],
-			[HORNS_DEMON, "demon"],
-			[HORNS_COW_MINOTAUR, "cow"],
-			[HORNS_DRACONIC_X2, "2 draconic"],
-			[HORNS_DRACONIC_X4_12_INCH_LONG, "four 12\" long draconic"],
-			[HORNS_ANTLERS, "deer"],
-			[HORNS_GOAT, "goat"],
-			[HORNS_RHINO, "rhino"]
+			[HornType.NONE, "non-existant"],
+			[HornType.DEMON, "demon"],
+			[HornType.COW_MINOTAUR, "cow"],
+			[HornType.DRACONIC_X2, "2 draconic"],
+			[HornType.DRACONIC_X4_12_INCH_LONG, "four 12\" long draconic"],
+			[HornType.ANTLERS, "deer"],
+			[HornType.GOAT, "goat"],
+			[HornType.RHINO, "rhino"]
 		]
 	);
 	const DEFAULT_ANTENNAE_NAMES   = createMapFromPairs(
 		[
-			[ANTENNAE_NONE, "non-existant"],
-			[ANTENNAE_BEE, "bee"]
+			[AntennaeType.NONE, "non-existant"],
+			[AntennaeType.BEE, "bee"]
 		]
 	);
 	const DEFAULT_ARM_NAMES        = createMapFromPairs(
 		[
-			[ARM_TYPE_HUMAN, "human"],
-			[ARM_TYPE_HARPY, "harpy"],
-			[ARM_TYPE_SPIDER, "spider"]
+			[ArmType.HUMAN, "human"],
+			[ArmType.HARPY, "harpy"],
+			[ArmType.SPIDER, "spider"]
 		]
 	);
 	const DEFAULT_TAIL_NAMES       = createMapFromPairs(
 		[
-			[TAIL_TYPE_NONE, "non-existant"],
-			[TAIL_TYPE_HORSE, "horse"],
-			[TAIL_TYPE_DOG, "dog"],
-			[TAIL_TYPE_DEMONIC, "demonic"],
-			[TAIL_TYPE_COW, "cow"],
-			[TAIL_TYPE_SPIDER_ADBOMEN, "spider abdomen"],
-			[TAIL_TYPE_BEE_ABDOMEN, "bee abdomen"],
-			[TAIL_TYPE_SHARK, "shark"],
-			[TAIL_TYPE_CAT, "cat"],
-			[TAIL_TYPE_LIZARD, "lizard"],
-			[TAIL_TYPE_RABBIT, "rabbit"],
-			[TAIL_TYPE_HARPY, "harpy"],
-			[TAIL_TYPE_KANGAROO, "kangaroo"],
-			[TAIL_TYPE_FOX, "fox"],
-			[TAIL_TYPE_DRACONIC, "draconic"],
-			[TAIL_TYPE_RACCOON, "raccoon"],
-			[TAIL_TYPE_MOUSE, "mouse"],
-			[TAIL_TYPE_BEHEMOTH, "behemoth"],
-			[TAIL_TYPE_PIG, "pig"],
-			[TAIL_TYPE_SCORPION, "scorpion"],
-			[TAIL_TYPE_GOAT, "goat"],
-			[TAIL_TYPE_RHINO, "rhino"],
-			[TAIL_TYPE_ECHIDNA, "echidna"],
-			[TAIL_TYPE_DEER, "deer"]
+			[TailType.NONE, "non-existant"],
+			[TailType.HORSE, "horse"],
+			[TailType.DOG, "dog"],
+			[TailType.DEMONIC, "demonic"],
+			[TailType.COW, "cow"],
+			[TailType.SPIDER_ADBOMEN, "spider abdomen"],
+			[TailType.BEE_ABDOMEN, "bee abdomen"],
+			[TailType.SHARK, "shark"],
+			[TailType.CAT, "cat"],
+			[TailType.LIZARD, "lizard"],
+			[TailType.RABBIT, "rabbit"],
+			[TailType.HARPY, "harpy"],
+			[TailType.KANGAROO, "kangaroo"],
+			[TailType.FOX, "fox"],
+			[TailType.DRACONIC, "draconic"],
+			[TailType.RACCOON, "raccoon"],
+			[TailType.MOUSE, "mouse"],
+			[TailType.BEHEMOTH, "behemoth"],
+			[TailType.PIG, "pig"],
+			[TailType.SCORPION, "scorpion"],
+			[TailType.GOAT, "goat"],
+			[TailType.RHINO, "rhino"],
+			[TailType.ECHIDNA, "echidna"],
+			[TailType.DEER, "deer"]
 		]
 	);
 	const DEFAULT_WING_NAMES       = createMapFromPairs(
 		[
-			[WING_TYPE_NONE, "non-existant"],
-			[WING_TYPE_BEE_LIKE_SMALL, "small bee-like"],
-			[WING_TYPE_BEE_LIKE_LARGE, "large bee-like"],
-			[WING_TYPE_HARPY, "harpy"],
-			[WING_TYPE_IMP, "imp"],
-			[WING_TYPE_BAT_LIKE_TINY, "tiny bat-like"],
-			[WING_TYPE_BAT_LIKE_LARGE, "large bat-like"],
-			[WING_TYPE_SHARK_FIN, "shark fin"],
-			[WING_TYPE_FEATHERED_LARGE, "large feathered"],
-			[WING_TYPE_DRACONIC_SMALL, "small draconic"],
-			[WING_TYPE_DRACONIC_LARGE, "large draconic"],
-			[WING_TYPE_GIANT_DRAGONFLY, "giant dragonfly"]
+			[WingType.NONE, "non-existant"],
+			[WingType.BEE_LIKE_SMALL, "small bee-like"],
+			[WingType.BEE_LIKE_LARGE, "large bee-like"],
+			[WingType.HARPY, "harpy"],
+			[WingType.IMP, "imp"],
+			[WingType.BAT_LIKE_TINY, "tiny bat-like"],
+			[WingType.BAT_LIKE_LARGE, "large bat-like"],
+			[WingType.SHARK_FIN, "shark fin"],
+			[WingType.FEATHERED_LARGE, "large feathered"],
+			[WingType.DRACONIC_SMALL, "small draconic"],
+			[WingType.DRACONIC_LARGE, "large draconic"],
+			[WingType.GIANT_DRAGONFLY, "giant dragonfly"]
 		]
 	);
 	const DEFAULT_WING_DESCS       = createMapFromPairs(
 		[
-			[WING_TYPE_NONE, "non-existant"],
-			[WING_TYPE_BEE_LIKE_SMALL, "small bee-like"],
-			[WING_TYPE_BEE_LIKE_LARGE, "large bee-like"],
-			[WING_TYPE_HARPY, "large feathery"],
-			[WING_TYPE_IMP, "small"],
-			[WING_TYPE_BAT_LIKE_TINY, "tiny, bat-like"],
-			[WING_TYPE_BAT_LIKE_LARGE, "large, bat-like"],
-			[WING_TYPE_SHARK_FIN, ""],
-			[WING_TYPE_FEATHERED_LARGE, "large, feathered"],
-			[WING_TYPE_DRACONIC_SMALL, "small, draconic"],
-			[WING_TYPE_DRACONIC_LARGE, "large, draconic"],
-			[WING_TYPE_GIANT_DRAGONFLY, "giant dragonfly"]
+			[WingType.NONE, "non-existant"],
+			[WingType.BEE_LIKE_SMALL, "small bee-like"],
+			[WingType.BEE_LIKE_LARGE, "large bee-like"],
+			[WingType.HARPY, "large feathery"],
+			[WingType.IMP, "small"],
+			[WingType.BAT_LIKE_TINY, "tiny, bat-like"],
+			[WingType.BAT_LIKE_LARGE, "large, bat-like"],
+			[WingType.SHARK_FIN, ""],
+			[WingType.FEATHERED_LARGE, "large, feathered"],
+			[WingType.DRACONIC_SMALL, "small, draconic"],
+			[WingType.DRACONIC_LARGE, "large, draconic"],
+			[WingType.GIANT_DRAGONFLY, "giant dragonfly"]
 		]
 	);
 	const DEFAULT_LOWER_BODY_NAMES = createMapFromPairs(
 		[
-			[LOWER_BODY_TYPE_HUMAN, "human"],
-			[LOWER_BODY_TYPE_HOOFED, "hoofed"],
-			[LOWER_BODY_TYPE_DOG, "dog"],
-			[LOWER_BODY_TYPE_NAGA, "naga"],
-			[LOWER_BODY_TYPE_CENTAUR, "centaur"],
-			[LOWER_BODY_TYPE_DEMONIC_HIGH_HEELS, "demonic high-heels"],
-			[LOWER_BODY_TYPE_DEMONIC_CLAWS, "demonic claws"],
-			[LOWER_BODY_TYPE_BEE, "bee"],
-			[LOWER_BODY_TYPE_GOO, "goo"],
-			[LOWER_BODY_TYPE_CAT, "cat"],
-			[LOWER_BODY_TYPE_LIZARD, "lizard"],
-			[LOWER_BODY_TYPE_PONY, "pony"],
-			[LOWER_BODY_TYPE_BUNNY, "bunny"],
-			[LOWER_BODY_TYPE_HARPY, "harpy"],
-			[LOWER_BODY_TYPE_KANGAROO, "kangaroo"],
-			[LOWER_BODY_TYPE_CHITINOUS_SPIDER_LEGS, "chitinous spider legs"],
-			[LOWER_BODY_TYPE_DRIDER_LOWER_BODY, "drider"],
-			[LOWER_BODY_TYPE_FOX, "fox"],
-			[LOWER_BODY_TYPE_DRAGON, "dragon"],
-			[LOWER_BODY_TYPE_RACCOON, "raccoon"],
-			[LOWER_BODY_TYPE_FERRET, "ferret"],
-			[LOWER_BODY_TYPE_CLOVEN_HOOFED, "cloven-hoofed"],
-			[LOWER_BODY_TYPE_ECHIDNA, "echidna"],
-			[LOWER_BODY_TYPE_ECHIDNA, "deertaur"]
+			[LowerBodyType.HUMAN, "human"],
+			[LowerBodyType.HOOFED, "hoofed"],
+			[LowerBodyType.DOG, "dog"],
+			[LowerBodyType.NAGA, "naga"],
+			[LowerBodyType.CENTAUR, "centaur"],
+			[LowerBodyType.DEMONIC_HIGH_HEELS, "demonic high-heels"],
+			[LowerBodyType.DEMONIC_CLAWS, "demonic claws"],
+			[LowerBodyType.BEE, "bee"],
+			[LowerBodyType.GOO, "goo"],
+			[LowerBodyType.CAT, "cat"],
+			[LowerBodyType.LIZARD, "lizard"],
+			[LowerBodyType.PONY, "pony"],
+			[LowerBodyType.BUNNY, "bunny"],
+			[LowerBodyType.HARPY, "harpy"],
+			[LowerBodyType.KANGAROO, "kangaroo"],
+			[LowerBodyType.CHITINOUS_SPIDER_LEGS, "chitinous spider legs"],
+			[LowerBodyType.DRIDER_LOWER_BODY, "drider"],
+			[LowerBodyType.FOX, "fox"],
+			[LowerBodyType.DRAGON, "dragon"],
+			[LowerBodyType.RACCOON, "raccoon"],
+			[LowerBodyType.FERRET, "ferret"],
+			[LowerBodyType.CLOVEN_HOOFED, "cloven-hoofed"],
+			[LowerBodyType.ECHIDNA, "echidna"],
+			[LowerBodyType.ECHIDNA, "deertaur"]
 		]
 	);
 	const DEFAULT_PIERCING_NAMES   = createMapFromPairs(
 		[
-			[PIERCING_TYPE_NONE, "none"],
-			[PIERCING_TYPE_STUD, "stud"],
-			[PIERCING_TYPE_RING, "ring"],
-			[PIERCING_TYPE_LADDER, "ladder"],
-			[PIERCING_TYPE_HOOP, "hoop"],
-			[PIERCING_TYPE_CHAIN, "chain"]
+			[PiercingType.NONE, "none"],
+			[PiercingType.STUD, "stud"],
+			[PiercingType.RING, "ring"],
+			[PiercingType.LADDER, "ladder"],
+			[PiercingType.HOOP, "hoop"],
+			[PiercingType.CHAIN, "chain"]
 		]
 	);
 	/*const DEFAULT_VAGINA_TYPE_NAMES = createMapFromPairs(
@@ -2255,14 +2253,14 @@ namespace Appearance {
 	}
 
 	export function tailDescript(i_creature: Creature) {
-		if (i_creature.tailType == TAIL_TYPE_NONE) {
+		if (i_creature.tailType == TailType.NONE) {
 			console.warn("WARNING: Creature has no tails to describe.");
 			return "<b>!Creature has no tails to describe!</b>";
 		}
 
 		let descript = "";
 
-		if (i_creature.tailType == TAIL_TYPE_FOX && i_creature.tailCount >= 1) {
+		if (i_creature.tailType == TailType.FOX && i_creature.tailCount >= 1) {
 			// Kitsune tails, we're using tailVenom to track tail count
 			if (i_creature.tailCount > 1) {
 				if (i_creature.tailCount == 2) descript += "pair ";
@@ -2284,14 +2282,14 @@ namespace Appearance {
 	}
 
 	export function oneTailDescript(i_creature: Creature) {
-		if (i_creature.tailType == TAIL_TYPE_NONE) {
+		if (i_creature.tailType == TailType.NONE) {
 			console.warn("WARNING: Creature has no tails to describe.");
 			return "<b>!Creature has no tails to describe!</b>";
 		}
 
 		let descript = "";
 
-		if (i_creature.tailType == TAIL_TYPE_FOX && i_creature.tailCount >= 1) {
+		if (i_creature.tailType == TailType.FOX && i_creature.tailCount >= 1) {
 			if (i_creature.tailCount == 1) {
 				descript += "your kitsune tail";
 			}

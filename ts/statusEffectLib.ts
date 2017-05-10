@@ -7,6 +7,8 @@ namespace StatusEffects {
 	export const BonusACapacity = new StatusEffectType("Bonus aCapacity");
 	export const BonusVCapacity = new StatusEffectType("Bonus vCapacity");
 	export const Heat           = new StatusEffectType("Heat");
+	export const Rut            = new StatusEffectType("Rut");
+	export const ButtStretched  = new StatusEffectType("Butt Stretched");
 	export const CuntStretched  = new StatusEffectType("Cunt Stretched");
 	//Penalties
 	export const Infested       = new StatusEffectType("Infested");

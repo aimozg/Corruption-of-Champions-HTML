@@ -111,7 +111,7 @@ function Amily() {
     this.hipRating = HIP_RATING_AMPLE;
     this.buttRating = BUTT_RATING_TIGHT;
     this.skinTone = "tawny";
-    this.skinType = SKIN_TYPE_FUR;
+    this.skinType = SkinType.FUR;
     this.hairColor = "brown";
     this.hairLength = 5;
 
@@ -2490,7 +2490,7 @@ AmilyScene.determineAmilySexEvent = function () { // May need to force a false b
 //(If player has a tail)
 
         //CHECK THIS IF IT FAILS
-        if (player.tailType > TAIL_TYPE_NONE) outputText("You even feel Amily wrap her mousy tail around your own, making you chuckle softly into your lovers mouth.  ");
+        if (player.tailType > TailType.NONE) outputText("You even feel Amily wrap her mousy tail around your own, making you chuckle softly into your lovers mouth.  ");
         else outputText("A tickling sensation hits your body, making you snort and giggle, realising that Amily's tail is fondling your thigh.  ");
         outputText("Your eyes catch sight of Amily's swollen breasts, seeing a few drops of milk on her stiff nipples. You smirk and fondle her breasts, breaking the kiss every few moments to get a taste of her milk. Amily moans in response, tightening her grip on you every time your lips return to her own.<br><br>");
 
@@ -3829,7 +3829,7 @@ AmilyScene.rapeCorruptAmily4Male = function () {
 
             outputText("Her words please you, and you ");
             if (player.isNaga()) outputText("coil your serpentine tail around her head.");
-            else if (player.lowerBody == LOWER_BODY_TYPE_GOO) outputText("engulf her maw in slime.");
+            else if (player.lowerBody == LowerBodyType.GOO) outputText("engulf her maw in slime.");
             else outputText("put a " + player.foot() + " on her head.");
             outputText(" She falls silent and you say. \"<i>Very well. From now on I am your one and only " + player.mf("master", "mistress") + ".  You will address me as such, always. My word is law, and you shall do whatever I tell you to, whenever I tell you to. Rise, it's time to break you into your new role as my cum-dumpster.</i>\"<br><br>");
 
@@ -3909,7 +3909,7 @@ AmilyScene.rapeCorruptAmily4Female = function () {
 
             outputText("Her words please you, and you ");
             if (player.isNaga()) outputText("coil your serpentine tail around her head.");
-            else if (player.lowerBody == LOWER_BODY_TYPE_GOO) outputText("engulf her maw in slime.");
+            else if (player.lowerBody == LowerBodyType.GOO) outputText("engulf her maw in slime.");
             else outputText("put a " + player.foot() + " on her head.");
             outputText("  She falls silent and you say, \"<i>Very well. From now on I am your one and only mistress. You will address me as such, always. My word is law, and you shall do whatever I tell you to, whenever I tell you to. Rise, it's time to break you into your new role as my cum-dumpster.</i>\"<br><br>");
 

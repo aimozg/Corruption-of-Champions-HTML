@@ -38,13 +38,13 @@ function BeeGirl() {
     this.tallness = rand(14) + 59;
     this.hipRating = HIP_RATING_CURVY + 3;
     this.buttRating = BUTT_RATING_EXPANSIVE;
-    this.lowerBody = LOWER_BODY_TYPE_BEE;
+    this.lowerBody = LowerBodyType.BEE;
     this.skinTone = "yellow";
     this.hairColor = randomChoice("black","black and yellow");
     this.hairLength = 6;
-    this.antennae = ANTENNAE_BEE;
-    this.wingType = WING_TYPE_BEE_LIKE_SMALL;
-    this.tailType = TAIL_TYPE_BEE_ABDOMEN;
+    this.antennae = AntennaeType.BEE;
+    this.wingType = WingType.BEE_LIKE_SMALL;
+    this.tailType = TailType.BEE_ABDOMEN;
 
     //Sexual characteristics
     this.createVagina(false, VAGINA_WETNESS_SLAVERING, VAGINA_LOOSENESS_GAPING);
@@ -338,15 +338,15 @@ BeeGirlScene.beeDroneBadEnd = function() {
     outputText("Her face breaks into a wide knowing smile.  <i>“Hello again, my fine cocked friend,”</i> she says rising and gently hovering over to you.  <i>“You know, the queen izzz eagerly waiting to meet you.  Zzzhe will be able to take care of you much better than I ever could, but I think we can zzztill zzzpend zzzome time together if you’re up for it.”</i><br><br>");
     outputText("You look at her a bit confused, unsure exactly what she is telling you.  <i>“Zzzzilly boy, I’ve been telling the queen about our meetingzzz, and zzzhe is eager to aczzzzept you into the hive!”</i>  She moves forward and pulls your " + player.armorName + " from your body and gently rubs your " + player.cockDescript(0) + ".  <i>“I told you that only a queen bee could help you with zzzomething thizzz big, and you’ll be able to fill her with it and fertilize all her eggzzz.  Thizzz izzz the releazzze you’ve been craving all thizzz time, come on!”</i><br><br>");
     outputText("Her offer intrigues you incredibly, and you can’t imagine turning her down, not now.  Once, you might have been able to turn away from it, but now that you’ve got this bee prick and have felt the release that bee’s honey gives you, there's just no way.  You nod eagerly to the bee girl and <br><br>");
-    if (player.wingType == WING_TYPE_BEE_LIKE_LARGE) {
+    if (player.wingType == WingType.BEE_LIKE_LARGE) {
         outputText("spread your wings.  She takes your hand and before rising up into the air and leading you home.<br><br>");
     }
     else {
         outputText("accept the bottle of special honey that she hands you which you down in an instant.  ");
-        if (player.wingType == WING_TYPE_NONE) {
+        if (player.wingType == WingType.NONE) {
             outputText("At once your back starts to tingle, and a pair of bee wings erupt behind you, they quickly grow large and with a few experimental flaps you find that they can carry your weight.");
         }
-        else if (player.wingType == WING_TYPE_BEE_LIKE_SMALL) {
+        else if (player.wingType == WingType.BEE_LIKE_SMALL) {
             outputText("Your wings tingle before suddenly growing much larger.  You test them for a moment finding that they are now big enough to allow you to fly!");
         }
         else {
@@ -1183,7 +1183,7 @@ BeeGirlScene.rapeTheBeeGirl = function() {
 //OPTIONS HERE!
 
     menu();
-    if (player.canOvipositSpider() && (player.faceType == FACE_SNAKE_FANGS || player.faceType == FACE_SPIDER_FANGS)) {
+    if (player.canOvipositSpider() && (player.faceType == FaceType.SNAKE_FANGS || player.faceType == FaceType.SPIDER_FANGS)) {
         addButton(8, "Lay Eggs", BeeGirlScene.layEggsInABeeSpiderLike);
         outputText("(You could dose her with venom and lay YOUR eggs in her.)<br>");
     }
@@ -1203,11 +1203,11 @@ BeeGirlScene.rapeTheBeeGirl = function() {
         outputText("(You could try to please both your 'male' and 'female' halves on the bee.)<br>", false);
         addButton(3, "Herm Fuck", BeeGirlScene.futaRapesBeeGirl);
     }
-    if (player.isNaga() && player.faceType == FACE_SNAKE_FANGS) {
+    if (player.isNaga() && player.faceType == FaceType.SNAKE_FANGS) {
         outputText("(You could focus on your snakelike, 'naga' attributes.)<br>", false);
         addButton(4, "Naga Fuck", BeeGirlScene.corruptNagaBitchesRapeABee);
     }
-    if (player.cor >= 75 && player.str >= 60 && (player.tongueType == TONGUE_SNAKE || player.hasCock() || player.hasVagina() || player.biggestTitSize() >= 4)) {
+    if (player.cor >= 75 && player.str >= 60 && (player.tongueType == TongueType.SNAKE || player.hasCock() || player.hasVagina() || player.biggestTitSize() >= 4)) {
         outputText("(You could play with her a bit and try to make her lay eggs into herself.)<br>", false);
         addButton(5, "Gentleman", BeeGirlScene.beeGirlRapeForTheDistinguishedGentleman);
     }
@@ -1573,7 +1573,7 @@ BeeGirlScene.beeGirlRapeForTheDistinguishedGentleman = function() {
 
 //[random effects: roll for one
     var choices = [];
-    if (player.tongueType == TONGUE_SNAKE) choices[choices.length] = 0;
+    if (player.tongueType == TongueType.SNAKE) choices[choices.length] = 0;
     if (player.hasCock()) choices[choices.length] = 1;
     if (player.hasVagina()) choices[choices.length] = 2;
     if (player.biggestTitSize() >= 4) choices[choices.length] = 3;
@@ -1904,7 +1904,7 @@ BeeGirlScene.layEggsInABeeSpiderLike = function() {
 
     clearOutput();
     outputText("You stand over the defeated bee, sizing up your latest catch.  She watches you fearfully as your gaze slides down her prone form, taking in every inch of her body.  Your eyes stop over her abdomen as you notice the girl's dripping, barely concealed ovipositor.  A wide");
-    if (player.faceType == FACE_SNAKE_FANGS || player.faceType == FACE_SPIDER_FANGS) outputText(", fanged");
+    if (player.faceType == FaceType.SNAKE_FANGS || player.faceType == FaceType.SPIDER_FANGS) outputText(", fanged");
     outputText("smile breaks across your face, and your captive quivers in response.  Her eyes flick from your mouth to your spider half, and she shivers again.");
 
     outputText("<br><br>You lower your torso toward her, leaning in close enough that she can feel each breath on her skin.  She's frozen in place now, every muscle clenched tight with terror, and you savor her fear as you run your tongue up her neck.  Picking the insect-girl up by her shoulders, you release a contented \"<i>Mmmm</i>\" into her ear before flipping her over and dropping her, leaving the  bee face down in the dirt.");

@@ -264,7 +264,7 @@ Places.Farm.workFarm = function() {
         outputText("  The first thing that hits you is the smell, a mingling of sweat, milk, droppings, and rotting hay. There are also probably some cows in Whitney's herd ready for breeding.\n\n");
         outputText("Opening the door to one of the empty stalls, Whitney says, \"<i>I don't get to them as often as I should. Anything you can do would help.</i>\"\n\n");
         outputText("You steel yourself, ignore your ");
-        if (player.faceType == FACE_DOG) outputText("sensitive ");
+        if (player.faceType == FaceType.DOG) outputText("sensitive ");
         outputText("nose, and set to work.");
         //[Lust increase based on libido, degree of cow/mino features]
         player.changeLust("lus", player.cowScore() + player.minoScore());

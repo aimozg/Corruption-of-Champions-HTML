@@ -85,7 +85,7 @@ MarbleScene.marblePicksYouUpInitially = function() {
     player.refillHunger(30);
     //new paragraph
     outputText("Once you'd had enough, you take your mouth off her teat and lean against her chest.  Marble puts her hands around you and ", false);
-    if (player.earType > EARS_HUMAN) outputText("gently scratches behind your ears.  ", false);
+    if (player.earType > EarType.HUMAN) outputText("gently scratches behind your ears.  ", false);
     else outputText("lightly caresses your head.  ", false);
     outputText("\"<i>Thanks for your gentle mouth, sweetie,</i>\"  she says, \"<i>Do you think you could tell me your name?  I'm Marble.</i>\"  You let out a soft sigh and tell her who you are and why you came to visit.  She giggles, \"<i>Don't worry sweetie, I feel much better now thanks to you.  I'm really glad I got to meet you in such a pleasant way.</i>\"  You decide that it is probably time to leave now and say your farewells to this cow-girl.  \"<i>Come back to visit me anytime; I'll look forward to seeing you again soon!</i>\" she says beaming at you.  With that, you leave the farm, feeling a strange sense of euphoria passing over you.", false);
     //(increase affection by 30)

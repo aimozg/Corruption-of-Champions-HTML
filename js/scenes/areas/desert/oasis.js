@@ -328,10 +328,10 @@ function DemonPack() {
     this.armType = 0;
     //Extra parts (This code section may be removed)
     this.antennae = 0;
-    this.hornType = HORNS_DEMON;
+    this.hornType = HornType.DEMON;
     this.horns = 2;
     this.gills = false;
-    this.tailType = TAIL_TYPE_DEMONIC;
+    this.tailType = TailType.DEMONIC;
     this.tailVenom = 0;
     this.tailRecharge = 0;
     this.wingType = 0;

@@ -42,10 +42,10 @@ Areas.GenericExploration.tryDiscover = function() {
         }
         if (exploration.exploredDesert <= 0 && rand(3) == 0 && exploration.exploredLake > 0) {
             outputText("You stumble as the ground shifts a bit underneath you. Groaning in frustration, you straighten up and discover the rough feeling of sand ");
-            if (player.lowerBody == LOWER_BODY_TYPE_HUMAN) outputText("inside your footwear, between your toes");
-            if (player.lowerBody == LOWER_BODY_TYPE_HOOFED) outputText("in your hooves");
-            if (player.lowerBody == LOWER_BODY_TYPE_DOG) outputText("in your paws");
-            if (player.lowerBody == LOWER_BODY_TYPE_NAGA) outputText("in your scales");
+            if (player.lowerBody == LowerBodyType.HUMAN) outputText("inside your footwear, between your toes");
+            if (player.lowerBody == LowerBodyType.HOOFED) outputText("in your hooves");
+            if (player.lowerBody == LowerBodyType.DOG) outputText("in your paws");
+            if (player.lowerBody == LowerBodyType.NAGA) outputText("in your scales");
             outputText(".<br><br><b>You've discovered the Desert!</b>");
             exploration.exploredDesert = 1;
             return;

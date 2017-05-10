@@ -186,7 +186,7 @@ flee = function(callHook) { //There are 4 states. Undefined means proceed to esc
     if (escapeMod > 50) escapeMod = 50;
     //Modifier based on conditions
     if (player.canFly()) escapeMod -= 20;
-    if (player.tailType == TAIL_TYPE_RACCOON && player.earType == EARS_RACCOON && player.findPerk(PerkLib.Runner) >= 0) escapeMod -= 25;
+    if (player.tailType == TailType.RACCOON && player.earType == EarType.RACCOON && player.findPerk(PerkLib.Runner) >= 0) escapeMod -= 25;
     if (monster.findStatusEffect(StatusEffects.Stunned) >= 0)
         escapeMod -= 50;
     else { //Big tits doesn't matter as much if ya can fly!
@@ -253,7 +253,7 @@ flee = function(callHook) { //There are 4 states. Undefined means proceed to esc
         }*/
         /*else */if (player.canFly()) //Fliers flee!
             outputText(capitalize(monster.a) + monster.refName + " can't catch you.");
-        else if (player.tailType == TAIL_TYPE_RACCOON && player.earType == EARS_RACCOON && player.findPerk(PerkLib.Runner) >= 0) //sekrit benefit: if you have coon ears, coon tail, and Runner perk, change normal Runner escape to flight-type escape
+        else if (player.tailType == TailType.RACCOON && player.earType == EarType.RACCOON && player.findPerk(PerkLib.Runner) >= 0) //sekrit benefit: if you have coon ears, coon tail, and Runner perk, change normal Runner escape to flight-type escape
             outputText("Using your running skill, you build up a head of steam and jump, then spread your arms and flail your tail wildly; your opponent dogs you as best " + monster.heShe + " can, but stops and stares dumbly as your spastic tail slowly propels you several meters into the air! You leave " + monster.himHer + " behind with your clumsy, jerky, short-range flight.");
         else //Non-fliers flee
             outputText(capitalize(monster.a) + monster.refName + " rapidly disappears into the shifting landscape behind you.");
@@ -283,7 +283,7 @@ flee = function(callHook) { //There are 4 states. Undefined means proceed to esc
             else
                 outputText(capitalize(monster.a) + monster.refName + " manages to grab your " + player.legs() + " and drag you back to the ground before you can fly away!");
         }
-        else if (player.tailType == TAIL_TYPE_RACCOON && player.earType == EARS_RACCOON && player.findPerk(PerkLib.Runner) >= 0) // >>>>>>[P] FAIL
+        else if (player.tailType == TailType.RACCOON && player.earType == EarType.RACCOON && player.findPerk(PerkLib.Runner) >= 0) // >>>>>>[P] FAIL
             outputText("Using your running skill, you build up a head of steam and jump, but before you can clear the ground more than a foot, your opponent latches onto you and drags you back down with a thud!");
         else { //Nonflyer messages
             //Huge balls messages

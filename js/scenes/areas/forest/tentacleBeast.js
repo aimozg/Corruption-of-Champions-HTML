@@ -106,7 +106,7 @@ function TentacleBeast() {
     this.gender = 0; //0 genderless, 1 male, 2 female, 3 hermaphrodite
     this.tallness = rand(9) + 70; //Height in inches
     this.skinTone = "green";
-    this.skinType = SKIN_TYPE_PLAIN;
+    this.skinType = SkinType.PLAIN;
     this.skinAdj = "";
     this.skinDesc = "bark";
     this.hairType = 0;
@@ -130,7 +130,7 @@ function TentacleBeast() {
     this.hornType = 0;
     this.horns = 0;
     this.gills = false;
-    this.tailType = TAIL_TYPE_DEMONIC;
+    this.tailType = TailType.DEMONIC;
     this.tailVenom = 0;
     this.tailRecharge = 0;
     this.wingType = 0;

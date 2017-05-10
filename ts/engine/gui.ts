@@ -2,7 +2,6 @@
 // This holds some of the most important code for the engine of the game. It turns the buttons on and off, sets their labels and tool tips
 // and tells the program which function to go to next.
 
-
 //Events
 document.onmousemove = getMousePosition;
 initializeTooltipEvents();
@@ -96,25 +95,13 @@ function hideStats() {
 	document.getElementById("stats")!!.style.visibility = "hidden";
 }
 
-type UiArrow =
-	"strArrow"
-	| "touArrow"
-	| "speArrow"
-	| "intArrow"
-	| "libArrow"
-	| "senArrow"
-	| "corArrow"
-	| "hpArrow"
-	| "lustArrow"
-	| "fatigueArrow";
-
 function hideUpDown() {
 	const arrows = ["strArrow", "touArrow", "speArrow", "intArrow", "libArrow", "senArrow", "corArrow", "hpArrow", "lustArrow", "fatigueArrow"];
 	for (let i = 0; i < arrows.length; i++) {
 		document.getElementById(arrows[i])!!.style.visibility = "hidden";
 	}
 }
-function showUpDown(arrowToDisplay: UiArrow | "sensArrow" | "inteArrow", upDown: "up" | "down") {
+function showUpDown(arrowToDisplay: string, upDown: "up" | "down") {
 	//Auto-route parameter
 	if (arrowToDisplay == "sensArrow") arrowToDisplay = "senArrow";
 	if (arrowToDisplay == "inteArrow") arrowToDisplay = "intArrow";

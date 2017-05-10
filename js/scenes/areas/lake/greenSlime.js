@@ -38,7 +38,7 @@ function GreenSlime() {
     this.tallness = rand(8) + 80;
     this.hipRating = HIP_RATING_AMPLE;
     this.buttRating = BUTT_RATING_LARGE;
-    this.lowerBody = LOWER_BODY_TYPE_GOO;
+    this.lowerBody = LowerBodyType.GOO;
     this.skinTone = "green";
     //Sexual characteristics
     this.createCock(18, 2, CockTypesEnum.HUMAN);

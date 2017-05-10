@@ -41,7 +41,7 @@ function GooGirl() {
     this.tallness = rand(8) + 80;
     this.hipRating = HIP_RATING_AMPLE;
     this.buttRating = BUTT_RATING_LARGE;
-    this.lowerBody = LOWER_BODY_TYPE_GOO;
+    this.lowerBody = LowerBodyType.GOO;
     this.skinTone = "blue";
     this.skinAdj = "goopey";
     this.hairColor = this.skinTone;

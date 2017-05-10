@@ -9,6 +9,7 @@
   "author": "aimozg",
   "license": "UNLICENSED",
   "dependencies": {
-    "typescript": "^2.3.2"
+    "typescript": "^2.3.2",
+    "underscore": "^1.8.3"
   }
 }

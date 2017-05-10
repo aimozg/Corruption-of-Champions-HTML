@@ -295,7 +295,7 @@ function teaseMain(justText) {
         if (player.ass.analLooseness >= 5) choices[choices.length] = 16;
     }
     //17 Bee abdomen tease
-    if (player.tailType == TAIL_TYPE_BEE_ABDOMEN) {
+    if (player.tailType == TailType.BEE_ABDOMEN) {
         choices[choices.length] = 17;
         choices[choices.length] = 17;
     }
@@ -323,7 +323,7 @@ function teaseMain(justText) {
         choices[choices.length] = 21;
     }
     //22 SPOIDAH SILK
-    if (player.tailType == TAIL_TYPE_SPIDER_ADBOMEN) {
+    if (player.tailType == TailType.SPIDER_ADBOMEN) {
         choices[choices.length] = 22;
         choices[choices.length] = 22;
         choices[choices.length] = 22;
@@ -442,7 +442,7 @@ function teaseMain(justText) {
     //38 Kitsune Tease
     //39 Kitsune Tease
     //40 Kitsune Tease
-    if (player.kitsuneScore() >= 2 && player.tailType == TAIL_TYPE_FOX) {
+    if (player.kitsuneScore() >= 2 && player.tailType == TailType.FOX) {
         choices[choices.length] = 37;
         choices[choices.length] = 37;
         choices[choices.length] = 37;
@@ -461,7 +461,7 @@ function teaseMain(justText) {
         choices[choices.length] = 40;
     }
     //41 Kitsune Gendered Tease
-    if (player.kitsuneScore() >= 2 && player.tailType == TAIL_TYPE_FOX) {
+    if (player.kitsuneScore() >= 2 && player.tailType == TailType.FOX) {
         choices[choices.length] = 41;
         choices[choices.length] = 41;
         choices[choices.length] = 41;
@@ -480,7 +480,7 @@ function teaseMain(justText) {
         choices[choices.length] = 42;
     }*/
     //43 - special mino + cowgirls
-    if (player.hasVagina() && player.lactationQ() >= 500 && player.biggestTitSize() >= 6 && player.cowScore() >= 3 && player.tailType == TAIL_TYPE_COW) {
+    if (player.hasVagina() && player.lactationQ() >= 500 && player.biggestTitSize() >= 6 && player.cowScore() >= 3 && player.tailType == TailType.COW) {
         choices[choices.length] = 43;
         choices[choices.length] = 43;
         choices[choices.length] = 43;
@@ -524,7 +524,7 @@ function teaseMain(justText) {
     select = choices[rand(choices.length)];
     if (monster.refName.indexOf("minotaur") != -1)
     {
-        if (player.hasVagina() && player.lactationQ() >= 500 && player.biggestTitSize() >= 6 && player.cowScore() >= 3 && player.tailType == TAIL_TYPE_COW)
+        if (player.hasVagina() && player.lactationQ() >= 500 && player.biggestTitSize() >= 6 && player.cowScore() >= 3 && player.tailType == TailType.COW)
             select = 43;
     }
     switch(select) {

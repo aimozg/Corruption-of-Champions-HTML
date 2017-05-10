@@ -79,7 +79,7 @@ function SandTrap() {
     this.hornType = 0;
     this.horns = 0;
     this.gills = false;
-    this.tailType = TAIL_TYPE_DEMONIC;
+    this.tailType = TailType.DEMONIC;
     this.tailVenom = 0;
     this.tailRecharge = 0;
     this.wingType = 0;
@@ -235,7 +235,7 @@ SandTrapScene.sandTrapWin = function() {
     if (player.lust >= 33) {
         outputText("<br><br>Before you go, you take in the helpless body of your would-be ambusher.  What do you do?");
         menu();
-        //TODO Track Down this Status Effect and see if it needs replacing: if (player.isNaga() && player.findStatusEffect(StatusEffects.Naga) >= 0 && player.gender > 0 && player.faceType == FACE_SNAKE_FANGS) addButton(0, "Naga3Some", SandTrapScene.nagaThreesomeWithSandTrap);
+        //TODO Track Down this Status Effect and see if it needs replacing: if (player.isNaga() && player.findStatusEffect(StatusEffects.Naga) >= 0 && player.gender > 0 && player.faceType == FaceType.SNAKE_FANGS) addButton(0, "Naga3Some", SandTrapScene.nagaThreesomeWithSandTrap);
         if (player.hasCock() && player.str >= 60) addButton(1, "UseYourCock", SandTrapScene.cockWin) //stickWanginSandgina
         if (player.hasVagina()) addButton(2, "RideVaginal", SandTrapScene.vaginaWin) //rideDatSandTarp
         if (player.gender > 0) addButton(3, "Handjob", SandTrapScene.handjobWin)// useSandTarpsHands
@@ -445,7 +445,7 @@ SandTrapScene.sandTrapLoss = function() {
         return;
     }
     //Lose to Sand Trap while in Bad End mode.
-    if (gameFlags[SANDTRAP_LOSS_REPEATS] >= 2 && player.eyeType == EYES_BLACK_EYES_SAND_TRAP && player.wingType == WING_TYPE_GIANT_DRAGONFLY) {
+    if (gameFlags[SANDTRAP_LOSS_REPEATS] >= 2 && player.eyeType == EyeType.BLACK_EYES_SAND_TRAP && player.wingType == WingType.GIANT_DRAGONFLY) {
         SandTrapScene.loseLastFightWithSandTrap();
         return;
     }
@@ -641,7 +641,7 @@ SandTrapScene.encounterASandTrap = function() {
 //TODO Sprite spriteSelect(97);
     SandTrap.trap = 2; // Reset this every encounter since I can't figure out how to do it per instance.
 // First, see if the bad end triggers
-    if (gameFlags[SANDTRAP_LOSS_REPEATS] >= 2 && player.eyeType == EYES_BLACK_EYES_SAND_TRAP && player.wingType == WING_TYPE_GIANT_DRAGONFLY) {
+    if (gameFlags[SANDTRAP_LOSS_REPEATS] >= 2 && player.eyeType == EyeType.BLACK_EYES_SAND_TRAP && player.wingType == WingType.GIANT_DRAGONFLY) {
         SandTrapScene.sandTrapBadEnd();
         return;
     }

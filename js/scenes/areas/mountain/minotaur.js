@@ -48,15 +48,15 @@ function Minotaur(axe) {
     this.tallness = rand(37) + 84;
     this.hipRating = HIP_RATING_AVERAGE;
     this.buttRating = BUTT_RATING_AVERAGE;
-    this.lowerBody = LOWER_BODY_TYPE_HOOFED;
+    this.lowerBody = LowerBodyType.HOOFED;
     this.furColor = randomChoice("black", "brown");
     this.skinDesc = "shaggy fur";
-    this.skinType = SKIN_TYPE_FUR;
+    this.skinType = SkinType.FUR;
     this.skinTone = this.furColor;
     this.hairColor = this.furColor;
     this.hairLength = 3;
-    this.faceType = FACE_COW_MINOTAUR;
-    this.tailType = TAIL_TYPE_COW;
+    this.faceType = FaceType.COW_MINOTAUR;
+    this.tailType = TailType.COW;
     //Sexual characteristics
     this.createBreastRow();
     this.createCock(rand(13) + 24, 2 + rand(3), CockTypesEnum.HORSE);
@@ -323,9 +323,9 @@ MinotaurScene.joinBeingAMinoCumSlut = function() {
     outputText("<br><br>A giggle comes from your side, as you see the cow-girl is back up onto her knees, having recovered from her exalted orgasm. She crawls forward, kneeling just over your head and leaning in to kiss her minotaur lover. The two whisper sweet nothings to each other, too vague and indistinct to hear, but it doesn't matter. All you can focus on is the dick lodged firmly inside of you... that, and the soaking cunt of the cow-girl just inches from your face. Alabaster droplets drip down her legs, one even landing on your lips. Before you can stop yourself, you lick them clean, savoring the taste of the second-hand cum.");
 
     outputText("<br><br>Some part of your mind voices a complaint at what comes next, a voice that's quickly squelched inside the addiction-fueled haze of your brain. You pull your head upwards and extend your tongue, slurping a large glob of cum from the cow-girl's snatch. There's a surprised yelp from above you, followed by a coo of pleasure. To your surprise, the cow-girl actually lowers her cunt down onto your face, giggling madly, filling your nostrils with the scent of her muff, with the scent of recent sex. Not letting this opportunity go to waste, you repay her actions from earlier, slipping your ");
-    if (player.tongueType == TONGUE_SNAKE) outputText("serpentine ");
-    else if (player.tongueType == TONGUE_DEMONIC) outputText("demonic ");
-    else if (player.tongueType == TONGUE_DRACONIC) outputText("draconic ");
+    if (player.tongueType == TongueType.SNAKE) outputText("serpentine ");
+    else if (player.tongueType == TongueType.DEMONIC) outputText("demonic ");
+    else if (player.tongueType == TongueType.DRACONIC) outputText("draconic ");
     else if (player.hasLongTongue()) outputText("inhumanly long ");
     outputText("tongue inside her, eagerly licking out and guzzling down the remnants of the minotaur's present.");
 
@@ -1326,7 +1326,7 @@ MinotaurScene.getMinoHawtDawged = function() {
     outputText("<br><br>You let out a low whine as you try, helplessly, to grab for your crotch, but between the constant fucking and the minotaur's big arm blocking the way, you can't grab on long enough to masturbate.  Thankfully, it doesn't take the minotaur long to cum after that; there's a few more shuddering, insistent thrusts...");
     outputText("<br><br>...and then his head pushes out the top of your ass again, fountaining with his spunk. Gout after gout of it rains down on you, painting your butt, ");
     //[if (hasTail = true)
-    if (player.tailType > TAIL_TYPE_NONE) outputText("your tail, ");
+    if (player.tailType > TailType.NONE) outputText("your tail, ");
     outputText("your back, and even your hair with gushes of his sticky, musk-smothered seed. Your entire backside flushes with the heat of his orgasm as it starts to die down, a few last drools of the hot stuff spilling out of his cock, and he withdraws from your butt, leaving you one last gift of a single spurt lodged between your fat cheeks and slowly dripping out. The Minotaur's cum seems to make your head swim, and everything starts to go foggy...");
     //{Loss message 'when you wake up you'll be missing gems' blah blah}
     player.changeLust(15+rand(player.lib/2));

@@ -32,15 +32,15 @@ CharCreation.chooseGender = function() {
     clearOutput();
     outputText("You are " + player.name + ". Are you a man or a woman?");
     menu();
-    addButton(0, "Man", CharCreation.setGender, GENDER_MALE);
-    addButton(1, "Woman", CharCreation.setGender, GENDER_FEMALE);
-    addButton(2, "Hermaphrodite", CharCreation.setGender, GENDER_HERM);
+    addButton(0, "Man", CharCreation.setGender, Gender.MALE);
+    addButton(1, "Woman", CharCreation.setGender, Gender.FEMALE);
+    addButton(2, "Hermaphrodite", CharCreation.setGender, Gender.HERM);
 }
 CharCreation.setGender = function(gender) {
     switch(gender) {
-        case GENDER_NONE:
+        case Gender.NONE:
             break;
-        case GENDER_MALE: //Male
+        case Gender.MALE: //Male
             //Attribute changes
             player.str += 3;
             player.tou += 2;
@@ -58,7 +58,7 @@ CharCreation.setGender = function(gender) {
             //Breasts
             player.createBreastRow();
             break;
-        case GENDER_FEMALE: //Female
+        case Gender.FEMALE: //Female
             //Attribute changes
             player.spe += 3;
             player.inte += 2;
@@ -75,7 +75,7 @@ CharCreation.setGender = function(gender) {
             //Breasts
             player.createBreastRow();
             break;
-        case GENDER_HERM: //Hermaphrodite
+        case Gender.HERM: //Hermaphrodite
             //Attribute changes
             player.str += 1;
             player.tou += 1;
@@ -102,25 +102,25 @@ CharCreation.chooseBuild = function() {
     clearOutput();
     menu();
     switch(player.gender) {
-        case GENDER_NONE:
+        case Gender.NONE:
             outputText("This isn't supposed to happen. Off you go!");
             doNext(CharCreation.chooseGender);
             break;
-        case GENDER_MALE:
+        case Gender.MALE:
             outputText("You are a man. Your upbringing has provided you an advantage in strength and toughness.");
             addButton(0, "Lean", CharCreation.setBuild, "MaleLean");
             addButton(1, "Average", CharCreation.setBuild, "MaleAverage");
             addButton(2, "Thick", CharCreation.setBuild, "MaleThick");
             addButton(3, "Girly", CharCreation.setBuild, "MaleGirly");
             break;
-        case GENDER_FEMALE:
+        case Gender.FEMALE:
             outputText("You are a woman. Your upbringing has provided you an advantage in speed and intellect.");
             addButton(0, "Slender", CharCreation.setBuild, "FemaleSlender");
             addButton(1, "Average", CharCreation.setBuild, "FemaleAverage");
             addButton(2, "Curvy", CharCreation.setBuild, "FemaleCurvy");
             addButton(3, "Tomboyish", CharCreation.setBuild, "FemaleTomboyish");
             break;
-        case GENDER_HERM:
+        case Gender.HERM:
             outputText("You are a hermaphrodite. Your upbringing has provided you with the best of both worlds.");
             addButton(0, "Mas. Lean", CharCreation.setBuild, "MaleLean");
             addButton(1, "Mas. Average", CharCreation.setBuild, "MaleAverage");
@@ -300,7 +300,7 @@ Intro.arrivalPartOne = function() {
 	outputText("The walk to the tainted cave is long and silent.  Elder Nomur does not speak.  There is nothing left to say.  The two of you journey in companionable silence.  Slowly the black rock of Mount Ilgast looms closer and closer, and the temperature of the air drops.   You shiver and glance at the Elder, noticing he doesn't betray any sign of the cold.  Despite his age of nearly 80, he maintains the vigor of a man half his age.  You're glad for his strength, as assisting him across this distance would be draining, and you must save your energy for the trials ahead.<br><br>");
 	outputText("The entrance of the cave gapes open, sharp stalactites hanging over the entrance, giving it the appearance of a monstrous mouth.  Elder Nomur stops and nods to you, gesturing for you to proceed alone.<br><br>");
 	outputText("The cave is unusually warm and damp, ");
-	if (player.gender == GENDER_FEMALE)
+	if (player.gender == Gender.FEMALE)
 		outputText("and your body seems to feel the same way, flushing as you feel a warmth and dampness between your thighs. ");
 	else outputText("and your body reacts with a sense of growing warmth focusing in your groin, your manhood hardening for no apparent reason. ");
 	outputText("You were warned of this and press forward, ignoring your body's growing needs.  A glowing purple-pink portal swirls and flares with demonic light along the back wall.  Cringing, you press forward, keenly aware that your body seems to be anticipating coming in contact with the tainted magical construct.  Closing your eyes, you gather your resolve and leap forwards.  Vertigo overwhelms you and you black out...");
@@ -313,7 +313,7 @@ Intro.arrivalPartTwo = function() {
 	hideUpDown();
 	time.hours = 18;
 	outputText("You wake with a splitting headache and a body full of burning desire.  A shadow darkens your view momentarily and your training kicks in.  You roll to the side across the bare ground and leap to your feet.  A surprised looking imp stands a few feet away, holding an empty vial.  He's completely naked, an improbably sized pulsing red cock hanging between his spindly legs.  You flush with desire as a wave of lust washes over you, your mind reeling as you fight ");
-	if (player.gender == GENDER_FEMALE)
+	if (player.gender == Gender.FEMALE)
 		outputText("the urge to chase down his rod and impale yourself on it.<br><br>");
 	else
 		outputText("the urge to ram your cock down his throat.  The strangeness of the thought surprises you.<br><br>");

@@ -15,12 +15,20 @@ namespace Items {
 		Pipe.value = 25;
 		Pipe.attack = 5;
 
-		export const WizardStaff = new Item("W.Staff", "W. Staff", "a wizard's staff", ITEM_TYPE_WEAPON);
-		WizardStaff.description = "This staff is made of very old wood and seems to tingle to the touch.  The top has an odd zig-zag shape to it, and the wood is worn smooth from lots of use.  It probably belonged to a wizard at some point and would aid magic use.";
-		WizardStaff.equipmentName = "wizard's staff";
-		WizardStaff.verb = (player.findPerk(PerkLib.StaffChanneling) >= 0 ? "shot" : "smack"); //TODO Test this
-		WizardStaff.value = 350;
-		WizardStaff.attack = 3;
+		class WizardStaffClass extends Item {
+			constructor() {
+				super("W.Staff", "W. Staff", "a wizard's staff", ITEM_TYPE_WEAPON);
+				this.description = "This staff is made of very old wood and seems to tingle to the touch.  The top has an odd zig-zag shape to it, and the wood is worn smooth from lots of use.  It probably belonged to a wizard at some point and would aid magic use.";
+				this.equipmentName = "wizard's staff";
+				this.value = 350;
+				this.attack = 3;
+			}
+			get verb():string {
+				return (player.findPerk(PerkLib.StaffChanneling) >= 0 ? "shot" : "smack"); //TODO Test this
+			}
+		}
+		export const WizardStaff = new WizardStaffClass();
+
 // TODO Weapon also adds a perk. Need to see how to add this in upon equip. "Wizard's Focus", PerkLib.WizardsFocus, 0.4, 0, 0, 0
 	}
 }
