@@ -1,5 +1,5 @@
 namespace Items {
-	namespace Armor {
+	export namespace Armor {
 		export const ComfortableClothes = new Item("C.Cloth", "C.Cloth", "a set of comfortable clothes", ITEM_TYPE_ARMOUR);
 		ComfortableClothes.description = "These loose fitting and comfortable clothes allow you to move freely while protecting you from the elements.";
 		ComfortableClothes.equipmentName = "comfortable clothes";

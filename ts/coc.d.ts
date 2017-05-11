@@ -39,7 +39,6 @@ declare namespace ConsumableEffects {
 	function lustDraft(fuck?:boolean):void;
 	function minotaurTFs():void;
 	function minotaurCum(purified:boolean):void;
-	function oviElixir():void;
 	function pigTFs():void;
 	function reductoMenu():void;
 	function scholarsTea():void;
@@ -52,7 +51,7 @@ declare namespace ConsumableEffects {
 	function whiteSpellBook():void;
 }
 declare namespace Inventory {
-	function takeItem(oldItem:Item,returnTo:Function):void;
+	function takeItem(oldItem:Item,returnTo?:Function):void;
 	function inventoryMenu():void;
 }
 declare namespace StatusEffects {

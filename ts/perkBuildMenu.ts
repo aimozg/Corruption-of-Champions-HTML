@@ -5,10 +5,10 @@ namespace PerkMenuBuilder {
 		perksAvailable = [];
 		//Strength Perks
 		if (player.str >= 25) { perksAvailable.push(PerkLib.StrongBack); }
-		if (player.str >= 50 && player.findPerk(PerkLib.StrongBack) >= 0) { perksAvailable.push(PerkLib.StrongBack2); }
+		if (player.str >= 50 && player.hasPerk(PerkLib.StrongBack)) { perksAvailable.push(PerkLib.StrongBack2); }
 		//Toughness Perks
 		if (player.tou >= 25) { perksAvailable.push(PerkLib.Tank); }
-		if (player.tou >= 50 && player.findPerk(PerkLib.Tank) >= 0) { perksAvailable.push(PerkLib.Tank2); }
+		if (player.tou >= 50 && player.hasPerk(PerkLib.Tank)) { perksAvailable.push(PerkLib.Tank2); }
 		//Speed Perks
 		if (player.spe >= 25) { perksAvailable.push(PerkLib.Evade); }
 		if (player.spe >= 25) { perksAvailable.push(PerkLib.Runner); }
@@ -19,7 +19,7 @@ namespace PerkMenuBuilder {
 
 		//Corruption Perks
 
-		return perksAvailable.filter(p => player.findPerk(p) < 0);
+		return perksAvailable.filter(p => !player.hasPerk(p));
 	}
 
 }

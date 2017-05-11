@@ -24,7 +24,7 @@ namespace Items {
 				this.attack = 3;
 			}
 			get verb():string {
-				return (player.findPerk(PerkLib.StaffChanneling) >= 0 ? "shot" : "smack"); //TODO Test this
+				return (player.hasPerk(PerkLib.StaffChanneling) ? "shot" : "smack"); //TODO Test this
 			}
 		}
 		export const WizardStaff = new WizardStaffClass();

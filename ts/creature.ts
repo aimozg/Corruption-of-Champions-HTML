@@ -1,105 +1,123 @@
 type AttrName = "str" | "tou" | "spe" | "inte" | "lib" | "sens" | "cor" | "lust";
 class Creature {
 	//Name and references
-	public a                             = "";
-	public name                          = "";
-	public refName                       = this.name;
-	public isAre                         = "is";
-	public heShe                         = "";
-	public himHer                        = "";
-	public hisHer                        = "";
-	public plural                        = false;
-	public battleDesc                    = "";
+	public a                                = "";
+	public name                             = "";
+	public refName                          = this.name;
+	public isAre                            = "is";
+	public heShe                            = "";
+	public himHer                           = "";
+	public hisHer                           = "";
+	public plural                           = false;
+	public battleDesc                       = "";
 	//Core stats
-	public str                           = 15;
-	public tou                           = 15;
-	public spe                           = 15;
-	public inte                          = 15;
-	public lib                           = 15;
-	public sens                          = 15;
-	public cor                           = 15;
-	//Combat stats (Delete when declaring a new mob except for changing initial stats)
-	public HP                            = 0;
-	public lust                          = 0;
-	public fatigue                       = 0;
+	public str                              = 15;
+	public tou                              = 15;
+	public spe                              = 15;
+	public inte                             = 15;
+	public lib                              = 15;
+	public sens                             = 15;
+	public cor                              = 15;
+	//Combat stats
+	public HP                               = 0;
+	public lust                             = 0;
+	public fatigue                          = 0;
 	//Advancement
-	public level                         = 1;
-	public XP                            = 0;
-	public gems                          = 0;
+	public level                            = 1;
+	public XP                               = 0;
+	public gems                             = 0;
 	//Battle variables
-	public weapon: Item                  = Items.NOTHING;
-	public shield: Item                  = Items.NOTHING;
-	public armor: Item                   = Items.NOTHING;
-	public upperGarment: Item            = Items.NOTHING;
-	public lowerGarment: Item            = Items.NOTHING;
-	public accessory1: Item              = Items.NOTHING;
-	public accessory2: Item              = Items.NOTHING;
-	public bonusHP                       = 0;
-	public additionalXP                  = 0;
-	public lustVuln                      = 1;
-	public temperment                    = 0;
+	public weapon: Item                     = Items.NOTHING;
+	public shield: Item                     = Items.NOTHING;
+	public armor: Item                      = Items.NOTHING;
+	public upperGarment: Item               = Items.NOTHING;
+	public lowerGarment: Item               = Items.NOTHING;
+	public accessory1: Item                 = Items.NOTHING;
+	public accessory2: Item                 = Items.NOTHING;
+	public bonusHP                          = 0;
+	public additionalXP                     = 0;
+	public lustVuln                         = 1;
+	public temperment                       = 0;
 	// Monster loot
-	public drops: Item[]                 = [];
-	public dropThresholds: number[]      = [];
+	public drops: Item[]                    = [];
+	public dropThresholds: number[]         = [];
 	// Appearance
-	public gender: Gender                = Gender.NONE; //0 genderless, 1 male, 2 female, 3 hermaphrodite
-	public tallness                      = 36; //Height in inches
-	public skinTone                      = "";
-	public skinType: SkinType            = SkinType.PLAIN;
-	public skinAdj                       = "";
-	public skinDesc                      = "skin";
-	public hairType: HairType            = HairType.NORMAL;
-	public hairColor                     = "";
-	public hairLength                    = 0;
-	public beardStyle: any               = BeardStyle.NORMAL;
-	public beardLength                   = 0;
-	public furColor                      = "";
+	public gender: Gender                   = Gender.NONE; //0 genderless, 1 male, 2 female, 3 hermaphrodite
+	public tallness                         = 36; //Height in inches
+	public skinTone                         = "";
+	public skinType: SkinType               = SkinType.PLAIN;
+	public skinAdj                          = "";
+	public skinDesc                         = "skin";
+	public hairType: HairType               = HairType.NORMAL;
+	public hairColor                        = "";
+	public hairLength                       = 0;
+	public beardStyle: any                  = BeardStyle.NORMAL;
+	public beardLength                      = 0;
+	public furColor                         = "";
 	//Head
-	public earType: EarType              = EarType.HUMAN;
-	public eyeType: EyeType              = EyeType.HUMAN;
-	public faceType: FaceType            = FaceType.HUMAN;
-	public tongueType: TongueType        = TongueType.HUMAN;
+	public earType: EarType                 = EarType.HUMAN;
+	public eyeType: EyeType                 = EyeType.HUMAN;
+	public faceType: FaceType               = FaceType.HUMAN;
+	public tongueType: TongueType           = TongueType.HUMAN;
 	//Body
-	public lowerBody: LowerBodyType      = LowerBodyType.HUMAN;
-	public legCount                      = 2;
-	public armType: ArmType              = ArmType.HUMAN;
+	public lowerBody: LowerBodyType         = LowerBodyType.HUMAN;
+	public legCount                         = 2;
+	public armType: ArmType                 = ArmType.HUMAN;
 	//Extra parts
-	public antennae: AntennaeType        = AntennaeType.NONE;
-	public clawType: ClawType            = ClawType.NORMAL;
-	public clawTone                      = "";
-	public hornType: HornType            = HornType.NONE;
-	public horns                         = 0;
-	public gills                         = false;
-	public tailType: TailType            = TailType.NONE;
-	public tailCount                     = 0;
-	public tailVenom                     = 0;
-	public tailRecharge                  = 0;
-	public wingType: WingType            = WingType.NONE;
+	public antennae: AntennaeType           = AntennaeType.NONE;
+	public clawType: ClawType               = ClawType.NORMAL;
+	public clawTone                         = "";
+	public hornType: HornType               = HornType.NONE;
+	public horns                            = 0;
+	public gills                            = false;
+	public tailType: TailType               = TailType.NONE;
+	public tailCount                        = 0;
+	public tailVenom                        = 0;
+	public tailRecharge                     = 0;
+	public wingType: WingType               = WingType.NONE;
 	// Body sliders
-	public femininity                    = 50;
-	public tone                          = 0;
-	public thickness                     = 0;
-	public hipRating                     = 0;
-	public buttRating                    = 0;
+	public femininity                       = 50;
+	public tone                             = 0;
+	public thickness                        = 0;
+	public hipRating                        = 0;
+	public buttRating                       = 0;
 	//Cocks
-	public cocks: Cock[]                 = [];
-	public balls                         = 0;
-	public ballSize                      = 0;
-	public hoursSinceCum                 = 0;
-	public cumMultiplier                 = 0;
-	public fertility                     = 10;
+	public cocks: Cock[]                    = [];
+	public balls                            = 0;
+	public ballSize                         = 0;
+	public hoursSinceCum                    = 0;
+	public cumMultiplier                    = 0;
+	public fertility                        = 10;
 	//Vaginas
-	public vaginas: Vagina[]             = [];
+	public vaginas: Vagina[]                = [];
 	//Ass
-	public ass: Ass                      = new Ass();
+	public ass: Ass                         = new Ass();
 	//Breasts
-	public breastRows: BreastRow[]       = [];
-	public lactationMultiplier           = 0;
+	public breastRows: BreastRow[]          = [];
+	public lactationMultiplier              = 0;
 	//Effects & perks
-	public keyItems: KeyItem[]           = [];
-	public statusEffects: StatusEffect[] = [];
-	public perks: Perk[]                 = [];
-
+	public keyItems: KeyItem[]              = [];
+	public statusEffects: StatusEffect[]    = [];
+	public perks: Perk[]                    = [];
+	// Piercings
+	public nipplesPierced: Number           = 0;
+	public nipplesPShort: String            = "";
+	public nipplesPLong: String             = "";
+	public lipPierced: Number               = 0;
+	public lipPShort: String                = "";
+	public lipPLong: String                 = "";
+	public tonguePierced: Number            = 0;
+	public tonguePShort: String             = "";
+	public tonguePLong: String              = "";
+	public eyebrowPierced: Number           = 0;
+	public eyebrowPShort: String            = "";
+	public eyebrowPLong: String             = "";
+	public earsPierced: Number              = 0;
+	public earsPShort: String               = "";
+	public earsPLong: String                = "";
+	public nosePierced: Number              = 0;
+	public nosePShort: String               = "";
+	public nosePLong: String                = "";
 	// Pregnancy
 	public pregnancyType: PregnancyType     = 0;
 	public pregnancyIncubation              = 0;
@@ -125,11 +143,7 @@ class Creature {
 	}
 
 	public attack(): void {
-		let enemy;
-		if (this == player)
-			enemy = monster;
-		else
-			enemy = player;
+		let enemy:Creature = this instanceof Player && this == player ? monster : player;
 		//Hit or miss?
 		let hitRoll = 70 + (this.spe - enemy.spe / 2);
 		let hitNeed = rand(100);
@@ -154,13 +168,12 @@ class Creature {
 		//Round things off
 		damage = Math.round(damage);
 		//Display text and apply damage
-		if (this == player) {
+		if (this as Creature == player) {
 			if (damage <= 5) outputText("You struck a glancing blow against " + enemy.a + " " + enemy.refName + ". ");
 			else if (damage <= 10) outputText("You wound " + enemy.a + " " + enemy.refName + "! ");
 			else if (damage <= 20) outputText("You stagger " + enemy.a + " " + enemy.refName + " with the force of your attacks! ");
 			else outputText("You mutilate " + enemy.a + " " + enemy.refName + " with a powerful " + this.weapon.verb + "! ");
-		}
-		else {
+		} else {
 			if (damage <= 0) {
 				//Due to toughness or amor...
 				if (this.plural)
@@ -207,7 +220,7 @@ class Creature {
 		temp += this.bonusHP;
 		if (this.hasPerk(PerkLib.Tank)) temp += 50;
 		if (this.hasPerk(PerkLib.Tank2)) temp += this.tou;
-		if (this == player) {
+		if (this as Creature == player) {
 			temp += this.level * 15;
 			if (temp < 50) temp = 50;
 			if (temp > 999) temp = 999;
@@ -295,12 +308,12 @@ class Creature {
 			//Skip if resisted or noBimbo
 			if (attribute == "resisted" || attribute == "nobimbo") continue;
 			//Apply modifiers
-			var a: AttrName = attribute;
+			let a: AttrName = attribute;
 			this[a] += mod;
 			//Constrain values to min and max
 			if (this[a] > 100) this[a] = 100;
 			if (this[a] < 0) this[a] = 0;
-			if (this == player) {
+			if (this as Creature == player) {
 				if (mod > 0)
 					showUpDown(a + "Arrow", "up");
 				else if (mod < 0)
@@ -325,7 +338,7 @@ class Creature {
 			else
 				outputText(" ");
 		}
-		if (this == player) {
+		if (this as Creature == player) {
 			if (amount < 0)
 				showUpDown("hpArrow", "down");
 			else if (amount > 0)
@@ -350,7 +363,7 @@ class Creature {
 			else
 				outputText(" ");
 		}
-		if (this == player) {
+		if (this as Creature == player) {
 			if (amount < 0)
 				showUpDown("lustArrow", "down");
 			else if (amount > 0)
@@ -374,7 +387,7 @@ class Creature {
 			else
 				outputText(" ");
 		}
-		if (this == player) {
+		if (this as Creature == player) {
 			if (amount < 0)
 				showUpDown("fatigueArrow", "down");
 			else if (amount > 0)
@@ -417,7 +430,7 @@ class Creature {
 		//Take damage you masochist!
 		if (this.hasPerk(PerkLib.Masochist) && this.lib >= 60) {
 			mult *= 0.8;
-			if (this == player && !displayMode) this.changeLust(2, false);
+			if (this as Creature == player && !displayMode) this.changeLust(2, false);
 		}
 		/*if (this.hasPerk(PerkLib.ImmovableObject) && this.tou >= 75) {
 		 mult *= 0.9;
@@ -494,7 +507,7 @@ class Creature {
 	public orgasm(): void {
 		this.changeLust(-this.lust);
 		this.hoursSinceCum = 0;
-		if (this == player) {
+		if (this as Creature == player) {
 			gameFlags[TIMES_ORGASMED]++;
 			refreshStats();
 		}
@@ -546,10 +559,10 @@ class Creature {
 	//------------
 	//Perks
 	public createPerk(ptype: PerkType,
-	                  value1: number = 0,
-	                  value2: number = 0,
-	                  value3: number = 0,
-	                  value4: number = 0): void {
+					  value1: number = 0,
+					  value2: number = 0,
+					  value3: number = 0,
+					  value4: number = 0): void {
 		let newKeyItem = new Perk(ptype, value1, value2, value3, value4);
 		this.perks.push(newKeyItem);
 		this.perks = _.sortBy(this.perks, p => p.perkName)
@@ -583,10 +596,10 @@ class Creature {
 
 	//Status Effects
 	public createStatusEffect(stype: StatusEffectType,
-	                          value1: number = 0,
-	                          value2: number = 0,
-	                          value3: number = 0,
-	                          value4: number = 0): void {
+							  value1: number = 0,
+							  value2: number = 0,
+							  value3: number = 0,
+							  value4: number = 0): void {
 		this.statusEffects.push(new StatusEffect(stype, value1, value2, value3, value4));
 		this.statusEffects = _.sortBy(this.statusEffects, s => s.stype)
 	}
@@ -619,10 +632,10 @@ class Creature {
 	//-------
 
 	public createKeyItem(ktype: KeyItemType,
-	                     value1: number = 0,
-	                     value2: number = 0,
-	                     value3: number = 0,
-	                     value4: number = 0): void {
+						 value1: number = 0,
+						 value2: number = 0,
+						 value3: number = 0,
+						 value4: number = 0): void {
 		this.keyItems.push(new KeyItem(ktype, value1, value2, value3, value4));
 		this.keyItems = _.sortBy(this.keyItems, k => k.ktype)
 	}
@@ -2297,9 +2310,9 @@ class Creature {
 // GENDER UTIL
 //------------
 	public genderText(male: string   = "man",
-	                  female: string = "woman",
-	                  futa: string   = "futa",
-	                  eunuch: string = "eunuch"): string {
+					  female: string = "woman",
+					  futa: string   = "futa",
+					  eunuch: string = "eunuch"): string {
 		//Main function
 		if (this.vaginas.length > 0) {
 			if (this.cocks.length > 0) return futa;

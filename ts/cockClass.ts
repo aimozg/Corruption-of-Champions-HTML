@@ -57,6 +57,10 @@ class Cock {
 	public cArea(): number {
 		return this.cockLength * this.cockThickness;
 	}
+
+	public hasKnot():boolean {
+		return this.knotMultiplier > 1;
+	}
 }
 
 /**
