@@ -198,7 +198,7 @@ namespace Appearance {
 		let rando           = 0;
 		//Size descriptors 33% chance
 		let row             = i_creature.breastRows[i_rowNum];
-		let nippleLength    = row.nippleLength;
+		let nippleLength    = i_creature.nippleLength;
 		if (rand(4) == 0) {
 			//TINAHHHH
 			if (nippleLength < .25) {
@@ -331,7 +331,7 @@ namespace Appearance {
 				"slippery "];
 			description += randomChoice(options);
 		}
-		if (!haveDescription && i_creature.findStatusEffect(StatusEffects.BlackNipples) >= 0) {
+		if (!haveDescription && i_creature.hasStatusEffect(StatusEffects.BlackNipples)) {
 			options = ["black ",
 				"ebony ",
 				"sable "];
@@ -1043,7 +1043,7 @@ namespace Appearance {
 		let description     = "";
 		let options;
 
-		if (i_plural && (i_creature.findStatusEffect(StatusEffects.Uniball) < 0)) {
+		if (i_plural && !i_creature.hasStatusEffect(StatusEffects.Uniball)) {
 			if (i_creature.balls == 1) {
 				if (i_withArticle) {
 					options = ["a single",
@@ -1125,7 +1125,7 @@ namespace Appearance {
 
 		}
 		//UNIBALL
-		if (i_creature.findStatusEffect(StatusEffects.Uniball) >= 0) {
+		if (i_creature.hasStatusEffect(StatusEffects.Uniball)) {
 			if (description) description += " ";
 			options = ["tightly-compressed",
 				"snug",
@@ -1184,7 +1184,7 @@ namespace Appearance {
 		description += randomChoice(options);
 		if (i_plural) description += "s";
 
-		if (i_creature.findStatusEffect(StatusEffects.Uniball) >= 0 && rand(2) == 0) {
+		if (i_creature.hasStatusEffect(StatusEffects.Uniball) && rand(2) == 0) {
 			if (rand(3) == 0)
 				description += " merged into a cute, spherical package";
 			else if (rand(2) == 0)
@@ -1323,7 +1323,7 @@ namespace Appearance {
 	export function clitDescription(i_creature: Creature): string {
 		let description     = "";
 		let options;
-		let clitLength      = i_creature.vaginas[0].clitLength;
+		let clitLength      = i_creature.clitLength;
 		let haveDescription = false;
 		//Length Adjective - 50% chance
 		if (rand(2) == 0) {

@@ -90,10 +90,12 @@ class Creature {
 	public fertility                        = 10;
 	//Vaginas
 	public vaginas: Vagina[]                = [];
+	public clitLength: number               = 0;
 	//Ass
 	public ass: Ass                         = new Ass();
 	//Breasts
 	public breastRows: BreastRow[]          = [];
+	public nippleLength: number             = 0.25;
 	public lactationMultiplier              = 0;
 	//Effects & perks
 	public keyItems: KeyItem[]              = [];
@@ -294,9 +296,9 @@ class Creature {
 	}
 
 	//Stats Change
-	public modStats(stat: AttrName, mod: number): void;
-	public modStats(...statmod: [AttrName, number][]): void;
-	public modStats(): void {
+	public dynStats(stat: AttrName, mod: number): void;
+	public dynStats(...statmod: [AttrName, number][]): void;
+	public dynStats(): void {
 		for (let i = 0; i < arguments.length; i += 2) {
 			//Get variables
 			let attribute = arguments[i];
@@ -2100,21 +2102,21 @@ class Creature {
 					if (this.breastRows.length > 1) outputText("You drop to your knees from a massive change in your body's center of gravity.  Your " + this.breastDescript(0) + " tingle strongly, growing disturbingly large.");
 					if (this.breastRows.length == 1) outputText("You drop to your knees from a massive change in your center of gravity.  The tingling in your " + this.breastDescript(0) + " intensifies as they continue to grow at an obscene rate.");
 				}
-				if (this.biggestTitSize() >= 8.5 && this.breastRows[0].nippleLength < 2) {
+				if (this.biggestTitSize() >= 8.5 && this.nippleLength < 2) {
 					outputText("  A tender ache starts at your " + this.nippleDescript(0) + "s as they grow to match your burgeoning breast-flesh.");
-					this.breastRows[0].nippleLength = 2;
+					this.nippleLength = 2;
 				}
-				if (this.biggestTitSize() >= 7 && this.breastRows[0].nippleLength < 1) {
+				if (this.biggestTitSize() >= 7 && this.nippleLength < 1) {
 					outputText("  A tender ache starts at your " + this.nippleDescript(0) + "s as they grow to match your burgeoning breast-flesh.");
-					this.breastRows[0].nippleLength = 1;
+					this.nippleLength = 1;
 				}
-				if (this.biggestTitSize() >= 5 && this.breastRows[0].nippleLength < .75) {
+				if (this.biggestTitSize() >= 5 && this.nippleLength < .75) {
 					outputText("  A tender ache starts at your " + this.nippleDescript(0) + "s as they grow to match your burgeoning breast-flesh.");
-					this.breastRows[0].nippleLength = .75;
+					this.nippleLength = .75;
 				}
-				if (this.biggestTitSize() >= 3 && this.breastRows[0].nippleLength < .5) {
+				if (this.biggestTitSize() >= 3 && this.nippleLength < .5) {
 					outputText("  A tender ache starts at your " + this.nippleDescript(0) + "s as they grow to match your burgeoning breast-flesh.");
-					this.breastRows[0].nippleLength = .5;
+					this.nippleLength = .5;
 				}
 			}
 			else {
@@ -2130,21 +2132,21 @@ class Creature {
 					if (this.breastRows.length > 1) outputText("You drop to your knees from a massive change in your body's center of gravity.  Your top row of " + this.breastDescript(0) + " tingle strongly, growing disturbingly large.");
 					if (this.breastRows.length == 1) outputText("You drop to your knees from a massive change in your center of gravity.  The tinglng in your " + this.breastDescript(0) + " intensifies as they continue to grow at an obscene rate.");
 				}
-				if (this.biggestTitSize() >= 8.5 && this.breastRows[0].nippleLength < 2) {
+				if (this.biggestTitSize() >= 8.5 && this.nippleLength < 2) {
 					outputText("  A tender ache starts at your " + this.nippleDescript(0) + "s as they grow to match your burgeoning breast-flesh.");
-					this.breastRows[0].nippleLength = 2;
+					this.nippleLength = 2;
 				}
-				if (this.biggestTitSize() >= 7 && this.breastRows[0].nippleLength < 1) {
+				if (this.biggestTitSize() >= 7 && this.nippleLength < 1) {
 					outputText("  A tender ache starts at your " + this.nippleDescript(0) + "s as they grow to match your burgeoning breast-flesh.");
-					this.breastRows[0].nippleLength = 1;
+					this.nippleLength = 1;
 				}
-				if (this.biggestTitSize() >= 5 && this.breastRows[0].nippleLength < .75) {
+				if (this.biggestTitSize() >= 5 && this.nippleLength < .75) {
 					outputText("  A tender ache starts at your " + this.nippleDescript(0) + "s as they grow to match your burgeoning breast-flesh.");
-					this.breastRows[0].nippleLength = .75;
+					this.nippleLength = .75;
 				}
-				if (this.biggestTitSize() >= 3 && this.breastRows[0].nippleLength < .5) {
+				if (this.biggestTitSize() >= 3 && this.nippleLength < .5) {
 					outputText("  A tender ache starts at your " + this.nippleDescript(0) + "s as they grow to match your burgeoning breast-flesh.");
-					this.breastRows[0].nippleLength = .5;
+					this.nippleLength = .5;
 				}
 			}
 		}
@@ -3167,7 +3169,7 @@ class Creature {
 		}
 
 //Chance for eggs fertilization - ovi elixir and imps excluded!
-		if (type != PREGNANCY_IMP && type != PREGNANCY_OVIELIXIR_EGGS && type != PREGNANCY_ANEMONE) {
+		if (type != PregnancyType.IMP && type != PregnancyType.OVIELIXIR_EGGS && type != PregnancyType.ANEMONE) {
 			if (this.hasPerk(PerkLib.SpiderOvipositor) || this.hasPerk(PerkLib.BeeOvipositor)) {
 				if (this.totalFertility() + bonus > Math.floor(Math.random() * beat)) {
 					this.fertilizeEggs();

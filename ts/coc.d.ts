@@ -53,6 +53,7 @@ declare namespace ConsumableEffects {
 declare namespace Inventory {
 	function takeItem(oldItem:Item,returnTo?:Function):void;
 	function inventoryMenu():void;
+	function itemGoNext():void;
 }
 declare namespace StatusEffects {
 	const BlackNipples:StatusEffectType;
@@ -60,7 +61,6 @@ declare namespace StatusEffects {
 declare class Tamani extends Creature {
 
 }
-declare enum PregnancyType{}
 
 declare let amily: Amily;
 declare let inCombat: boolean;

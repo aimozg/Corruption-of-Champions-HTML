@@ -20,23 +20,23 @@ namespace ConsumableEffects {
 		 */
 		player.slimeFeed();
 		outputText("You pop the cork and gulp down the thick greenish fluid.  The taste is unusual and unlike anything you've tasted before.");
-		if (player.pregnancyType == PREGNANCY_GOO_STUFFED) {
+		if (player.pregnancyType == PregnancyType.GOO_STUFFED) {
 			outputText("<br><br>For a moment you feel even more bloated than you already are.  That feeling is soon replaced by a dull throbbing pain.  It seems that with Valeria's goo filling your womb the ovielixir is unable to work its magic on you.");
 			return (false);
 		}
-		if (player.pregnancyType == PREGNANCY_WORM_STUFFED) {
+		if (player.pregnancyType == PregnancyType.WORM_STUFFED) {
 			outputText("<br><br>For a moment you feel even more bloated than you already are.  That feeling is soon replaced by a dull throbbing pain.  It seems that with the worms filling your womb the ovielixir is unable to work its magic on you.");
 			return (false);
 		}
 		if (player.pregnancyIncubation == 0) { //If the player is not pregnant, get preggers with eggs!
 			outputText("<br><br>The elixir has an immediate effect on your belly, causing it to swell out slightly as if pregnant.  You guess you'll be laying eggs sometime soon!");
-			player.knockUp(PREGNANCY_OVIELIXIR_EGGS, INCUBATION_OVIELIXIR_EGGS, 1, 1);
+			player.knockUp(PregnancyType.OVIELIXIR_EGGS, INCUBATION_OVIELIXIR_EGGS, 1, 1);
 			player.createStatusEffect(StatusEffects.Eggs, rand(6), 0, rand(3) + 5, 0);
 			return (false);
 		}
 		//Drinking multiple elixirs
 		let changeOccurred = false;
-		if (player.pregnancyType == PREGNANCY_OVIELIXIR_EGGS) { //If player already has eggs, chance of size increase!
+		if (player.pregnancyType == PregnancyType.OVIELIXIR_EGGS) { //If player already has eggs, chance of size increase!
 			let s = player.findStatusEffectByType(StatusEffects.Eggs);
 			if (s) {
 				//If eggs are small, chance of increase!
@@ -56,7 +56,7 @@ namespace ConsumableEffects {
 				}
 			}
 		}
-		if (!changeOccurred && player.pregnancyIncubation > 20 && player.pregnancyType != PREGNANCY_BUNNY) { //If no changes, speed up pregnancy.
+		if (!changeOccurred && player.pregnancyIncubation > 20 && player.pregnancyType != PregnancyType.BUNNY) { //If no changes, speed up pregnancy.
 			outputText("<br><br>You gasp as your pregnancy suddenly leaps forwards, your belly bulging outward a few inches as it gets closer to time for birthing.");
 			let newIncubation = player.pregnancyIncubation - (player.pregnancyIncubation * 0.3 + 10);
 			if (newIncubation < 2) newIncubation = 2;

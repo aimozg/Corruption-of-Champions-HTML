@@ -1,5 +1,4 @@
 class Vagina {
-	public clitLength = 0.25;
 	public clitPierced = 0;
 	public labiaPierced = 0;
 	constructor(public vaginalWetness:number=1,
@@ -12,8 +11,6 @@ class Vagina {
 function fixVagina(pussy:Vagina):Vagina { //Fix any undefined numbers.
     if (pussy.type == undefined)
         pussy.type = 0;
-    if (pussy.clitLength == undefined)
-        pussy.clitLength = 0.25;
     if (pussy.vaginalWetness == undefined)
         pussy.vaginalWetness = 1;
     if (pussy.vaginalLooseness == undefined)

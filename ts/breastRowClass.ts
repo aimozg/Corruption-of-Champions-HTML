@@ -4,9 +4,8 @@ class BreastRow {
 	//Goes up to 100.
 	public milkFullness        = 0;
 	public fuckable            = false;
-	public nippleLength        = 0.25;
 
-	constructor(public breastRating       = 2,
+	constructor(public breastRating     = 2,
 				public nipplesPerBreast = 2) {
 	}
 }
@@ -14,7 +13,7 @@ class BreastRow {
 /**
  * @deprecated
  */
-function unfuckBreastRow(breastRow:BreastRow):BreastRow { //Fix any undefined numbers.
+function unfuckBreastRow(breastRow: BreastRow): BreastRow { //Fix any undefined numbers.
 	if (breastRow.breasts == undefined)
 		breastRow.breasts = 2;
 	if (breastRow.breastRating == undefined)
@@ -27,7 +26,5 @@ function unfuckBreastRow(breastRow:BreastRow):BreastRow { //Fix any undefined nu
 		breastRow.fuckable = false;
 	if (breastRow.nipplesPerBreast == undefined)
 		breastRow.nipplesPerBreast = 1;
-	if (breastRow.nippleLength == undefined)
-		breastRow.nippleLength = 0.25;
 	return breastRow;
 }
