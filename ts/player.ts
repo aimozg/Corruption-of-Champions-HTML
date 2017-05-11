@@ -1223,8 +1223,8 @@ class Player extends Creature {
 		let s = this.findStatusEffectByType(StatusEffects.Venom);
 		if (s) {
 			if (s.value1 == VENOM_TYPE_BEE) {
-				this.modStats("str", s.value2);
-				this.modStats("spe", s.value3);
+				this.dynStats("str", s.value2);
+				this.dynStats("spe", s.value3);
 			}
 			this.removeStatusEffect(StatusEffects.Venom);
 		}
@@ -1249,8 +1249,8 @@ class Player extends Creature {
 		//if (this.hasStatusEffect(StatusEffects.InfestAttempted)) this.removeStatusEffect(StatusEffects.InfestAttempted);
 		s = this.findStatusEffectByType(StatusEffects.Might);
 		if (s) {
-			this.modStats("str", -s.value1);
-			this.modStats("tou", -s.value2);
+			this.dynStats("str", -s.value1);
+			this.dynStats("tou", -s.value2);
 			this.removeStatusEffect(StatusEffects.Might);
 		}
 		if (this.hasStatusEffect(StatusEffects.ChargeWeapon)) this.removeStatusEffect(StatusEffects.ChargeWeapon);

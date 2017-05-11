@@ -14,7 +14,9 @@ declare function addToGameFlags(...flags:string[]):void;
 declare function cleanupAfterCombat():void;
 declare function combatRoundOver():void;
 declare function gameOver():void;
+declare function inCombat():boolean;
 declare function mainMenu():void;
+declare function playerMenu():void;
 declare function startCombat(monster:Creature):void;
 
 declare class Amily extends Creature {
@@ -33,9 +35,6 @@ declare namespace Areas {
 	namespace Mountain {
 		function explore():void;
 	}
-}
-declare namespace CampEvents {
-	function checkEvents():void;
 }
 declare namespace ConsumableEffects {
 	function beeTFs(typ:int):void;
@@ -58,7 +57,6 @@ declare namespace ConsumableEffects {
 	function minotaurTFs():void;
 	function minotaurCum(purified:boolean):void;
 	function pigTFs():void;
-	function reductoMenu():void;
 	function scholarsTea():void;
 	function slimeTFs():void;
 	function snakeTFs():void;
@@ -76,13 +74,6 @@ declare class Goblin extends Creature {
 }
 declare class Imp extends Creature {
 
-}
-declare namespace Inventory {
-	function inventoryMenu():void;
-	function itemGoNext():void;
-	function takeItem(oldItem:Item,returnTo?:Function):void;
-	function showStash(stashbool:boolean):boolean;
-	function stashMenu():void;
 }
 declare namespace JojoScene {
 	function jojoCamp():void;
@@ -108,6 +99,5 @@ declare class TentacleBeast extends Creature {
 }
 
 declare let amily: Amily;
-declare let inCombat: boolean;
 declare let monster: Creature;
 declare let tamanipreg: Tamani;

@@ -71,7 +71,7 @@ ConsumableEffects.lustDraft = function(fuck) {
         player.goIntoRut(true);
     }
     //ORGAZMO
-    if (player.lust >= player.maxLust() && !inCombat) {
+    if (player.lust >= player.maxLust() && !inCombat()) {
         outputText("<br><br>The arousal from the potion overwhelms your senses and causes you to spontaneously orgasm.  You rip off your " + player.armor.equipmentName + " and look down as your ", false);
         if (player.cocks.length > 0) {
             outputText(player.multiCockDescriptLight() + " erupts in front of you, liberally spraying the ground around you.  ", false);
