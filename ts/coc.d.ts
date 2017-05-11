@@ -10,14 +10,32 @@ declare interface HTMLElement {
 	tooltipText?: string;
 }
 
+declare function addToGameFlags(...flags:string[]):void;
 declare function cleanupAfterCombat():void;
 declare function combatRoundOver():void;
+declare function gameOver():void;
+declare function mainMenu():void;
+declare function startCombat(monster:Creature):void;
 
 declare class Amily extends Creature {
 
 }
-declare namespace Camp {
-	function returnToCampUseOneHour():void;
+declare namespace Areas {
+	namespace Forest {
+		function explore():void;
+	}
+	namespace Lake {
+		function explore():void;
+	}
+	namespace Desert {
+		function explore():void;
+	}
+	namespace Mountain {
+		function explore():void;
+	}
+}
+declare namespace CampEvents {
+	function checkEvents():void;
 }
 declare namespace ConsumableEffects {
 	function beeTFs(typ:int):void;
@@ -50,10 +68,34 @@ declare namespace ConsumableEffects {
 	function vitalityTincture():void;
 	function whiteSpellBook():void;
 }
+declare namespace GiacomoScene {
+	function giacomoEncounter():void;
+}
+declare class Goblin extends Creature {
+
+}
+declare class Imp extends Creature {
+
+}
 declare namespace Inventory {
-	function takeItem(oldItem:Item,returnTo?:Function):void;
 	function inventoryMenu():void;
 	function itemGoNext():void;
+	function takeItem(oldItem:Item,returnTo?:Function):void;
+	function showStash(stashbool:boolean):boolean;
+	function stashMenu():void;
+}
+declare namespace JojoScene {
+	function jojoCamp():void;
+	function jojoCampCorrupt():void;
+}
+declare namespace pregnancyProgression {
+	function updatePregnancy():void;
+}
+declare namespace Places {
+	function placesMenu():void;
+}
+declare namespace RathazulScene {
+	function campRathazul():void;
 }
 declare namespace StatusEffects {
 	const BlackNipples:StatusEffectType;
@@ -61,10 +103,11 @@ declare namespace StatusEffects {
 declare class Tamani extends Creature {
 
 }
+declare class TentacleBeast extends Creature {
+
+}
 
 declare let amily: Amily;
 declare let inCombat: boolean;
 declare let monster: Creature;
 declare let tamanipreg: Tamani;
-
-declare let TIMES_ORGASMED:string;

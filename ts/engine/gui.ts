@@ -133,13 +133,46 @@ function menu() {
 
 function addButton(pos: number,
 				   txt: string,
-				   func: Function,
-				   arg1?: any,
-				   arg2?: any,
-				   arg3?: any,
+				   func: ()=>void,
+				   arg1?: undefined,
+				   arg2?: undefined,
+				   arg3?: undefined,
 				   tooltipText?: string,
-				   tooltipHeader: string = txt) {
-	if (tooltipHeader == undefined) tooltipHeader = txt;
+				   tooltipHeader?: string):HTMLElement;
+function addButton<A1>(pos: number,
+				   txt: string,
+				   func: (a1:A1)=>void,
+				   arg1: A1|undefined,
+				   arg2?: undefined,
+				   arg3?: undefined,
+				   tooltipText?: string,
+				   tooltipHeader?: string):HTMLElement;
+function addButton<A1,A2>(pos: number,
+				   txt: string,
+				   func: (a1:A1,a2:A2)=>void,
+				   arg1: A1|undefined,
+				   arg2: A2|undefined,
+				   arg3?: undefined,
+				   tooltipText?: string,
+				   tooltipHeader?: string):HTMLElement;
+function addButton<A1,A2,A3>(pos: number,
+				   txt: string,
+				   func: (a1:A1,a2:A2,a3:A3)=>void,
+				   arg1: A1|undefined,
+				   arg2: A2|undefined,
+				   arg3: A3|undefined,
+				   tooltipText?: string,
+				   tooltipHeader?: string):HTMLElement;
+function addButton():HTMLElement {
+	let pos: number = arguments[0];
+	let txt: string = arguments[1];
+	let func: Function = arguments[2];
+	let arg1: any = arguments[3];
+	let arg2: any = arguments[4];
+	let arg3: any = arguments[5];
+	let tooltipText: string|undefined = arguments[6];
+	let tooltipHeader: string|undefined  = arguments[7];
+	if (tooltipHeader === undefined) tooltipHeader = txt;
 	const callback       = createCallBackFunction(func, arg1, arg2, arg3);
 	let btn              = document.getElementById("button" + pos)!!;
 	btn.innerHTML        = txt;
@@ -148,7 +181,7 @@ function addButton(pos: number,
 	btn.onclick          = callback;
 	btn.tooltipHeader    = tooltipHeader;
 	btn.tooltipText      = tooltipText;
-	return document.getElementById("button" + pos);
+	return document.getElementById("button" + pos)!!;
 }
 function addButtonDisabled(pos: number, txt: string, tooltipText?: string, tooltipHeader: string = txt) {
 	if (tooltipHeader == undefined) tooltipHeader = txt;
