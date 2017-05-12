@@ -1756,12 +1756,10 @@ class Creature {
 		return this.cocks[arg].hasKnot();
 	}
 
-//PLACEHOLDER
-	public dogCocks(): void {
-		outputText("Placeholder for dogCocks in creature.js. Returning.")
-		doNext(Camp.returnToCampUseOneHour);
+	//PLACEHOLDER
+	public dogCocks(): number {
+		return this.countCocksOfType(CockTypesEnum.DOG);
 	}
-
 
 	public cockHead(cockNum: number): string {
 		if (cockNum == undefined) cockNum = 0;

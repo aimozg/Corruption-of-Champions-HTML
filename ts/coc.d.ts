@@ -16,11 +16,13 @@ declare function combatRoundOver():void;
 declare function gameOver():void;
 declare function inCombat():boolean;
 declare function mainMenu():void;
-declare function playerMenu():void;
 declare function startCombat(monster:Creature):void;
 
 declare class Amily extends Creature {
 
+}
+declare namespace AmilyScene {
+	function pcBirthsAmilysKidsQuestVersion():void;
 }
 declare namespace Areas {
 	namespace Forest {
@@ -72,6 +74,9 @@ declare namespace GiacomoScene {
 declare class Goblin extends Creature {
 
 }
+declare class GooGirl extends Creature {
+	gooColor4():string;
+}
 declare class Imp extends Creature {
 
 }
@@ -79,17 +84,14 @@ declare namespace JojoScene {
 	function jojoCamp():void;
 	function jojoCampCorrupt():void;
 }
-declare namespace pregnancyProgression {
-	function updatePregnancy():void;
-}
 declare namespace Places {
 	function placesMenu():void;
 }
 declare namespace RathazulScene {
 	function campRathazul():void;
 }
-declare namespace StatusEffects {
-	const BlackNipples:StatusEffectType;
+declare namespace SandTrapScene {
+	function birfSandTarps():void;
 }
 declare class Tamani extends Creature {
 

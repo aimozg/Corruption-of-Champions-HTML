@@ -80,20 +80,14 @@ namespace Inventory {
 
 	// Puts item into inventory
 	export function takeItem(itype: Item,
-							 nextAction: () => void,
+							 nextAction: () => void = playerMenu,
 							 overrideAbandon: () => void = nextAction,
 							 source: ItemSlot | null     = null): void {
-		if (overrideAbandon == undefined) {
-			overrideAbandon = nextAction;
-		}
 		/*if (itype == null) {
 		 CoC_Settings.error("takeItem(null)");
 		 return;
 		 }*/
 		if (itype == Items.NOTHING) return;
-		if (nextAction != null)
-			callNext = nextAction;
-		else callNext = playerMenu;
 		//Check for an existing stack with room in the inventory and return the value for it.
 		let temp = player.roomInExistingStack(itype);
 		if (temp >= 0) { //First slot go!

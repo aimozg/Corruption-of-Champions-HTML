@@ -23,7 +23,7 @@ let mainFontSizeIndex = 4; //Goes from 0 to 8. Will be used to pick font size fr
 
 //Core variables
 let player:Player;// = new Player();
-let playerMenu = null;
+let playerMenu:()=>void;
 let gameStarted = false; //Determine if game has already started
 let shiftKeyDown = false;
 
