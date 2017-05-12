@@ -10,10 +10,11 @@ declare interface HTMLElement {
 	tooltipText?: string;
 }
 
-declare function addToGameFlags(...flags:string[]):void;
+declare function applyFontSettings():void;
 declare function cleanupAfterCombat():void;
 declare function combatRoundOver():void;
 declare function gameOver():void;
+declare function GetIEVersion():number;
 declare function inCombat():boolean;
 declare function mainMenu():void;
 declare function startCombat(monster:Creature):void;
@@ -85,7 +86,9 @@ declare namespace JojoScene {
 	function jojoCampCorrupt():void;
 }
 declare namespace Places {
-	function placesMenu():void;
+	namespace Farm {
+		function farmExploreEncounter():void;
+	}
 }
 declare namespace RathazulScene {
 	function campRathazul():void;
@@ -98,6 +101,9 @@ declare class Tamani extends Creature {
 }
 declare class TentacleBeast extends Creature {
 
+}
+declare namespace TownRuins {
+	function exploreVillageRuin():void;
 }
 
 declare let amily: Amily;

@@ -8,6 +8,9 @@ class Vagina {
 	}
 }
 
+/**
+ * @deprecated
+ */
 function fixVagina(pussy:Vagina):Vagina { //Fix any undefined numbers.
     if (pussy.type == undefined)
         pussy.type = 0;

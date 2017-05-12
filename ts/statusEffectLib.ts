@@ -21,6 +21,7 @@ namespace StatusEffects {
 	export const Contraceptives = new StatusEffectType("Contraceptives");
 	export const Eggs           = new StatusEffectType("Eggs");
 	export const Uniball        = new StatusEffectType("Uniball"); //TODO: Check code to see if this would be better as a gameflag
+	export const BlackNipples   = new StatusEffectType("Black Nipples");
 	//------------
 	// COMBAT
 	//------------
