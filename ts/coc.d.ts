@@ -17,6 +17,7 @@ declare function gameOver():void;
 declare function GetIEVersion():number;
 declare function inCombat():boolean;
 declare function mainMenu():void;
+declare function newGamePlusMod():number;
 declare function startCombat(monster:Creature):void;
 
 declare class Amily extends Creature {
@@ -74,9 +75,6 @@ declare namespace GiacomoScene {
 }
 declare class GooGirl extends Creature {
 	gooColor4():string;
-}
-declare class Imp extends Creature {
-
 }
 declare namespace JojoScene {
 	function jojoCamp():void;

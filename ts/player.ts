@@ -81,11 +81,11 @@ class Player extends Creature {
 		this.perks         = [];
 	}
 
-	public minLust():number {
+	public minLust(): number {
 		return 0;
 	}
 
-	public race():string {
+	public race(): string {
 		//Determine race type:
 		let race = "human";
 		if (this.catScore() >= 4) {
@@ -249,7 +249,7 @@ class Player extends Creature {
 	//RACIAL SCORE
 
 	//determine demon rating
-	demonScore():number {
+	demonScore(): number {
 		let demonCounter = 0;
 		if (this.hornType == HornType.DEMON && this.horns > 0)
 			demonCounter++;
@@ -271,7 +271,7 @@ class Player extends Creature {
 	}
 
 	//Determine Human Rating
-	humanScore():number {
+	humanScore(): number {
 		let humanCounter = 0;
 		if (this.faceType == FaceType.HUMAN)
 			humanCounter++;
@@ -293,7 +293,7 @@ class Player extends Creature {
 	}
 
 	//Determine minotaur rating
-	minotaurScore():number {
+	minotaurScore(): number {
 		let minoCounter = 0;
 		if (this.faceType == FaceType.COW_MINOTAUR)
 			minoCounter++;
@@ -317,7 +317,7 @@ class Player extends Creature {
 	}
 
 	//Determine cow rating
-	cowScore():number {
+	cowScore(): number {
 		let minoCounter = 0;
 		if (this.faceType == FaceType.HUMAN)
 			minoCounter++;
@@ -342,7 +342,7 @@ class Player extends Creature {
 		return minoCounter;
 	}
 
-	sandTrapScore():number {
+	sandTrapScore(): number {
 		let counter = 0;
 		if (this.hasStatusEffect(StatusEffects.BlackNipples))
 			counter++;
@@ -360,7 +360,7 @@ class Player extends Creature {
 	}
 
 	//Determine Bee Rating
-	beeScore():number {
+	beeScore(): number {
 		let beeCounter = 0;
 		if (this.hairColor == "shiny black")
 			beeCounter++;
@@ -386,7 +386,7 @@ class Player extends Creature {
 	}
 
 	//Determine Ferret Rating!
-	ferretScore():number {
+	ferretScore(): number {
 		let counter = 0;
 		if (this.faceType == FaceType.FERRET_MASK) counter++;
 		if (this.faceType == FaceType.FERRET) counter += 2;
@@ -398,7 +398,7 @@ class Player extends Creature {
 	}
 
 	//Determine Dog Rating
-	dogScore():number {
+	dogScore(): number {
 		let dogCounter = 0;
 		if (this.faceType == FaceType.DOG)
 			dogCounter++;
@@ -422,7 +422,7 @@ class Player extends Creature {
 		return dogCounter;
 	}
 
-	mouseScore():number {
+	mouseScore(): number {
 		let coonCounter = 0;
 		if (this.earType == EarType.MOUSE)
 			coonCounter++;
@@ -442,7 +442,7 @@ class Player extends Creature {
 		return coonCounter;
 	}
 
-	raccoonScore():number {
+	raccoonScore(): number {
 		let coonCounter = 0;
 		if (this.faceType == FaceType.RACCOON_MASK)
 			coonCounter++;
@@ -463,7 +463,7 @@ class Player extends Creature {
 	}
 
 	//Determine Fox Rating
-	foxScore():number {
+	foxScore(): number {
 		let foxCounter = 0;
 		if (this.faceType == FaceType.FOX)
 			foxCounter++;
@@ -488,7 +488,7 @@ class Player extends Creature {
 	}
 
 	//Determine cat Rating
-	catScore():number {
+	catScore(): number {
 		let catCounter = 0;
 		if (this.faceType == FaceType.CAT)
 			catCounter++;
@@ -513,7 +513,7 @@ class Player extends Creature {
 	}
 
 	//Determine lizard rating
-	lizardScore():number {
+	lizardScore(): number {
 		let lizardCounter = 0;
 		if (this.faceType == FaceType.LIZARD)
 			lizardCounter++;
@@ -532,7 +532,7 @@ class Player extends Creature {
 		return lizardCounter;
 	}
 
-	spiderScore():number {
+	spiderScore(): number {
 		let score = 0;
 		if (this.eyeType == EyeType.FOUR_SPIDER_EYES)
 			score += 2;
@@ -552,7 +552,7 @@ class Player extends Creature {
 	}
 
 	//Determine Horse Rating
-	horseScore():number {
+	horseScore(): number {
 		let horseCounter = 0;
 		if (this.faceType == FaceType.HORSE)
 			horseCounter++;
@@ -571,7 +571,7 @@ class Player extends Creature {
 	}
 
 	//Determine kitsune Rating
-	kitsuneScore():number {
+	kitsuneScore(): number {
 		let kitsuneCounter = 0;
 		//If the character has fox ears, +1
 		if (this.earType == EarType.FOX)
@@ -621,7 +621,7 @@ class Player extends Creature {
 	}
 
 	//Determine Dragon Rating
-	dragonScore():number {
+	dragonScore(): number {
 		let dragonCounter = 0;
 		if (this.faceType == FaceType.DRAGON)
 			dragonCounter++;
@@ -649,7 +649,7 @@ class Player extends Creature {
 	}
 
 	//Goblinscore
-	goblinScore():number {
+	goblinScore(): number {
 		let horseCounter = 0;
 		if (this.earType == EarType.ELFIN)
 			horseCounter++;
@@ -669,7 +669,7 @@ class Player extends Creature {
 	}
 
 	//Gooscore
-	gooScore():number {
+	gooScore(): number {
 		let gooCounter = 0;
 		if (this.hairType == HairType.GOO)
 			gooCounter++;
@@ -685,7 +685,7 @@ class Player extends Creature {
 	}
 
 	//Nagascore
-	nagaScore():number {
+	nagaScore(): number {
 		let nagaCounter = 0;
 		if (this.faceType == FaceType.SNAKE_FANGS)
 			nagaCounter++;
@@ -699,7 +699,7 @@ class Player extends Creature {
 	}
 
 	//Bunnyscore
-	bunnyScore():number {
+	bunnyScore(): number {
 		let bunnyCounter = 0;
 		if (this.faceType == FaceType.BUNNY)
 			bunnyCounter++;
@@ -724,7 +724,7 @@ class Player extends Creature {
 	}
 
 	//Harpyscore
-	harpyScore():number {
+	harpyScore(): number {
 		let harpy = 0;
 		if (this.armType == ArmType.HARPY)
 			harpy++;
@@ -744,7 +744,7 @@ class Player extends Creature {
 	}
 
 	//Kangascore
-	kangaScore():number {
+	kangaScore(): number {
 		let kanga = 0;
 		if (this.countCocksOfType(CockTypesEnum.KANGAROO) > 0)
 			kanga++;
@@ -762,7 +762,7 @@ class Player extends Creature {
 	}
 
 	//sharkscore
-	sharkScore():number {
+	sharkScore(): number {
 		let sharkCounter = 0;
 		if (this.faceType == FaceType.SHARK_TEETH)
 			sharkCounter++;
@@ -776,7 +776,7 @@ class Player extends Creature {
 	}
 
 	//Determine Mutant Rating
-	mutantScore():number {
+	mutantScore(): number {
 		let mutantCounter = 0;
 		if (this.faceType > FaceType.HUMAN)
 			mutantCounter++;
@@ -814,7 +814,7 @@ class Player extends Creature {
 	}
 
 	//Mod-added
-	sirenScore():number {
+	sirenScore(): number {
 		let sirenCounter = 0;
 		if (this.faceType == FaceType.SHARK_TEETH && this.tailType == TailType.SHARK && this.wingType == WingType.FEATHERED_LARGE && this.armType == ArmType.HARPY)
 			sirenCounter += 4;
@@ -825,7 +825,7 @@ class Player extends Creature {
 		return sirenCounter;
 	}
 
-	pigScore():number {
+	pigScore(): number {
 		let pigCounter = 0;
 		if (this.earType == EarType.PIG)
 			pigCounter++;
@@ -840,7 +840,7 @@ class Player extends Creature {
 		return pigCounter;
 	}
 
-	satyrScore():number {
+	satyrScore(): number {
 		let satyrCounter = 0;
 		if (this.lowerBody == LowerBodyType.HOOFED)
 			satyrCounter++;
@@ -859,7 +859,7 @@ class Player extends Creature {
 		return satyrCounter;
 	}
 
-	rhinoScore():number {
+	rhinoScore(): number {
 		let rhinoCounter = 0;
 		if (this.earType == EarType.RHINO)
 			rhinoCounter++;
@@ -876,7 +876,7 @@ class Player extends Creature {
 		return rhinoCounter;
 	}
 
-	echidnaScore():number {
+	echidnaScore(): number {
 		let echidnaCounter = 0;
 		if (this.earType == EarType.ECHIDNA)
 			echidnaCounter++;
@@ -895,7 +895,7 @@ class Player extends Creature {
 		return echidnaCounter;
 	}
 
-	deerScore():number {
+	deerScore(): number {
 		let deerCounter = 0;
 		if (this.earType == EarType.DEER)
 			deerCounter++;
@@ -915,7 +915,7 @@ class Player extends Creature {
 	}
 
 	//Dragonne
-	dragonneScore():number {
+	dragonneScore(): number {
 		let dragonneCounter = 0;
 		if (this.faceType == FaceType.CAT)
 			dragonneCounter++;
@@ -935,7 +935,7 @@ class Player extends Creature {
 	}
 
 	//Manticore
-	manticoreScore():number {
+	manticoreScore(): number {
 		let catCounter = 0;
 		if (this.faceType == FaceType.CAT)
 			catCounter++;
@@ -960,7 +960,7 @@ class Player extends Creature {
 	}
 
 	//APPEARANCE
-	bodyType():string {
+	bodyType(): string {
 		let desc = "";
 		//OLD STUFF
 		//SUPAH THIN
@@ -1013,7 +1013,7 @@ class Player extends Creature {
 			else
 				desc += "an average frame and soft, untoned flesh with a tendency for jiggle";
 		} else if (this.thickness < 75) {
-			if (this.tone > 90) 
+			if (this.tone > 90)
 				desc += "a somewhat thick body that's covered in slabs of muscle";
 			else if (this.tone > 75)
 				desc += "a body that's a little bit wide and has some highly-visible muscles";
@@ -1064,7 +1064,7 @@ class Player extends Creature {
 		return desc;
 	}
 
-	lengthChange(amount:number, ncocks:number) {
+	lengthChange(amount: number, ncocks: number) {
 		if (amount < 0 && hyperHappy) {
 			return;
 		}
@@ -1159,7 +1159,7 @@ class Player extends Creature {
 	}
 
 	//Armour Descript & Clothed or Naked!
-	armorDescript(nakedText:string="gear"):string {
+	armorDescript(nakedText: string = "gear"): string {
 		//Main Function
 		let textArray = [];
 		let text      = "";
@@ -1175,23 +1175,23 @@ class Player extends Creature {
 		return text;
 	}
 
-	clothedOrNaked(clothedText:string, nakedText:string=""):string {
+	clothedOrNaked(clothedText: string, nakedText: string = ""): string {
 		return (this.armorDescript() != "nothing" ? clothedText : nakedText);
 	}
 
-	clothedOrNakedUpper(clothedText:string, nakedText:string=""):string {
+	clothedOrNakedUpper(clothedText: string, nakedText: string = ""): string {
 		return (this.armor.equipmentName != "nothing" && this.upperGarment.equipmentName == "nothing" ? clothedText : nakedText);
 	}
 
-	clothedOrNakedLower(clothedText:string, nakedText:string=""):string {
+	clothedOrNakedLower(clothedText: string, nakedText: string = ""): string {
 		return (this.armor.equipmentName != "nothing" && (this.armor.equipmentName != "lethicite armor" && this.lowerGarment.equipmentName == "nothing") && !this.isTaur() ? clothedText : nakedText);
 	}
 
 	clearStatuses() {
 		/*while (this.hasStatusEffect(StatusEffects.Web)) {
-			this.modStats("spe", this.statusEffectValue(StatusEffects.Web, 1));
-			this.removeStatusEffect(StatusEffects.Web);
-		}*/
+		 this.modStats("spe", this.statusEffectValue(StatusEffects.Web, 1));
+		 this.removeStatusEffect(StatusEffects.Web);
+		 }*/
 		//if (this.hasStatusEffect(StatusEffects.Shielding)) this.removeStatusEffect(StatusEffects.Shielding);
 		//if (this.hasStatusEffect(StatusEffects.HolliConstrict)) this.removeStatusEffect(StatusEffects.HolliConstrict);
 		//if (this.hasStatusEffect(StatusEffects.LustStones)) this.removeStatusEffect(StatusEffects.LustStones);
@@ -1205,20 +1205,20 @@ class Player extends Creature {
 		//if (this.hasStatusEffect(StatusEffects.GooArmorSilence)) this.removeStatusEffect(StatusEffects.GooArmorSilence);
 		//if (this.hasStatusEffect(StatusEffects.Whispered)) this.removeStatusEffect(StatusEffects.Whispered);
 		/*if (this.hasStatusEffect(StatusEffects.AkbalSpeed)) {
-			this.modStats("spe", -this.statusEffectValue(StatusEffects.AkbalSpeed, 1));
-			this.removeStatusEffect(StatusEffects.AkbalSpeed);
-		}*/
+		 this.modStats("spe", -this.statusEffectValue(StatusEffects.AkbalSpeed, 1));
+		 this.removeStatusEffect(StatusEffects.AkbalSpeed);
+		 }*/
 		/*if (this.hasStatusEffect(StatusEffects.AmilyVenom)) {
-			this.modStats("str", this.statusEffectValue(StatusEffects.AmilyVenom, 1));
-			this.modStats("spe", this.statusEffectValue(StatusEffects.AmilyVenom, 2));
-			this.removeStatusEffect(StatusEffects.AmilyVenom);
-		}*/
+		 this.modStats("str", this.statusEffectValue(StatusEffects.AmilyVenom, 1));
+		 this.modStats("spe", this.statusEffectValue(StatusEffects.AmilyVenom, 2));
+		 this.removeStatusEffect(StatusEffects.AmilyVenom);
+		 }*/
 		while (this.hasStatusEffect(StatusEffects.Blind)) this.removeStatusEffect(StatusEffects.Blind);
 		//if (this.hasStatusEffect(StatusEffects.SheilaOil)) this.removeStatusEffect(StatusEffects.SheilaOil);
 		/*if (this.hasStatusEffect(StatusEffects.TwuWuv)) {
-			this.modStats("int", this.statusEffectValue(StatusEffects.TwuWuv, 1));
-			this.removeStatusEffect(StatusEffects.TuvWuv);
-		}*/
+		 this.modStats("int", this.statusEffectValue(StatusEffects.TwuWuv, 1));
+		 this.removeStatusEffect(StatusEffects.TuvWuv);
+		 }*/
 		if (this.hasStatusEffect(StatusEffects.Bind)) this.removeStatusEffect(StatusEffects.Bind);
 		let s = this.findStatusEffectByType(StatusEffects.Venom);
 		if (s) {
@@ -1242,9 +1242,9 @@ class Player extends Creature {
 		//if (this.hasStatusEffect(StatusEffects.KissOfDeath)) this.removeStatusEffect(StatusEffects.KissOfDeath);
 		//if (this.hasStatusEffect(StatusEffects.AcidSlap)) this.removeStatusEffect(StatusEffects.AcidSlap);
 		/*if (this.hasStatusEffect(StatusEffects.CalledShot)) {
-			this.modStats("spe", this.statusEffectValue(StatusEffects.CalledShot, 1));
-			this.removeStatusEffect(StatusEffects.CalledShot);
-		}*/
+		 this.modStats("spe", this.statusEffectValue(StatusEffects.CalledShot, 1));
+		 this.removeStatusEffect(StatusEffects.CalledShot);
+		 }*/
 		//if (this.hasStatusEffect(StatusEffects.DemonSeed)) this.removeStatusEffect(StatusEffects.DemonSeed);
 		//if (this.hasStatusEffect(StatusEffects.InfestAttempted)) this.removeStatusEffect(StatusEffects.InfestAttempted);
 		s = this.findStatusEffectByType(StatusEffects.Might);
@@ -1255,40 +1255,40 @@ class Player extends Creature {
 		}
 		if (this.hasStatusEffect(StatusEffects.ChargeWeapon)) this.removeStatusEffect(StatusEffects.ChargeWeapon);
 		/*if (this.hasStatusEffect(StatusEffects.Disarmed)) {
-			this.removeStatusEffect(StatusEffects.Disarmed);
-		}*/
+		 this.removeStatusEffect(StatusEffects.Disarmed);
+		 }*/
 		/*if (this.hasStatusEffect(StatusEffects.AnemoneVenom)) {
-			this.modStats("str", this.statusEffectValue(StatusEffects.AnemoneVenom, 1));
-			this.modStats("spe", this.statusEffectValue(StatusEffects.AnemoneVenom, 2));
-			this.removeStatusEffect(StatusEffects.AnemoneVenom);
-		}*/
+		 this.modStats("str", this.statusEffectValue(StatusEffects.AnemoneVenom, 1));
+		 this.modStats("spe", this.statusEffectValue(StatusEffects.AnemoneVenom, 2));
+		 this.removeStatusEffect(StatusEffects.AnemoneVenom);
+		 }*/
 		/*if (this.hasStatusEffect(StatusEffects.GnollSpear)) {
-			this.modStats("spe", this.statusEffectValue(StatusEffects.AnemoneVenom, 1));
-			this.removeStatusEffect(StatusEffects.GnollSpear);
-		}*/
+		 this.modStats("spe", this.statusEffectValue(StatusEffects.AnemoneVenom, 1));
+		 this.removeStatusEffect(StatusEffects.GnollSpear);
+		 }*/
 		//if (this.hasStatusEffect(StatusEffects.BasiliskCompulsion)) this.removeStatusEffect(StatusEffects.BasiliskCompulsion);
 		/*if (this.hasStatusEffect(StatusEffects.BasiliskSlow)) {
-			this.modStats("spe", this.statusEffectValue(StatusEffects.AnemoneVenom, 1));
-			this.removeStatusEffect(StatusEffects.BasiliskSlow);
-		}*/
+		 this.modStats("spe", this.statusEffectValue(StatusEffects.AnemoneVenom, 1));
+		 this.removeStatusEffect(StatusEffects.BasiliskSlow);
+		 }*/
 		//if (this.hasStatusEffect(StatusEffects.GiantGrabbed)) this.removeStatusEffect(StatusEffects.GiantGrabbed);
 		//if (this.hasStatusEffect(StatusEffects.GiantBoulder)) this.removeStatusEffect(StatusEffects.GiantBoulder);
 		/*if (this.hasStatusEffect(StatusEffects.GiantStrLoss)) {
-			this.modStats("str", this.statusEffectValue(StatusEffects.GiantStrLoss, 1));
-			this.removeStatusEffect(StatusEffects.GiantStrLoss);
-		}*/
+		 this.modStats("str", this.statusEffectValue(StatusEffects.GiantStrLoss, 1));
+		 this.removeStatusEffect(StatusEffects.GiantStrLoss);
+		 }*/
 		/*if (this.hasStatusEffect(StatusEffects.LizanBlowpipe)) {
-			this.modStats("str", this.statusEffectValue(StatusEffects.LizanBlowpipe, 1));
-			this.modStats("tou", this.statusEffectValue(StatusEffects.LizanBlowpipe, 2));
-			this.modStats("spe", this.statusEffectValue(StatusEffects.LizanBlowpipe, 3));
-			this.modStats("sen", -this.statusEffectValue(StatusEffects.LizanBlowpipe, 4));
-			this.removeStatusEffect(StatusEffects.LizanBlowpipe);
-		}*/
+		 this.modStats("str", this.statusEffectValue(StatusEffects.LizanBlowpipe, 1));
+		 this.modStats("tou", this.statusEffectValue(StatusEffects.LizanBlowpipe, 2));
+		 this.modStats("spe", this.statusEffectValue(StatusEffects.LizanBlowpipe, 3));
+		 this.modStats("sen", -this.statusEffectValue(StatusEffects.LizanBlowpipe, 4));
+		 this.removeStatusEffect(StatusEffects.LizanBlowpipe);
+		 }*/
 		//while (this.hasStatusEffect(StatusEffects.IzmaBleed)) this.removeStatusEffect(StatusEffects.IzmaBleed);
 		/*if (this.hasStatusEffect(StatusEffects.GardenerSapSpeed)) {
-			this.modStats("spe", this.statusEffectValue(StatusEffects.GardenerSapSpeed, 1));
-			this.removeStatusEffect(StatusEffects.GardenerSapSpeed);
-		}*/
+		 this.modStats("spe", this.statusEffectValue(StatusEffects.GardenerSapSpeed, 1));
+		 this.removeStatusEffect(StatusEffects.GardenerSapSpeed);
+		 }*/
 		//if (this.hasStatusEffect(StatusEffects.KnockedBack)) this.removeStatusEffect(StatusEffects.KnockedBack);
 		//if (this.hasStatusEffect(StatusEffects.RemovedArmor)) this.removeStatusEffect(StatusEffects.RemovedArmor);
 		//if (this.hasStatusEffect(StatusEffects.JCLustLevel)) this.removeStatusEffect(StatusEffects.JCLustLevel);
@@ -1299,25 +1299,25 @@ class Player extends Creature {
 		//if (this.hasStatusEffect(StatusEffects.VineHealUsed)) this.removeStatusEffect(StatusEffects.VineHealUsed);
 	}
 
-	setFurColor(colorArray:string[]) {
+	setFurColor(colorArray: string[]) {
 		if (this.skinType == SkinType.FUR) {
 			this.furColor = randomChoice(colorArray);
 		}
 	}
 
-	refillHunger(amount:number) {
+	refillHunger(amount: number) {
 		this.hunger += amount;
 		if (this.hunger > 100) this.hunger = 100;
 	}
 
-	damageHunger(amount:number) {
+	damageHunger(amount: number) {
 		outputText("You take <b><font color='#daa520'>" + amount + "</font></b> hunger damage.");
 		this.hunger -= amount;
 		if (this.hunger < 0) this.hunger = 0;
 	}
 
 	//ITEMS
-	getMaxSlots():number {
+	getMaxSlots(): number {
 		let slots = 3;
 		if (this.hasPerk(PerkLib.StrongBack))
 			slots++;
@@ -1326,11 +1326,11 @@ class Player extends Creature {
 		return slots;
 	}
 
-	hasItem(itype:Item, minQuantity:number=1):boolean {
+	hasItem(itype: Item, minQuantity: number = 1): boolean {
 		return this.itemCount(itype) >= minQuantity;
 	}
 
-	itemCount(itype:Item):number {
+	itemCount(itype: Item): number {
 		let count = 0;
 		for (let i = 0; i < this.itemSlots.length; i++) {
 			if (this.itemSlots[i].itype == itype) count += this.itemSlots[i].quantity;
@@ -1338,7 +1338,7 @@ class Player extends Creature {
 		return count;
 	}
 
-	roomInExistingStack(itype:Item):number {
+	roomInExistingStack(itype: Item): number {
 		for (let i = 0; i < 10; i++) {
 			if (this.itemSlots[i].itype == itype && this.itemSlots[i].quantity != 0 && this.itemSlots[i].quantity < 5)
 				return i;
@@ -1346,14 +1346,14 @@ class Player extends Creature {
 		return -1;
 	}
 
-	emptySlot():number {
+	emptySlot(): number {
 		for (let i = 0; i < this.itemSlots.length; i++) {
 			if ((this.itemSlots[i].itype == undefined || this.itemSlots[i].itype == Items.NOTHING) && i < this.getMaxSlots()) return i;
 		}
 		return -1;
 	}
 
-	destroyItems(itype:Item, numOfItemToRemove:number):boolean {
+	destroyItems(itype: Item, numOfItemToRemove: number): boolean {
 		for (let slotNum = 0; slotNum < this.itemSlots.length; slotNum += 1) {
 			if (this.itemSlots[slotNum].itype == itype) {
 				while (this.itemSlots[slotNum].quantity > 0 && numOfItemToRemove > 0) {
@@ -1366,43 +1366,44 @@ class Player extends Creature {
 	}
 
 	//OTHERS
-	changeXP(amount:number) {
+	changeXP(amount: number) {
 		player.XP += amount;
 		if (player.XP < 0) player.XP = 0; //Keep from going into negative.
 		if (player.XP > 9999) player.XP = 9999;
 		refreshStats();
 	}
 
-	changeGems(amount:number) {
+	changeGems(amount: number) {
 		player.gems += amount;
 		if (player.gems < 0) player.gems = 0; //Keep from going into negative.
 		if (player.gems > Number.MAX_VALUE) player.gems = Number.MAX_VALUE;
 		refreshStats();
 	}
 
+	corruptionTolerance(): number {
+		return 0; // TODO
+	}
+
+	canOvipositSpider():boolean {
+		return false; // TODO
+	}
+	canOvipositBee():boolean {
+		return false; // TODO
+	}
+
+	dumpEggs():void {
+		// TODO
+	}
+	slimeFeed():void {
+		// TODO
+	}
+	fertilizeEggs():void {
+		// TODO
+	}
 }
 
 let tempStr = 0;
 let tempTou = 0;
 let tempSpe = 0;
 let tempInt = 0;
-
-/*Player.prototype.lustVuln = {
- get lustVuln() {
- let percent = 100;
- //Level-based
- if (this.level < 10)
- percent -= (this.level - 1) * 3;
- else
- percent -= 27;
- //Perk-based
- if (this.hasPerk(PerkLib.Resistance))
- percent -= 10;
- //Apply cap
- if (percent < 25)
- percent = 25;
- return percent / 100;
- }
- }*/
-
 

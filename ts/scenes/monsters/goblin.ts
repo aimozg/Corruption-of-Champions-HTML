@@ -892,21 +892,21 @@ class Goblin extends Creature {
 
 // This drug attack is used across all Goblins, including Tamani and Daughters.
 	public static goblinDrugAttack() {
-		var temp2 = rand(2);
+		let temp2 = rand(2);
 
-		var multiplier = 1; //Higher tier goblins have more powerful red and green potions. Multiplier controls strength.
+		let multiplier = 1; //Higher tier goblins have more powerful red and green potions. Multiplier controls strength.
 		if (monster.refName == "goblin assassin") multiplier += 0.2;
 		if (monster.refName == "goblin shaman") multiplier += 0.4;
 		if (monster.refName == "goblin warrior") multiplier += 0.5;
 		if (monster.refName == "goblin elder") multiplier += 1;
-		multiplier += player.newGamePlusMod() * 0.5; // Make it more potent in a new game!
+		multiplier += newGamePlusMod() * 0.5; // Make it more potent in a new game!
 
 		// Only Tamani and the daughters have access to blue, white, and black potions.
 		if (monster.refName == "Tamani") temp2 = rand(5);
 		if (monster.refName == "Tamani's daughters") temp2 = rand(5);
 
 		// Set Color
-		var color = "";
+		let color = "";
 		if (temp2 == 0) color = "red";
 		if (temp2 == 1) color = "green";
 		if (temp2 == 2) color = "blue";

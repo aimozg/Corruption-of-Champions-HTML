@@ -3156,15 +3156,15 @@ class Creature {
 		return this.buttPregnancyType != 0;
 	};
 
-//fertility must be >= random(0-beat)
-//If arg == 1 then override any contraceptives and guarantee fertilization
-//If arg == -1, no chance of fertilization.
+	//fertility must be >= random(0-beat)
+	//If arg == 1 then override any contraceptives and guarantee fertilization
+	//If arg == -1, no chance of fertilization.
 	public knockUp(type: PregnancyType = 0, incubation: number = 0, beat: number = 100, arg: number = 0): void {
 		//Contraceptives cancel!
 		if (this.hasStatusEffect(StatusEffects.Contraceptives) && arg < 1) return;
 		// Originally commented out
 		let bonus = 0;
-//If arg = 1 (always pregnant), bonus = 9000
+		//If arg = 1 (always pregnant), bonus = 9000
 		if (arg >= 1) bonus = 9000;
 		if (arg <= -1) bonus = -9000;
 
@@ -3173,8 +3173,8 @@ class Creature {
 			//trace("PC Knocked up with pregnancy type: " + type + " for " + incubation + " incubation.");
 		}
 
-//Chance for eggs fertilization - ovi elixir and imps excluded!
-		if (type != PregnancyType.IMP && type != PregnancyType.OVIELIXIR_EGGS && type != PregnancyType.ANEMONE) {
+		//Chance for eggs fertilization - ovi elixir and imps excluded!
+		if (this instanceof Player && type != PregnancyType.IMP && type != PregnancyType.OVIELIXIR_EGGS && type != PregnancyType.ANEMONE) {
 			if (this.hasPerk(PerkLib.SpiderOvipositor) || this.hasPerk(PerkLib.BeeOvipositor)) {
 				if (this.totalFertility() + bonus > Math.floor(Math.random() * beat)) {
 					this.fertilizeEggs();
@@ -3229,7 +3229,7 @@ class Creature {
 		}
 	};
 
-// More for compatibility, though knockUpForce will take care of this too.
+	// More for compatibility, though knockUpForce will take care of this too.
 	public eventFill(events: number[]): void {
 		this.pregnancyEventArr = [];
 		for (const event of events) this.pregnancyEventArr.push(event * 60);
