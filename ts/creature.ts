@@ -133,6 +133,13 @@ class Creature {
 	public victory: () => void              = cleanupAfterCombat;
 	public defeat: () => void               = cleanupAfterCombat;
 
+	public get armorName():string {
+		return this.armor.equipmentName
+	}
+	public get weaponName():string {
+		return this.weapon.equipmentName
+	}
+
 	//------------
 	// COMBAT
 	//------------

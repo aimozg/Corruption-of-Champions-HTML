@@ -72,9 +72,6 @@ declare namespace ConsumableEffects {
 declare namespace GiacomoScene {
 	function giacomoEncounter():void;
 }
-declare class Goblin extends Creature {
-
-}
 declare class GooGirl extends Creature {
 	gooColor4():string;
 }
