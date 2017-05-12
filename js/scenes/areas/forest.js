@@ -59,24 +59,24 @@ Areas.Forest.explore = function() {
                 outputText("You enjoy a peaceful walk in the woods, it gives you time to think.");
                 //Mod toughness
                 if (player.tou < 50)
-                    player.modStats("tou", 0.5);
+                    player.dynStats("tou", 0.5);
                 //Mod intelligence
                 if (player.inte < 50)
-                    player.modStats("int", 1);
+                    player.dynStats("int", 1);
                 else if (player.inte < 75)
-                    player.modStats("int", 0.5);
+                    player.dynStats("int", 0.5);
             }
             else {
-                outputText("As you wander in the forest, you keep ", false);
+                outputText("As you wander in the forest, you keep ");
                 if (player.gender == 1) outputText("stroking your half-erect " + player.multiCockDescriptLight() + " as you daydream about fucking all kinds of women, from weeping tight virgins to lustful succubi with gaping, drooling fuck-holes.");
                 if (player.gender == 2) outputText("idly toying with your " + player.vaginaDescript(0) + " as you daydream about getting fucked by all kinds of monstrous cocks, from minotaurs' thick, smelly dongs to demons' towering, bumpy pleasure-rods.");
                 if (player.gender == 3) outputText("stroking alternatively your " + player.multiCockDescriptLight() + " and your " + player.vaginaDescript(0) + " as you daydream about fucking all kinds of women, from weeping tight virgins to lustful succubi with gaping, drooling fuck-holes, before, or while, getting fucked by various monstrous cocks, from minotaurs' thick, smelly dongs to demons' towering, bumpy pleasure-rods.");
                 if (player.gender == 0) outputText("daydreaming about sex-demons with huge sexual attributes, and how you could please them.");
                 outputText(" ");
                 if (player.tou < 50)
-                    player.modStats("tou", 0.5);
+                    player.dynStats("tou", 0.5);
                 if (player.lib < 60)
-                    player.modStats("lib", 0.25);
+                    player.dynStats("lib", 0.25);
                 player.changeLust(player.lib / 5, true);
             }
             doNext(Camp.returnToCampUseOneHour);

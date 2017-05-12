@@ -110,10 +110,10 @@ function finishAttributes() {
 	if (tempStr + tempTou + tempSpe + tempInt <= 0 || player.statPoints > 0) {
 		outputText("<br>You may allocate your remaining stat points later.");
 	}
-	player.modStats("str", tempStr);
-	player.modStats("tou", tempTou);
-	player.modStats("spe", tempSpe);
-	player.modStats("int", tempInt);
+	player.dynStats("str", tempStr);
+	player.dynStats("tou", tempTou);
+	player.dynStats("spe", tempSpe);
+	player.dynStats("int", tempInt);
 	tempStr = 0;
 	tempTou = 0;
 	tempSpe = 0;
@@ -198,7 +198,7 @@ function statsScreen() {
     }
 
     if (addictStats != "")
-        outputText("<br><b><u>Addictions</u></b><br>" + addictStats, false);
+        outputText("<br><b><u>Addictions</u></b><br>" + addictStats);
     // End Addiction Stats
     
 }
@@ -256,7 +256,7 @@ function appearanceScreen() {
             break;
         case FaceType.FERRET:
             if (player.skinType == SkinType.PLAIN)
-                outputText(" Your face is an adorable cross between human and ferret features, complete with a wet nose and whiskers. The only oddity is your lack of fur, leaving only [skin] visible on your ferret-like face.",false);
+                outputText(" Your face is an adorable cross between human and ferret features, complete with a wet nose and whiskers. The only oddity is your lack of fur, leaving only [skin] visible on your ferret-like face.");
             else 
                 outputText(" Your face is coated in " + player.furColor + " fur with [skin] underneath, an adorable cross between human and ferret features. It is complete with a wet nose and whiskers.");
             break;
@@ -362,7 +362,7 @@ function appearanceScreen() {
             if (player.skinType == SkinType.PLAIN)
                 outputText("bald");
             else
-                outputText("covered with " + player.skinFurScales(), false);
+                outputText("covered with " + player.skinFurScales());
             outputText(" and shaped like that of a kangaroo, somewhat rabbit-like except for the extreme length of your odd visage.");
             break;
         case FaceType.PIG:
@@ -465,7 +465,7 @@ function appearanceScreen() {
         else if (player.earType == EarType.HORSE)
             outputText(" The " + player.hairDescript() + " on your head parts around a pair of very horse-like ears that grow up from your head.");
         else if (player.earType == EarType.DOG)
-            outputText(" The " + player.hairDescript() + " on your head is overlapped by a pair of pointed dog ears.", false);
+            outputText(" The " + player.hairDescript() + " on your head is overlapped by a pair of pointed dog ears.");
         else if (player.earType == EarType.COW)
             outputText(" The " + player.hairDescript() + " on your head is parted by a pair of rounded cow ears that stick out sideways.");
         else if (player.earType == EarType.ELFIN)
@@ -660,7 +660,7 @@ function appearanceScreen() {
         }
         else if (player.thickness < 30)
         {
-            outputText(" You have " + player.hipDescript(), false);
+            outputText(" You have " + player.hipDescript());
             if (player.hipRating < 6)
                 outputText(" that match your trim, lithe body, and");
             if (player.hipRating >= 6 && player.hipRating < 10)
@@ -675,7 +675,7 @@ function appearanceScreen() {
         //STANDARD
         else
         {
-            outputText(" You have " + player.hipDescript(), false);
+            outputText(" You have " + player.hipDescript());
             if (player.hipRating < 6)
                 outputText(", and");
             if (player.femininity > 50)
@@ -719,7 +719,7 @@ function appearanceScreen() {
         //FATBUTT
         if (player.tone < 65)
         {
-            outputText(" Your " + player.buttDescript(), false);
+            outputText(" Your " + player.buttDescript());
             if (player.buttRating < 4)
                 outputText(" is lean, from what you can see of it.");
             if (player.buttRating >= 4 && player.buttRating < 6)
@@ -736,7 +736,7 @@ function appearanceScreen() {
         //GIRL LOOK AT DAT BOOTY
         else
         {
-            outputText(" Your " + player.buttDescript(), false);
+            outputText(" Your " + player.buttDescript());
             if (player.buttRating < 4)
                 outputText(" is barely noticable, showing off the muscles of your haunches.");
             if (player.buttRating >= 4 && player.buttRating < 6)
@@ -757,7 +757,7 @@ function appearanceScreen() {
         //TUBBY ASS
         if (player.tone < 60)
         {
-            outputText(" your " + player.buttDescript(), false);
+            outputText(" your " + player.buttDescript());
             if (player.buttRating < 4)
                 outputText(" looks great under your gear.");
             if (player.buttRating >= 4 && player.buttRating < 6)
@@ -774,7 +774,7 @@ function appearanceScreen() {
         //FITBUTT
         else
         {
-            outputText(" your " + player.buttDescript(), false);
+            outputText(" your " + player.buttDescript());
             if (player.buttRating < 4)
                 outputText(" molds closely against your form.");
             if (player.buttRating >= 4 && player.buttRating < 6)
@@ -842,9 +842,9 @@ function appearanceScreen() {
         case TailType.KANGAROO:
             outputText(" A conical, ");
             if (player.skinType == SkinType.GOO)
-                outputText("gooey, " + player.skinTone, false);
+                outputText("gooey, " + player.skinTone);
             else
-                outputText("furry, " + player.furColor, false);
+                outputText("furry, " + player.furColor);
             outputText(", tail extends from your " + player.assDescript() + ", bouncing up and down as you move and helping to counterbalance you.");
             break;
         case TailType.FOX:
@@ -1262,7 +1262,7 @@ function appearanceScreen() {
             {
                 if (temp == 0)outputText("--Your first ");
                 else outputText("--Your next ");
-                outputText(player.cockDescript(temp), false);
+                outputText(player.cockDescript(temp));
                 outputText(" is ");
                 outputText(Math.floor(10 * player.cocks[temp].cockLength) / 10 + " inches long and ");
                 if (Math.floor(player.cocks[temp].cockThickness) >= 2)

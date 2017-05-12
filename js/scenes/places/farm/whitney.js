@@ -202,10 +202,10 @@ WhitneyScene.talkWhitney = function() {
     //else outputText("how poorly the farm has been going since the lake became tainted.  She has to work three times as hard to keep her livestock and crops from succumbing to the taint, and the demons and monsters of the forest are many times more bold");
     outputText(". It feels good to get a chance to talk with another sane individual, but before long Whitney has to return to work, and you should check back on your camp.");
     //+3 int if less than 15, +2 int if less 20, +1 int if less than 30, +.5 int if less than 40.
-    if (player.inte < 15) player.modStats("int", 1);
-    if (player.inte < 20) player.modStats("int", 1);
-    if (player.inte < 30) player.modStats("int", .5);
-    if (player.inte < 40) player.modStats("int", .5);
+    if (player.inte < 15) player.dynStats("int", 1);
+    if (player.inte < 20) player.dynStats("int", 1);
+    if (player.inte < 30) player.dynStats("int", .5);
+    if (player.inte < 40) player.dynStats("int", .5);
     player.changeLust(-5, false);
     doNext(Camp.returnToCampUseOneHour);
     //+3 int if less than 15, +2 int if less 20, +1 int if less than 30, +.5 int if less than 40.
@@ -221,10 +221,10 @@ WhitneyScene.breastMilkerPurchase = function() {
 WhitneyScene.breastMilkerNoPurchase = function() {
     outputText("Whitney shrugs and the two of you chat about other things, just passing the time and enjoying a relatively normal chat.", true);
     //+3 int if less than 15, +2 int if less 20, +1 int if less than 30, +.5 int if less than 40.
-    if (player.inte < 15) player.modStats("int", 1);
-    if (player.inte < 20) player.modStats("int", 1);
-    if (player.inte < 30) player.modStats("int", .5);
-    if (player.inte < 40) player.modStats("int", .5);
+    if (player.inte < 15) player.dynStats("int", 1);
+    if (player.inte < 20) player.dynStats("int", 1);
+    if (player.inte < 30) player.dynStats("int", .5);
+    if (player.inte < 40) player.dynStats("int", .5);
     doNext(Camp.returnToCampUseOneHour);
 }
 

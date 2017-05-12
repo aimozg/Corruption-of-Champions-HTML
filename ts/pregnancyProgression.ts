@@ -111,9 +111,9 @@ namespace pregnancyProgression {
 			/*
 			 if (player.pregnancyIncubation == 1 && (player.pregnancyType == PregnancyStore.PREGNANCY_MOUSE || player.pregnancyType == PregnancyStore.PREGNANCY_JOJO)) {
 			 player.boostLactation(.01);
-			 outputText("<br>You wake up suddenly to strong pains and pressures in your gut. As your eyes shoot wide open, you look down to see your belly absurdly full and distended. You can feel movement underneath the skin, and watch as it is pushed out in many places, roiling and squirming in disturbing ways. The feelings you get from inside are just as disconcerting. You count not one, but many little things moving around inside you. There are so many, you can't keep track of them.<br><br>", false);
+			 outputText("<br>You wake up suddenly to strong pains and pressures in your gut. As your eyes shoot wide open, you look down to see your belly absurdly full and distended. You can feel movement underneath the skin, and watch as it is pushed out in many places, roiling and squirming in disturbing ways. The feelings you get from inside are just as disconcerting. You count not one, but many little things moving around inside you. There are so many, you can't keep track of them.<br><br>");
 			 if (player.vaginas.length == 0) {
-			 outputText("You feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  <b>You look down and behold a new vagina</b>.  ", false);
+			 outputText("You feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  <b>You look down and behold a new vagina</b>.  ");
 			 player.createVagina();
 			 player.genderCheck();
 			 }
@@ -127,12 +127,12 @@ namespace pregnancyProgression {
 			 else kGAMECLASS.jojoScene.giveBirthToPureJojoBabies();
 			 }
 			 else {
-			 outputText("Pain shoots through you as they pull open your cervix forcefully. You grip the ground and pant and push as the pains of labor overwhelm you. You feel your hips being forceably widened by the collective mass of the creatures moving down your birth canal. You spread your legs wide, laying your head back with groans and cries of agony as little white figures begin to emerge from between the lips of your abused pussy. Large innocent eyes, even larger ears, cute little muzzles, long slender pink tails all appear as the figures emerge. Each could be no larger than six inches tall, but they seem as active and curious as if they were already developed children. <br><br>", false);
-			 outputText("Two emerge, then four, eight... you lose track. They swarm your body, scrambling for your chest, and take turns suckling at your nipples. Milk does their bodies good, making them grow rapidly, defining their genders as the girls grow cute little breasts and get broader hips and the boys develop their little mouse cocks and feel their balls swell. Each stops suckling when they reach two feet tall, and once every last one of them has departed your sore, abused cunt and drunk their fill of your milk, they give you a few grateful nuzzles, then run off towards the forest, leaving you alone to recover.<br>", false);
+			 outputText("Pain shoots through you as they pull open your cervix forcefully. You grip the ground and pant and push as the pains of labor overwhelm you. You feel your hips being forceably widened by the collective mass of the creatures moving down your birth canal. You spread your legs wide, laying your head back with groans and cries of agony as little white figures begin to emerge from between the lips of your abused pussy. Large innocent eyes, even larger ears, cute little muzzles, long slender pink tails all appear as the figures emerge. Each could be no larger than six inches tall, but they seem as active and curious as if they were already developed children. <br><br>");
+			 outputText("Two emerge, then four, eight... you lose track. They swarm your body, scrambling for your chest, and take turns suckling at your nipples. Milk does their bodies good, making them grow rapidly, defining their genders as the girls grow cute little breasts and get broader hips and the boys develop their little mouse cocks and feel their balls swell. Each stops suckling when they reach two feet tall, and once every last one of them has departed your sore, abused cunt and drunk their fill of your milk, they give you a few grateful nuzzles, then run off towards the forest, leaving you alone to recover.<br>");
 			 }
 			 player.knockUpForce(); //Clear Pregnancy
 			 if (player.averageLactation() > 0 && player.averageLactation() < 5) {
-			 outputText("Your [chest] won't seem to stop dribbling milk, lactating more heavily than before.", false);
+			 outputText("Your [chest] won't seem to stop dribbling milk, lactating more heavily than before.");
 			 player.boostLactation(.5);
 			 }
 			 player.cuntChange(60, true,true,false);
@@ -146,15 +146,15 @@ namespace pregnancyProgression {
 			 if (player.buttRating < 14 && rand(2) == 0) {
 			 if (player.buttRating < 10) {
 			 player.buttRating++;
-			 outputText("<br><br>You notice your " + player.buttDescript() + " feeling larger and plumper after the ordeal.", false);
+			 outputText("<br><br>You notice your " + player.buttDescript() + " feeling larger and plumper after the ordeal.");
 			 }
 			 //Big butts grow slower!
 			 else if (player.buttRating < 14 && rand(2) == 0) {
 			 player.buttRating++;
-			 outputText("<br><br>You notice your " + player.buttDescript() + " feeling larger and plumper after the ordeal.", false);
+			 outputText("<br><br>You notice your " + player.buttDescript() + " feeling larger and plumper after the ordeal.");
 			 }
 			 }
-			 outputText("<br>", false);
+			 outputText("<br>");
 			 }*/
 
 		}

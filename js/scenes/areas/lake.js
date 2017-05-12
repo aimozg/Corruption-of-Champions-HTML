@@ -58,7 +58,7 @@ Areas.Lake.explore = function () {
                 outputText("Your quick walk along the lakeshore feels good.");
                 if (player.spe < 50) {
                     outputText(" You bet you could cover the same distance even faster next time.<br>");
-                    player.modStats("spe", 0.75);
+                    player.dynStats("spe", 0.75);
                 }
             }
             else {
@@ -75,7 +75,7 @@ Areas.Lake.explore = function () {
                     }
                 }
                 else {
-                    player.modStats("int", 1);
+                    player.dynStats("int", 1);
                 }
             }
             doNext(Camp.returnToCampUseOneHour);

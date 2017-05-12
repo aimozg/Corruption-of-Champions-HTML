@@ -126,3 +126,7 @@ function createMapFromPairs<V>(src:[string|number,V][]): {[index:string]:V} {
 	for (let i = 0; i < src.length; i++) result[src[i][0]] = src[i][1];
 	return result;
 }
+
+function clamp(min:number,x:number,max:number):number {
+	return x < min ? min : x > max ? max : x;
+}

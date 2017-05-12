@@ -152,7 +152,7 @@ CalluScene.ottergirlLikesDongs = function() {
 
     outputText("<br><br>You take a minute to recover before doing the same. ");
     player.orgasm();
-    player.modStats("sen", -1);
+    player.dynStats("sen", -1);
     Inventory.takeItem(Items.Consumables.FishFillet, Camp.returnToCampUseOneHour);
 }
 
@@ -210,7 +210,7 @@ CalluScene.ottersForGals = function() {
     outputText("<br><br>You take several minutes to recover before doing the same. ");
 
     player.orgasm();
-    player.modStats("sen", -1);
+    player.dynStats("sen", -1);
     Inventory.takeItem(Items.Consumables.FishFillet, Camp.returnToCampUseOneHour);
 }
 

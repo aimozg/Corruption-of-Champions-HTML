@@ -531,7 +531,7 @@ function teaseMain(justText) {
         //0 butt shake
         case 0:
             //Display
-            outputText("You slap your " + player.buttDescript(), false);
+            outputText("You slap your " + player.buttDescript());
             if (player.buttRating >= 10 && player.tone < 60) outputText(", making it jiggle delightfully.");
             else outputText(".");
             //Mod success
@@ -567,15 +567,15 @@ function teaseMain(justText) {
                 if (player.cocks.length > 0) {
                     chance++;
                     damage++;
-                    if (player.cocks.length == 1) outputText(player.cockDescript(0), false);
-                    if (player.cocks.length > 1) outputText(player.multiCockDescriptLight(), false);
+                    if (player.cocks.length == 1) outputText(player.cockDescript(0));
+                    if (player.cocks.length > 1) outputText(player.multiCockDescriptLight());
                     outputText(" and ");
                     if (player.findPerk(PerkLib.BulgeArmor) >= 0) {
                         damage += 5;
                     }
                     penis = true;
                 }
-                outputText(player.vaginaDescript(0), false);
+                outputText(player.vaginaDescript(0));
                 outputText(".");
             }
             vagina = true;
@@ -597,7 +597,7 @@ function teaseMain(justText) {
                     chance++;
                 }
                 if (player.vaginas.length > 0) {
-                    outputText(player.vaginaDescript(0), false);
+                    outputText(player.vaginaDescript(0));
                     vagina = true;
                 }
                 outputText(".");

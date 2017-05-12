@@ -215,7 +215,7 @@ flee = function(callHook) { //There are 4 states. Undefined means proceed to esc
             }
             //Run failed:
             else {
-                outputText("You try to shake off the fog and run but the anemone slinks over to you and her tentacles wrap around your waist. <i>\"Stay?\"</i> she asks, pressing her small breasts into you as a tentacle slides inside your " + player.armorName + " and down to your nethers. The combined stimulation of the rubbing and the tingling venom causes your knees to buckle, hampering your resolve and ending your escape attempt.", false);
+                outputText("You try to shake off the fog and run but the anemone slinks over to you and her tentacles wrap around your waist. <i>\"Stay?\"</i> she asks, pressing her small breasts into you as a tentacle slides inside your " + player.armorName + " and down to your nethers. The combined stimulation of the rubbing and the tingling venom causes your knees to buckle, hampering your resolve and ending your escape attempt.");
                 //(gain lust, temp lose spd/str)
                 monster.applyVenom((4+player.sen/20));
                 success = false;
@@ -267,7 +267,7 @@ flee = function(callHook) { //There are 4 states. Undefined means proceed to esc
         inCombat = false;        outputText("Thanks to your talent for running, you manage to escape.");
 
         if (monster.name == "Izma") {
-            outputText("<br><br>As you leave the tigershark behind, her taunting voice rings out after you. \"<i>Oooh, look at that fine backside! Are you running or trying to entice me? Haha, looks like we know who's the superior specimen now! Remember: next time we meet, you owe me that ass!</i>\" Your cheek tingles in shame at her catcalls.", false);
+            outputText("<br><br>As you leave the tigershark behind, her taunting voice rings out after you. \"<i>Oooh, look at that fine backside! Are you running or trying to entice me? Haha, looks like we know who's the superior specimen now! Remember: next time we meet, you owe me that ass!</i>\" Your cheek tingles in shame at her catcalls.");
         }
         success = true;
     }
@@ -558,7 +558,7 @@ function teaseXP(XP) {
         player.teaseXP++;
         //Level dat shit up!
         if (player.teaseLevel < 5 && player.teaseXP >= 10 + (player.teaseLevel + 1) * 5 * (player.teaseLevel + 1)) {
-            outputText("<br><b>Tease skill leveled up to " + (player.teaseLevel + 1) + "!</b>", false);
+            outputText("<br><b>Tease skill leveled up to " + (player.teaseLevel + 1) + "!</b>");
             player.teaseLevel++;
             player.teaseXP = 0;
         }

@@ -24,15 +24,15 @@ namespace Camp {
 		// Display Pregnancy related events
 		pregnancyProgression.updatePregnancy(); // Displays special messages before the main camp message prints.
 		/*if (isabellaFollower()) {
-		 outputText("Your campsite got a lot more comfortable once Isabella moved in.  Carpets cover up much of the barren ground, simple awnings tied to the rocks provide shade, and hand-made wooden furniture provides comfortable places to sit and sleep.  ", false);
+		 outputText("Your campsite got a lot more comfortable once Isabella moved in.  Carpets cover up much of the barren ground, simple awnings tied to the rocks provide shade, and hand-made wooden furniture provides comfortable places to sit and sleep.  ");
 		 }
 		 else {*/
 		if (time.days < 10) outputText("Your campsite is fairly simple at the moment.  Your tent and bedroll are set in front of the rocks that lead to the portal.  You have a small fire pit as well.  ");
 		if (time.days >= 10 && time.days < 20) outputText("Your campsite is starting to get a very 'lived-in' look.  The fire-pit is well defined with some rocks you've arranged around it, and your bedroll and tent have been set up in the area most sheltered by rocks.  ");
 		if (time.days >= 20) {
-			//if (!isabellaFollower()) outputText("Your new home is as comfy as a camp site can be.  ", false);
+			//if (!isabellaFollower()) outputText("Your new home is as comfy as a camp site can be.  ");
 			outputText("The fire-pit ");
-			//if (flags[kFLAGS.CAMP_BUILT_CABIN] > 0 && flags[kFLAGS.CAMP_CABIN_FURNITURE_BED] > 0) outputText("is ", false);
+			//if (flags[kFLAGS.CAMP_BUILT_CABIN] > 0 && flags[kFLAGS.CAMP_CABIN_FURNITURE_BED] > 0) outputText("is ");
 			/*else */
 			outputText("and tent are both ");
 			outputText("set up perfectly, and in good repair.  ");
@@ -52,7 +52,7 @@ namespace Camp {
 
 		//DEBUGGING CODE FOR AMILY MEETINGS
 		//player.gender = 3;
-		//player.modStats("cor", 50);
+		//player.dynStats("cor", 50);
 		//Inventory.takeItem(Items.Consumables.IncubiDraftPurified);
 		// gameFlags[AMILY_HERM_QUEST] = 2;
 		//gameFlags[AMILY_AFFECTION] = 50;

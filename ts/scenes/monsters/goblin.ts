@@ -857,7 +857,7 @@ class Goblin extends Creature {
 		combatRoundOver();
 	}
 
-// This Goblin attack used across all goblins except Tamani and Daughters.
+	// This Goblin attack used across all goblins except Tamani and Daughters.
 	public static goblinTeaseAttack() {
 		let det = rand(3);
 		if (monster.refName == "goblin" || monster.refName == "goblin assassin" || monster.refName == "Tamani") {

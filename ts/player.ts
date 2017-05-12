@@ -1189,7 +1189,7 @@ class Player extends Creature {
 
 	clearStatuses() {
 		/*while (this.hasStatusEffect(StatusEffects.Web)) {
-		 this.modStats("spe", this.statusEffectValue(StatusEffects.Web, 1));
+		 this.dynStats("spe", this.statusEffectValue(StatusEffects.Web, 1));
 		 this.removeStatusEffect(StatusEffects.Web);
 		 }*/
 		//if (this.hasStatusEffect(StatusEffects.Shielding)) this.removeStatusEffect(StatusEffects.Shielding);
@@ -1205,18 +1205,18 @@ class Player extends Creature {
 		//if (this.hasStatusEffect(StatusEffects.GooArmorSilence)) this.removeStatusEffect(StatusEffects.GooArmorSilence);
 		//if (this.hasStatusEffect(StatusEffects.Whispered)) this.removeStatusEffect(StatusEffects.Whispered);
 		/*if (this.hasStatusEffect(StatusEffects.AkbalSpeed)) {
-		 this.modStats("spe", -this.statusEffectValue(StatusEffects.AkbalSpeed, 1));
+		 this.dynStats("spe", -this.statusEffectValue(StatusEffects.AkbalSpeed, 1));
 		 this.removeStatusEffect(StatusEffects.AkbalSpeed);
 		 }*/
 		/*if (this.hasStatusEffect(StatusEffects.AmilyVenom)) {
-		 this.modStats("str", this.statusEffectValue(StatusEffects.AmilyVenom, 1));
-		 this.modStats("spe", this.statusEffectValue(StatusEffects.AmilyVenom, 2));
+		 this.dynStats("str", this.statusEffectValue(StatusEffects.AmilyVenom, 1));
+		 this.dynStats("spe", this.statusEffectValue(StatusEffects.AmilyVenom, 2));
 		 this.removeStatusEffect(StatusEffects.AmilyVenom);
 		 }*/
 		while (this.hasStatusEffect(StatusEffects.Blind)) this.removeStatusEffect(StatusEffects.Blind);
 		//if (this.hasStatusEffect(StatusEffects.SheilaOil)) this.removeStatusEffect(StatusEffects.SheilaOil);
 		/*if (this.hasStatusEffect(StatusEffects.TwuWuv)) {
-		 this.modStats("int", this.statusEffectValue(StatusEffects.TwuWuv, 1));
+		 this.dynStats("int", this.statusEffectValue(StatusEffects.TwuWuv, 1));
 		 this.removeStatusEffect(StatusEffects.TuvWuv);
 		 }*/
 		if (this.hasStatusEffect(StatusEffects.Bind)) this.removeStatusEffect(StatusEffects.Bind);
@@ -1242,7 +1242,7 @@ class Player extends Creature {
 		//if (this.hasStatusEffect(StatusEffects.KissOfDeath)) this.removeStatusEffect(StatusEffects.KissOfDeath);
 		//if (this.hasStatusEffect(StatusEffects.AcidSlap)) this.removeStatusEffect(StatusEffects.AcidSlap);
 		/*if (this.hasStatusEffect(StatusEffects.CalledShot)) {
-		 this.modStats("spe", this.statusEffectValue(StatusEffects.CalledShot, 1));
+		 this.dynStats("spe", this.statusEffectValue(StatusEffects.CalledShot, 1));
 		 this.removeStatusEffect(StatusEffects.CalledShot);
 		 }*/
 		//if (this.hasStatusEffect(StatusEffects.DemonSeed)) this.removeStatusEffect(StatusEffects.DemonSeed);
@@ -1258,35 +1258,35 @@ class Player extends Creature {
 		 this.removeStatusEffect(StatusEffects.Disarmed);
 		 }*/
 		/*if (this.hasStatusEffect(StatusEffects.AnemoneVenom)) {
-		 this.modStats("str", this.statusEffectValue(StatusEffects.AnemoneVenom, 1));
-		 this.modStats("spe", this.statusEffectValue(StatusEffects.AnemoneVenom, 2));
+		 this.dynStats("str", this.statusEffectValue(StatusEffects.AnemoneVenom, 1));
+		 this.dynStats("spe", this.statusEffectValue(StatusEffects.AnemoneVenom, 2));
 		 this.removeStatusEffect(StatusEffects.AnemoneVenom);
 		 }*/
 		/*if (this.hasStatusEffect(StatusEffects.GnollSpear)) {
-		 this.modStats("spe", this.statusEffectValue(StatusEffects.AnemoneVenom, 1));
+		 this.dynStats("spe", this.statusEffectValue(StatusEffects.AnemoneVenom, 1));
 		 this.removeStatusEffect(StatusEffects.GnollSpear);
 		 }*/
 		//if (this.hasStatusEffect(StatusEffects.BasiliskCompulsion)) this.removeStatusEffect(StatusEffects.BasiliskCompulsion);
 		/*if (this.hasStatusEffect(StatusEffects.BasiliskSlow)) {
-		 this.modStats("spe", this.statusEffectValue(StatusEffects.AnemoneVenom, 1));
+		 this.dynStats("spe", this.statusEffectValue(StatusEffects.AnemoneVenom, 1));
 		 this.removeStatusEffect(StatusEffects.BasiliskSlow);
 		 }*/
 		//if (this.hasStatusEffect(StatusEffects.GiantGrabbed)) this.removeStatusEffect(StatusEffects.GiantGrabbed);
 		//if (this.hasStatusEffect(StatusEffects.GiantBoulder)) this.removeStatusEffect(StatusEffects.GiantBoulder);
 		/*if (this.hasStatusEffect(StatusEffects.GiantStrLoss)) {
-		 this.modStats("str", this.statusEffectValue(StatusEffects.GiantStrLoss, 1));
+		 this.dynStats("str", this.statusEffectValue(StatusEffects.GiantStrLoss, 1));
 		 this.removeStatusEffect(StatusEffects.GiantStrLoss);
 		 }*/
 		/*if (this.hasStatusEffect(StatusEffects.LizanBlowpipe)) {
-		 this.modStats("str", this.statusEffectValue(StatusEffects.LizanBlowpipe, 1));
-		 this.modStats("tou", this.statusEffectValue(StatusEffects.LizanBlowpipe, 2));
-		 this.modStats("spe", this.statusEffectValue(StatusEffects.LizanBlowpipe, 3));
-		 this.modStats("sen", -this.statusEffectValue(StatusEffects.LizanBlowpipe, 4));
+		 this.dynStats("str", this.statusEffectValue(StatusEffects.LizanBlowpipe, 1));
+		 this.dynStats("tou", this.statusEffectValue(StatusEffects.LizanBlowpipe, 2));
+		 this.dynStats("spe", this.statusEffectValue(StatusEffects.LizanBlowpipe, 3));
+		 this.dynStats("sen", -this.statusEffectValue(StatusEffects.LizanBlowpipe, 4));
 		 this.removeStatusEffect(StatusEffects.LizanBlowpipe);
 		 }*/
 		//while (this.hasStatusEffect(StatusEffects.IzmaBleed)) this.removeStatusEffect(StatusEffects.IzmaBleed);
 		/*if (this.hasStatusEffect(StatusEffects.GardenerSapSpeed)) {
-		 this.modStats("spe", this.statusEffectValue(StatusEffects.GardenerSapSpeed, 1));
+		 this.dynStats("spe", this.statusEffectValue(StatusEffects.GardenerSapSpeed, 1));
 		 this.removeStatusEffect(StatusEffects.GardenerSapSpeed);
 		 }*/
 		//if (this.hasStatusEffect(StatusEffects.KnockedBack)) this.removeStatusEffect(StatusEffects.KnockedBack);

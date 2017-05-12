@@ -132,22 +132,22 @@ Places.Farm.exploreFarm = function() {
         outputText("You run around the farm, keeping an eye for any monsters or oddities around Whitney's property. Eventually the she-dog joins you, and the two of you have a good time pushing your speed to its limits. ");
         //Less than 30 speed (+2 speed)
         if (player.spe < 30) {
-            player.modStats("spe", 2);
+            player.dynStats("spe", 2);
             outputText("Whitney easily outpaces you, leaving you so far behind that she laps around the farm twice for each pass you make.");
         }
         //Less than 50 speed (+1 speed)
         else if (player.spe < 50) {
-            player.modStats("spe", 1);
+            player.dynStats("spe", 1);
             outputText("Whitney is still faster than you, and manages to get far enough ahead of you to disappear from time to time.");
         }
         //Less than 70 speed (+.75 speed)
         else if (player.spe < 70) {
-            player.modStats("spe", .75);
+            player.dynStats("spe", .75);
             outputText("Whitney and you are evenly matched, and the two of you run together for a while, each pushing yourself harder in an effort to best the other.");
         }
         //Else (+.5 speed)
         else {
-            player.modStats("spe", .5);
+            player.dynStats("spe", .5);
             outputText("Whitney falls behind, unable to cope with your speed as you tear around the farm.");
         }
         outputText("<br><br>Afterwards, the both of you lie back against a tree, panting heavily and exchanging pleasantries. Once you've both had a chance to rest, she bids you farewell and returns to her labors, leaving you to journey home to camp.");
@@ -157,7 +157,7 @@ Places.Farm.exploreFarm = function() {
     //Other stuff
     if (explore == 1) {
         outputText("After wandering around for a while, you find yourself atop a slight rise looking out over the farm and the distant lake. Despite the corruption you know is slowly consuming this land, being here now makes you feel so at peace you wish it could go on forever.");
-        player.modStats("cor", -rand(3));
+        player.dynStats("cor", -rand(3));
         doNext(Camp.returnToCampUseOneHour);
         return;
     }
@@ -271,9 +271,9 @@ Places.Farm.workFarm = function() {
         outputText("\n\nAn hour later you can stand it no more and exit the milking barn. Gulping down the fresher air and dragging the tools back to their shed, you admit to yourself that Whitney is a much harder worker and has a stronger constitution than you thought. You promise yourself you'll come back and help her out some more -- as soon as your nose recovers.");
         //always +1 str till 50, then 50% chance.
         if (player.str <= 50)
-            player.modStats("str", 1);
+            player.dynStats("str", 1);
         else
-            player.modStats("str", rand(2));
+            player.dynStats("str", rand(2));
         doNext(Camp.returnToCampUseOneHour);
     }
     else {

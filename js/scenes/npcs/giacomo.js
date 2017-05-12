@@ -249,7 +249,7 @@ GiacomoScene.buyHentaiComic = function() {
     }
     else {
         outputText("You peruse the erotic book. The story is one of a group of sisters who are all impossibly heavy-chested and equally horny getting into constant misadventures trying to satisfy their lust. While the comic was entertaining and erotic to the highest degree, you cannot help but laugh at how over-the-top the story and all of the characters are. Were the world as it was in the book, nothing would get done as humanity would be fucking like jackrabbits in heat for the rest of their lives. While certainly a tempting proposition, everyone gets worn out sometime. You place the book in your sack, well entertained and with a head filled with wilder perversions than what you woke up with this morning. ");
-        player.modStats("lib", 2);
+        player.dynStats("lib", 2);
         player.changeLust(20, true);
         player.changeGems(-10);
         player.createKeyItem(KeyItems.BookHentaiComic, 0, 0, 0, 0);
@@ -493,7 +493,7 @@ GiacomoScene.wormRemoval = function() {
     //Infestation purged. Hit Points reduced to 10% of MAX. Corruption -20.
     if (player.HP > player.maxHP() * 0.15) player.changeHP(-(player.HP - (player.maxHP() * 0.15)), false);
     player.removeStatusEffect(StatusEffects.Infested);
-    player.modStats("lib", -1, "cor", -8);
+    player.dynStats("lib", -1, "cor", -8);
     player.changeGems(-175);
     Inventory.takeItem(Items.Consumables.VitalityTincture, Camp.returnToCampUseOneHour);
 }
@@ -654,7 +654,7 @@ if (player.gender == 1) {
         if (player.isTaur()) outputText(" crouch between your legs and impale herself on your " + player.cockDescript(0) + " with a wet sound caused by her well-lubricated vulva. Y");
         else outputText(" open her womb and quickly consume your " + player.cockDescript(0) + ". She embraces you, entrapping your head in her cleavage as y");
         outputText("ou quickly feel her superhuman vaginal muscles work and stroke your " + player.cockDescript(0) + " better than any human woman or pair of hands could ever hope to accomplish. You are helpless as your unholy embrace milks the both of you in an infernal symphony of debauchery. The familiar cramp of an impending ejaculation grips you and your twitching signals the succubus of your approaching climax.<br><br>");
-        if (player.isTaur()) outputText("Pushing on your forelegs, she engulfs even more of your " + player.cockDescript(0), false);
+        if (player.isTaur()) outputText("Pushing on your forelegs, she engulfs even more of your " + player.cockDescript(0));
         else outputText("Almost crushing your pelvis, she wraps her legs around your body");
         outputText(" and her muscles churn mercilessly demanding that you release your 'milk' as freely as she has released hers into you. Stimulated beyond any human ability to maintain control, you bear down and release a milky flood of your own inside the succubus. Moaning in ecstasy, she ");
         if (player.isTaur()) outputText("arches under your belly as you feel your " + player.cockDescript(0) + " bending pleasurably inside her, and");
@@ -672,7 +672,7 @@ if (player.gender == 1) {
         else outputText("hips");
         outputText(" in the all-too-familiar rhythm, hammering away at the succubus' cunt. Impressed with your initiative, she chooses to remain submissive as you work up an impressive load of spunk. Trying with all of your might, you continue to hold off your orgasm, painfully, as you continue stimulating your inhuman lover.<br><br>");
         outputText("However, she senses your control and immediately brings her own muscles into the little love game. With one good squeeze, she breaks down any control and resistance you have. Sensing you are about to explode, she ");
-        if (player.isTaur()) outputText("pushes on your forelegs, impaling herself even deeper on your " + player.cockDescript(0), false);
+        if (player.isTaur()) outputText("pushes on your forelegs, impaling herself even deeper on your " + player.cockDescript(0));
         else outputText("wraps her legs around your hips and bears down");
         outputText(". You feel the head of your prick push past the dilated opening in her cervix, which immediately contracts around your head. Your penis is literally trapped and caught in her womb!<br><br>");
         outputText("Groaning loudly, long muscle spasms release the painfully stored semen into the deepest parts of the succubus. The sensation of your hot cum so deep inside her body triggers her peak. ");

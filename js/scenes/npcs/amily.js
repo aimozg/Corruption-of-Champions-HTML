@@ -615,7 +615,7 @@ AmilyScene.start = function () {
             if (gameFlags[AMILY_WANG_LENGTH] > 0) {
                 outputText("and the erection tenting her pants ");
                 // Player gets hot for the mouse cock every time!
-                player.modStats("lus", 5);
+                player.dynStats("lus", 5);
             }
             outputText("suggests that it's no joking matter.<br><br>");
         }
@@ -731,7 +731,7 @@ AmilyScene.start = function () {
         //-5 Amily Affection for your rudeness
         gameFlags[AMILY_AFFECTION] -= 5;
         //+5 Libido
-        player.modStats("lib", 5);
+        player.dynStats("lib", 5);
         //[/ Go to [First Time Sex]]
         doNext(AmilyScene.amilySexHappens);
 
@@ -783,7 +783,7 @@ AmilyScene.start = function () {
         // +10 Affection. Behold the power of NoFap!
         gameFlags[AMILY_AFFECTION] += 10;
         // -5 Libido for avoiding obvious offer.
-        player.modStats("lib", -5);
+        player.dynStats("lib", -5);
         doNext(Camp.returnToCampUseOneHour);
     };
 
@@ -854,7 +854,7 @@ AmilyScene.start = function () {
 
         outputText("You know she's never going to come back.");
         //Player gains corruption}
-        player.modStats("cor", 1);
+        player.dynStats("cor", 1);
         //{Amily can no longer be encountered}
         gameFlags[AMILY_VILLAGE_ENCOUNTERS_DISABLED] = 1;
         //{Ruined Village removed from Places list}
@@ -1274,7 +1274,7 @@ AmilyScene.start = function () {
             if (gameFlags[AMILY_AFFECTION] < 15) {
                 outputText("Amily looks at you with disdain, but you can't help but notice just a small tinge of relief at seeing you have a ");
                 if (player.hasCock()) {
-                    outputText(player.cockDescript(0), false);
+                    outputText(player.cockDescript(0));
                     if (player.hasVagina()) outputText(" and ");
                 }
                 if (player.hasVagina()) outputText(player.vaginaDescript());
@@ -1286,10 +1286,10 @@ AmilyScene.start = function () {
             else if (gameFlags[AMILY_AFFECTION] < 40) {
                 outputText("She notices you have a ");
                 if (player.hasCock()) {
-                    outputText(player.cockDescript(0), false);
+                    outputText(player.cockDescript(0));
                     if (player.hasVagina()) outputText(" and ");
                 }
-                if (player.hasVagina()) outputText(player.vaginaDescript(), false);
+                if (player.hasVagina()) outputText(player.vaginaDescript());
                 outputText(", and she smiles at you. \"<i>I guess this means we can continue with our task?</i>\" You nod in affirmation.  The mouse-girl nods, but turns to leave.  It seems she needs a little time to adjust to this new development.<br><br>");
                 doNext(Camp.returnToCampUseOneHour);
                 return;
@@ -1370,7 +1370,7 @@ AmilyScene.start = function () {
         //Boost affection!
         gameFlags[AMILY_AFFECTION] += 2 + rand(3);
         //Lower Corruption a tiny bit
-        player.modStats("cor", -.34);
+        player.dynStats("cor", -.34);
         //Conversation: Items
 
         if (convo == 0) {
@@ -1568,7 +1568,7 @@ AmilyScene.start = function () {
 
             outputText("Amily looks flustered.  \"<i>Well, they, they have been willing to trade honey in the past if you confront them peacefully and... alright, I'll admit it, when times have been really lean, I've been willing to host some giant bee eggs in exchange for honey.</i>\"<br><br>");
 
-            outputText("You smile and thank her for sharing, noting that she didn't need to tell you such personal information", false);
+            outputText("You smile and thank her for sharing, noting that she didn't need to tell you such personal information");
             if (sexForced) outputText(".<br><br>");
             else outputText(", and politely excuse yourself.<br><br>");
         }
@@ -1703,7 +1703,7 @@ AmilyScene.start = function () {
 
             outputText("\"<i>Thank you.  It's been so long... but it still hurts, remembering.</i>\"<br><br>");
 
-            outputText("You tell her that you're sorry for bringing up such painful memories", false);
+            outputText("You tell her that you're sorry for bringing up such painful memories");
 
             if (sexForced) outputText(".");
             else outputText(", then excuse yourself once you are certain she is okay.<br><br>");
@@ -1723,7 +1723,7 @@ AmilyScene.start = function () {
 
             outputText("She grins at you, mischievously.  \"<i>Any more questions?</i>\"<br><br>");
 
-            outputText("You shake your head \"<i>no</i>", false);
+            outputText("You shake your head \"<i>no</i>");
             if (!sexForced) {
                 if (gameFlags[AMILY_FOLLOWER] == 0) outputText("\", politely excuse yourself, and head back to your own camp. It sounds like she's doing better at keeping a steady supply of food and water going than you are.  But if that's the case... why does she look so thin?<br><br>");
 
@@ -2252,7 +2252,7 @@ AmilyScene.determineAmilySexEvent = function () { // May need to force a false b
     AmilyScene.amilySexPartIII = function () {
         var x = player.cockThatFits(61);
 
-        //outputText(images.showImage("amily-forest-plainfuck"), false);
+        //outputText(images.showImage("amily-forest-plainfuck"));
         outputText("The time couldn't be any more right for either of you, and you both sink onto the bedding that Amily has prepared. Lying side by side, Amily guides you with surprising efficiency into her entry, and then, once you are comfortably inside, she begins to thrust, her cunt gripping your " + player.cockDescript(x) + " like a vice.<br><br>");
 
         /*(If player chooses "Share The Pleasure":)
@@ -2276,7 +2276,7 @@ AmilyScene.determineAmilySexEvent = function () { // May need to force a false b
         //Slight affection gain?
         gameFlags[AMILY_AFFECTION] += 1 + rand(2);
         player.orgasm();
-        player.modStats("sen", -1);
+        player.dynStats("sen", -1);
         doNext(Camp.returnToCampUseOneHour);
     };
 
@@ -2346,10 +2346,10 @@ AmilyScene.determineAmilySexEvent = function () { // May need to force a false b
     AmilyScene.amilySexPlayAlong = function () {
         outputText("", true);
 
-        //outputText(images.showImage("amily-forest-reverse-cowgirl"), false);
+        //outputText(images.showImage("amily-forest-reverse-cowgirl"));
         outputText("You decide to let her take the dominant position, relax (as much as you can with a beautiful, hot and very wet little mouse-girl sitting on you and fondling you) and simply enjoy her attentions. Amily obviously knows what she is doing - though you have no idea HOW she knows - and manages to bring you nearly to the climax before drawing back a little and letting you calm down.  She repeats this several times until you're nearly going crazy.  Just when you think you can't stand it anymore, she removes her tail from your cock and instead uses it to lightly bind your hands. You could easily move your hands, but decide not to. Grinning at you, she hovers a moment over your cock before slowly sinking down. You somehow manage to avoid cumming as soon as you enter her, but it's really, really hard. Amily's tail draws your 'bound' hands onto her breasts, while hers start caressing yours as she begins slowly riding you. Soon, the speed increases, and it isn't long before you both orgasm.<br><br>");
         player.orgasm();
-        player.modStats("sen", -1);
+        player.dynStats("sen", -1);
         AmilyScene.amilySexMidPartIV();
     };
 
@@ -2359,7 +2359,7 @@ AmilyScene.determineAmilySexEvent = function () { // May need to force a false b
 
         outputText("You decide to take a more active role and start caressing her, kneading her breasts and making sure she enjoys it just as much as you do. Soon, Amily can't hold herself back and sinks down on you, beginning to ride you for all she's worth. It doesn't take you two long to reach the climax.<br><br>");
         player.orgasm();
-        player.modStats("sen", -1);
+        player.dynStats("sen", -1);
         AmilyScene.amilySexMidPartIV();
     };
 
@@ -2469,7 +2469,7 @@ AmilyScene.determineAmilySexEvent = function () { // May need to force a false b
         gameFlags[AMILY_AFFECTION] += 2 + rand(4);
         gameFlags[AMILY_FUCK_COUNTER]++;
         player.orgasm();
-        player.modStats("sen", -1);
+        player.dynStats("sen", -1);
         AmilyScene.amilyPreggoChance();
         doNext(Camp.returnToCampUseOneHour);
     };
@@ -2514,7 +2514,7 @@ AmilyScene.determineAmilySexEvent = function () { // May need to force a false b
         gameFlags[AMILY_AFFECTION] += 2 + rand(4);
         gameFlags[AMILY_FUCK_COUNTER]++;
         player.orgasm();
-        player.modStats("sen", -1);
+        player.dynStats("sen", -1);
         doNext(Camp.returnToCampUseOneHour);
     };
 
@@ -2695,7 +2695,7 @@ AmilyScene.determineAmilySexEvent = function () { // May need to force a false b
 // "Take charge" (i.e be a total douche) during first sexual encounter with Amily - NEED COCK VARS? NEED TO TEST THE TRANSFORMATIONS
     AmilyScene.amilySexFirstTimeTakeCharge = function () {
         clearOutput();
-        //outputText(images.showImage("amily-forest-takecharge"), false);
+        //outputText(images.showImage("amily-forest-takecharge"));
 
         outputText("You decide that the scenery doesn't matter; Amily promised you sex, and you want that sex. Without a word you step forward and give her a mighty push, sending her falling onto her butt with a squeak as you thrust her towards the \"<i>bed</i>\" - that she lands in it is more coincidence than anything. You drop down on top of her, pinning her arms and legs with your own.<br><br>");
 
@@ -2750,7 +2750,7 @@ AmilyScene.determineAmilySexEvent = function () { // May need to force a false b
 // Wait for Amily to make the first move during first sexual encounter. - COMPLETE
     AmilyScene.amilySexFirstTimeHesitate = function () {
         clearOutput();
-        //outputText(images.showImage("amily-forest-plainfuck"), false);
+        //outputText(images.showImage("amily-forest-plainfuck"));
 
         outputText("Amily may be a cute little girl, but you're not sure it's really a good idea to... proceed... So you just wait for her to decide whether she really wants to have sex here and now. After a few moments, when it's clear that you're not going to do anything, she frowns a little and steps up to you. Looking up into your eyes, you suddenly realize she wants a kiss. Bending down your head, you plan to give her a rather chaste kiss, but Amily obviously has other ideas. You feel your tongue entering her mouth, and what was intended as a short, innocent kiss turns into a very hot, rather 'not-so-innocent' one.  Suddenly you feel her little hand (or paw?) grabbing your ass.<br><br>");
 
@@ -2775,7 +2775,7 @@ AmilyScene.determineAmilySexEvent = function () { // May need to force a false b
     AmilyScene.amilySexFirstTimeKiss = function () {
         clearOutput();
 
-        //outputText(images.showImage("amily-forest-kissingfuck"), false);
+        //outputText(images.showImage("amily-forest-kissingfuck"));
         outputText("While the scenery certainly isn't anything you'd call \"<i>romantic</i>\" or \"<i>arousing</i>\", the eager little mouse-girl in front of you is quite appealing, so you step up to her, take her in your arms and lightly kiss her. Seeing her eyes widen in surprise for a moment, she soon closes her eyes and returns the kiss. Continuing the kiss you two begin to explore each other. Along the way, you help each other out of your clothes and slowly, almost reluctantly step back so you can for the first time see each other without anything in the way.<br><br>");
 
         //(If player has a penis 14" long or more)
@@ -2867,8 +2867,8 @@ AmilyScene.determineAmilySexEvent = function () { // May need to force a false b
 
             outputText("You don't want to just run away and leave her, but at the same time you think it would be best to respect her privacy. You stand a respectful distance away, watching as she strains. Her pink nether lips part and a small");
 
-            if (gameFlags[AMILY_NOT_FURRY] == 0) outputText(", mousy figure – pink, hairless and ", false);
-            else outputText(" figure –", false);
+            if (gameFlags[AMILY_NOT_FURRY] == 0) outputText(", mousy figure – pink, hairless and ");
+            else outputText(" figure –");
             outputText(" maybe six inches tall – slips out, falling to the ground with a squeak. Fortunately, Amily has prepared a pile of rags and soft leaves to cushion its landing. It rolls around a bit, and then scrambles with surprising speed; which is good, as it is joined by company very quickly. A second infant falls onto the padding beside it, and then a third... a fourth...<br><br>");
 
             outputText("You watch as baby after baby slips free of its mother's womb and into the wider world. ");
@@ -3337,7 +3337,7 @@ AmilyScene.amilyCorrupt3 = function () {
             clearOutput();
 //(if PC is genderless)
             if (player.gender == 0) {
-                outputText("You think about going into the ruined village, but playing with Amily is not going to be possible if you don't have the parts for it... You return to your camp.", false);
+                outputText("You think about going into the ruined village, but playing with Amily is not going to be possible if you don't have the parts for it... You return to your camp.");
                 doNext(Camp.returnToCampUseOneHour);
                 return;
             }
@@ -3350,10 +3350,10 @@ AmilyScene.amilyCorrupt3 = function () {
 
             outputText("\"<i>I need you! I need more of you! Please let me drink moooore!</i>\" she begs, nuzzling your crotch; ");
             if (player.hasCock()) {
-                outputText("driving your " + player.cockDescript(0) + " into erection", false);
-                if (player.hasVagina()) outputText(" and ", false);
+                outputText("driving your " + player.cockDescript(0) + " into erection");
+                if (player.hasVagina()) outputText(" and ");
             }
-            if (player.hasVagina()) outputText(" moistening your " + player.vaginaDescript(), false);
+            if (player.hasVagina()) outputText(" moistening your " + player.vaginaDescript());
             outputText(".  Amily's nose twitches a little and she forcibly pulls your pants down, looking up at you with pleading eyes, as if asking for permission.<br><br>");
 
             outputText("\"<i>Don't you want more of your medicine?</i>\" you ask, showing her the bottle with the mixture.<br><br>");
@@ -3367,7 +3367,7 @@ AmilyScene.amilyCorrupt3 = function () {
 
             outputText("Amily plants her head on the ground and starts. \"<i>" + player.mf("Master", "Mistress") + ", please let me drink more of your cum. Please! I need it so bad that I can't help but drool. I need it so bad that not being able to drink from you is like torture. Please let me drink!</i>\"<br><br>");
 
-            outputText("You laugh at the mousette, then say, \"<i>Very well! I will you allow you to drink from me, you worthless cunt!</i>\"", false);
+            outputText("You laugh at the mousette, then say, \"<i>Very well! I will you allow you to drink from me, you worthless cunt!</i>\"");
 
 //RAPE 3 GO
             AmilyScene.amilyCorruptionRape(); //chooseYourAmilyRape();
@@ -3472,8 +3472,8 @@ AmilyScene.rapeCorruptAmily1Male = function () {
             else outputText(player.cockDescript(x) + " throb");
             outputText("; the very idea of a mousy slut eager for cum distills into one massive load of cum, and you dump it all in her mouth.<br><br>You sigh, sated for now and leave her to clean herself up.");
             player.orgasm();
-            player.modStats("lib", -2);
-            player.modStats("cor", 5);
+            player.dynStats("lib", -2);
+            player.dynStats("cor", 5);
 
             if (inCombat() == true) cleanupAfterCombat();
             else
@@ -3514,8 +3514,8 @@ AmilyScene.rapeCorruptAmily1Female = function () {
 
             outputText("Finally done, you let go of her and get up; she proceeds to slump down and give a small burp of satisfaction, then drift off into sleep. You untie her and proceed to get dressed; you give her a light pat on the thigh and return to your camp. You'll have to do this again sometime later...");
             player.orgasm();
-            player.modStats("lib", -2);
-            player.modStats("cor", 5);
+            player.dynStats("lib", -2);
+            player.dynStats("cor", 5);
             if (inCombat() == true) cleanupAfterCombat();
             else
                 doNext(Camp.returnToCampUseOneHour);
@@ -3615,8 +3615,8 @@ AmilyScene.rapeCorruptAmily2Epilogue = function () {
 
             player.orgasm();
 
-            player.modStats("lib", -2);
-            player.modStats("cor", 5);
+            player.dynStats("lib", -2);
+            player.dynStats("cor", 5);
             doNext(Camp.returnToCampUseOneHour);
         };
 
@@ -3638,7 +3638,7 @@ AmilyScene.rapeCorruptAmily3Male = function () {
             if (player.cor < 60) {
                 outputText("Satisfied for the moment, you leave the smiling mouse lying in a pool of cum and return to the camp.");
                 player.orgasm();
-                player.modStats("cor", 2);
+                player.dynStats("cor", 2);
                 doNext(Camp.returnToCampUseOneHour);
                 return;
             }
@@ -3647,9 +3647,9 @@ AmilyScene.rapeCorruptAmily3Male = function () {
 
             outputText("\"<i>Get up cumbucket, it's time for your reward,</i>\" you say.<br><br>");
 
-            outputText("Amily jumps up and rushes to nuzzle at your still erect " + player.cockDescript(0) + ". \"<i>Thank you! Thank you! Thank you!</i>\" she says excitedly. Then with a lick of her lips, she opens wide to accept your meat.  ", false);
+            outputText("Amily jumps up and rushes to nuzzle at your still erect " + player.cockDescript(0) + ". \"<i>Thank you! Thank you! Thank you!</i>\" she says excitedly. Then with a lick of her lips, she opens wide to accept your meat.  ");
 //[(if PC is huge)
-            if (player.cockArea(0) > 50) outputText("You didn't think it was possible, but somehow ", false);
+            if (player.cockArea(0) > 50) outputText("You didn't think it was possible, but somehow ");
             outputText("Amily manages to fit all of you inside her in one go.  She gurgles in ecstasy and sends vibrations along your shaft, drawing a moan of pleasure from you. Her tongue darts out of her mouth to lick at ");
             if (player.balls > 0) outputText("your " + player.ballsDescriptLight());
             else if (player.hasVagina()) outputText("your " + player.vaginaDescript());
@@ -3695,7 +3695,7 @@ AmilyScene.rapeCorruptAmily3Female = function () {
             if (player.cor < 60) {
                 outputText("Satisfied for the moment, you leave the smiling mouse lying in a pool of juices and return to the camp.");
                 player.orgasm();
-                player.modStats("cor", 2);
+                player.dynStats("cor", 2);
                 doNext(Camp.returnToCampUseOneHour);
                 return;
             }
@@ -3732,11 +3732,11 @@ AmilyScene.rapeCorruptAmily3Epilogue = function () {
 
             outputText("Amily happily answers, \"<i>Anything you desire!</i>\"<br><br>");
 
-            outputText("\"<i>I will return when I think you're ready.</i>\" You say, then leave her to her own devices.", false);
+            outputText("\"<i>I will return when I think you're ready.</i>\" You say, then leave her to her own devices.");
 
             player.orgasm();
-            player.modStats("lib", -2);
-            player.modStats("cor", 5);
+            player.dynStats("lib", -2);
+            player.dynStats("cor", 5);
 
             doNext(Camp.returnToCampUseOneHour);
         };
@@ -3814,7 +3814,7 @@ AmilyScene.rapeCorruptAmily4Male = function () {
 
                 outputText("You return to the camp.");
                 player.orgasm();
-                player.modStats("cor", 3);
+                player.dynStats("cor", 3);
                 doNext(Camp.returnToCampUseOneHour);
                 return;
             }
@@ -3896,7 +3896,7 @@ AmilyScene.rapeCorruptAmily4Female = function () {
                 outputText("You return to the camp.");
                 doNext(Camp.returnToCampUseOneHour);
                 player.orgasm();
-                player.modStats("cor", 3);
+                player.dynStats("cor", 3);
                 return;
             }
             outputText("You push her back and withdraw, not yet satisfied. <b>A familiar power gathers inside you, and you decide to tap into it.</b><br><br>");

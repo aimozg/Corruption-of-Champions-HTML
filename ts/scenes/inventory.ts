@@ -372,7 +372,7 @@ namespace Inventory {
 		 else outputText("next to your bedroll.");
 		 addButton(10, "J.Box Put", pickItemToPlaceInJewelryBox);
 		 if (jewelryBoxDescription()) addButton(11, "J.Box Take", pickItemToTakeFromJewelryBox);
-		 outputText("\n\n", false);
+		 outputText("\n\n");
 		 }*/
 
 		/* Dresser Code

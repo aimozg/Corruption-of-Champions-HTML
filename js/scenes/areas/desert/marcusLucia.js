@@ -65,7 +65,7 @@ WandererScene.wandererStayHuman = function() {
     outputText(player.mf("He", "She") + " is right, my soul is immortal and not to be sacrificed so lightly. Why don't we stick to our original agreement another decade and mull it over then?</i>\"<br><br>");
     outputText("Lucia pouts, nearly on the verge of tears, \"<i>Fine! But don't expect me to be happy about it.</i>\" She pats his swollen balls roughly, smirking down at him, \"<i>and I'm going to let these swell up nice and tight before I take my next meal!</i>\" ");
     outputText("Marcus sighs, though you think you spy the hint of a smile on his lips, \"<i>As you wish... thanks for your guidance traveler, and may you find what you seek in this strange land.</i>\"<br><br>As they turn to leave, Lucia scowls at you over her shoulder...");
-    player.modStats("lib", -1, "cor", -5);
+    player.dynStats("lib", -1, "cor", -5);
     player.changeLust(1);
     gameFlags[WANDERER_DEMON] = -1;
     doNext(Camp.returnToCampUseOneHour);
@@ -76,7 +76,7 @@ WandererScene.wandererGoDemon = function() {
     clearOutput();
     outputText("Lucia breaks into a mischievious smile as you suggest taking her up on her offer. She sashays over to you, flesh jiggling enticingly the whole way. She leans close, sliding a slender finger down the center of your chest. \"<i>Thank you for this. Should we meet again, I promise rewards fit to make a whore faint.</i>\"<br><br>");
     outputText("Marcus raises an eyebrow at the exchange, but smiles as his demonic lover returns to his side. Lucia winks again, and huge wings explode from her back. She grabs Marcus, who bleats in surprise, and lifts off, flying away with her prize to her lair.");
-    player.modStats("cor", 1);
+    player.dynStats("cor", 1);
     player.changeLust(5);
     gameFlags[WANDERER_DEMON] = 1;
     doNext(Camp.returnToCampUseOneHour);

@@ -70,7 +70,7 @@ MarbleScene.applyMarblesMilk = function() {
         addButton(1, "Don't", MarbleScene.resistMarbleInitially);
         return;
     }
-    outputText("\"<i>My name's Marble, what's yours?</i>\" she asks you.  You introduce yourself and exchange a few pleasantries before she asks how she can help you.  You tell her that you actually came to help her, explaining that Whitney said she could use a gentle touch.  \"<i>Oh that would be nice</i>\", she says \"<i>Spending the night connected to the milking machine was a mistake, and now I need something gentle.</i>\"  How will you help her?", false);
+    outputText("\"<i>My name's Marble, what's yours?</i>\" she asks you.  You introduce yourself and exchange a few pleasantries before she asks how she can help you.  You tell her that you actually came to help her, explaining that Whitney said she could use a gentle touch.  \"<i>Oh that would be nice</i>\", she says \"<i>Spending the night connected to the milking machine was a mistake, and now I need something gentle.</i>\"  How will you help her?");
     outputText("\n\n(Of course, you could always turn around and resolve to avoid her from this point on, if you wanted.)");
     //- player chooses caress, suckle, or rape
     simpleChoices("Caress", caressMarble, "Suckle", suckleMarble, "Rape", rapeDAHMARBLEZ, "", null, "Leave", turnOffMarbleForever);
@@ -81,12 +81,12 @@ MarbleScene.marblePicksYouUpInitially = function() {
     clearOutput();
     //(player chose don't resist)
     clearOutput();
-    outputText("She gently lifts you up and carries you over to her bed. Laying you down on her lap, she lifts your head to one of her nipples and pushes your lips against it.  She smiles and holds you there firmly as you feel a warm and delicious fluid start to fill your mouth.  Once you've had a taste of her milk, you can't help yourself and eagerly start to gulp it down.  After a little while you hear Marble sigh, \"<i>Oh sweetie, that's just what I needed.  I know it's annoying to stop for a moment, but could you do the other teat too?</i>\"  She pulls her hand back and flips you around on her lap before lifting you to her other nipple.  You don't need any encouragement this time, and start drinking eagerly without hesitation.  \"<i>Drink your fill sweetie, I know we're both enjoying this.</i>\"\n\n", false);
+    outputText("She gently lifts you up and carries you over to her bed. Laying you down on her lap, she lifts your head to one of her nipples and pushes your lips against it.  She smiles and holds you there firmly as you feel a warm and delicious fluid start to fill your mouth.  Once you've had a taste of her milk, you can't help yourself and eagerly start to gulp it down.  After a little while you hear Marble sigh, \"<i>Oh sweetie, that's just what I needed.  I know it's annoying to stop for a moment, but could you do the other teat too?</i>\"  She pulls her hand back and flips you around on her lap before lifting you to her other nipple.  You don't need any encouragement this time, and start drinking eagerly without hesitation.  \"<i>Drink your fill sweetie, I know we're both enjoying this.</i>\"\n\n");
     player.refillHunger(30);
     //new paragraph
-    outputText("Once you'd had enough, you take your mouth off her teat and lean against her chest.  Marble puts her hands around you and ", false);
-    if (player.earType > EarType.HUMAN) outputText("gently scratches behind your ears.  ", false);
-    else outputText("lightly caresses your head.  ", false);
+    outputText("Once you'd had enough, you take your mouth off her teat and lean against her chest.  Marble puts her hands around you and ");
+    if (player.earType > EarType.HUMAN) outputText("gently scratches behind your ears.  ");
+    else outputText("lightly caresses your head.  ");
     outputText("\"<i>Thanks for your gentle mouth, sweetie,</i>\"  she says, \"<i>Do you think you could tell me your name?  I'm Marble.</i>\"  You let out a soft sigh and tell her who you are and why you came to visit.  She giggles, \"<i>Don't worry sweetie, I feel much better now thanks to you.  I'm really glad I got to meet you in such a pleasant way.</i>\"  You decide that it is probably time to leave now and say your farewells to this cow-girl.  \"<i>Come back to visit me anytime; I'll look forward to seeing you again soon!</i>\" she says beaming at you.  With that, you leave the farm, feeling a strange sense of euphoria passing over you.", false);
     //(increase affection by 30)
     //(increase addiction by 10)
@@ -100,9 +100,9 @@ MarbleScene.resistMarbleInitially = function() {
     clearOutput();
     //(player chose resist)
     clearOutput();
-    outputText("Surprised by your resistance, she pulls back and apologizes for being presumptuous.  ", false);
+    outputText("Surprised by your resistance, she pulls back and apologizes for being presumptuous.  ");
     //- continue to the next part
-    outputText("\"<i>My name's Marble, what's yours?</i>\" she asks you.  You introduce yourself and exchange a few pleasantries before she asks how she can help you.  You tell her that you actually came to help her, explaining that Whitney said she could use a gentle touch.  \"<i>Oh that would be nice</i>\", she says \"<i>Spending the night connected to the milking machine was a mistake, and now I need something gentle.</i>\"  How will you help her?", false);
+    outputText("\"<i>My name's Marble, what's yours?</i>\" she asks you.  You introduce yourself and exchange a few pleasantries before she asks how she can help you.  You tell her that you actually came to help her, explaining that Whitney said she could use a gentle touch.  \"<i>Oh that would be nice</i>\", she says \"<i>Spending the night connected to the milking machine was a mistake, and now I need something gentle.</i>\"  How will you help her?");
     //- player chooses caress, suckle, or rape
     simpleChoices("Caress", caressMarble, "Suckle", suckleMarble, "Rape", rapeDAHMARBLEZ, "", null, "", null);
 }*/

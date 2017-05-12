@@ -1,5 +1,5 @@
 const KeyItemIDs: { [index: string]: KeyItemType } = {}; //Hold key item IDs for purpose of looking up.
-namespace Keyitems {
+namespace KeyItems {
 	//Books
 	export const BookDangerousPlants   = new KeyItemType("Book - Dangerous Plants");
 	export const BookHentaiComic       = new KeyItemType("Book - Hentai Comic");

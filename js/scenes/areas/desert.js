@@ -53,12 +53,12 @@ Areas.Desert.explore = function() {
                     //50/50 strength/toughness
                     if (rand(2) == 0 && player.str < 50) {
                         outputText("The effort of struggling with the uncertain footing has made you stronger.");
-                        player.modStats("str", .5);
+                        player.dynStats("str", .5);
                     }
                     //Toughness
                     else if (player.tou < 50) {
                         outputText("The effort of struggling with the uncertain footing has made you tougher.");
-                        player.modStats("tou", .5);
+                        player.dynStats("tou", .5);
                     }
                 }
             }
