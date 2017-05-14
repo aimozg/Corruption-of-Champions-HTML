@@ -72,7 +72,7 @@ GooGirl.prototype.constructor = GooGirl;
 //------------
 GooGirl.prototype.doAI = function() {
     var chooser;
-    if (monster.findStatusEffect(StatusEffects.Acid) >= 0 && rand(3) == 0 || rand(3) == 0) chooser = 0; //Extra chance if acidic.
+    if (monster.hasStatusEffect(StatusEffects.Acid && rand(3) == 0 || rand(3) == 0) chooser = 0; //Extra chance if acidic.
     else if (rand(5) == 0) chooser = 1;
     else if (rand(3) == 0) chooser = 2;
     else chooser = 3;
@@ -101,13 +101,13 @@ GooGirl.prototype.doAI = function() {
 
 GooGirl.gooGalAttack = function() {
     var damage = 0;
-    if (monster.findStatusEffect(StatusEffects.Acid) >= 0)
+    if (monster.hasStatusEffect(StatusEffects.Acid)
         outputText("Her body quivering from your flames, the goo-girl ");
     else
         outputText("The goo-girl holds her hands up and they morph into a replica of your " + player.weapon.equipmentName + ". Happily, she swings at you");
     //Determine if dodged!
     if (player.spe - monster.spe > 0 && rand(((player.spe - monster.spe) / 4) + 80) > 80) {
-        if (monster.findStatusEffect(StatusEffects.Acid) >= 0)
+        if (monster.hasStatusEffect(StatusEffects.Acid)
             outputText("tries to slap you, but you dodge her attack.");
         else
             outputText(", missing as you dodge aside.");
@@ -115,7 +115,7 @@ GooGirl.gooGalAttack = function() {
     }
     //Determine if evaded
     if (player.findPerk(PerkLib.Evade) >= 0 && rand(100) < 10) {
-        if (monster.findStatusEffect(StatusEffects.Acid) >= 0)
+        if (monster.hasStatusEffect(StatusEffects.Acid)
             outputText("tries to slap you, but you evade her attack.");
         else
             outputText(", but you evade the clumsy attack.");
@@ -123,7 +123,7 @@ GooGirl.gooGalAttack = function() {
     }
     //Misdirection
     if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 10 && player.armor.equipmentName == "red, high-society bodysuit") {
-        if (monster.findStatusEffect(StatusEffects.Acid) >= 0)
+        if (monster.hasStatusEffect(StatusEffects.Acid)
             outputText("tries to slap you. You misdirect her, avoiding the hit.");
         else
             outputText(", missing as you misdirect her attentions.");
@@ -131,19 +131,19 @@ GooGirl.gooGalAttack = function() {
     }
     //Determine if cat'ed
     if (player.findPerk(PerkLib.Flexibility) >= 0 && rand(100) < 6) {
-        if (monster.findStatusEffect(StatusEffects.Acid) >= 0)
+        if (monster.hasStatusEffect(StatusEffects.Acid)
             outputText("tries to slap you, but misses due to your cat-like evasion.");
         else
             outputText(", missing due to your cat-like evasion.");
         return;
     }
     //Determine damage - str modified by enemy toughness!
-    if (monster.findStatusEffect(StatusEffects.Acid) >= 0)
+    if (monster.hasStatusEffect(StatusEffects.Acid)
         damage = ((monster.str + monster.weapon.attack) - rand(player.tou) - player.armor.defense);
 
     if (damage <= 0) {
         damage = 0;
-        if (monster.findStatusEffect(StatusEffects.Acid) >= 0) {
+        if (monster.hasStatusEffect(StatusEffects.Acid) {
             if (rand(player.armor.defense + player.tou) < player.armor.defense) outputText("tries to slap you, but the acid-bearing slap spatters weakly off your " + player.armor.equipmentName + ". ");
             else outputText("tries to slap you with an acid-loaded hand, but it splatters off you ineffectually. ");
         }
@@ -155,7 +155,7 @@ GooGirl.gooGalAttack = function() {
     }
     //everyone else
     else {
-        if (monster.findStatusEffect(StatusEffects.Acid) >= 0) {
+        if (monster.hasStatusEffect(StatusEffects.Acid) {
             outputText("delivers a painful slap across your cheek.  You gasp when the light stinging becomes a searing burn that seems to get worse as time goes on! ");
             if (player.findStatusEffect(StatusEffects.Acid) < 0) player.createStatusEffect(StatusEffects.Acid, 0, 0, 0, 0);
         }

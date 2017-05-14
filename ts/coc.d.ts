@@ -88,9 +88,6 @@ declare namespace Places {
 declare namespace RathazulScene {
 	function campRathazul():void;
 }
-declare namespace SandTrapScene {
-	function birfSandTarps():void;
-}
 declare class Tamani extends Creature {
 
 }

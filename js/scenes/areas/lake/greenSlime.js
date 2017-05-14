@@ -133,7 +133,7 @@ GreenSlimeScene.encounterSlime = function() {
 GreenSlimeScene.greenSlimeWin = function() {
     outputText("You smile in satisfaction as the " + monster.name + " collapses, unable to continue fighting.", true);
 //Boobfeed.
-    if (player.findStatusEffect(StatusEffects.Feeder) >= 0 && gameFlags[SFW_MODE] <= 0) {
+    if (player.hasStatusEffect(StatusEffects.Feeder && gameFlags[SFW_MODE] <= 0) {
         //Eligible to rape
         if (player.lust >= 33 && player.gender > 0) {
             outputText("<br><br>You're horny enough to try and rape it, though you'd rather see how much milk you can squirt into it.  What do you do?");

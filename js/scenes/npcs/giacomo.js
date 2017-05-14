@@ -32,7 +32,7 @@ GiacomoScene.giacomoEncounter = function() {
     if (gameFlags[GIACOMO_MET] == 0) {
         GiacomoScene.firstEncounter();
     }
-    else if (gameFlags[GIACOMO_WORMS_OFFERED] == 0 && player.findStatusEffect(StatusEffects.Infested) >= 0) { //If infested && no worm offer yet
+    else if (gameFlags[GIACOMO_WORMS_OFFERED] == 0 && player.hasStatusEffect(StatusEffects.Infested) { //If infested && no worm offer yet
         outputText("Upon walking up to Giacomo's wagon, he turns to look at you and cocks an eyebrow in curiosity and mild amusement.<br><br>");
         outputText("\"<i>Been playing with creatures best left alone, I see</i>,\" he chuckles. \"<i>Infestations of any kind are annoying, yet your plight is quite challenging given the magnitude of corrupt creatures around here. It is not the first time I have seen one infested with THOSE worms.</i>\"<br><br>");
         outputText("You ask how he knows of your change and the merchant giggles heartily.<br><br>");

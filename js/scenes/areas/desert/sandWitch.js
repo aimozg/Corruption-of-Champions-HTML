@@ -82,7 +82,7 @@ SandWitch.prototype.doAI = function() {
 
 SandWitch.lustAttack = function() {
     outputText("The sand witch points at you, drawing a circle in the air and mouthing strange words.<br><br>");
-    if (player.findStatusEffect(StatusEffects.StoneLust) >= 0) {
+    if (player.hasStatusEffect(StatusEffects.StoneLust) {
         outputText("The orb inside you grows warm, almost hot, suffusing your body with heat and arousal. ");
         player.changeLust(8 + (player.sens) / 10, true);
     }

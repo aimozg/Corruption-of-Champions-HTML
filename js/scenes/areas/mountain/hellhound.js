@@ -97,7 +97,7 @@ Hellhound.prototype.doAI = function() {
 //comment in this function commented out in original code
 Hellhound.hellhoundFire = function() {
     //Blind dodge change
-    if (monster.findStatusEffect(StatusEffects.Blind) >= 0) {
+    if (monster.hasStatusEffect(StatusEffects.Blind) {
         outputText(capitalize(monster.a) + monster.refName + " completely misses you with a wave of dark fire! Thank the gods it's blind!");
         combatRoundOver();
         return;
@@ -128,7 +128,7 @@ Hellhound.hellhoundFire = function() {
 };
 
 Hellhound.hellhoundScent = function() {
-    if (player.findStatusEffect(StatusEffects.NoFlee) >= 0) {
+    if (player.hasStatusEffect(StatusEffects.NoFlee) {
         if (monster.spe == 100) {
             Hellhound.hellhoundFire();
             return;

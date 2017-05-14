@@ -236,7 +236,7 @@ TentacleBeastScene.tentacleBeastWin = function() {
     }
 // TODO Phylla Scene
     /*
-     if (findStatusEffect(StatusEffects.PhyllaFight) >= 0) {
+     if (hasStatusEffect(StatusEffects.PhyllaFight) {
      removeStatusEffect(StatusEffects.PhyllaFight);
      game.desert.antsScene.phyllaTentacleDefeat();
      }
@@ -294,7 +294,7 @@ TentacleBeastScene.tentacleBeastLoss = function() {
         outputText("Overcome by your wounds, you turn to make a last desperate attempt to run...<br><br>");
         //TODO Phylla Scenes
         /*
-         if (findStatusEffect(StatusEffects.PhyllaFight) >= 0) {
+         if (hasStatusEffect(StatusEffects.PhyllaFight) {
          removeStatusEffect(StatusEffects.PhyllaFight);
          outputText("...and make it into the nearby tunnel.  ");
          game.desert.antsScene.phyllaTentaclePCLoss();
@@ -305,7 +305,7 @@ TentacleBeastScene.tentacleBeastLoss = function() {
     else {
         outputText("You give up on fighting, too aroused to resist any longer.  Shrugging, you walk into the writhing mass...<br><br>");
 //TODO Phylla Scenes
-        /* if (findStatusEffect(StatusEffects.PhyllaFight) >= 0) {
+        /* if (hasStatusEffect(StatusEffects.PhyllaFight) {
          removeStatusEffect(StatusEffects.PhyllaFight);
          outputText("...but an insistent voice rouses you from your stupor.  You manage to run into a nearby tunnel.  ");
          game.desert.antsScene.phyllaTentaclePCLoss();

@@ -2191,7 +2191,7 @@ AmilyScene.determineAmilySexEvent = function () { // May need to force a false b
 
         //worm infested reaction
         /*
-         if (player.findStatusEffect(StatusEffects.Infested) >= 0) {
+         if (player.hasStatusEffect(StatusEffects.Infested) {
          outputText("\"<i>EWWWW!  You're infested!</i>\" she shrieks, \"<i>Get out!  Don't come back 'til you get rid of the worms!</i>\"\n\nYou high tail it out of there.  It looks like Amily doesn't want much to do with you until you're cured.");
          doNext(camp.returnToCampUseOneHour);
          gameFlags[AMILY_AFFECTION] -= 3;
@@ -3959,7 +3959,7 @@ AmilyScene.rapeCorruptAmily4Epilogue = function () {
     /*         
     //}
              //if marble is there, tag it for freakout
-             if (player.findStatusEffect(StatusEffects.CampMarble) >= 0) {
+             if (player.hasStatusEffect(StatusEffects.CampMarble) {
              flags[kFLAGS.MARBLE_OR_AMILY_FIRST_FOR_FREAKOUT] = 1;
              }
              else flags[kFLAGS.MARBLE_OR_AMILY_FIRST_FOR_FREAKOUT] = 2;
@@ -4081,7 +4081,7 @@ AmilyScene.amilyBecomesFollower = function () {
             gameFlags[AMILY_CLOTHING] = "rags";
             //if marble is there, tag it for freakout
             /*
-            //if (player.findStatusEffect(StatusEffects.CampMarble) >= 0) {
+            //if (player.hasStatusEffect(StatusEffects.CampMarble) {
             //    flags[kFLAGS.MARBLE_OR_AMILY_FIRST_FOR_FREAKOUT] = 1;
             //}
             //else flags[kFLAGS.MARBLE_OR_AMILY_FIRST_FOR_FREAKOUT] = 2;

@@ -468,7 +468,7 @@ class Creature {
 		this.outputDefaultTeaseReaction(lustDelta);
 		if (lustDelta > 0) {
 			//Imp mob uber interrupt!
-			/*if (this.findStatusEffect(StatusEffects.ImpUber) >= 0) { // TODO move to proper class
+			/*if (this.hasStatusEffect(StatusEffects.ImpUber) { // TODO move to proper class
 			 outputText("<br>The imps in the back stumble over their spell, their loincloths tenting obviously as your display interrupts their casting. One of them spontaneously orgasms, having managed to have his spell backfire. He falls over, weakly twitching as a growing puddle of whiteness surrounds his defeated form.");
 			 //(-5% of max enemy HP)
 			 this.changeHP(this.maxHP() * 0.05, true);
@@ -812,15 +812,15 @@ class Creature {
 	}
 
 	public milked(): void {
-		/*if (this.findStatusEffect(StatusEffects.LactationReduction) >= 0)
+		/*if (this.hasStatusEffect(StatusEffects.LactationReduction)
 		 this.changeStatusValue(StatusEffects.LactationReduction, 1, 0);
-		 if (this.findStatusEffect(StatusEffects.LactationReduc0) >= 0)
+		 if (this.hasStatusEffect(StatusEffects.LactationReduc0)
 		 this.removeStatusEffect(StatusEffects.LactationReduc0);
-		 if (this.findStatusEffect(StatusEffects.LactationReduc1) >= 0)
+		 if (this.hasStatusEffect(StatusEffects.LactationReduc1)
 		 this.removeStatusEffect(StatusEffects.LactationReduc1);
-		 if (this.findStatusEffect(StatusEffects.LactationReduc2) >= 0)
+		 if (this.hasStatusEffect(StatusEffects.LactationReduc2)
 		 this.removeStatusEffect(StatusEffects.LactationReduc2);
-		 if (this.findStatusEffect(StatusEffects.LactationReduc3) >= 0)
+		 if (this.hasStatusEffect(StatusEffects.LactationReduc3)
 		 this.removeStatusEffect(StatusEffects.LactationReduc3);
 		 if (this.hasPerk(PerkLib.Feeder)) {
 		 //You've now been milked, reset the timer for that
@@ -838,15 +838,15 @@ class Creature {
 		let temp2   = 0;
 		//Prevent lactation decrease if lactating.
 		/*if (todo >= 0) {
-		 if (this.findStatusEffect(StatusEffects.LactationReduction) >= 0)
+		 if (this.hasStatusEffect(StatusEffects.LactationReduction)
 		 this.changeStatusValue(StatusEffects.LactationReduction, 1, 0);
-		 if (this.findStatusEffect(StatusEffects.LactationReduc0) >= 0)
+		 if (this.hasStatusEffect(StatusEffects.LactationReduc0)
 		 this.removeStatusEffect(StatusEffects.LactationReduc0);
-		 if (this.findStatusEffect(StatusEffects.LactationReduc1) >= 0)
+		 if (this.hasStatusEffect(StatusEffects.LactationReduc1)
 		 this.removeStatusEffect(StatusEffects.LactationReduc1);
-		 if (this.findStatusEffect(StatusEffects.LactationReduc2) >= 0)
+		 if (this.hasStatusEffect(StatusEffects.LactationReduc2)
 		 this.removeStatusEffect(StatusEffects.LactationReduc2);
-		 if (this.findStatusEffect(StatusEffects.LactationReduc3) >= 0)
+		 if (this.hasStatusEffect(StatusEffects.LactationReduc3)
 		 this.removeStatusEffect(StatusEffects.LactationReduc3);
 		 }*/
 		if (todo > 0) {
@@ -3015,7 +3015,7 @@ class Creature {
 
 	public canFly(): boolean {
 		//web also makes false!
-		//if (this.findStatusEffect(StatusEffects.Web) >= 0) return false;
+		//if (this.hasStatusEffect(StatusEffects.Web) return false;
 		return WingType.data(this.wingType).fly;
 	}
 

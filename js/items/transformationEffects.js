@@ -1174,7 +1174,7 @@ ConsumableEffects.cowTFs = function(tainted, enhanced) {
                 }
                 changes++;
             }
-            if ((player.breastRows[0].lactationMultiplier > 2 && player.findStatusEffect(StatusEffects.Feeder) >= 0) || player.breastRows[0].lactationMultiplier > 5) {
+            if ((player.breastRows[0].lactationMultiplier > 2 && player.hasStatusEffect(StatusEffects.Feeder) || player.breastRows[0].lactationMultiplier > 5) {
                 if (rand(2) == 0) outputText("<br><br>Your breasts suddenly feel less full, it seems you aren't lactating at quite the level you were.");
                 else outputText("<br><br>The insides of your breasts suddenly feel bloated.  There is a spray of milk from them, and they settle closer to a more natural level of lactation.");
                 changes++;
@@ -1489,7 +1489,7 @@ ConsumableEffects.equineTFs = function() {
     if (player.skinType == SkinType.FUR && player.faceType == FaceType.HORSE && player.tailType == TailType.HORSE && (player.lowerBody != LowerBodyType.HOOFED)) {
         //WARNINGS
         //Repeat warnings
-        /*if (player.findStatusEffect(StatusEffects.HorseWarning) >= 0 && rand(3) == 0) {
+        /*if (player.hasStatusEffect(StatusEffects.HorseWarning && rand(3) == 0) {
          if (player.statusEffectValue(StatusEffects.HorseWarning, 1) == 0) outputText("<br><br><b>You feel a creeping chill down your back as your entire body shivers, as if rejecting something foreign.  Maybe you ought to cut back on the horse potions.</b>");
          if (player.statusEffectValue(StatusEffects.HorseWarning, 1) > 0) outputText("<br><br><b>You wonder how many more of these you can drink before you become a horse...</b>");
          player.addStatusValue(StatusEffects.HorseWarning, 1, 1);
@@ -3143,7 +3143,7 @@ ConsumableEffects.lizardTFs = function() {
     }
     //--Worms leave if 100% lizard dicks?
     //Require mammals?
-    if (player.countCocksOfType(CockTypesEnum.LIZARD) == player.cockTotal() && changes < changeLimit && player.findStatusEffect(StatusEffects.Infested) >= 0) {
+    if (player.countCocksOfType(CockTypesEnum.LIZARD) == player.cockTotal() && changes < changeLimit && player.hasStatusEffect(StatusEffects.Infested) {
         outputText("<br><br>Like rats from a sinking ship, worms escape from your body in a steady stream.  Surprisingly, the sensation is remarkably pleasant, similar to the pleasure of sexual release in a way.  Though they seem inexhaustible, the tiny, cum-slimed invertebrates slow to a trickle.  The larger worm-kin inside you stirs as if disturbed from a nap, coming loose from whatever moorings it had attached itself to in the interior of your form.  It slowly works its way up your urethra, stretching to an almost painful degree with every lurching motion.  Your dick bloats out around the base, stretched like the ovipositor on a bee-girl in order to handle the parasitic creature, but thankfully, the ordeal is a brief one.");
         if (player.balls > 1) outputText("  The remaining " + num2Text(player.balls - 1) + " slither out the pre-stretched holes with ease, though the last one hangs from your tip for a moment before dropping to the ground.");
         outputText("  The white creature joins its kin on the ground and slowly slithers away.  Perhaps they prefer mammals? In any event, <b>you are no longer infected with worms</b>.");
@@ -3177,7 +3177,7 @@ ConsumableEffects.lizardTFs = function() {
         outputText(" nipples relax.  It's a strange feeling, and you pull back your top to touch one.  It feels fine, though there doesn't seem to be any milk leaking out.  You give it a squeeze and marvel when nothing ");
         if (player.hasFuckableNipples()) outputText("but sexual fluid ");
         outputText("escapes it.  <b>You are no longer lactating.</b>  That makes sense, only mammals lactate!  Smiling, you muse at how much time this will save you when cleaning your gear.");
-        if (player.findPerk(PerkLib.Feeder) >= 0 || player.findStatusEffect(StatusEffects.Feeder) >= 0) {
+        if (player.findPerk(PerkLib.Feeder) >= 0 || player.hasStatusEffect(StatusEffects.Feeder) {
             outputText("<br><br>(<b>Feeder perk lost!</b>)");
             player.removePerk(PerkLib.Feeder);
             player.removeStatusEffect(StatusEffects.Feeder);

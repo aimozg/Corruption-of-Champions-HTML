@@ -213,7 +213,7 @@ namespace pregnancyProgression {
 			statControl = 0;
 			outputText("<br>");
 			//Add imp birth status - used to control frequency of night imp gangbag
-			//if (player.findStatusEffect(StatusEffects.BirthedImps) >= 0) player.addStatusValue(StatusEffects.BirthedImps,1,1);
+			//if (player.hasStatusEffect(StatusEffects.BirthedImps) player.addStatusValue(StatusEffects.BirthedImps,1,1);
 			//else player.createStatusEffect(StatusEffects.BirthedImps,1,0,0,0);
 			if (player.vaginas.length == 0) {
 				outputText("You feel a terrible pressure in your groin... then an incredible pain accompanied by the rending of flesh.  You look down and behold a vagina.  ");

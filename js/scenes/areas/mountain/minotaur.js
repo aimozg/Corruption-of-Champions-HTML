@@ -378,7 +378,7 @@ MinotaurScene.joinBeingAMinoCumSlut = function() {
     //Chance to impregnate PC, get mino-fix, and maybe relief from feeder perk.
     player.minoCumAddiction(10);
     player.knockUp(PREGNANCY_MINOTAUR, INCUBATION_MINOTAUR);
-    if (player.findStatusEffect(StatusEffects.Feeder) >= 0) {
+    if (player.hasStatusEffect(StatusEffects.Feeder) {
         //You've now been milked, reset the timer for that
         player.addStatusValue(StatusEffects.Feeder, 1, 1);
         player.changeStatusValue(StatusEffects.Feeder, 2, 0);
@@ -438,7 +438,7 @@ doNext(MinotaurScene.getRapedByMinotaur);
 // Win TODO Phyllafight!
 MinotaurScene.minotaurWin = function() {
     /*
-    if (player.findStatusEffect(StatusEffects.PhyllaFight) >= 0) {
+    if (player.hasStatusEffect(StatusEffects.PhyllaFight) {
         player.removeStatusEffect(StatusEffects.PhyllaFight);
         outputText("You defeat a minotaur!  ", true);
         phyllaBeatAMino();
@@ -529,7 +529,7 @@ MinotaurScene.minoVictoryRapeChoices = function() {
         else outputText("You smile in satisfaction as the " + monster.name + " collapses, unable to continue fighting.  Sadly you realize your own needs have not been met.  Of course you could always rape the poor thing...<br><br>What do you do?", true);
     }
 //Not able to rape but a feeder
-    else if (player.findStatusEffect(StatusEffects.Feeder) >= 0 && gameFlags[SFW_MODE] == 0) {
+    else if (player.hasStatusEffect(StatusEffects.Feeder && gameFlags[SFW_MODE] == 0) {
         if (monster.lust >= monster.maxLust()) outputText("You smile in satisfaction as the " + monster.name + " collapses, unable to continue fighting.  Sadly you realize your own need to breastfeed has not been met.  You could always let the poor thing have a drink...<br><br>Do you?", true);
         else outputText("You smile in satisfaction as the " + monster.name + " collapses, unable to continue fighting.  Sadly you realize your own need to breastfeed has not been met.  You could always let the poor thing have a drink...<br><br>What do you do?", true);
     }
@@ -1141,7 +1141,7 @@ MinotaurScene.layBeeEggsInCowbutt = function() {
 // Loss TODO Phyllafight and Worms
 MinotaurScene.minotaurLose = function() {
     /*
-    if (findStatusEffect(StatusEffects.PhyllaFight) >= 0) {
+    if (hasStatusEffect(StatusEffects.PhyllaFight) {
         removeStatusEffect(StatusEffects.PhyllaFight);
         game.desert.antsScene.phyllaPCLostToMino();
     } else if (pcCameWorms){

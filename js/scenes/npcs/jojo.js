@@ -231,7 +231,7 @@ JojoScene.repeatJojoEncounter = function() {
     clearOutput();
     JojoScene.jojoSprite();
     menu();
-    if (player.findStatusEffect(StatusEffects.Infested) >= 0) {
+    if (player.hasStatusEffect(StatusEffects.Infested) {
         outputText("As you approach the serene monk, you see his nose twitch, disturbing his meditation.<br><br>");
         outputText("\"<i>It seems that the agents of corruption have taken residence within the temple that is your body.</i>\", Jojo says flatly. \"<i>This is a most unfortunate development. There is no reason to despair as there are always ways to fight the corruption. However, great effort will be needed to combat this form of corruption and may leave lasting impressions upon you. If you are ready, we can purge your being of the rogue creatures of lust.</i>\"<br><br>");
         addButton(0, "Meditate", JojoScene.meditateInForest);
@@ -319,7 +319,7 @@ JojoScene.jojoCamp = function() {
         getGame().followerInteractions.catchRathazulNapping();
         return;
     }*/
-    if (player.findStatusEffect(StatusEffects.Infested) >= 0) { // Worms overrides everything else
+    if (player.hasStatusEffect(StatusEffects.Infested) { // Worms overrides everything else
         outputText("As you approach the serene monk, you see his nose twitch.<br><br>");
         outputText("\"<i>It seems that the agents of corruption have taken residence within the temple that is your body,</i>\" Jojo says flatly, \"<i>This is a most unfortunate development. There is no reason to despair as there are always ways to fight the corruption. However, great effort will be needed to combat this form of corruption and may have a lasting impact upon you. If you are ready, we can purge your being of the rogue creatures of lust.</i>\"<br><br>");
         JojoScene.jojoCampMenu();
@@ -361,7 +361,7 @@ JojoScene.jojoCampMenu = function() {
     if (flags[UNLOCKED_JOJO_TRAINING] > 0) addButton(2, "Train", JojoScene.apparantlyJojoDOESlift, null, null, null, "Join him in a training session.");
     addButton(3, "Meditate", JojoScene.jojoFollowerMeditate);
     addButton(4, "N.Watch: " + (gameFlags[JOJO_NIGHT_WATCH] > 0 ? "On" : "Off"), JojoScene.jojoDefenseToggle, null, null, null, (gameFlags[JOJO_NIGHT_WATCH] > 0 ? "Request him to stop guarding the camp.": "Request him to guard the camp at night."));
-    if (player.findStatusEffect(StatusEffects.Infested) >= 0) addButton(5, "Purge", JojoScene.wormRemoval, null, null, null, "Request him to purge the worms from your body.");
+    if (player.hasStatusEffect(StatusEffects.Infested) addButton(5, "Purge", JojoScene.wormRemoval, null, null, null, "Request him to purge the worms from your body.");
     if (player.cor > 10 && player.lust >= 33 && player.gender > 0 && flags[DISABLED_JOJO_RAPE] <= 0) addButton(8, "Rape", JojoScene.jojoAtCampRape, null, null, null, "Rape the poor monk mouse-morph." + (player.cor < 40 ? " Why would you do that?": ""));
     if (player.lust >= 33 && gameFlags[JOJO_CORRUPTION_STAGE] <= -3) addButton(8, "Sex", JojoScene.pureJojoSexMenu, null, null, null, "Initiate sexy time with the mouse-morph.");
     addButton(14, "Leave", Camp.campFollowersMenu);

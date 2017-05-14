@@ -177,7 +177,7 @@ namespace OasisScene {
 			//►Oasis Demons Defeat PC as part of antm
 			//Antmorph stuff //TODO Phylla Additional Stuff
 			/*
-			 if (monster.findStatusEffect(StatusEffects.phyllafight) >= 0) {
+			 if (monster.hasStatusEffect(StatusEffects.phyllafight) {
 			 outputText("You sought to save the ant-girl from being raped, and looking around, you don't see her anywhere.  She must have gotten away safely.  Mission... accomplished?  Wait, that ungrateful little bitch just left you to suffer in her place!  Your ass is gonna be sore for a while, but not as sore as your pride...  ");
 			 flags[kFLAGS.ANTS_PC_FAILED_PHYLLA] = 1;
 			 }*/
@@ -268,7 +268,7 @@ namespace OasisScene {
 		}
 		// TODO Phylla and SFW Mode
 		/*
-		 if (findStatusEffect(StatusEffects.phyllafight) >= 0) {
+		 if (hasStatusEffect(StatusEffects.phyllafight) {
 		 doNext(game.desert.antsScene.consolePhylla);
 		 } else if (hpVictory || flags[kFLAGS.SFW_MODE] > 0){
 		 game.combat.cleanupAfterCombat();
