@@ -1400,6 +1400,14 @@ class Player extends Creature {
 	fertilizeEggs():void {
 		// TODO
 	}
+	eggs():number {
+		// TODO
+		return 0;
+	}
+	fertilizedEggs():number {
+		// TODO
+		return 0;
+	}
 }
 
 let tempStr = 0;

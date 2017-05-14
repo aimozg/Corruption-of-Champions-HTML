@@ -417,7 +417,7 @@ class Creature {
 		else return rand(temp);
 	}
 
-	public damagePercent(displayMode: boolean, applyModifiers: boolean): number {
+	public damagePercent(displayMode: boolean=false, applyModifiers: boolean=false): number {
 		let mult     = 100;
 		let armorMod = this.armor.defense;
 		//--BASE--
@@ -1768,8 +1768,7 @@ class Creature {
 		return this.countCocksOfType(CockTypesEnum.DOG);
 	}
 
-	public cockHead(cockNum: number): string {
-		if (cockNum == undefined) cockNum = 0;
+	public cockHead(cockNum: number = 0): string {
 		if (cockNum < 0 || cockNum > this.cocks.length - 1) {
 			outputText("Something went wrong in Creature.prototype.cockHead!");
 		}
