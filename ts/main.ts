@@ -1,4 +1,4 @@
-function mainMenu() {
+function mainMenu():void {
     // Check to see if the user has a bad browser
 	if (typeof(Storage) !== "undefined") {
 		// All good to go!
@@ -40,9 +40,9 @@ function mainMenu() {
 //---------
 
 
-function GetIEVersion() {
-    var sAgent = window.navigator.userAgent;
-    var Idx = sAgent.indexOf("MSIE");
+function GetIEVersion():number {
+    let sAgent = window.navigator.userAgent;
+    let Idx    = sAgent.indexOf("MSIE");
     //Check if on Edge
     if (Idx == -1) {
         Idx = sAgent.indexOf("Edge");
@@ -59,19 +59,19 @@ function GetIEVersion() {
         return 0; //It is not IE
 }
 
-function errorOldBrowser() {
+function errorOldBrowser():void {
 	clearOutput();
 	outputText("<b><u>ERROR</u></b><br>Sorry, your browser is too old to be able to use local storage. Please use a modern browser.");
 	menu();
     hideMenus();
 }
-function errorOldInternetExplorerEwwww() {
+function errorOldInternetExplorerEwwww():void {
     clearOutput();
     outputText("<font size=\"64\"><b>:(</b></font><br>Please don't use Internet Explorer, especially the old version. It's a shitty browser. Do me a favour and upgrade your browser or switch to Firefox or Chrome.");
     menu();
     hideMenus();
 }
-function errorEdgeNeverWorks() {
+function errorEdgeNeverWorks():void {
     clearOutput();
     outputText("<font size=\"64\"><b>:(</b></font><br>Unfortunately, it appears that Microsoft Edge won't be able to run this game properly due to issue with local storage. I will look for possible workarounds. Until then, please switch to Firefox or Chrome.");
     menu();
@@ -80,7 +80,7 @@ function errorEdgeNeverWorks() {
 //------------
 // SETTINGS
 //------------
-function settingsScreenMain() {
+function settingsScreenMain():void {
     Data.saveSettings();
     clearOutput();
     //Silly Mode
@@ -101,22 +101,16 @@ function settingsScreenMain() {
     addButton(14, "Back", mainMenu);
 }
 //Game settings
-function toggleSilly() {
-    if (silly)
-        silly = false;
-    else
-        silly = true;
+function toggleSilly():void {
+    silly = !silly;
     settingsScreenMain();
 }
-function toggleTimeFormat() {
-    if (use12Hours)
-        use12Hours = false;
-    else
-        use12Hours = true;
+function toggleTimeFormat():void {
+    use12Hours = !use12Hours;
     settingsScreenMain();
 }
 //Font settings
-function fontSettings() {
+function fontSettings():void {
     clearOutput();
     outputText("<b>Here, you can change the font and size.</b><br><br>");
     outputText("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae turpis nec ipsum fermentum pellentesque. Nam consectetur euismod diam. Proin vitae neque in massa tempor suscipit eget at mi. In hac habitasse platea dictumst. Morbi laoreet erat et sem hendrerit mattis. Cras in mauris vestibulum nunc fringilla condimentum. Nam sed arcu non ipsum luctus dignissim a eget ante. Curabitur dapibus neque at elit iaculis, ac aliquam libero dapibus. Sed non lorem diam. In pretium vehicula facilisis. In euismod imperdiet felis, vitae ultrices magna cursus at. Vivamus orci urna, fringilla ac elementum eu, accumsan vel nunc. Donec faucibus dictum erat convallis efficitur. Maecenas cursus suscipit magna, id dapibus augue posuere ut.<br><br>");
@@ -129,12 +123,12 @@ function fontSettings() {
 
     addButton(14, "Back", settingsScreenMain);
 }
-function changeMainFont() {
-    mainFont = window.prompt("Choose a font to use. Note that it'll only work if you have the font installed on your device.", mainFont);
+function changeMainFont():void {
+    mainFont = window.prompt("Choose a font to use. Note that it'll only work if you have the font installed on your device.", mainFont) || mainFont;
     applyFontSettings();
     fontSettings();
 }
-function changeMainFontSize(biggerSmaller) {
+function changeMainFontSize(biggerSmaller:"bigger"|"smaller"):void {
     if (mainFontSizeIndex == undefined) mainFontSizeIndex = 4; //Fix font size.
     if (biggerSmaller == "bigger") {
         mainFontSizeIndex++;
@@ -148,18 +142,19 @@ function changeMainFontSize(biggerSmaller) {
     applyFontSettings();
     fontSettings();
 }
-function applyFontSettings() {
-    document.getElementById("maintext").style.fontFamily = mainFont + ", serif";
-    document.getElementById("maintext").style.fontSize = mainFontSizeArray[mainFontSizeIndex];
+function applyFontSettings():void {
+    let mainText              = document.getElementById("maintext")!!;
+    mainText.style.fontFamily = mainFont + ", serif";
+    mainText.style.fontSize = mainFontSizeArray[mainFontSizeIndex];
 }
 
 //------------
 // CREDITS
 //------------
-function creditsScreen() {
+function creditsScreen():void {
     clearOutput();
     //displayHeader("Credits");
-    var creditsContents = "";
+    let creditsContents = "";
 
     creditsContents += "<b><u>Original Game Creator:</u></b>";
     creditsContents += "<ul>";

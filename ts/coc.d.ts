@@ -10,13 +10,10 @@ declare interface HTMLElement {
 	tooltipText?: string;
 }
 
-declare function applyFontSettings():void;
 declare function cleanupAfterCombat():void;
 declare function combatRoundOver():void;
 declare function gameOver():void;
-declare function GetIEVersion():number;
 declare function inCombat():boolean;
-declare function mainMenu():void;
 declare function newGamePlusMod():number;
 declare function startCombat(monster:Creature):void;
 
