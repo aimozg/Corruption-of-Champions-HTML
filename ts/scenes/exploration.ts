@@ -1,6 +1,6 @@
 namespace Areas {
 	export namespace GenericExploration {
-		export function exploreMenu() {
+		export function exploreMenu():void {
 			hideMenus();
 			clearOutput();
 			if (exploration.explored < 2) {
@@ -17,7 +17,7 @@ namespace Areas {
 			addButton(14, "Back", Camp.doCamp);
 		}
 
-		function tryDiscover() {
+		function tryDiscover():void {
 			clearOutput();
 			doNext(Camp.returnToCampUseOneHour);
 			if (exploration.explored <= 0) {
@@ -73,7 +73,7 @@ namespace Areas {
 		}
 
 
-		function genericGobImpEncounters() {
+		export function genericGobImpEncounters():void {
 			let impGob = 5; //Determines whether goblin or imp should be encountered.
 			if (player.totalCocks() > 0) impGob--;
 			if (player.hasVagina()) impGob++;

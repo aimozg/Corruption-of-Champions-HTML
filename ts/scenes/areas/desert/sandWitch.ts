@@ -1035,7 +1035,7 @@ namespace SandWitchScene {
         player.orgasm();
         cleanupAfterCombat();
     }
-    function sammitchBirthsDriders():void {
+    export function sammitchBirthsDriders():void {
         clearOutput();
         //Occurs 8 days (or moar appropriate time) after fertile oviposition, triggered when exploring the Desert
         outputText("As you struggle with the loose footing of the hot desert sand, a weak howl reaches your ears.  Curiously, you stop and listen, trying to locate the potential source of the sound.  Yet all you can really hear is the wind against the sand-blasted, desolate terrain, giving you cause to shrug it off and continue on your merry way.");
@@ -1122,7 +1122,7 @@ namespace SandWitchScene {
         doNext(Camp.returnToCampUseOneHour);
 
     }
-    function witchBirfsSomeBees():void {
+    export function witchBirfsSomeBees():void {
         clearOutput();
         //Occurs 8 days (or moar appropriate time) after fertile oviposition; triggered when exploring the Desert
         outputText("<br><br>As you trudge through the windy desolation of the desert, the familiar hum of buzzing bees can be heard.  You muse to yourself, trying to figure out what a swarm of bees is doing all the way out here.  Then it hits you; that sand witch you mated with must be nearby, and she's probably given birth!");

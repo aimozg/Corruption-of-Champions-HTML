@@ -24,19 +24,8 @@ declare namespace AmilyScene {
 	function start():void;
 	function pcBirthsAmilysKidsQuestVersion():void;
 }
-declare namespace Areas {
-	namespace Forest {
-		function explore():void;
-	}
-	namespace Lake {
-		function explore():void;
-	}
-	namespace Desert {
-		function explore():void;
-	}
-	namespace Mountain {
-		function explore():void;
-	}
+declare namespace BeeGirlScene {
+	function beeEncounter():void;
 }
 declare namespace ConsumableEffects {
 	function beeTFs(typ:int):void;
@@ -74,18 +63,43 @@ declare namespace GiacomoScene {
 declare class GooGirl extends Creature {
 	gooColor4():string;
 }
+declare namespace GooGirlScene {
+	function encounterGooGirl():void;
+	function spyOnGooAndOozeSex():void;
+}
+declare namespace GreenSlimeScene {
+	function encounterSlime():void;
+}
+declare namespace HellhoundScene {
+	function hellhoundEncounter():void;
+}
 declare namespace JojoScene {
 	function jojoCamp():void;
 	function jojoCampCorrupt():void;
+	function routeJojoEncounter():void;
+}
+declare namespace MinotaurScene {
+	function encounterMinotaur():void;
 }
 declare namespace RathazulScene {
 	function campRathazul():void;
+	function encounterRathazul():void;
 }
 declare class Tamani extends Creature {
 
 }
+declare namespace TamaniScene {
+	function encounterTamani():void;
+}
 declare class TentacleBeast extends Creature {
 
+}
+declare namespace TentacleBeastScene {
+	function encounter():void;
+}
+declare namespace WormsScene {
+	function wormEncounter():void;
+	function wormToggle():void;
 }
 
 declare let amily: Amily;
