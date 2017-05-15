@@ -61,9 +61,6 @@ declare namespace GooGirlScene {
 declare namespace GreenSlimeScene {
 	function encounterSlime():void;
 }
-declare namespace HellhoundScene {
-	function hellhoundEncounter():void;
-}
 declare namespace JojoScene {
 	function jojoCamp():void;
 	function jojoCampCorrupt():void;
