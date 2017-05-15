@@ -97,10 +97,6 @@ declare class TentacleBeast extends Creature {
 declare namespace TentacleBeastScene {
 	function encounter():void;
 }
-declare namespace WormsScene {
-	function wormEncounter():void;
-	function wormToggle():void;
-}
 
 declare let amily: Amily;
 declare let monster: Creature;
