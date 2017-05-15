@@ -896,7 +896,7 @@ AmilyScene.start = function () {
 
         clearOutput();
         /*(If player is already locked into a relationship):
-         if (player.hasStatusEffect(StatusEffects.CampMarble) >= 0 || urtaLove()) {
+         if (player.hasStatusEffect(StatusEffects.CampMarble)) >= 0 || urtaLove()) {
          outputText("You put a hand on her shoulder, bringing her to a stop. She looks so hopeful at you that it's almost painful, but you tell her that, while you do care for her and you like her as a friend, you're already in a relationship with somebody.<br><br>");
 
          outputText("\"<i>Are you? ...I see. Well, I'm happy that you, at least, found somebody. I... You're still welcome to come by and talk, but I'll respect your wishes.</i>\" Amily tells you. Evidently still quite embarrassed, she apologises and then melts away into the ruins again.");
@@ -2191,7 +2191,7 @@ AmilyScene.determineAmilySexEvent = function () { // May need to force a false b
 
         //worm infested reaction
         /*
-         if (player.hasStatusEffect(StatusEffects.Infested) {
+         if (player.hasStatusEffect(StatusEffects.Infested)) {
          outputText("\"<i>EWWWW!  You're infested!</i>\" she shrieks, \"<i>Get out!  Don't come back 'til you get rid of the worms!</i>\"\n\nYou high tail it out of there.  It looks like Amily doesn't want much to do with you until you're cured.");
          doNext(camp.returnToCampUseOneHour);
          gameFlags[AMILY_AFFECTION] -= 3;
@@ -3959,7 +3959,7 @@ AmilyScene.rapeCorruptAmily4Epilogue = function () {
     /*         
     //}
              //if marble is there, tag it for freakout
-             if (player.hasStatusEffect(StatusEffects.CampMarble) {
+             if (player.hasStatusEffect(StatusEffects.CampMarble)) {
              flags[kFLAGS.MARBLE_OR_AMILY_FIRST_FOR_FREAKOUT] = 1;
              }
              else flags[kFLAGS.MARBLE_OR_AMILY_FIRST_FOR_FREAKOUT] = 2;
@@ -4081,7 +4081,7 @@ AmilyScene.amilyBecomesFollower = function () {
             gameFlags[AMILY_CLOTHING] = "rags";
             //if marble is there, tag it for freakout
             /*
-            //if (player.hasStatusEffect(StatusEffects.CampMarble) {
+            //if (player.hasStatusEffect(StatusEffects.CampMarble)) {
             //    flags[kFLAGS.MARBLE_OR_AMILY_FIRST_FOR_FREAKOUT] = 1;
             //}
             //else flags[kFLAGS.MARBLE_OR_AMILY_FIRST_FOR_FREAKOUT] = 2;

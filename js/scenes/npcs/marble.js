@@ -38,9 +38,9 @@ MarbleScene.applyMarblesMilk = function() {
     //Prevent duration from going to high.
     if (player.statusEffectv1(StatusEffects.MarblesMilk) > 36) player.changeStatusValue(StatusEffects.MarblesMilk,1,36);
     //Remove withdrawl if applicable
-    if (player.hasStatusEffect(StatusEffects.MarbleWithdrawl) {
+    if (player.hasStatusEffect(StatusEffects.MarbleWithdrawl)) {
         player.removeStatusEffect(StatusEffects.MarbleWithdrawl);
-        dynStats("tou", 5, "int", 5);
+        dynStats(["tou", 5], ["int", 5]);
     }*/
     //The message for the effect wearing off varies depends on your addiction level.
     //If the player is addicted to her milk, they gain the withdrawal effect when it wears off, reducing player's inte and tou by 5

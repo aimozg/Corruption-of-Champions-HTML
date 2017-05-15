@@ -140,7 +140,7 @@ namespace pregnancyProgression {
 			 if (player.gender == 1) player.gender = 3;
 			 if (player.gender == 0) player.gender = 2;
 			 player.orgasm();
-			 dynStats("str", -1,"tou", -2, "spe", 3, "lib", 1, "sen", .5);
+			 dynStats(["str", -1], ["tou", -2], ["spe", 3], ["lib", 1], ["sens", .5]);
 			 displayedUpdate = true;
 			 //Butt increase
 			 if (player.buttRating < 14 && rand(2) == 0) {

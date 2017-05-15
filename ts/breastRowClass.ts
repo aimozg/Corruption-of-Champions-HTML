@@ -4,6 +4,7 @@ class BreastRow {
 	//Goes up to 100.
 	public milkFullness        = 0;
 	public fuckable            = false;
+	public nippleLength        = 0.25;
 
 	constructor(public breastRating     = 2,
 				public nipplesPerBreast = 2) {

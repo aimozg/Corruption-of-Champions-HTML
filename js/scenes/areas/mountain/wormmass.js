@@ -145,7 +145,7 @@ WormMass.wormAttack = function() {
         return;
     }
 //Evade
-    if (player.findPerk(PerkLib.Evade) >= 0 && rand(100) < 10) {
+    if (player.hasPerk(PerkLib.Evade) && rand(100) < 10) {
         outputText("Using your skills at evading attacks, you anticipate and sidestep " + this.a + this.name + "' attacks.<br>");
         return;
     }
@@ -327,7 +327,7 @@ WormsScene.wormsRun = function() {
  outputText("The ceaseless squirming of your uninvited guests send your body into paroxysms. Collapsing to your knees, you immediately begin pushing gouts of dick milk out of your body. You feel tremendous pressure in your pelvis and in your cock as you realize that you are pushing worms out with each torrent of cum! Stream upon stream of cum breaks free from the prison of your body, carrying some of the worms inside you with it. Once the orgasm passes, you collapse to the ground, totally spent. Before you pass out, you feel the unfortunate presence of the fat worm still in your body.", true);
  player.orgasm();
  //Check infestation and update it
- if (player.hasStatusEffect(StatusEffects.Infested) {
+ if (player.hasStatusEffect(StatusEffects.Infested)) {
  //Increment infestation number
  if (player.statusEffectv1(StatusEffects.Infested) < 5) {
  player.addStatusValue(StatusEffects.Infested,1,1);
@@ -375,7 +375,7 @@ WormsScene.wormsRun = function() {
  doNext(camp.returnToCampUseOneHour);
  return;
  }
- if (monster.hasStatusEffect(StatusEffects.TwuWuv) {
+ if (monster.hasStatusEffect(StatusEffects.TwuWuv)) {
  outputText("You expose yourself and attempt to focus on expelling your squirming pets toward Sheila but as you picture launching a flood of parasites from [eachCock], the fantasy she sent returns to you, breaking your concentration!  Your hand darts automatically to your crotch, stroking [oneCock] as you imagine unloading into her cunt... only with effort do you pull it away!\n\n");
  outputText("\"<i>Oh, my,</i>\" the demon teases.  \"<i>You don't have to masturbate yourself, [name]... I'll be happy to do it for you.</i>\"\n\n");
  dynStats("lus", 5 + player.sens/10, "resisted", false);
@@ -462,7 +462,7 @@ WormsScene.wormsRun = function() {
  outputText("\n\nYou relax in the afterglow, pondering just how you'll handle living with the constant desire, barely noticing the colony slinking off, freshly lubricated by your sexual fluids.  You drink into a lusty slumber, absently fingering [oneCock].");
  outputText("\n\n<b>You are infested, again!</b>");
  //Reinfest
- if (player.hasStatusEffect(StatusEffects.Infested) {trace("BWUH?");}
+ if (player.hasStatusEffect(StatusEffects.Infested)) {trace("BWUH?");}
  else {
  player.createStatusEffect(StatusEffects.Infested,0,0,0,0);
  dynStats("cor", 0);

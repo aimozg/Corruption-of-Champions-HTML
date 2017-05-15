@@ -7,8 +7,8 @@ ConsumableEffects.beeTFs = function(type) {
     if (rand(2) == 0) changeLimit++;
     if (rand(2) == 0) changeLimit++;
     if (rand(2) == 0) changeLimit++;
-    if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
-    if (player.findPerk(PerkLib.TransformationResistance) >= 0) changeLimit--;
+    if (player.hasPerk(PerkLib.HistoryAlchemist)) changeLimit++;
+    if (player.hasPerk(PerkLib.TransformationResistance)) changeLimit--;
     //Drink text
     if (special) {
         outputText("You uncork the bottle and pour the incredibly strong smelling concentrated honey down your throat. Its taste is also mighty intense. All at once you feel the effects of the substance start to course through your body.");
@@ -45,7 +45,7 @@ ConsumableEffects.beeTFs = function(type) {
         //Libido Reduction
         if (player.cor > 0 && changes < changeLimit && rand(1.5) == 0 && player.lib > 40) {
             outputText(" and settling your overcharged sex-drive a bit.");
-            player.dynStats("lib", -3, "lus", -20);
+            player.dynStats(["lib", -3], ["lust", -20]);
             changes++;
         }
         else if (player.cor > 0) outputText(".");
@@ -269,8 +269,8 @@ ConsumableEffects.canineTFs = function(type) {
     var changeLimit = 1;
     if (rand(2) == 0) changeLimit++;
     if (rand(2) == 0) changeLimit++;
-    if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
-    if (player.findPerk(PerkLib.TransformationResistance) >= 0) changeLimit--;
+    if (player.hasPerk(PerkLib.HistoryAlchemist)) changeLimit++;
+    if (player.hasPerk(PerkLib.TransformationResistance)) changeLimit--;
     //Initial outputs & crit level
     switch(type) {
         case 0: //Normal
@@ -303,7 +303,7 @@ ConsumableEffects.canineTFs = function(type) {
      temp = rand(2);
      if (temp == 0) {
      outputText("<br><br>As you swallow the pepper, you note that the spicy hotness on your tongue seems to be spreading. Your entire body seems to tingle and burn, making you feel far warmer than normal, feverish even. Unable to stand it any longer you tear away your clothes, hoping to cool down a little. Sadly, this does nothing to aid you with your problem. On the bright side, the sudden feeling of vertigo you've developed is more than enough to take your mind off your temperature issues. You fall forward onto your hands and knees, well not really hands and knees to be honest. More like paws and knees. That can't be good, you think for a moment, before the sensation of your bones shifting into a quadrupedal configuration robs you of your concentration. After that, it is only a short time before your form is remade completely into that of a large dog, or perhaps a wolf. The distinction would mean little to you now, even if you were capable of comprehending it. ");
-     if (player.findPerk(PerkLib.MarblesMilk) >= 0) outputText("All you know is that there is a scent on the wind, it is time to hunt, and at the end of the day you need to come home for your milk.");
+     if (player.hasPerk(PerkLib.MarblesMilk)) outputText("All you know is that there is a scent on the wind, it is time to hunt, and at the end of the day you need to come home for your milk.");
      else outputText("All you know is that there is a scent on the wind, and it is time to hunt.");
      }
      if (temp == 1) outputText("<br><br>You devour the sweet pepper, carefully licking your fingers for all the succulent juices of the fruit, and are about to go on your way when suddenly a tightness begins to build in your chest and stomach, horrid cramps working their way first through your chest, then slowly flowing out to your extremities, the feeling soon joined by horrible, blood-curdling cracks as your bones begin to reform, twisting and shifting, your mind exploding with pain. You fall to the ground, reaching one hand forward. No... A paw, you realize in horror, as you try to push yourself back up. You watch in horror, looking down your foreleg as thicker fur erupts from your skin, a " + player.hairColor + " coat slowly creeping from your bare flesh to cover your body. Suddenly, you feel yourself slipping away, as if into a dream, your mind warping and twisting, your body finally settling into its new form. With one last crack of bone you let out a yelp, kicking free of the cloth that binds you, wresting yourself from its grasp and fleeing into the now setting sun, eager to find prey to dine on tonight.");
@@ -513,7 +513,7 @@ ConsumableEffects.canineTFs = function(type) {
             outputText("<br><br>A spike of pain doubles you up, nearly making you vomit. You stay like that, nearly crying, as a palpable sense of relief suddenly washes over you. You look down and realize you now have a small sack, complete with two relatively small balls.");
             player.balls = 2;
             player.ballSize = 1;
-            player.dynStats("lib", 2, "lus", -10);
+            player.dynStats(["lib", 2], ["lust", -10]);
         }
         else {
             //Makes your balls biggah!
@@ -523,7 +523,7 @@ ConsumableEffects.canineTFs = function(type) {
             //Texts
             if (player.ballSize <= 2) outputText("<br><br>A flash of warmth passes through you and a sudden weight develops in your groin. You pause to examine the changes and your roving fingers discover your " + player.ballsDescriptLight() + " have grown larger than a human's.");
             if (player.ballSize > 2) outputText("<br><br>A sudden onset of heat envelops your groin, focusing on your " + player.sackDescript() + ". Walking becomes difficult as you discover your " + player.ballsDescriptLight() + " have enlarged again.");
-            player.dynStats("lib", 1, "lus", 3);
+            player.dynStats(["lib", 1], ["lust", 3]);
         }
     }
     //Sexual Stuff Now
@@ -625,7 +625,7 @@ ConsumableEffects.canineTFs = function(type) {
         if (player.cumMultiplier < 2 && rand(2) == 0 && changes < changeLimit) {
             temp = 1.5;
             //Lots of cum raises cum multiplier cap to 2 instead of 1.5
-            if (player.findPerk(PerkLib.MessyOrgasms) >= 0) temp = 2;
+            if (player.hasPerk(PerkLib.MessyOrgasms)) temp = 2;
             if (temp < player.cumMultiplier + .05 * crit) {
                 changes--;
             }
@@ -645,7 +645,7 @@ ConsumableEffects.canineTFs = function(type) {
             if (player.cocks.length == 1) {
                 temp2 = player.increaseCock(0, rand(4) + 3);
                 temp = 0;
-                player.dynStats("sen", 1, "lus", 10);
+                player.dynStats(["sens", 1], ["lust", 10]);
             }
             //Multicock
             else {
@@ -665,7 +665,7 @@ ConsumableEffects.canineTFs = function(type) {
                 //Grow smallest cock!
                 //temp2 changes to growth amount
                 temp2 = player.increaseCock(temp, rand(4) + 3);
-                player.dynStats("sen", 1, "lus", 10);
+                player.dynStats(["sens", 1], ["lust", 10]);
                 if (player.cocks[temp].cockThickness <= 2) player.cocks[temp].thickenCock(1);
             }
             if (temp2 > 2) outputText("<br><br>Your " + player.cockDescript(temp) + " tightens painfully, inches of bulging dick-flesh pouring out from your crotch as it grows longer. Thick pre forms at the pointed tip, drawn out from the pleasure of the change.");
@@ -698,12 +698,12 @@ ConsumableEffects.canineTFs = function(type) {
                     if (player.breastRows[0].breastRating - 1 == 0) outputText("<br><br>A second set of breasts forms under your current pair, stopping while they are still fairly flat and masculine looking.");
                     else outputText("<br><br>A second set of breasts bulges forth under your current pair, stopping as they reach " + player.breastCup(temp) + "s.");
                     outputText(" A sensitive nub grows on the summit of each new tit, becoming a new nipple.");
-                    player.dynStats("sen", 6, "lus", 5);
+                    player.dynStats(["sens", 6], ["lust", 5]);
                     changes++;
                 }
                 //Many breast Rows - requires larger primary tits...
                 if (player.breastRows.length > 2 && player.breastRows[0].breastRating > player.breastRows.length) {
-                    player.dynStats("sen", 6, "lus", 5);
+                    player.dynStats(["sens", 6], ["lust", 5]);
                     //New row's size = the size of the row above -1
                     player.breastRows[temp].breastRating = player.breastRows[temp - 1].breastRating - 1;
                     //If second row are super small but primary row is huge it could go negative.
@@ -719,11 +719,11 @@ ConsumableEffects.canineTFs = function(type) {
                 if (crit > 1) {
                     if (crit > 2) {
                         outputText(" You heft your new chest experimentally, exploring the new flesh with tender touches. Your eyes nearly roll back in your head from the intense feelings.");
-                        player.dynStats("sen", 6, "lus", 15, "cor", 0)
+                        player.dynStats(["sens", 6], ["lust", 15], ["cor", 0])
                     }
                     else {
                         outputText(" You touch your new nipples with a mixture of awe and desire, the experience arousing beyond measure. You squeal in delight, nearly orgasming, but in time finding the willpower to stop yourself.");
-                        player.dynStats("sen", 3, "lus", 10);
+                        player.dynStats(["sens", 3], ["lust", 10]);
                     }
                 }
 
@@ -767,7 +767,7 @@ ConsumableEffects.canineTFs = function(type) {
         player.createBreastRow();
         player.breastRows[0].breastRating = 2;
         player.breastRows[0].breasts = 2;
-        player.dynStats("sen", 4, "lus", 6);
+        player.dynStats(["sens", 4], ["lust", 6]);
         changes++;
     }
     //Go into heat
@@ -938,7 +938,7 @@ ConsumableEffects.canineTFs = function(type) {
     }
     if (player.skinType == SkinType.FUR && changes < changeLimit && rand(3) == 0) {
         outputText("<br><br>You become more... solid. Sinewy. A memory comes unbidden from your youth of a grizzled wolf you encountered while hunting, covered in scars, yet still moving with an easy grace. You imagine that must have felt something like this.");
-        player.dynStats("tou", 4, "sen", -3);
+        player.dynStats(["tou", 4], ["sens", -3]);
         changes++;
     }
     //If no changes yay
@@ -960,8 +960,8 @@ ConsumableEffects.cowTFs = function(tainted, enhanced) {
     if (rand(2) == 0) changeLimit++;
     if (rand(3) == 0) changeLimit++;
     if (rand(3) == 0) changeLimit++;
-    if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
-    if (player.findPerk(PerkLib.TransformationResistance) >= 0) changeLimit--;
+    if (player.hasPerk(PerkLib.HistoryAlchemist)) changeLimit++;
+    if (player.hasPerk(PerkLib.TransformationResistance)) changeLimit--;
     if (enhanced) changeLimit += 2;
     //Temporary storage
     var temp = 0;
@@ -1174,7 +1174,7 @@ ConsumableEffects.cowTFs = function(tainted, enhanced) {
                 }
                 changes++;
             }
-            if ((player.breastRows[0].lactationMultiplier > 2 && player.hasStatusEffect(StatusEffects.Feeder) || player.breastRows[0].lactationMultiplier > 5) {
+            if ((player.breastRows[0].lactationMultiplier > 2 && player.hasStatusEffect(StatusEffects.Feeder)) || player.breastRows[0].lactationMultiplier > 5) {
                 if (rand(2) == 0) outputText("<br><br>Your breasts suddenly feel less full, it seems you aren't lactating at quite the level you were.");
                 else outputText("<br><br>The insides of your breasts suddenly feel bloated.  There is a spray of milk from them, and they settle closer to a more natural level of lactation.");
                 changes++;
@@ -1388,8 +1388,8 @@ ConsumableEffects.succubiDelight = function(tainted) {
     //Chances to up the max number of changes
     if (rand(2) == 0) changeLimit++;
     if (rand(2) == 0) changeLimit++;
-    if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
-    if (player.findPerk(PerkLib.TransformationResistance) >= 0) changeLimit--;
+    if (player.hasPerk(PerkLib.HistoryAlchemist)) changeLimit++;
+    if (player.hasPerk(PerkLib.TransformationResistance)) changeLimit--;
     //Generic drinking text
     outputText("You uncork the bottle and drink down the strange substance, struggling to down the thick liquid.");
     //low corruption thoughts
@@ -1438,7 +1438,7 @@ ConsumableEffects.succubiDelight = function(tainted) {
             //Temp is the max it can be raised to
             temp = 3;
             //Lots of cum raises cum multiplier cap to 6 instead of 3
-            if (player.findPerk(PerkLib.MessyOrgasms) >= 0) temp = 6;
+            if (player.hasPerk(PerkLib.MessyOrgasms)) temp = 6;
             if (temp < player.cumMultiplier + .4 * crit) {
                 changes--;
             }
@@ -1479,8 +1479,8 @@ ConsumableEffects.equineTFs = function() {
     //Chance to raise limit
     if (rand(2) == 0) changeLimit++;
     if (rand(3) == 0) changeLimit++;
-    if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
-    if (player.findPerk(PerkLib.TransformationResistance) >= 0) changeLimit--;
+    if (player.hasPerk(PerkLib.HistoryAlchemist)) changeLimit++;
+    if (player.hasPerk(PerkLib.TransformationResistance)) changeLimit--;
     //Used for random chances
     //Set up output
     outputText("You down the potion, grimacing at the strong taste.");
@@ -1489,7 +1489,7 @@ ConsumableEffects.equineTFs = function() {
     if (player.skinType == SkinType.FUR && player.faceType == FaceType.HORSE && player.tailType == TailType.HORSE && (player.lowerBody != LowerBodyType.HOOFED)) {
         //WARNINGS
         //Repeat warnings
-        /*if (player.hasStatusEffect(StatusEffects.HorseWarning && rand(3) == 0) {
+        /*if (player.hasStatusEffect(StatusEffects.HorseWarning) && rand(3) == 0) {
          if (player.statusEffectValue(StatusEffects.HorseWarning, 1) == 0) outputText("<br><br><b>You feel a creeping chill down your back as your entire body shivers, as if rejecting something foreign.  Maybe you ought to cut back on the horse potions.</b>");
          if (player.statusEffectValue(StatusEffects.HorseWarning, 1) > 0) outputText("<br><br><b>You wonder how many more of these you can drink before you become a horse...</b>");
          player.addStatusValue(StatusEffects.HorseWarning, 1, 1);
@@ -1651,7 +1651,7 @@ ConsumableEffects.equineTFs = function() {
                 temp = player.changeCockType(CockTypesEnum.HORSE);
                 temp2 = player.increaseCock(temp, rand(4) + 4);
                 temp3 = 1;
-                player.dynStats("lib", 5, "sen", 4);
+                player.dynStats(["lib", 5], ["sens", 4]);
                 player.orgasm();
                 if (temp3 == 1) outputText(" <b>Your penis has transformed into a horse's!</b>");
             }
@@ -1659,7 +1659,7 @@ ConsumableEffects.equineTFs = function() {
             else {
                 outputText("<br><br>One of your penises begins to feel strange. You pull down your clothes to take a look and see the skin of your " + player.cockDescript(temp) + " darkening to a mottled brown and black pattern.");
                 temp = player.changeCockType(CockTypesEnum.HORSE);
-                player.dynStats("lib", 5, "sen", 4, "lus", 35);
+                player.dynStats(["lib", 5], ["sens", 4], ["lust", 35]);
                 player.orgasm();
                 //Already have a sheath
                 if (player.hasSheath())
@@ -1680,7 +1680,7 @@ ConsumableEffects.equineTFs = function() {
             if (player.cocks.length == 1) {
                 temp2 = player.increaseCock(0, rand(3) + 1);
                 temp = 0;
-                player.dynStats("sen", 1, "lus", 10);
+                player.dynStats(["sens", 1], ["lust", 10]);
             }
             //Multicock
             else {
@@ -1700,7 +1700,7 @@ ConsumableEffects.equineTFs = function() {
                 //Grow smallest cock!
                 //temp2 changes to growth amount
                 temp2 = player.increaseCock(temp, rand(4) + 1);
-                player.dynStats("sen", 1, "lus", 10);
+                player.dynStats(["sens", 1], ["lust", 10]);
             }
             outputText("<br><br>");
             if (temp2 > 2) outputText("Your " + player.cockDescript(temp) + " tightens painfully, inches of taut horse-flesh pouring out from your sheath as it grows longer. Thick animal-pre forms at the flared tip, drawn out from the pleasure of the change.");
@@ -1730,7 +1730,7 @@ ConsumableEffects.equineTFs = function() {
             if (player.cor >= 30 && player.cor < 60) outputText(" You wonder why you thought such odd things, but they have a certain appeal.");
             if (player.cor >= 60 && player.cor < 90) outputText(" You relish your twisted fantasies, hoping to dream of them again.");
             if (player.cor >= 90) outputText(" You flush hotly and give a twisted smile, resolving to find a fitting subject to rape and relive your fantasies.");
-            player.dynStats("lib", .5, "lus", 10);
+            player.dynStats(["lib", .5], ["lust", 10]);
         }
         //Chance of ball growth if not 3" yet
         if (rand(2) == 0 && changes < changeLimit && player.ballSize <= 3 && player.countCocksOfType(CockTypesEnum.HORSE) > 0) {
@@ -1738,13 +1738,13 @@ ConsumableEffects.equineTFs = function() {
                 player.balls = 2;
                 player.ballSize = 1;
                 outputText("<br><br>A nauseating pressure forms just under the base of your maleness. With agonizing pain the flesh bulges and distends, pushing out a rounded lump of flesh that you recognize as a testicle! A moment later relief overwhelms you as the second drops into your newly formed sack.");
-                player.dynStats("lib", 2, "lus", 5);
+                player.dynStats(["lib", 2], ["lust", 5]);
             }
             else {
                 player.ballSize++;
                 if (player.ballSize <= 2) outputText("<br><br>A flash of warmth passes through you and a sudden weight develops in your groin. You pause to examine the changes and your roving fingers discover your " + player.ballsDescriptLight() + " have grown larger than a human's.");
                 if (player.ballSize > 2) outputText("<br><br>A sudden onset of heat envelops your groin, focusing on your " + player.sackDescript() + ". Walking becomes difficult as you discover your " + player.ballsDescriptLight() + " have enlarged again.");
-                player.dynStats("lib", 1, "lus", 3);
+                player.dynStats(["lib", 1], ["lust", 3]);
             }
             changes++;
         }
@@ -1962,8 +1962,8 @@ ConsumableEffects.felineTFs = function() {
     if (rand(2) == 0) changeLimit++;
     if (rand(2) == 0) changeLimit++;
     if (rand(3) == 0) changeLimit++;
-    if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
-    if (player.findPerk(PerkLib.TransformationResistance) >= 0) changeLimit--;
+    if (player.hasPerk(PerkLib.HistoryAlchemist)) changeLimit++;
+    if (player.hasPerk(PerkLib.TransformationResistance)) changeLimit--;
     //Text go!
     clearOutput();
     outputText("You take a bite of the fruit and gulp it down. It's thick and juicy and has an almost overpowering sweetness. Nevertheless, it is delicious and you certainly could use a meal. You devour the fruit, stopping only when the hard, nubby pit is left; which you toss aside.");
@@ -2049,7 +2049,7 @@ ConsumableEffects.felineTFs = function() {
             if (player.lust > 60) outputText("even more ");
             outputText("turned on.");
         }
-        player.dynStats("lib", 1, "sen", .25);
+        player.dynStats(["lib", 1], ["sens", .25]);
         changes++;
     }
     //------------
@@ -2279,8 +2279,8 @@ ConsumableEffects.goblinTFs = function() {
     if (rand(3) == 0) changeLimit++;
     if (rand(4) == 0) changeLimit++;
     if (rand(5) == 0) changeLimit++;
-    if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
-    if (player.findPerk(PerkLib.TransformationResistance) >= 0) changeLimit--;
+    if (player.hasPerk(PerkLib.HistoryAlchemist)) changeLimit++;
+    if (player.hasPerk(PerkLib.TransformationResistance)) changeLimit--;
     outputText("You drink the ale, finding it to have a remarkably smooth yet potent taste. You lick your lips and sneeze, feeling slightly tipsy.", true);
     player.slimeFeed();
     player.changeLust("lus", 15);
@@ -2484,8 +2484,8 @@ ConsumableEffects.humanTFs = function() {
     var changeLimit = 1;
     if (rand(2) == 0) changeLimit++;
     if (rand(2) == 0) changeLimit++;
-    if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
-    if (player.findPerk(PerkLib.TransformationResistance) >= 0) changeLimit--;
+    if (player.hasPerk(PerkLib.HistoryAlchemist)) changeLimit++;
+    if (player.hasPerk(PerkLib.TransformationResistance)) changeLimit--;
     //Text go!
     clearOutput();
     outputText("You crack open the small clay jar to reveal a lightly colored paste that smells surprisingly delicious. You begin eating it with your fingers, wishing all the while for some crackers... ");
@@ -2530,7 +2530,7 @@ ConsumableEffects.humanTFs = function() {
         changes++;
     }
     //Remove Incorporeality Perk
-    if (player.findPerk(PerkLib.Incorporeality) >= 0 && changes < changeLimit && rand(10) == 0) {
+    if (player.hasPerk(PerkLib.Incorporeality) && changes < changeLimit && rand(10) == 0) {
         outputText("<br><br>You feel a strange sensation in your [legs] as they start to feel more solid. They become more opaque until finally, you can no longer see through your [legs]. <br><b>(Perk Lost: Incorporeality!)</b>");
         player.removePerk(PerkLib.Incorporeality);
         changes++;
@@ -2821,8 +2821,8 @@ ConsumableEffects.impTFs = function() {
     var changes = 0;
     var changeLimit = 1;
     if (rand(2) == 0) changeLimit++;
-    if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
-    if (player.findPerk(PerkLib.TransformationResistance) >= 0) changeLimit--;
+    if (player.hasPerk(PerkLib.HistoryAlchemist)) changeLimit++;
+    if (player.hasPerk(PerkLib.TransformationResistance)) changeLimit--;
     //Consumption text
     if (player.hasCock() > 0)
         outputText("The food tastes strange and corrupt - you can't really think of a better word for it, but it's unclean.");
@@ -2832,7 +2832,7 @@ ConsumableEffects.impTFs = function() {
     player.refillHunger(20);
     outputText("<br><br>Inhuman vitality spreads through your body, invigorating you!<br>");
     player.changeHP(30 + player.tou / 3, true, false);
-    player.dynStats("lus", 3, "cor", 1);
+    player.dynStats(["lust", 3], ["cor", 1]);
     //Cock growth!
     if (changes < changeLimit && player.hasCock() && player.cocks[0].cockLength < 12) {
         var temp = player.increaseCock(0, rand(2) + 2);
@@ -2865,8 +2865,8 @@ ConsumableEffects.pigTFs = function(boar) {
     if (rand(2) == 0) changeLimit++;
     if (rand(3) == 0) changeLimit++;
     if (boar) changeLimit++;
-    if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
-    if (player.findPerk(PerkLib.TransformationResistance) >= 0) changeLimit--;
+    if (player.hasPerk(PerkLib.HistoryAlchemist)) changeLimit++;
+    if (player.hasPerk(PerkLib.TransformationResistance)) changeLimit--;
     outputText("You take a bite into the pigtail truffle. It oddly tastes like bacon. You eventually finish eating. ");
     player.refillHunger(20);
     //------------
@@ -3013,8 +3013,8 @@ ConsumableEffects.lizardTFs = function() {
     if (rand(2) == 0) changeLimit++;
     if (rand(2) == 0) changeLimit++;
     if (rand(4) == 0) changeLimit++;
-    if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
-    if (player.findPerk(PerkLib.TransformationResistance) >= 0) changeLimit--;
+    if (player.hasPerk(PerkLib.HistoryAlchemist)) changeLimit++;
+    if (player.hasPerk(PerkLib.TransformationResistance)) changeLimit--;
     //clear screen
     clearOutput();
     outputText("You uncork the vial of fluid and drink it down.  The taste is sour, like a dry wine with an aftertaste not entirely dissimilar to alcohol.  Instead of the warmth you'd expect, it leaves your throat feeling cold and a little numb.");
@@ -3101,7 +3101,7 @@ ConsumableEffects.lizardTFs = function() {
         }
         else player.cocks[temp2].cockType = CockTypesEnum.LIZARD;
         changes++;
-        player.dynStats("lib", 3, "lus", 10);
+        player.dynStats(["lib", 3], ["lust", 10]);
     }
     //(CHANGE OTHER DICK)
     //Requires 1 lizard cock, multiple cocks
@@ -3125,7 +3125,7 @@ ConsumableEffects.lizardTFs = function() {
         }
         else player.cocks[temp2].cockType = CockTypesEnum.LIZARD;
         changes++;
-        player.dynStats("lib", 3, "lus", 10);
+        player.dynStats(["lib", 3], ["lust", 10]);
     }
     //-Grows second lizard dick if only 1 dick
     if (player.countCocksOfType(CockTypesEnum.LIZARD) == 1 && player.cocks.length == 1 && rand(4) == 0 && changes < changeLimit) {
@@ -3139,11 +3139,11 @@ ConsumableEffects.lizardTFs = function() {
         player.cocks[1].cockLength = player.cocks[0].cockLength;
         player.cocks[1].cockThickness = player.cocks[0].cockThickness;
         changes++;
-        player.dynStats("lib", 3, "lus", 10);
+        player.dynStats(["lib", 3], ["lust", 10]);
     }
     //--Worms leave if 100% lizard dicks?
     //Require mammals?
-    if (player.countCocksOfType(CockTypesEnum.LIZARD) == player.cockTotal() && changes < changeLimit && player.hasStatusEffect(StatusEffects.Infested) {
+    if (player.countCocksOfType(CockTypesEnum.LIZARD) == player.cockTotal() && changes < changeLimit && player.hasStatusEffect(StatusEffects.Infested)) {
         outputText("<br><br>Like rats from a sinking ship, worms escape from your body in a steady stream.  Surprisingly, the sensation is remarkably pleasant, similar to the pleasure of sexual release in a way.  Though they seem inexhaustible, the tiny, cum-slimed invertebrates slow to a trickle.  The larger worm-kin inside you stirs as if disturbed from a nap, coming loose from whatever moorings it had attached itself to in the interior of your form.  It slowly works its way up your urethra, stretching to an almost painful degree with every lurching motion.  Your dick bloats out around the base, stretched like the ovipositor on a bee-girl in order to handle the parasitic creature, but thankfully, the ordeal is a brief one.");
         if (player.balls > 1) outputText("  The remaining " + num2Text(player.balls - 1) + " slither out the pre-stretched holes with ease, though the last one hangs from your tip for a moment before dropping to the ground.");
         outputText("  The white creature joins its kin on the ground and slowly slithers away.  Perhaps they prefer mammals? In any event, <b>you are no longer infected with worms</b>.");
@@ -3177,7 +3177,7 @@ ConsumableEffects.lizardTFs = function() {
         outputText(" nipples relax.  It's a strange feeling, and you pull back your top to touch one.  It feels fine, though there doesn't seem to be any milk leaking out.  You give it a squeeze and marvel when nothing ");
         if (player.hasFuckableNipples()) outputText("but sexual fluid ");
         outputText("escapes it.  <b>You are no longer lactating.</b>  That makes sense, only mammals lactate!  Smiling, you muse at how much time this will save you when cleaning your gear.");
-        if (player.findPerk(PerkLib.Feeder) >= 0 || player.hasStatusEffect(StatusEffects.Feeder) {
+        if (player.hasPerk(PerkLib.Feeder) || player.hasStatusEffect(StatusEffects.Feeder)) {
             outputText("<br><br>(<b>Feeder perk lost!</b>)");
             player.removePerk(PerkLib.Feeder);
             player.removeStatusEffect(StatusEffects.Feeder);
@@ -3390,7 +3390,7 @@ ConsumableEffects.lizardTFs = function() {
 ConsumableEffects.harpyTFs = function(type) {
     //I think these are old debugging variables
     //var tfSource = "goldenSeed";
-    //if (player.findPerk(PerkLib.HarpyWomb) >= 0) tfSource += "-HarpyWomb";
+    //if (player.hasPerk(PerkLib.HarpyWomb)) tfSource += "-HarpyWomb";
     //'type' refers to the variety of seed.
     //0 == standard.
     //1 == enhanced - increase change limit and no pre-reqs for TF
@@ -3399,8 +3399,8 @@ ConsumableEffects.harpyTFs = function(type) {
     if (type == 1) changeLimit += 2;
     if (rand(2) == 0) changeLimit++;
     if (rand(2) == 0) changeLimit++;
-    if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
-    if (player.findPerk(PerkLib.TransformationResistance) >= 0) changeLimit--;
+    if (player.hasPerk(PerkLib.HistoryAlchemist)) changeLimit++;
+    if (player.hasPerk(PerkLib.TransformationResistance)) changeLimit--;
     //Generic eating text:
     clearOutput();
     outputText("You pop the nut into your mouth, chewing the delicious treat and swallowing it quickly.  No wonder harpies love these things so much!");
@@ -3738,8 +3738,8 @@ ConsumableEffects.minotaurTFs = function() {
     if (rand(2) == 0) changeLimit++;
     if (rand(3) == 0) changeLimit++;
     if (rand(3) == 0) changeLimit++;
-    if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
-    if (player.findPerk(PerkLib.TransformationResistance) >= 0) changeLimit--;
+    if (player.hasPerk(PerkLib.HistoryAlchemist)) changeLimit++;
+    if (player.hasPerk(PerkLib.TransformationResistance)) changeLimit--;
     if (changeLimit == 1) changeLimit = 2;
     //Temporary storage
     var temp = 0;
@@ -3827,7 +3827,7 @@ ConsumableEffects.minotaurTFs = function() {
         changes++;
     }
     //Ovipositing Check
-    if (rand(5) == 0 && changes >= changeLimit && player.findPerk(PerkLib.Oviposition) >= 0 && player.lizardScore() < 8) {
+    if (rand(5) == 0 && changes >= changeLimit && player.hasPerk(PerkLib.Oviposition) && player.lizardScore() < 8) {
         outputText("<br><br>Another change in your uterus ripples through your reproductive systems. Somehow you know you've lost a little bit of reptilian reproductive ability.<br>");
         outputText("(<b>Perk Lost: Oviposition</b>)<br>");
         player.removePerk(PerkLib.Oviposition)
@@ -3994,7 +3994,7 @@ ConsumableEffects.minotaurTFs = function() {
             if (player.cocks[selectedCockValue].cockType == CockTypesEnum.DOG) outputText("<br><br>Your " + Appearance.cockNoun(CockTypesEnum.DOG) + " begins to feel odd...  You pull down your clothes to take a look and see it darkening.  You feel a growing tightness in the tip of your " + Appearance.cockNoun(CockTypesEnum.DOG) + " as it flattens, flaring outwards.  Your cock pushes out of your sheath, inch after inch of animal-flesh growing beyond its traditional size.  You notice your knot vanishing, the extra flesh pushing more fresh horsecock out from your sheath.  <b>Your hands are drawn to the strange new " + Appearance.cockNoun(CockTypesEnum.HORSE) + "</b>, and you jerk yourself off, splattering thick ropes of cum with intense force.");
             player.cocks[selectedCockValue].cockType = CockTypesEnum.HORSE;
             player.increaseCock(selectedCockValue, 4);
-            player.dynStats("lib", 5, "sen", 4);
+            player.dynStats(["lib", 5], ["sens", 4]);
             player.changeLust(35);
             outputText("<b>  You now have a");
             if (player.countCocksOfType(CockTypesEnum.HORSE) > 1) outputText("nother");
@@ -4156,8 +4156,8 @@ ConsumableEffects.snakeTFs = function() {
     var changeLimit = 1;
     if (rand(2) == 0) changeLimit++;
     if (rand(2) == 0) changeLimit++;
-    if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
-    if (player.findPerk(PerkLib.TransformationResistance) >= 0) changeLimit--;
+    if (player.hasPerk(PerkLib.HistoryAlchemist)) changeLimit++;
+    if (player.hasPerk(PerkLib.TransformationResistance)) changeLimit--;
     //b) Description while used
     outputText("Pinching your nose, you quickly uncork the vial and bring it to your mouth, determined to see what effects it might have on your body. Pouring in as much as you can take, you painfully swallow before going for another shot, emptying the bottle.");
     //(if outside combat)
@@ -4281,7 +4281,7 @@ ConsumableEffects.slimeTFs = function () {
      }*/
     //Cosmetic changes based on 'goopyness'
     // Standard Ovipoisitor removal
-    if (rand(5) == 0 && changes >= changeLimit && player.findPerk(PerkLib.Oviposition) >= 0 && player.lizardScore() < 8) {
+    if (rand(5) == 0 && changes >= changeLimit && player.hasPerk(PerkLib.Oviposition) && player.lizardScore() < 8) {
         outputText("<br><br>Another change in your uterus ripples through your reproductive systems. Somehow you know you've lost a little bit of reptilian reproductive ability.<br>");
         outputText("(<b>Perk Lost: Oviposition</b>)<br>");
         player.removePerk(PerkLib.Oviposition)
@@ -4378,7 +4378,7 @@ ConsumableEffects.slimeTFs = function () {
     else if (player.tallness < 100 && rand(3) <= 1) {
         outputText("<br><br>Your gel-like body swells up from the intake of additional slime.  If you had to guess, you'd bet you were about two inches taller.");
         player.tallness += 2;
-        player.dynStats("str", 1, "tou", 1);
+        player.dynStats(["str", 1], ["tou", 1]);
     }
     //Big slime girl
     else {
@@ -4403,8 +4403,8 @@ ConsumableEffects.trapOil = function() {
     if (rand(2) == 0) changeLimit++;
     if (rand(3) == 0) changeLimit++;
     if (rand(3) == 0) changeLimit++;
-    if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) changeLimit++;
-    if (player.findPerk(PerkLib.TransformationResistance) >= 0) changeLimit--;
+    if (player.hasPerk(PerkLib.HistoryAlchemist)) changeLimit++;
+    if (player.hasPerk(PerkLib.TransformationResistance)) changeLimit--;
     outputText("You pour some of the oil onto your hands and ");
     if (player.cor < 30) outputText("hesitantly ");
     else if (player.cor > 70) outputText("eagerly ");
@@ -4618,7 +4618,7 @@ ConsumableEffects.trapOil = function() {
         }
     }
     //Replace oviposition code
-    if (rand(5) == 0 && changes >= changeLimit && player.findPerk(PerkLib.Oviposition) >= 0 && player.lizardScore() < 8) {
+    if (rand(5) == 0 && changes >= changeLimit && player.hasPerk(PerkLib.Oviposition) && player.lizardScore() < 8) {
         outputText("<br><br>Another change in your uterus ripples through your reproductive systems. Somehow you know you've lost a little bit of reptilian reproductive ability.<br>");
         outputText("(<b>Perk Lost: Oviposition</b>)<br>");
         player.removePerk(PerkLib.Oviposition)
@@ -4693,8 +4693,8 @@ public function updateOvipositionPerk(tfSource:String):int
         tfSource = tsParts[0];
 
     // First things first :)
-    if (player.findPerk(PerkLib.BasiliskWomb) >= 0) {
-        if (player.findPerk(PerkLib.Oviposition) >= 0)
+    if (player.hasPerk(PerkLib.BasiliskWomb)) {
+        if (player.hasPerk(PerkLib.Oviposition))
             return 0; // we already have it => no change
 
         // Basilisk Womb but no Oviposition? Fix, whats broken
@@ -4720,7 +4720,7 @@ public function updateOvipositionPerk(tfSource:String):int
             return 0; // Don't change it. So we're done, yay!
 
         case "reptilum":
-           // if (player.findPerk(PerkLib.Oviposition) >= 0) return 0;
+           // if (player.hasPerk(PerkLib.Oviposition)) return 0;
             outputText("<br><br>Deep inside yourself there is a change.  It makes you feel a little woozy, but passes quickly."
                 +"  Beyond that, you aren't sure exactly what just happened, but you are sure it originated from your womb.<br>");
             outputText("(<b>Perk Gained: Oviposition</b>)");

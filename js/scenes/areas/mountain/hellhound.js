@@ -97,7 +97,7 @@ Hellhound.prototype.doAI = function() {
 //comment in this function commented out in original code
 Hellhound.hellhoundFire = function() {
     //Blind dodge change
-    if (monster.hasStatusEffect(StatusEffects.Blind) {
+    if (monster.hasStatusEffect(StatusEffects.Blind)) {
         outputText(capitalize(monster.a) + monster.refName + " completely misses you with a wave of dark fire! Thank the gods it's blind!");
         combatRoundOver();
         return;
@@ -109,13 +109,13 @@ Hellhound.hellhoundFire = function() {
      enemyAI();
      return;
      }*/
-    if (player.findPerk(PerkLib.Evade) >= 0 && player.spe >= 35 && rand(3) != 0) {
+    if (player.hasPerk(PerkLib.Evade) && player.spe >= 35 && rand(3) != 0) {
         outputText("Both the hellhound's heads breathe in deeply before blasting a wave of dark fire at you.  You easily avoid the wave, diving to the side and making the most of your talents at evasion.");
     }
-    else if (player.findPerk(PerkLib.Misdirection) >= 0 && rand(100) < 20 && player.armor.equipmentName == "red, high-society bodysuit") {
+    else if (player.hasPerk(PerkLib.Misdirection) && rand(100) < 20 && player.armor.equipmentName == "red, high-society bodysuit") {
         outputText("Using Raphael's teachings and the movement afforded by your bodysuit, you anticipate and sidestep " + monster.a + monster.refName + "'s fire.<br>");
     }
-    else if (player.findPerk(PerkLib.Flexibility) >= 0 && player.spe > 30 && rand(10) != 0) {
+    else if (player.hasPerk(PerkLib.Flexibility) && player.spe > 30 && rand(10) != 0) {
         outputText("Both the hellhound's heads breathe in deeply before blasting a wave of dark fire at you.  You twist and drop with incredible flexibility, watching the fire blow harmlessly overhead.");
     }
     else {
@@ -128,7 +128,7 @@ Hellhound.hellhoundFire = function() {
 };
 
 Hellhound.hellhoundScent = function() {
-    if (player.hasStatusEffect(StatusEffects.NoFlee) {
+    if (player.hasStatusEffect(StatusEffects.NoFlee)) {
         if (monster.spe == 100) {
             Hellhound.hellhoundFire();
             return;
@@ -246,7 +246,7 @@ HellhoundScene.hellhoundRapesPlayer = function() {
     player.buttChange(monster.cockArea(0), true);
 
 //[if not corrupt]
-    if (player.cor < 40) player.dynStats("tou", -2, "cor", 1);
+    if (player.cor < 40) player.dynStats(["tou", -2], ["cor", 1]);
 //[if corrupt]
     else player.dynStats("cor", 1.5);
     cleanupAfterCombat();
@@ -391,7 +391,7 @@ outputText("After a moment, you notice that something else seems off... the worl
 
 outputText("<b>You now have the power to breath hellfire!</b>  (This power remains available to you so long as you maintain a corruption of at least 50.)");
 //increase lust by 30, corruption by 6, and libido by 3
-dynStats("lib", 3, "lus", 30, "cor", 6);
+dynStats(["lib", 3], ["lust", 30], ["cor", 6]);
 //player gains hellfire perk.  Hellfire deals physical damage to completely pure foes, lust damage to completely corrupt foes, and a mix for those in between.  Its power is based on the PC's corruption and level.  Appearance is slightly changed to mention that the PC's eyes and mouth occasionally show flicks of fire from within them, text could possibly vary based on corruption.
 if (player.findPerk(PerkLib.Hellfire) < 0) player.createPerk(PerkLib.Hellfire, 0, 0, 0, 0);
 //Hellhounds no longer encounterable.
@@ -473,7 +473,7 @@ outputText("You feel inclined to agree at the wonderful feeling of your new body
 
 outputText("A powerful demon steps out in front of you, and picks up the crystal.  You can feel a strong connection with him, and you know this is your master.  \"<i>Well now, I think you need a new name now in commemoration of being the first three headed hellhound, and for being the one who will give me the world.</i>\"  He unceremoniously puts the crystal in his mouth and swallows it.  \"<i>Your new name is Cerberus, and you're my greatest pet.</i>\"  He steps closer and looks into your center head's eyes for a moment.  \"<i>That's much better than being a champion ever was, isn't it?</i>\"  You can't help but eagerly nod in agreement.");
 player.orgasm();
-dynStats("lib", 50, "cor", 100);
+dynStats(["lib", 50], ["cor", 100]);
 getGame().gameOver();
 
 }
@@ -548,7 +548,7 @@ HellhoundScene.hellhoundPropahRape = function() {
         //--> increases corruption, usual post coital procedure
         player.orgasm();
         //[if not corrupt]
-        if (player.cor < 40) player.dynStats("tou", -2, "cor", 1);
+        if (player.cor < 40) player.dynStats(["tou", -2], ["cor", 1]);
         //[if corrupt]
         else player.dynStats("cor", 1.5);
         //Preggers chance!

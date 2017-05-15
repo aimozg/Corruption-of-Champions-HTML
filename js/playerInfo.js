@@ -188,10 +188,10 @@ function statsScreen() {
     var addictStats = "";
 
     // Mino Cum Addiction
-    if (gameFlags[EVER_DRANK_MINOCUM] > 0 || gameFlags[MINOTAUR_CUM_ADDICTION_TRACKER] > 0 || player.findPerk(PerkLib.MinotaurCumAddict) >= 0 || player.findPerk(PerkLib.MinotaurCumResistance) >= 0) {
+    if (gameFlags[EVER_DRANK_MINOCUM] > 0 || gameFlags[MINOTAUR_CUM_ADDICTION_TRACKER] > 0 || player.hasPerk(PerkLib.MinotaurCumAddict) || player.hasPerk(PerkLib.MinotaurCumResistance)) {
         if (player.findPerk(PerkLib.MinotaurCumAddict) < 0)
             addictStats += "<b>Minotaur Cum:</b> " + Math.round(gameFlags[MINOTAUR_CUM_ADDICTION_TRACKER] * 10)/10 + "%<br>";
-        else if (player.findPerk(PerkLib.MinotaurCumResistance) >= 0)
+        else if (player.hasPerk(PerkLib.MinotaurCumResistance))
             addictStats += "<b>Minotaur Cum:</b> 0% (Immune)<br>";
         else
             addictStats += "<b>Minotaur Cum:</b> 100+%<br>";
@@ -927,11 +927,11 @@ function appearanceScreen() {
         outputText(" Your " + num2Text(player.legCount)+ " legs, though covered in fur, are humanlike. Long feet on the ends bear equally long toes, and the pads on the bottoms are quite sensitive to the touch.");
     else if (player.lowerBody == LowerBodyType.CLOVEN_HOOFED)
         outputText(" " + Num2Text(player.legCount)+ " digitigrade legs form below your [hips], ending in cloven hooves.");
-    if (player.findPerk(PerkLib.Incorporeality) >= 0)
+    if (player.hasPerk(PerkLib.Incorporeality))
         outputText(" Of course, your " + player.legs() + " are partially transparent due to their ghostly nature."); // isn't goo transparent anyway?
 
     outputText("<br>");
-    if (player.hasStatusEffect(StatusEffects.GooStuffed)
+    if (player.hasStatusEffect(StatusEffects.GooStuffed))
 
     {
         outputText("<br><b>Your gravid-looking belly is absolutely stuffed full of goo. There's no way you can get pregnant like this, but at the same time, you look like some fat-bellied breeder.</b><br>");
@@ -1241,7 +1241,7 @@ function appearanceScreen() {
             outputText(" It is quite a sight to behold, coming well-equiped with four heads.");
         }
         //Worm flavor
-        if (player.hasStatusEffect(StatusEffects.Infested)
+        if (player.hasStatusEffect(StatusEffects.Infested))
             outputText(" Every now and again a slimy worm coated in spunk slips partway out of your " + player.cockDescript(0) + ", tasting the air like a snake's tongue.");
         //if (player.cocks[temp].sock)
         //    player.sockDescript(temp);
@@ -1401,13 +1401,13 @@ function appearanceScreen() {
             if (rando > 3) rando = 0;
         }
         //Worm flavor
-        if (player.hasStatusEffect(StatusEffects.Infested)
+        if (player.hasStatusEffect(StatusEffects.Infested))
             outputText("Every now and again slimy worms coated in spunk slip partway out of your " + player.multiCockDescriptLight() + ", tasting the air like tongues of snakes.<br>");
         //DONE WITH COCKS, moving on!
     }
     //Of Balls and Sacks!
     if (player.balls > 0) {
-        if (player.hasStatusEffect(StatusEffects.Uniball)
+        if (player.hasStatusEffect(StatusEffects.Uniball))
         {
             if (player.skinType != SkinType.GOO)
                 outputText("Your [sack] clings tightly to your groin, holding " + player.ballsDescript() + " snugly against you.");

@@ -1390,6 +1390,9 @@ class Player extends Creature {
 	canOvipositBee():boolean {
 		return false; // TODO
 	}
+	canOviposit():boolean {
+		return this.canOvipositSpider() || this.canOvipositBee();
+	}
 
 	dumpEggs():void {
 		// TODO

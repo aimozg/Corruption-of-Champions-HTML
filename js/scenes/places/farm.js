@@ -76,7 +76,7 @@ Places.Farm.farmExploreEncounter = function() {
                 addButton(3,"Marble", MarbleScene.meetMarble);
             }
             if (player.hasKeyItem("Breast Milker - Installed At Whitney's Farm") >= 0) {
-                if (player.hasStatusEffect(StatusEffects.Milked) {
+                if (player.hasStatusEffect(StatusEffects.Milked)) {
                     outputText("<br><br><b>Your " + player.nippleDescript(0) + "s are currently too sore to be milked. You'll have to wait a while.</b>");
                 }
                 else addButton(5, "Get Milked", getMilked);
@@ -120,7 +120,7 @@ Places.Farm.exploreFarm = function() {
         return;
     }
     //In withdrawl odds are higher.
-    /*if (player.findStatusEffect(StatusEffects.NoMoreMarble) < 0 && player.hasStatusEffect(StatusEffects.MarbleWithdrawl) {
+    /*if (player.findStatusEffect(StatusEffects.NoMoreMarble) < 0 && player.hasStatusEffect(StatusEffects.MarbleWithdrawl)) {
         if (player.statusEffectValue(StatusEffects.Marble, 3) == 1) MarbleScene.addictedEncounterHappy();
         else MarbleScene.encounterMarbleAshamedAddiction();
         return;
@@ -200,7 +200,7 @@ Places.Farm.exploreFarm = function() {
 Places.Farm.workFarm = function() {
     clearOutput();
     //In withdrawl odds are higher.
-    /*if (player.findStatusEffect(StatusEffects.NoMoreMarble) < 0 && player.hasStatusEffect(StatusEffects.MarbleWithdrawl) {
+    /*if (player.findStatusEffect(StatusEffects.NoMoreMarble) < 0 && player.hasStatusEffect(StatusEffects.MarbleWithdrawl)) {
         if (player.statusEffectv3(StatusEffects.Marble) == 1) MarbleScene.addictedEncounterHappy();
         else MarbleScene.encounterMarbleAshamedAddiction();
         return;
@@ -229,13 +229,13 @@ Places.Farm.workFarm = function() {
                 return;
             }
             else {
-                if (player.findPerk(PerkLib.MarbleResistant) >= 0) {
+                if (player.hasPerk(PerkLib.MarbleResistant)) {
                     //(work with Marble when helping)
                     MarbleScene.postAddictionFarmHelpings();
                     return;
                 }
                 if (player.statusEffectv3(StatusEffects.Marble) == 1) {
-                    if (player.hasStatusEffect(StatusEffects.MarbleWithdrawl)
+                    if (player.hasStatusEffect(StatusEffects.MarbleWithdrawl))
                         marbling = 0;
                     else
                         marbling = 1;
@@ -246,7 +246,7 @@ Places.Farm.workFarm = function() {
                     return;
                 }
                 else {
-                    if (player.hasStatusEffect(StatusEffects.MarbleWithdrawl) marbling = 0;
+                    if (player.hasStatusEffect(StatusEffects.MarbleWithdrawl)) marbling = 0;
                     else marbling = 1;
                     //While Addicted Events type 2 (Marble is ashamed):
                     if (marbling == 0) MarbleScene.encounterMarbleAshamedAddiction();

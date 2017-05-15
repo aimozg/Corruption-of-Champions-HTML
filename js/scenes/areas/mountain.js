@@ -45,12 +45,12 @@ Areas.Mountain.explore = function() {
             if (gameFlags[WORMS_FETISH] == 1 && rand(2) == 0) {
                     if (player.cor < 90) {
                         outputText("Your hike in the mountains, while fruitless, reveals pleasant vistas and provides you with good exercise and relaxation.", true);
-                        player.dynStats("tou", .25, "spe", .5);
+                        player.dynStats(["tou", .25], ["spe", .5]);
                         player.changeLust((player.lib / 10) - 15);
                     }
                     else {
                         outputText("During your hike into the mountains, your depraved mind keeps replaying your most obcenely warped sexual encounters, always imagining new perverse ways of causing pleasure.\n\nIt is a miracle no predator picked up on the strong sexual scent you are emitting.", true);
-                        player.dynStats("tou", .25, "spe", .5, "lib", .25)
+                        player.dynStats(["tou", .25], ["spe", .5], ["lib", .25])
                         player.changeLust(player.lib / 10);
                     }
                     doNext(Camp.returnToCampUseOneHour);

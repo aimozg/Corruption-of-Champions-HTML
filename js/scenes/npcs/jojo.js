@@ -231,7 +231,7 @@ JojoScene.repeatJojoEncounter = function() {
     clearOutput();
     JojoScene.jojoSprite();
     menu();
-    if (player.hasStatusEffect(StatusEffects.Infested) {
+    if (player.hasStatusEffect(StatusEffects.Infested)) {
         outputText("As you approach the serene monk, you see his nose twitch, disturbing his meditation.<br><br>");
         outputText("\"<i>It seems that the agents of corruption have taken residence within the temple that is your body.</i>\", Jojo says flatly. \"<i>This is a most unfortunate development. There is no reason to despair as there are always ways to fight the corruption. However, great effort will be needed to combat this form of corruption and may leave lasting impressions upon you. If you are ready, we can purge your being of the rogue creatures of lust.</i>\"<br><br>");
         addButton(0, "Meditate", JojoScene.meditateInForest);
@@ -319,7 +319,7 @@ JojoScene.jojoCamp = function() {
         getGame().followerInteractions.catchRathazulNapping();
         return;
     }*/
-    if (player.hasStatusEffect(StatusEffects.Infested) { // Worms overrides everything else
+    if (player.hasStatusEffect(StatusEffects.Infested)) { // Worms overrides everything else
         outputText("As you approach the serene monk, you see his nose twitch.<br><br>");
         outputText("\"<i>It seems that the agents of corruption have taken residence within the temple that is your body,</i>\" Jojo says flatly, \"<i>This is a most unfortunate development. There is no reason to despair as there are always ways to fight the corruption. However, great effort will be needed to combat this form of corruption and may have a lasting impact upon you. If you are ready, we can purge your being of the rogue creatures of lust.</i>\"<br><br>");
         JojoScene.jojoCampMenu();
@@ -361,7 +361,7 @@ JojoScene.jojoCampMenu = function() {
     if (flags[UNLOCKED_JOJO_TRAINING] > 0) addButton(2, "Train", JojoScene.apparantlyJojoDOESlift, null, null, null, "Join him in a training session.");
     addButton(3, "Meditate", JojoScene.jojoFollowerMeditate);
     addButton(4, "N.Watch: " + (gameFlags[JOJO_NIGHT_WATCH] > 0 ? "On" : "Off"), JojoScene.jojoDefenseToggle, null, null, null, (gameFlags[JOJO_NIGHT_WATCH] > 0 ? "Request him to stop guarding the camp.": "Request him to guard the camp at night."));
-    if (player.hasStatusEffect(StatusEffects.Infested) addButton(5, "Purge", JojoScene.wormRemoval, null, null, null, "Request him to purge the worms from your body.");
+    if (player.hasStatusEffect(StatusEffects.Infested)) addButton(5, "Purge", JojoScene.wormRemoval, null, null, null, "Request him to purge the worms from your body.");
     if (player.cor > 10 && player.lust >= 33 && player.gender > 0 && flags[DISABLED_JOJO_RAPE] <= 0) addButton(8, "Rape", JojoScene.jojoAtCampRape, null, null, null, "Rape the poor monk mouse-morph." + (player.cor < 40 ? " Why would you do that?": ""));
     if (player.lust >= 33 && gameFlags[JOJO_CORRUPTION_STAGE] <= -3) addButton(8, "Sex", JojoScene.pureJojoSexMenu, null, null, null, "Initiate sexy time with the mouse-morph.");
     addButton(14, "Leave", Camp.campFollowersMenu);
@@ -502,39 +502,39 @@ JojoScene.jojoTalkYourOrigin = function() {
     flags[TIMES_TALKED_WITH_JOJO]++;
     outputText("As you start up a conversation with Jojo, the two of you speak at length about nothing really important or noteworthy, just small talk. That is until the monk brings up the subject of your background. You tell him about Ingnam and your family there, and the tradition of sending a champion through the portal. When he asks why anyone would choose to come here, you tell him how legends say that in years a champion wasn’t sent through the portal, terrible things happened to the village.<br><br>");
     outputText("“<i>That portal?</i>” Jojo asks, pointing to the very portal you stumbled through. You nod and he asks, “<i>So... what were you like in Ingnam?</i>”<br><br>");
-    if (player.findPerk(PerkLib.HistoryAlchemist) >= 0) {
+    if (player.hasPerk(PerkLib.HistoryAlchemist)) {
         outputText("You tell Jojo that you were the assistant to Riku, an alchemist residing in your village. He asks questions about your time with the alchemist and how you family felt about you taking up alchemy. You tell him that you were just about to go into advanced studies when it was announced that you were the next champion and all you really learned was how to increase the potency of certain types of items.<br><br>");
     }
-    else if (player.findPerk(PerkLib.HistoryFighter) >= 0) {
+    else if (player.hasPerk(PerkLib.HistoryFighter)) {
         outputText("You tell Jojo about how, growing up, you got into fights a lot. You name names and tell him why and how each of those little brats had got what was coming to them. You tell him how you had planned to join the village guard, but that became a pipe dream when it was announced that you were the next champion.<br><br>");
     }
-    else if (player.findPerk(PerkLib.HistoryHealer) >= 0) {
+    else if (player.hasPerk(PerkLib.HistoryHealer)) {
         outputText("You tell Jojo about how you spent a lot of your time at the side of Dende, the village healer. You talk about why you wanted to spend time with the older man as he looked after the sick and infirm and the skills you learned there. You let him know how you had just decided to train to become an official healer when you were announced to be the next champion.<br><br>");
     }
-    else if (player.findPerk(PerkLib.HistoryReligious) >= 0) {
+    else if (player.hasPerk(PerkLib.HistoryReligious)) {
         outputText("You tell Jojo about how you spent most of your time in the temple. He seems to really like hearing about the differences in religious practices between the Celestial Lotus and your village. You tell him about the various clergy of your hometown and how Sister Esther took time to teach you about meditation.<br><br>");
     }
-    else if (player.findPerk(PerkLib.HistoryScholar) >= 0) {
+    else if (player.hasPerk(PerkLib.HistoryScholar)) {
         outputText("You tell Jojo about your insatiable thirst for knowledge and how you spent a lot of time in school. You tell him the story about how you ‘convinced’ Mr. ");
         if (silly) outputText("Savin");
         else outputText("Sellet");
         outputText(" to let you read some of the rare books in his collection, skipping over how much begging and pleading was actually involved.<br><br>");
     }
-    else if (player.findPerk(PerkLib.HistorySlut) >= 0) {
+    else if (player.hasPerk(PerkLib.HistorySlut)) {
         outputText("You tell Jojo about how you spent time... making friends. Jojo looks at you weirdly and when you tell him you had a lot of friends....<br><br>");
         outputText("“<i>That’s nice I guess [name] but didn’t you have aspirations beyond being, erm... popular?</i>” he questions.<br><br>");
         outputText("You laugh and tell him that you were just really good and making friends, instead of the truth about how much of a slut you actually were.<br><br>");
     }
-    else if (player.findPerk(PerkLib.HistorySlacker) >= 0) {
+    else if (player.hasPerk(PerkLib.HistorySlacker)) {
         outputText("You tell Jojo about how you spent your time basically relaxing with your fiends. You gloss over how big of a lazy bum you were with stories of the times you generally made a nuisance of yourself. You don’t tell him that you’re pretty sure you were chosen as the next champion in order to be gotten rid of.<br><br>");
     }
-    else if (player.findPerk(PerkLib.HistorySmith) >= 0) {
+    else if (player.hasPerk(PerkLib.HistorySmith)) {
         outputText("You tell Jojo about how you spent your time training to become a blacksmith. Not knowing much about smithing he asks questions about the things you learned and you answer them to the best of your ability. To finish you describe the process of fitting armor in great detail and how you were going to start learning advanced techniques but were announced to be the next champion.<br><br>");
     }
-    else if (player.findPerk(PerkLib.HistoryWhore) >= 0) {
+    else if (player.hasPerk(PerkLib.HistoryWhore)) {
         outputText("You tell Jojo about how you spent a lot of your time... making money. When the naive little monk asks how, you just smile as you fondly remember the older whore, Poison, showing you the ropes and teaching the tricks of the trade. Regardless of how it made people think of you, it was certainly good money. In an attempt to hide some of the messier details of your past from the monk, you explain how you accepted... odd jobs for people, important work that not many others in the village would be willing to accept. He seems confused but shrugs it off.<br><br>");
     }
-    else if (player.findPerk(PerkLib.HistoryFortune) >= 0) {
+    else if (player.hasPerk(PerkLib.HistoryFortune)) {
         outputText("You tell Jojo about how you're lucky and you've made quite a bit of money. When the monk asks how, you shrug and tell him it's just plain luck.<br><br>");
     }
     else {
@@ -695,7 +695,7 @@ JojoScene.apparantlyJojoDOESlift = function() {
         }
     }
     //{after the PC has gained the controlled breath perk}
-    else if (player.findPerk(PerkLib.ControlledBreath) >= 0 && player.findPerk(PerkLib.CleansingPalm) < 0 && player.findPerk(PerkLib.Enlightened) < 0) {
+    else if (player.hasPerk(PerkLib.ControlledBreath) && player.findPerk(PerkLib.CleansingPalm) < 0 && player.findPerk(PerkLib.Enlightened) < 0) {
         outputText("Jojo gives you a big toothy grin, “<i>Alright [name]... let’s begin.</i>”<br><br>");
         outputText("Jojo switches up the way he is instructing you. Largely due to your increased endurance, the two of you spend more time moving through forms together and practicing strikes and maneuvers. When it comes time for a brief lecture, he breaks out one of the few scrolls he has from his order and tells you what he knows about the contents.<br><br>");
         outputText("Before too long, the two of you are up again and practicing forms and mock strikes, even sparring briefly from time to time. By the end of the intense training session you are covered in sweat... but so is Jojo, and neither of you are out of breath. As you bow to Jojo he returns the gesture and says, “<i>Go get some rest [name], you’ve earned it.</i>”<br><br>");
@@ -708,7 +708,7 @@ JojoScene.apparantlyJojoDOESlift = function() {
         }
     }
     //{after the PC has gained the Cleansing Palm attack}
-    else if (player.findPerk(PerkLib.ControlledBreath) >= 0 && player.findPerk(PerkLib.CleansingPalm) >= 0 && player.findPerk(PerkLib.Enlightened) < 0) {
+    else if (player.hasPerk(PerkLib.ControlledBreath) && player.hasPerk(PerkLib.CleansingPalm) && player.findPerk(PerkLib.Enlightened) < 0) {
         outputText("Jojo gives you a big smile brimming with pride, “<i>Alright [Name]... let’s begin.</i>”<br><br>");
         outputText("Largely due to your increased endurance and improved technique the two of you spend more time sparring and dancing through the forms Jojo knows. When it comes time for a brief lecture, Jojo pants as he sits with you, taking a minute to regain his breath. Jojo’s lectures, instead of dealing with how to strike and defend oneself, deal with the nature of the soul. You learn much about individuality, willpower and determination and after the lecture the two of you meditate on what you’ve learned for a few silent moments.<br><br>");
         outputText("Then the two of you are back up, sweeping gracefully through forms and striking invisible enemies with fierce blows. By the end of the intense training session both you and Jojo are tired, having trained to both of your limits.<br><br>");
@@ -805,7 +805,7 @@ JojoScene.wormRemoval = function() {
     player.damageHunger(30);
     player.sens = 11;
     player.removeStatusEffect(StatusEffects.Infested);
-    player.dynStats("sen", -1, "cor", -15);
+    player.dynStats(["sens", -1], ["cor", -15]);
     player.orgasm();
     doNext(Camp.returnToCampUseOneHour);
 }
@@ -979,7 +979,7 @@ JojoScene.getAnallyFuckedByMouseYouSlut = function() {
     if (player.gender == 0) outputText("Your body rocks with ecstasy. ");
     outputText("<br><br>His cock slides out of your [ass] with a pop. Cum start dripping out of your [ass]. \"<i>That was... You were amazing, [name].</i>\" You smile at him while rubbing your inflated belly and tell him he wasn’t too bad himself. " + (flags[JOJO_SEX_COUNTER] >= 4 ? "You give Jojo a lingering kiss." : ""));
     outputText("<br><br>\After a good while of rest, " + player.clothedOrNaked("the two of you get redressed and", "Jojo gets redressed and the two of you") + " return to your camp.");
-    player.dynStats("sens", 1, "cor", -1);
+    player.dynStats(["sens", 1], ["cor", -1]);
     flags[JOJO_ANAL_CATCH_COUNTER]++;
     flags[JOJO_SEX_COUNTER]++;
     player.orgasm();
@@ -1013,7 +1013,7 @@ JojoScene.getVagFuckedByMouse = function() {
         outputText("<br><br>You orgasm at the same time, spraying girlcum all over Jojo" + (player.hasCock() ? "; [eachCock] let loose a cum shower, drenching your belly and thighs" : "") + ". Losing strength in your limbs, you release Jojo. Jojo falls back on the grass, panting. \"<i>I can’t wait to do that again.</i>\" You laugh and tease him by saying that this was supposed to be about satiating your lust, not his. Jojo blushes. You smile and tell him that you would let him fuck you anytime. He smiles, obviously happy to hear that. " + (flags[JOJO_SEX_COUNTER] >= 4 ? "You give Jojo a lingering kiss." : ""));
     }
     outputText("<br><br>\After recovering, " + player.clothedOrNaked("the two of you get redressed and", "Jojo gets redressed and the two of you") + " return to your camp.");
-    player.dynStats("sens", 1, "cor", -1);
+    player.dynStats(["sens", 1], ["cor", -1]);
     flags[JOJO_VAGINAL_CATCH_COUNTER]++;
     flags[JOJO_SEX_COUNTER]++;
     //player.knockUp(PregnancyStore.PREGNANCY_JOJO, PregnancyStore.INCUBATION_MOUSE + 82, (jojoCumQ() < 2000 ? 100 - (jojoCumQ() / 50) : 60));
@@ -1058,7 +1058,7 @@ JojoScene.suckJojosCock = function() {
     else player.refillHunger(100);
     flags[JOJO_BLOWJOB_XP]++;
     flags[JOJO_SEX_COUNTER]++;
-    player.dynStats("lus", 20, "cor", -1);
+    player.dynStats(["lust", 20], ["cor", -1]);
     player.slimeFeed();
     doNext(Camp.returnToCampUseOneHour);
 }
@@ -1069,7 +1069,7 @@ JojoScene.loseToJojo = function() {
     if (gameFlags[JOJO_CORRUPTION_STAGE] <= 3) {
         outputText("Jojo glares down at you, and begins praying, slowly laying prayer papers all over your battered form. You feel rage that quickly dissipates, replaced with a calm sense of peace. You quickly lose consciousness, but are happy he defeated you.<br><br>When you wake, you discover a note:<br>\"<i>The fighting allowed me to exorcise most of your inner demons. A part of me wanted to seek revenge for what you had done to me, but I know it was the taint on your soul that was responsible. If we meet again I would be happy to meditate with you.<br><br> -Jojo.</i>\"");
         player.orgasm();
-        player.dynStats("lib", -10, "cor", -15);
+        player.dynStats(["lib", -10], ["cor", -15]);
         if (player.cockTotal() == 1) player.lib = 15;
         if (player.vaginas.length == 1) player.lib += 10;
         if (player.cockTotal() > 1) player.lib += 5;
@@ -1222,7 +1222,7 @@ JojoScene.jojosFirstRape = function() {
         }
     }
     player.orgasm();
-    player.dynStats("lib", -10, "cor", 4);
+    player.dynStats(["lib", -10], ["cor", 4]);
     gameFlags[JOJO_CORRUPTION_STAGE]++;
 }
 
@@ -1251,7 +1251,7 @@ JojoScene.jojosSecondRape = function() {
         //player.knockUp(PregnancyStore.PREGNANCY_JOJO, PregnancyStore.INCUBATION_MOUSE + 82); //Jojo's kids take longer for some reason
     }
     player.orgasm();
-    player.dynStats("lib", -10, "cor", 4);
+    player.dynStats(["lib", -10], ["cor", 4]);
     gameFlags[JOJO_CORRUPTION_STAGE]++;
 }
 
@@ -1280,10 +1280,10 @@ JojoScene.jojosThirdRape = function() {
         if (player.lib > 60 && player.cor > 40) {
             outputText("You smile as you hear him begin masturbating in the background. There can be no doubt, you are tainting him more and more...");
             gameFlags[JOJO_CORRUPTION_STAGE]++;
-            player.dynStats("lib", -10, "cor", 4);
+            player.dynStats(["lib", -10], ["cor", 4]);
         }
         else {
-            player.dynStats("lib", 2, "cor", 1);
+            player.dynStats(["lib", 2], ["cor", 1]);
         }
     }
     if (player.gender == 2) { //Females
@@ -1318,10 +1318,10 @@ JojoScene.jojosThirdRape = function() {
         if (player.lib > 60 && player.cor > 50) {
             outputText("You lean down and whisper strange un-words as you stroke his cock. It spasms and grows, cum pumping from it slowly but constantly. You walk away, leaving him in a growing puddle of what was once his morals. You don't know where the words came from, but you do know you're getting better at tempting and corrupting.");
             gameFlags[JOJO_CORRUPTION_STAGE]++;
-            player.dynStats("lib", -10, "cor", 4);
+            player.dynStats(["lib", -10], ["cor", 4]);
         }
         else {
-            player.dynStats("lib", 2, "cor", 1);
+            player.dynStats(["lib", 2], ["cor", 1]);
         }
         //Preggers chance!
         //player.knockUp(PregnancyStore.PREGNANCY_JOJO, PregnancyStore.INCUBATION_MOUSE + 82); //Jojo's kids take longer for some reason
@@ -1359,10 +1359,10 @@ JojoScene.jojosThirdRape = function() {
         if (player.lib > 60 && player.cor > 50) {
             outputText("You lean down and whisper strange un-words as you stroke his cock. It spasms and grows, cum pumping from it slowly but constantly. You walk away, leaving him in a growing puddle of what was once his morals. You don't know where the words came from, but you do know you're getting better at tempting and corrupting.");
             gameFlags[JOJO_CORRUPTION_STAGE]++;
-            player.dynStats("lib", -10, "cor", 4);
+            player.dynStats(["lib", -10], ["cor", 4]);
         }
         else {
-            player.dynStats("lib", 2, "cor", 1);
+            player.dynStats(["lib", 2], ["cor", 1]);
         }
         //Preggers chance!
         //player.knockUp(PregnancyStore.PREGNANCY_JOJO, PregnancyStore.INCUBATION_MOUSE + 82); //Jojo's kids take longer for some reason
@@ -1393,12 +1393,12 @@ JojoScene.jojosFourthRape = function() {
             outputText("You walk away, leaving your new pet to explore his outlook on life, and to test your awakened powers. ");
             gameFlags[JOJO_CORRUPTION_STAGE]++;
             player.orgasm();
-            player.dynStats("lib", -10, "cor", 10);
+            player.dynStats(["lib", -10], ["cor", 10]);
         }
         else {
             outputText("Jojo eventually cums violently, collapsing into a puddle of spent jizz. You smile and walk away, hoping to encounter him again. ");
             player.orgasm();
-            player.dynStats("lib", 2, "cor", 1);
+            player.dynStats(["lib", 2], ["cor", 1]);
         }
     }
     if (player.gender == 2 || player.gender == 3) { //Female or Herm Version
@@ -1476,12 +1476,12 @@ JojoScene.jojosFourthRape = function() {
             outputText("You walk away, leaving your new pet to explore his outlook on life, and to test your awakened powers. ");
             gameFlags[JOJO_CORRUPTION_STAGE]++;
             player.orgasm();
-            player.dynStats("lib", -10, "cor", 10);
+            player.dynStats(["lib", -10], ["cor", 10]);
         }
         else {
             outputText("<br><br>Exhausted, you pull yourself free from the mouse, drained of lust but feeling VERY naughty. Jojo doesn't even bother getting up, he just keeps masturbating, lost in the scents of your slick juices and his cum. As you walk away with a sexy wiggle, the sexual fluids are absorbed into the ground.");
             player.orgasm();
-            player.dynStats("lib", 2, "cor", 1);
+            player.dynStats(["lib", 2], ["cor", 1]);
         }
     }
     if (gameFlags[JOJO_CORRUPTION_STAGE] == 5 && gameFlags[JOJO_CAMP] == 0) {
@@ -1523,7 +1523,7 @@ JojoScene.corruptJojoSexMenu = function() {
         addButton(0, "Gentle BJ", JojoScene.corruptJojoBJGentle);
         addButton(5, "Cruel BJ", JojoScene.corruptJojoBJCruel);
         addButton(3, "Gentle Anal", JojoScene.corruptJojoAnalGentle);
-        /*if (player.findPerk(PerkLib.Whispered) >= 0)
+        /*if (player.hasPerk(PerkLib.Whispered))
             addButton(8, "Whisper", JojoScene.whisperJojobait);
         else */addButton(8, "Cruel Anal", JojoScene.corruptJojoAnalCruel); //Overrides Anal Smother - Herms don't smother, they fuck
     }

@@ -132,12 +132,11 @@ namespace Reducto {
 	export function reductoNipples() {
 		clearOutput();
 		outputText("You rub the paste evenly over your " + player.nippleDescript(0) + "s, being sure to cover them completely.\n\n");
-//Shrink
+		//Shrink
 		if (player.nippleLength / 2 < 0.25) {
 			outputText("Your nipples continue to shrink down until they stop at 1/4\" long.");
 			player.nippleLength = 0.25;
-		}
-		else {
+		} else {
 			outputText("Your " + player.nippleDescript(0) + "s get smaller and smaller, stopping when they are roughly half their previous size.");
 			player.nippleLength /= 2;
 		}

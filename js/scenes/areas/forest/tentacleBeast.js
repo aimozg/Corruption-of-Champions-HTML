@@ -204,7 +204,7 @@ TentacleBeast.tentacleEntwine = function() {
 //Not Trapped yet
     if (gameFlags[TENTACLE_BIND] == 0) {
         //Success
-        if ((Math.random() * (((player.spe) / 2))) > 15 || (player.findPerk(PerkLib.Evade) >= 0 && (Math.random() * (((player.spe) / 2))) > 15)) {
+        if ((Math.random() * (((player.spe) / 2))) > 15 || (player.hasPerk(PerkLib.Evade) && (Math.random() * (((player.spe) / 2))) > 15)) {
             outputText("In an impressive display of gymnastics, you dodge, duck, dip, dive, and roll away from the shower of grab-happy arms trying to hold you. Your instincts tell you that this was a GOOD thing.<br>");
         }
         //Fail
@@ -236,7 +236,7 @@ TentacleBeastScene.tentacleBeastWin = function() {
     }
 // TODO Phylla Scene
     /*
-     if (hasStatusEffect(StatusEffects.PhyllaFight) {
+     if (hasStatusEffect(StatusEffects.PhyllaFight)) {
      removeStatusEffect(StatusEffects.PhyllaFight);
      game.desert.antsScene.phyllaTentacleDefeat();
      }
@@ -294,7 +294,7 @@ TentacleBeastScene.tentacleBeastLoss = function() {
         outputText("Overcome by your wounds, you turn to make a last desperate attempt to run...<br><br>");
         //TODO Phylla Scenes
         /*
-         if (hasStatusEffect(StatusEffects.PhyllaFight) {
+         if (hasStatusEffect(StatusEffects.PhyllaFight)) {
          removeStatusEffect(StatusEffects.PhyllaFight);
          outputText("...and make it into the nearby tunnel.  ");
          game.desert.antsScene.phyllaTentaclePCLoss();
@@ -305,7 +305,7 @@ TentacleBeastScene.tentacleBeastLoss = function() {
     else {
         outputText("You give up on fighting, too aroused to resist any longer.  Shrugging, you walk into the writhing mass...<br><br>");
 //TODO Phylla Scenes
-        /* if (hasStatusEffect(StatusEffects.PhyllaFight) {
+        /* if (hasStatusEffect(StatusEffects.PhyllaFight)) {
          removeStatusEffect(StatusEffects.PhyllaFight);
          outputText("...but an insistent voice rouses you from your stupor.  You manage to run into a nearby tunnel.  ");
          game.desert.antsScene.phyllaTentaclePCLoss();
@@ -384,7 +384,7 @@ TentacleBeastScene.tentacleLossRape = function() {
             outputText("  It continues to violate your ass until you black out from exhaustion, the number of loads you've released no longer countable.");
             //end (loss)
 
-            player.dynStats("tou", 1, "int", -.5, "lib", 2, "sen", 1, "cor", .5);
+            player.dynStats(["tou", 1], ["int", -.5], ["lib", 2], ["sens", 1], ["cor", .5]);
             if (inCombat()) {
                 cleanupAfterCombat();
                 player.orgasm();
@@ -400,7 +400,7 @@ TentacleBeastScene.tentacleLossRape = function() {
             outputText("Just as you think it's over, the tentacle inside your " + player.assholeDescript() + " begins to swell massively, causing another surge of cum to leave you, and another, and another.  It continues to violate your ass until you black out from exhaustion, the number of loads you've released no longer countable.");
             //end (loss)
 
-            player.dynStats("tou", 1, "int", -.5, "lib", 2, "sen", 1, "cor", .5);
+            player.dynStats(["tou", 1], ["int", -.5], ["lib", 2], ["sens", 1], ["cor", .5]);
             if (inCombat()) {
                 cleanupAfterCombat();
                 player.orgasm();
@@ -417,7 +417,7 @@ TentacleBeastScene.tentacleLossRape = function() {
             player.buttChange(40, true, true, false);
             outputText("  It continues to violate your ass until you black out from exhaustion, the number of times you've orgasmed no longer countable.");
             //end (loss)
-            player.dynStats("tou", 1, "int", -.5, "lib", 2, "sen", 1, "cor", .5);
+            player.dynStats(["tou", 1], ["int", -.5], ["lib", 2], ["sens", 1], ["cor", .5]);
             if (inCombat()) {
                 cleanupAfterCombat();
                 player.orgasm();
@@ -568,7 +568,7 @@ TentacleBeastScene.tentacleLossRape = function() {
 
 // Continue scene for losing to beast
 TentacleBeastScene.tentacleRapeContinuation = function() {
-    player.dynStats("tou", 1, "int", -.5, "lib", 2, "sen", 1, "cor", .5);
+    player.dynStats(["tou", 1], ["int", -.5], ["lib", 2], ["sens", 1], ["cor", .5]);
     clearOutput();
     // TODO spriteSelect(100);
     // Male
@@ -656,7 +656,7 @@ TentacleBeastScene.tentacleRapeContinuationForFemales = function() {
     if (player.vaginas.length == 1) { //single coochie
         outputText("Satisfied, the creature drops you smartly, withdraws its limbs from you, and lumbers away.  Covered completely in cum, you see that your clitoris has swollen up to ");
         //Big clit girls get huge clits
-        if ((player.findPerk(PerkLib.BigClit) >= 0 && player.clitLength > 2) || player.clitLength > 3)
+        if ((player.hasPerk(PerkLib.BigClit) && player.clitLength > 2) || player.clitLength > 3)
             outputText("almost " + num2Text(Math.floor(player.clitLength * 1.75)) + " inches in length. ");
         //normal girls get big clits
         else
@@ -671,7 +671,7 @@ TentacleBeastScene.tentacleRapeContinuationForFemales = function() {
 //Very corrupt
     else outputText("too intoxicated with lust to continue the pleasure. ");
 //If has big-clit grow to max of 6"
-    if (player.clitLength < 7 && player.clitLength >= 3.5 && player.findPerk(PerkLib.BigClit) >= 0) {
+    if (player.clitLength < 7 && player.clitLength >= 3.5 && player.hasPerk(PerkLib.BigClit)) {
         player.clitLength += .1 + player.cor / 100;
         outputText("Your massive clitty eventually diminishes, retaining a fair portion of its former glory.  It is now " + (player.clitLength * 10) / 10 + " inches long when aroused, ");
         if (player.clitLength < 5)

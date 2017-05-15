@@ -95,7 +95,6 @@ class Creature {
 	public ass: Ass                         = new Ass();
 	//Breasts
 	public breastRows: BreastRow[]          = [];
-	public nippleLength: number             = 0.25;
 	public lactationMultiplier              = 0;
 	//Effects & perks
 	public keyItems: KeyItem[]              = [];
@@ -138,6 +137,14 @@ class Creature {
 	}
 	public get weaponName():string {
 		return this.weapon.equipmentName
+	}
+	public get nippleLength():number {
+		return this.averageNippleLength();
+	}
+	public set nippleLength(value:number) {
+		for (let br of this.breastRows) {
+			br.nippleLength = value;
+		}
 	}
 
 	//------------
@@ -428,9 +435,9 @@ class Creature {
 		}
 		//Modify armor rating based on weapons.
 		if (applyModifiers) {
-			// if (player.weapon == Items.Weapons.JewelRapier || player.weapon == Items.Weapons.SPEAR || player.weapon.name.indexOf("staff") != -1 && player.findPerk(PerkLib.StaffChanneling) >= 0) armorMod = 0;
+			// if (player.weapon == Items.Weapons.JewelRapier || player.weapon == Items.Weapons.SPEAR || player.weapon.name.indexOf("staff") != -1 && player.hasPerk(PerkLib.StaffChanneling)) armorMod = 0;
 			//if (player.weapon == Items.Weapons.Katana) armorMod -= 5;
-			//if (player.findPerk(PerkLib.LungingAttacks) >= 0) armorMod /= 2;
+			//if (player.hasPerk(PerkLib.LungingAttacks)) armorMod /= 2;
 			if (armorMod < 0) armorMod = 0;
 		}
 		mult -= armorMod;
@@ -557,8 +564,8 @@ class Creature {
 
 	public getTotalDropPercents(): number {
 		let sum = 0;
-		for (var i in this.dropThresholds) {
-			sum += this.dropThresholds[i];
+		for (const dropThreshold of this.dropThresholds) {
+			sum += dropThreshold;
 		}
 		return sum;
 	}

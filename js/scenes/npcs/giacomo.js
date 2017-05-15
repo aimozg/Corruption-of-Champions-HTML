@@ -32,7 +32,7 @@ GiacomoScene.giacomoEncounter = function() {
     if (gameFlags[GIACOMO_MET] == 0) {
         GiacomoScene.firstEncounter();
     }
-    else if (gameFlags[GIACOMO_WORMS_OFFERED] == 0 && player.hasStatusEffect(StatusEffects.Infested) { //If infested && no worm offer yet
+    else if (gameFlags[GIACOMO_WORMS_OFFERED] == 0 && player.hasStatusEffect(StatusEffects.Infested)) { //If infested && no worm offer yet
         outputText("Upon walking up to Giacomo's wagon, he turns to look at you and cocks an eyebrow in curiosity and mild amusement.<br><br>");
         outputText("\"<i>Been playing with creatures best left alone, I see</i>,\" he chuckles. \"<i>Infestations of any kind are annoying, yet your plight is quite challenging given the magnitude of corrupt creatures around here. It is not the first time I have seen one infested with THOSE worms.</i>\"<br><br>");
         outputText("You ask how he knows of your change and the merchant giggles heartily.<br><br>");
@@ -493,7 +493,7 @@ GiacomoScene.wormRemoval = function() {
     //Infestation purged. Hit Points reduced to 10% of MAX. Corruption -20.
     if (player.HP > player.maxHP() * 0.15) player.changeHP(-(player.HP - (player.maxHP() * 0.15)), false);
     player.removeStatusEffect(StatusEffects.Infested);
-    player.dynStats("lib", -1, "cor", -8);
+    player.dynStats(["lib", -1], ["cor", -8]);
     player.changeGems(-175);
     Inventory.takeItem(Items.Consumables.VitalityTincture, Camp.returnToCampUseOneHour);
 }
@@ -547,7 +547,7 @@ else {
     outputText("The fierce milking continues for several minutes until you reflexively buck your hips as your inner organs fill with the white, milky life-water the demoness demands in order to slake her thirst. Quick to take notice of your muscular reaction, the succubus snickers.<br><br>");
     outputText("\"<i>Ready to burst, are you?</i>\" the Succubus playfully challenges. \"<i>Well, then. No reason for you to hold back.</i>\"");
 }
-dynStats("tou", .3, "lib", .5, "sen", .5, "lus", 5, "cor", 1);
+dynStats(["tou", .3], ["lib", .5], ["sens", .5], ["lust", 5], ["cor", 1]);
 doNext(ceruleanSuccubusEncounterPart3);
 }
 
@@ -585,7 +585,7 @@ if (player.gender == 1) {
         outputText("you see she's definitely shorter than you, only about seven feet tall. ");
     outputText("She braces you against a tree and picks up the empty potion bottle. Grabbing the tit you ignored during the unholy tryst, she pokes her nipple into the bottle and squeezes for about a minute. Satisfied, she corks the bottle and hands it to you. She begins licking her nectar off your face. \"<i>You have pleased me, little man,</i>\" she coos. \"<i>It is a rare thing indeed for one of my meals to pleasure me so. If you ever desire for me again, all you need is to drink my milk. I will appear forthwith to let you suckle me and I will suckle you! We will feed each other and grow stronger for the effort!</i>\" ");
     outputText("She gives a giggle and disappears before your eyes. At that moment the fatigue from the massive fucking you received catches up with you and you pass out in a slump.");
-    dynStats("str", .5,"lus", 4);
+    dynStats(["str", .5], ["lust", 4]);
 }
 inventory.takeItem(consumables.CERUL_P, playerMenu);
 }

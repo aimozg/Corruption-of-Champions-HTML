@@ -35,7 +35,7 @@ WhitneyScene.talkWhitney = function() {
         return;
     }
     /*// Requires: PC has met both Marble and Kelt
-    if (gameFlags[MURBLE_FARM_TALK_LEVELS] > 0 && player.hasStatusEffect(StatusEffects.Kelt && gameFlags[WHITNEY_TALK_MURBLE_AND_KELT] == 0)
+    if (gameFlags[MURBLE_FARM_TALK_LEVELS] > 0 && player.hasStatusEffect(StatusEffects.Kelt) && gameFlags[WHITNEY_TALK_MURBLE_AND_KELT] == 0)
     {
         gameFlags[WHITNEY_TALK_MURBLE_AND_KELT] = 1;
 
@@ -50,7 +50,7 @@ WhitneyScene.talkWhitney = function() {
     }
 
     // Requires: PC has entered Tel’Adre
-    if (player.hasStatusEffect(StatusEffects.TelAdre && player.statusEffectv1(StatusEffects.TelAdre) >= 1 && gameFlags[WHITNEY_TALK_TELADRE] == 0 && gameFlags[WHITNEY_TALK_MURBLE_AND_KELT] == 1)
+    if (player.hasStatusEffect(StatusEffects.TelAdre) && player.statusEffectv1(StatusEffects.TelAdre) >= 1 && gameFlags[WHITNEY_TALK_TELADRE] == 0 && gameFlags[WHITNEY_TALK_MURBLE_AND_KELT] == 1)
     {
         gameFlags[WHITNEY_TALK_TELADRE] = 1;
 
@@ -73,7 +73,7 @@ WhitneyScene.talkWhitney = function() {
 
         outputText("You find Whitney outside the milking shed, carefully writing labels at a trestle table and sticking them on large bottles of milk.");
         //[PC has used milking device:
-        if (player.hasStatusEffect(StatusEffects.BreastsMilked)
+        if (player.hasStatusEffect(StatusEffects.BreastsMilked))
         {
             outputText(" You are uncomfortably aware of the number of them which are labelled ‘[name]’, and a charged memory of strong suction on your [nipples] comes back to you.");
         }
@@ -99,13 +99,13 @@ WhitneyScene.talkWhitney = function() {
         outputText("\n\n“<i>Centaurs ‘n goblins mainly,</i>” she replies. “<i>Sometimes even get the mountain folk coming down here to trade. Milk’s a rare enough commodity to a harpy or basilisk to get 'em to stop ruttin' an' fighting for two minutes and buy some.</i>” She sighs. “<i>Used to be you could talk with em, get news, but they mostly don’t even bother doing that anymore - just point at what they want, throw their gems down and leave. Gnolls and imps like milk too,</i>” she goes on in a harder tone, “<i>but they prefer tryin' stealin' it. Marble and Kelt deal with them.</i>”");
 
         // [PC has used milking device:
-        if (player.hasStatusEffect(StatusEffects.BreastsMilked)
+        if (player.hasStatusEffect(StatusEffects.BreastsMilked))
         {
             outputText("\n\nShe smiles at you. “<i>I charge top gem for your produce, of course. Human milk is a very rare commodity these days, and it has a powerful calming effect on most anyone. Folks love it for their kids.</i>”");
         }
 
         //[PC has used cock milker:
-        if (player.hasStatusEffect(StatusEffects.CockPumped)
+        if (player.hasStatusEffect(StatusEffects.CockPumped))
         {
             if (player.findStatusEffect(StatusEffects.BreastsMilked) < 0) outputText("\n\n");
 

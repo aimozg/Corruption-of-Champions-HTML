@@ -81,7 +81,7 @@ BeeGirl.prototype.doAI = function() {
 }
 
 BeeGirl.stingAttack = function() {
-    if (monster.hasStatusEffect(StatusEffects.Blind) {
+    if (monster.hasStatusEffect(StatusEffects.Blind)) {
         outputText(capitalize(monster.a) + monster.refName + " completely misses you with a blind sting!!");
         combatRoundOver();
         return;
@@ -125,12 +125,12 @@ BeeGirl.stingAttack = function() {
         if (paralyzeIndex >= 0) {
             player.addStatusValue(StatusEffects.Venom, 2, 2.9); //Loss to strength
             player.addStatusValue(StatusEffects.Venom, 3, 2.9); //Loss to speed
-            player.dynStats("str", -3, "spe", -3);
+            player.dynStats(["str", -3], ["spe", -3]);
             outputText(" It's getting much harder to move, you're not sure how many more stings like that you can take!");
         }
         else {
             player.createStatusEffect(StatusEffects.Venom, VENOM_TYPE_BEE, 2, 2, 0);
-            player.dynStats("str", -2, "spe", -2);
+            player.dynStats(["str", -2], ["spe", -2]);
             outputText(" You've fallen prey to paralyzation venom! Better end this quick!");
         }
     }
@@ -168,7 +168,7 @@ BeeGirlScene.beeEncounterSelect = function(clearScreen) {
         return;
     } */
     
-    if (player.hasStatusEffect(StatusEffects.Infested || player.hasStatusEffect(StatusEffects.WormPlugged) { //Worms now mess with things too!
+    if (player.hasStatusEffect(StatusEffects.Infested) || player.hasStatusEffect(StatusEffects.WormPlugged)) { //Worms now mess with things too!
         BeeGirlScene.beeEncounterWithWorms();
         return;
     }
@@ -230,7 +230,7 @@ BeeGirlScene.beeEncounterWithWorms = function() {
     clearOutput();
     //spriteSelect(6);
     outputText("You slowly " + (player.isTaur() ? "trot" : "walk") + " toward the bee girl, your mind in a haze.  Her antennae wiggle in anticipation and she gives you a lusty smile, eager to fill your ass with her payload.  You start to take off your clothes, the last of your underwear falling to the forest floor as you reach her.<br><br>");
-    outputText("The bee maiden puts her hands on your shoulders.  She draws you gently into a kiss, but as her sweet saliva prepares you for what is to come you feel one of your annelid passengers slither down " + (player.hasStatusEffect(StatusEffects.WormPlugged ? "from your cervix and poke out of your cunt" : "your urethra and wrap itself around the tip of your cock") + ".  The bee girl pulls back from the kiss, looks down and jumps back, the color draining from her face.<br><br>");
+    outputText("The bee maiden puts her hands on your shoulders.  She draws you gently into a kiss, but as her sweet saliva prepares you for what is to come you feel one of your annelid passengers slither down " + (player.hasStatusEffect(StatusEffects.WormPlugged) ? "from your cervix and poke out of your cunt" : "your urethra and wrap itself around the tip of your cock") + ".  The bee girl pulls back from the kiss, looks down and jumps back, the color draining from her face.<br><br>");
     outputText("<i>“By my queen!  That izzz dizzzguzzting!  How can you zzztand it?  Ugh, no, I can't lay my queen'zzz preciouzzz eggzzz in a body with thozzze.”</i>  A few drips of fluid dribble from the tip of her ovipositor and she adds, <i>“and I zzzo wanted to.  I really have to find zzzomeone who can take thezzze and keep them zzzafe.”</i><br><br>");
     outputText("She lifts off, hovering a few feet off the ground.  <i>“Good luck getting rid of thozzze thingzzz.  When you do, come find me and I'll fill you zzzo full of lovely eggzzz,”</i> she promises, her fingers idly stroking her sex.  She shakes her head, deliberately getting control of herself and forcing her fingers away from her slit, then flies up through a hole in the canopy.<br><br>");
     outputText("Alone and aroused, all you can do is put your clothes back on and travel back to your camp, hoping no imps ambush you on the way.");
@@ -293,7 +293,7 @@ BeeGirlScene.beeSexForCocks = function(clearScreen) {
         }
         outputText("In moments, her hands are covered with your usual level of cum, though this gets not much more than a nod of approval from the giver of your pleasure.  She gently sets you to the side of her and pulls the bottle from her lower lips and puts a cork on the bottle before setting it down on your stomach.  <i>“Take thizzz after it hazzz had an hour to zzzet.”</i> she tells you before picking up her bag and flying away.  Thanks to the after effects of her scent, you don’t really have a chance to react before you drift off to sleep for several hours.<br><br>");
         player.orgasm();
-        player.dynStats("lib", 3, "cor", -2);
+        player.dynStats(["lib", 3], ["cor", -2]);
         Inventory.takeItem(Items.Consumables.SpecialHoney, Camp.returnToCampUseFourHours);
     }
 };
@@ -330,7 +330,7 @@ BeeGirlScene.beeSexForCocksPart2 = function(giantCockIndex) {
     }
     outputText("”</i> she says handing you the bottle with a wink.  Then she wipes off some of the dried cum from her face, takes her bag, and flies off.  Just before she is out of sight she calls back to you, <i>“I look forward to zzzeeing you again zzzoon!”</i>  After cumming so many times it's no surprise that you wake up hours later, having drifted off to sleep.<br><br>");
     player.orgasm();
-    player.dynStats("lib", 2, "sen", 2, "cor", -3);
+    player.dynStats(["lib", 2], ["sens", 2], ["cor", -3]);
     Inventory.takeItem(Items.Consumables.SpecialHoney, Camp.returnToCampUseFourHours);
 };
 
@@ -1137,12 +1137,12 @@ BeeGirlScene.beeGirlWin = function() {
         if (player.hasKeyItem("Deluxe Dildo")) {
             addButton(1, "Dildo Rape", BeeGirlScene.beeGirlsGetsDildoed, null, null, null, "TO BE ADDED");
         }
-        if (player.hasStatusEffect(StatusEffects.Feeder) {
+        if (player.hasStatusEffect(StatusEffects.Feeder)) {
             addButton(2, "Bee Feed", BeeGirlScene.milkAndHoneyAreKindaFunny, null, null, null, "TO BE ADDED");
         }
         addButton(3, "Leave", BeeGirlScene.leaveAfterDefeating, null, null, null, "TO BE ADDED");
     }
-    else if (player.hasStatusEffect(StatusEffects.Feeder && gameFlags[SFW_MODE] <= 0) { //Genderless can still breastfeed
+    else if (player.hasStatusEffect(StatusEffects.Feeder) && gameFlags[SFW_MODE] <= 0) { //Genderless can still breastfeed
         if (monster.HP <= 0) {
             outputText("You smile in satisfaction as the " + this.name + " collapses, unable to continue fighting.  The sweet scent oozing from between her legs is too much to bear, arousing you painfully.<br><br>What do you do?");
         }
@@ -1587,7 +1587,7 @@ BeeGirlScene.beeGirlRapeForTheDistinguishedGentleman = function() {
         outputText(" before you get enough.  Ahh, who knew that stuff would be this much better when it was still fresh in the bee?  You feel a strong urge to take the girl home with you and make her your 'pantry', but you groggily realize that she has to be fertilized with eggs by the queen bee before she produces your treat.  Shaking your head to clear the sugary haze, you take a firm grip on the bee's knob and decide to enact your original plan now; maybe you can capture the queen later.<br><br>", false);
         //(gain 2 libido and 2 sensitivity)
         //player.orgasm();
-        player.dynStats("lib", 2, "sen", 2);
+        player.dynStats(["lib", 2], ["sens", 2]);
     }
 //(if penis)
     else if (select == 1) {
@@ -2155,7 +2155,7 @@ BeeGirlScene.beeRapesYou = function() {
     // Player is not a taur    
     else {
         //Male + venomz
-        if ((player.hasStatusEffect(StatusEffects.ParalyzeVenom || player.hasStatusEffect(StatusEffects.LustVenom) && !sexed && player.cockTotal() == 1) {
+        if ((player.hasStatusEffect(StatusEffects.ParalyzeVenom) || player.hasStatusEffect(StatusEffects.LustVenom)) && !sexed && player.cockTotal() == 1) {
             outputText("The bee-girl stands directly over you, looking down at you with a triumphant cute smile across her face, her eyes surveying every millimeter of your body. All you can do is lay there looking up at her fine figure and a profile of her ample breasts with a knowing smile on your face. She crouches down on all fours, just out of your reach, and begins to rhythmically shake her extended abdomen like a child's toy.<br><br>");
 
             outputText("Suddenly reality kicks in as you feel the venom coursing though your body, and your heart begins to race faster and faster by the minute. A dull pain swells deep inside your head as if it were about to explode; you try to lift your arms to cradle your head but can't, and slowly a new sensation takes over as your manhood begins to swell in size and length, trying to break through your clothes. A faint buzzing sound comes seemingly from nowhere, growing louder and getting closer every second. As the pain in your head decreases, you suddenly feel parched, your mouth as dry as the desert sands.  You try to let out a moan but all you can do is breathe rapidly, as if you are burning up inside.<br><br>", false);

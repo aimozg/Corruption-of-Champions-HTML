@@ -86,7 +86,7 @@ ConsumableEffects.lustDraft = function(fuck) {
         outputText("Once you've had a chance to calm down, you notice that the explosion of pleasure you just experienced has rocked you to your core.  You are a little hornier than you were before.");
         //increase player libido, and maybe sensitivity too?
         player.orgasm();
-        player.dynStats("lib", 2, "sen", 1);
+        player.dynStats(["lib", 2], ["sens", 1]);
     }
     if (player.lust > player.maxLust()) player.lust = player.maxLust();
     outputText("<br><br>");
@@ -327,13 +327,13 @@ ConsumableEffects.tatteredScroll = function() {
                 player.boostLactation(.7);
                 outputText("Your breasts feel fuller... riper... like your next milking could be even bigger.  ");
             }
-            player.dynStats("lib", 1, "sen", 4);
+            player.dynStats(["lib", 1], ["sens", 4]);
             player.changeLust(15);
         }
         if (player.biggestLactation() == 0) {
             outputText("A pleasurable release suddenly erupts from your nipples!  Twin streams of milk are spraying from your breasts, soaking into the ground immediately.  It stops all too soon, though a voice in your head assures you that you can lactate quite often now.  ");
             player.boostLactation(1);
-            player.dynStats("lib", .5, "sen", 1);
+            player.dynStats(["lib", .5], ["sens", 1]);
             player.changeLust(10);
 
         }
@@ -353,7 +353,7 @@ ConsumableEffects.tatteredScroll = function() {
      spriteSelect(50);
      outputText("<br><br>You hear the soft impact of clothes hitting the ground behind you, and turn to see that the sand witch has found you! You cannot resist a peek at your uninvited guest, beholding a curvy dark-skinned beauty, her form dominated by a quartet of lactating breasts.  Somewhere in your lust-fogged mind you register the top two as something close to double-Ds, and her lower pair to be about Cs.  She smiles and leans over you, pushing you to the ground violently.<br><br>She turns around and drops, planting her slick honey-pot firmly against your mouth.  Her scent is strong, overpowering in its intensity.  Your tongue darts out for a taste and finds a treasure trove of sticky sweetness.  Instinctively you tongue-fuck her, greedily devouring her cunny-juice, shoving your tongue in as far as possible while suckling her clit.  Dimly you feel the milk spattering over you, splashing off you and into the cracked earth.  Everywhere the milk touches feels silky smooth and sensitive, and your hands begin stroking your body, rubbing it in as the witch sprays more and more of it.  You lose track of time, orgasming many times, slick and sticky with sexual fluids.");
      player.orgasm();
-     dynStats("lib", 1, "sen", 5);
+     dynStats(["lib", 1], ["sens", 5]);
      player.slimeFeed();
      }*/
 };
@@ -483,19 +483,19 @@ ConsumableEffects.minotaurCum = function(purified) {
         player.changeLust(rand(5) + player.cor / 20 + gameFlags[MINOTAUR_CUM_ADDICTION_TRACKER] / 5);
     }
     //(Healing – if hurt and uber-addicted (hasperk))
-    if (player.HP < player.maxHP() && player.findPerk(PerkLib.MinotaurCumAddict) >= 0) {
+    if (player.HP < player.maxHP() && player.hasPerk(PerkLib.MinotaurCumAddict)) {
         outputText("<br><br>The fire of your arousal consumes your body, leaving vitality in its wake.  You feel much better!");
         player.changeHP(player.maxHP() / 4, false);
     }
     //Uber-addicted status!
-    if (player.findPerk(PerkLib.MinotaurCumAddict) >= 0 && gameFlags[MINOTAUR_CUM_REALLY_ADDICTED_STATE] <= 0 && !purified) {
+    if (player.hasPerk(PerkLib.MinotaurCumAddict) && gameFlags[MINOTAUR_CUM_REALLY_ADDICTED_STATE] <= 0 && !purified) {
         gameFlags[MINOTAUR_CUM_REALLY_ADDICTED_STATE] = 3 + rand(2);
         outputText("<br><br><b>Your body feels so amazing and sensitive.  Experimentally you pinch yourself and discover that even pain is turning you on!</b>");
     }
     //Clear mind a bit
-    if (purified && (player.findPerk(PerkLib.MinotaurCumAddict) >= 0 || gameFlags[MINOTAUR_CUM_ADDICTION_TRACKER] >= 40)) {
+    if (purified && (player.hasPerk(PerkLib.MinotaurCumAddict) || gameFlags[MINOTAUR_CUM_ADDICTION_TRACKER] >= 40)) {
         outputText("<br><br>Your mind feels a bit clearer just from drinking the purified minotaur cum. Maybe if you drink more of these, you'll be able to rid yourself of your addiction?");
-        if (player.findPerk(PerkLib.MinotaurCumAddict) >= 0 && gameFlags[MINOTAUR_CUM_ADDICTION_TRACKER] <= 50) {
+        if (player.hasPerk(PerkLib.MinotaurCumAddict) && gameFlags[MINOTAUR_CUM_ADDICTION_TRACKER] <= 50) {
             outputText("  Suddenly, you black out and images flash in your mind about getting abducted by minotaurs and the abandonment of your quest that eventually leads to Lethice's success in taking over Mareth. No, it cannot be! You wake up and recover from the blackout, horrified to find out what would really happen if you spend the rest of your life with the Minotaurs! You shake your head and realize that you're no longer dependent on the cum.  ");
             outputText("<br><b>(Lost Perk: Minotaur Cum Addict!)</b>");
             player.removePerk(PerkLib.MinotaurCumAddict);

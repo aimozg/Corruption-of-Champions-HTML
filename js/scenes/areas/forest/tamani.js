@@ -473,7 +473,7 @@ TamaniScene.tamaniSexLost = function() {
     outputText("<br><br>");
 
     outputText("Tamani removes the ring once you have finished.  She seals the bottle and places it in her pouch as you drop to the ground, exhausted.  All you can do is watch as she walks away, her ass swaying confidently from side to side.  Your last thought before you pass out is how much easier it would've been to just fuck her.");
-    player.dynStats("lib", .5, "sen", -1, "cor", .5);
+    player.dynStats(["lib", .5], ["sens", -1], ["cor", .5]);
     cleanupAfterCombat();
     player.orgasm();
 };
@@ -768,7 +768,7 @@ TamaniScene.tamaniHypnosis = function() {
         outputText("A surge of pride spreads through you at her praise, and you lean down to give your wife a long french kiss before heading back to camp.  On the way back your head slowly clears, and you wonder what came over you back there?!");
         TamaniScene.tamaniKnockUp();
         player.orgasm();
-        player.dynStats("int", -.5, "sen", -1);
+        player.dynStats(["int", -.5], ["sens", -1]);
     }
     //[DOESNT FIT]
     else {
@@ -817,7 +817,7 @@ TamaniScene.tamaniHypnosis = function() {
         outputText("A surge of pride spreads through you at her praise, and you get up to give your wife a long french kiss before heading back to camp.  On the way back your head slowly clears, and you wonder what came over you back there?!");
         TamaniScene.tamaniKnockUp();
         player.orgasm();
-        player.dynStats("int", -.5, "sen", -1);
+        player.dynStats(["int", -.5], ["sens", -1]);
     }
     if (inCombat()) cleanupAfterCombat();
     else doNext(Camp.returnToCampUseOneHour);
@@ -996,7 +996,7 @@ TamaniScene.tamaniFirstTimeConsentual = function() {
         //([CORRUPT]
         if (player.cor > 66) outputText("  Your " + player.cockDescript(0) + " twitches at the thought, ready and wanting more.");
     }
-    player.dynStats("lib", .5, "sen", -1, "cor", .5);
+    player.dynStats(["lib", .5], ["sens", -1], ["cor", .5]);
     player.orgasm();
     doNext(Camp.returnToCampUseOneHour);
 
@@ -1065,7 +1065,7 @@ TamaniScene.tamaniKnockUp = function() {
     gameFlags[TAMANI_PREGNANCY_COUNT] = 2;
     var cum = player.cumQ();
     //Breeder perk is awesome
-    if (player.findPerk(PerkLib.MaraesGiftStud) >= 0) gameFlags[TAMANI_PREGNANCY_COUNT] += 3; //TODO Check findPerk Thing
+    if (player.hasPerk(PerkLib.MaraesGiftStud)) gameFlags[TAMANI_PREGNANCY_COUNT] += 3; //TODO Check findPerk Thing
     if (cum >=  50 && rand(2) == 0) gameFlags[TAMANI_PREGNANCY_COUNT]++;
     if (cum >= 100 && rand(2) == 0) gameFlags[TAMANI_PREGNANCY_COUNT]++;
     if (cum >= 200 && rand(2) == 0) gameFlags[TAMANI_PREGNANCY_COUNT]++;

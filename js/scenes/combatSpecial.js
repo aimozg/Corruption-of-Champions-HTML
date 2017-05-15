@@ -12,7 +12,7 @@ magicMenu = function() { //Spells are housed within combatSpecial.js file.
     if (player.spells.heal) addButton(6, "Heal", spellHeal);
     if (player.spells.might) addButton(7, "Might", spellMight);
     //Special
-    if (player.findPerk(PerkLib.CleansingPalm) >= 0) addButton(10, "CleansingPalm", spellCleansingPalm);
+    if (player.hasPerk(PerkLib.CleansingPalm)) addButton(10, "CleansingPalm", spellCleansingPalm);
     addButton(14, "Back", battleMenu);
 }
 

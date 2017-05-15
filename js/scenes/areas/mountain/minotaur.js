@@ -370,7 +370,7 @@ MinotaurScene.joinBeingAMinoCumSlut = function() {
 
     outputText("<br><br>You quickly re-dress and head back to camp, spying the occassional goblin or imp scurrying from its hiding spot, no doubt recovering from their own self-inflicted orgasms.");
     player.orgasm();
-    player.dynStats("lib", .5, "sen", -3, "cor", 1);
+    player.dynStats(["lib", .5], ["sens", -3], ["cor", 1]);
     if (gameFlags[PC_FETISH] > 0) {
         outputText(" A thrill runs through you. Even though you were brought to such a satisfying climax, the whole thought that goblins and imps were watching you and getting off on it... it just makes you hornier than you were before.");
         player.changeLust(player.maxLust(), false);
@@ -378,7 +378,7 @@ MinotaurScene.joinBeingAMinoCumSlut = function() {
     //Chance to impregnate PC, get mino-fix, and maybe relief from feeder perk.
     player.minoCumAddiction(10);
     player.knockUp(PREGNANCY_MINOTAUR, INCUBATION_MINOTAUR);
-    if (player.hasStatusEffect(StatusEffects.Feeder) {
+    if (player.hasStatusEffect(StatusEffects.Feeder)) {
         //You've now been milked, reset the timer for that
         player.addStatusValue(StatusEffects.Feeder, 1, 1);
         player.changeStatusValue(StatusEffects.Feeder, 2, 0);
@@ -438,7 +438,7 @@ doNext(MinotaurScene.getRapedByMinotaur);
 // Win TODO Phyllafight!
 MinotaurScene.minotaurWin = function() {
     /*
-    if (player.hasStatusEffect(StatusEffects.PhyllaFight) {
+    if (player.hasStatusEffect(StatusEffects.PhyllaFight)) {
         player.removeStatusEffect(StatusEffects.PhyllaFight);
         outputText("You defeat a minotaur!  ", true);
         phyllaBeatAMino();
@@ -503,7 +503,7 @@ MinotaurScene.minoVictoryRapeChoices = function() {
     };
 
     // Are you a feeder?
-    if (player.findPerk(PerkLib.Feeder) >= 0) addButton(8, "Breastfeed", MinotaurScene.minotaurDrinksMilkNewsAtEleven);
+    if (player.hasPerk(PerkLib.Feeder)) addButton(8, "Breastfeed", MinotaurScene.minotaurDrinksMilkNewsAtEleven);
 
     //We have more buttons now! No longer overlaps feeder.
     // Are you going to oviposit the poor critter?
@@ -529,7 +529,7 @@ MinotaurScene.minoVictoryRapeChoices = function() {
         else outputText("You smile in satisfaction as the " + monster.name + " collapses, unable to continue fighting.  Sadly you realize your own needs have not been met.  Of course you could always rape the poor thing...<br><br>What do you do?", true);
     }
 //Not able to rape but a feeder
-    else if (player.hasStatusEffect(StatusEffects.Feeder && gameFlags[SFW_MODE] == 0) {
+    else if (player.hasStatusEffect(StatusEffects.Feeder) && gameFlags[SFW_MODE] == 0) {
         if (monster.lust >= monster.maxLust()) outputText("You smile in satisfaction as the " + monster.name + " collapses, unable to continue fighting.  Sadly you realize your own need to breastfeed has not been met.  You could always let the poor thing have a drink...<br><br>Do you?", true);
         else outputText("You smile in satisfaction as the " + monster.name + " collapses, unable to continue fighting.  Sadly you realize your own need to breastfeed has not been met.  You could always let the poor thing have a drink...<br><br>What do you do?", true);
     }
@@ -657,7 +657,7 @@ MinotaurScene.girlRapeAMinotaur = function() {
     outputText("He passes out with a contented sigh, balls shrunk down to the size of baseballs and his cock still dribbling cum.  You pull yourself to your feet unsteadily, drunk with pleasure as you stagger away, clamping your " + player.vaginaDescript(0) + " down unconsciously to hold in his wonderful seed.");
     if (player.vaginalCapacity() < monster.cockArea(0)) outputText("<br><br>Mixed with the sheer sexual pleasure, you feel a diffuse pain and numbness coming from your much-abused " + player.vaginaDescript(0) + ", but decide with a smile that it was well worth it as his cum numbs away the last of the pain.");
 
-    player.dynStats("spe", -.5, "int", -.5, "sen", 1.5, "cor", 1);
+    player.dynStats(["spe", -.5], ["int", -.5], ["sens", 1.5], ["cor", 1]);
     //Preggers chance!
     player.knockUp(PREGNANCY_MINOTAUR, INCUBATION_MINOTAUR); //TODO Add in player pregnancy progression for mino pregnancy.
     cleanupAfterCombat();
@@ -679,7 +679,7 @@ MinotaurScene.minotaurGetsRapedByHerms = function() {
     outputText("Your " + player.cockDescript(0) + " quivers from his tightness, each beat of his powerful heart squeezing you tightly in his rear passage.   Through your foggy mind, you come to realize that your hips are pistoning against him with disturbing speed, burning away what's left of your reason with white-hot lust and minotaur spunk.  You slap his ass as you fuck him, humiliating the beast, leering down at him as he moos and moans hopelessly.   At last the pleasure overwhelms you, and you fire your spunk into him like a cannon, your hips still fucking him with unthinking determination.   Jizz sputters from his tail-hole with each thrust, splattering over his ass-cheeks.  A sudden blast of inhuman warmth fills you as the beast begins to cum, huge blasts pouring directly into your womb with every thrust of monstrous meat into your " + player.vaginaDescript(0) + ".<br><br>");
     outputText("Your orgasms drag on, until at last your belly is distended with the stuff and his ass is full of your cum.  With a lurch and a pop, you stagger free of him, barely able to walk with so much of his heavenly spunk inside you.  Even now your body tingles with unnatural pleasure and warmth.  Giggling, you realize the beast is passed out at your feet, his balls half as big as before. ");
 
-    player.dynStats("spe", -.5, "int", -.5, "sen", 1.5, "cor", 1);
+    player.dynStats(["spe", -.5], ["int", -.5], ["sens", 1.5], ["cor", 1]);
     //Preggers chance!
     player.knockUp(PREGNANCY_MINOTAUR, INCUBATION_MINOTAUR);
     cleanupAfterCombat();
@@ -909,7 +909,7 @@ MinotaurScene.minotaurBlowjob = function() {
 
     outputText("You grimace at the awkward feeling of the beast's snout against you, but soon regain confidence in your choice as the monster begins to take your prick into his mouth.  His eyes grow wide as his lips wrap around you, with ");
     if (monster.lust >= monster.maxLust()) outputText("his own burning lusts");
-    else if (player.findPerk(PerkLib.ArousingAura) >= 0) outputText("the power of your corruption");
+    else if (player.hasPerk(PerkLib.ArousingAura)) outputText("the power of your corruption");
     else outputText("the salty taste of your pre-cum");
     outputText(" leaving him hungry for more.<br><br>");
 
@@ -959,7 +959,7 @@ MinotaurScene.takeMinoCumDirectly = function() {
 
     outputText("An hour or so later, you pick yourself up out of a puddle of mud that reeks of sex.  Still feeling groggy and euphoric, you get dressed, not bothering to clean up.  You have to work to keep your " + player.assholeDescript() + " clenched, lest you lose some of the drug making you so happy.");
     //(-80 lust, then + 25, +(1-5 sensitivity based on current level), +corruption)
-    player.dynStats("sen", 1, "cor", 1);
+    player.dynStats(["sens", 1], ["cor", 1]);
     player.changeLust(-55);
     //bonus sensitivity if unsensitive.
     if (player.sens < 80) player.dynStats("sen", 1);
@@ -1004,7 +1004,7 @@ MinotaurScene.minoGetsTitFucked = function() {
     outputText("You wake up an hour later, unsure how you made it back to your camp, light-headed and euphoric with the lingering after-affects.  You also find a bottle on the ground next to you, filled to the brim with the fluid.  You don't remember filling it up, but you're already itching to pop it open and guzzle it down.  You manage to resist the urge.  Besides, you're still feeling GREAT from your last 'sample'.");
     player.minoCumAddiction(10);
     monster.name = "tit-fucked Minotaur";
-    player.dynStats("sen", .5, "cor", .7);
+    player.dynStats(["sens", .5], ["cor", .7]);
     cleanupAfterCombat();
     player.orgasm();
 };
@@ -1141,7 +1141,7 @@ MinotaurScene.layBeeEggsInCowbutt = function() {
 // Loss TODO Phyllafight and Worms
 MinotaurScene.minotaurLose = function() {
     /*
-    if (hasStatusEffect(StatusEffects.PhyllaFight) {
+    if (hasStatusEffect(StatusEffects.PhyllaFight)) {
         removeStatusEffect(StatusEffects.PhyllaFight);
         game.desert.antsScene.phyllaPCLostToMino();
     } else if (pcCameWorms){
@@ -1255,17 +1255,17 @@ MinotaurScene.getRapedByMinotaur = function(autoRape) {
         if (player.vaginalCapacity() >= monster.cockArea(0) *1.5) outputText("<br><br>You feel his monstrous cock sliding easily in and out of your wide fuck-hole, hearing the beast grunt in dissatisfaction. He suddenly clouts your left buttock, which makes you tense your muscles, including your vagina's, and you start to feel the ribs on his cock rubbing against your wall. The pleasure it procures you makes you tense your muscles harder, causing the pleasure to swell again. The minotaur grunts in approval, and continues his violent pounding as you start moaning.");
     }
     outputText("<br><br>Finally, you can feel he's ready to cum. His thrusts become shorter and faster, and just when you think you can't stand it anymore he starts shooting his sperm into you. Your stomach begins to round out from the sheer amount of bull seed being pumped into your belly.  ");
-    player.dynStats("lib", 1, "sen", -.5, "cor", 1);
+    player.dynStats(["lib", 1], ["sens", -.5], ["cor", 1]);
     if (player.vaginas.length > 0) {
         if (player.averageVaginalWetness() >= 2) {
             if (player.averageVaginalWetness() < 4) outputText("You squirm and quiver, orgasming from the beast's rough usage.  ");
             if (player.averageVaginalWetness() == 4) outputText("You squirm and quiver, orgasming from the beast's rough usage, soaking him with your " + player.vaginaDescript(0) + ".  ");
             if (player.averageVaginalWetness() == 5) outputText("You orgasm on his massive rod, splattering the beast with girlcum.  ");
-            player.dynStats("lib", .5, "sen", 1, "cor", 1);
+            player.dynStats(["lib", .5], ["sens", 1], ["cor", 1]);
         }
         if (player.averageVaginalWetness() < 2) {
             outputText("You gasp in pain, your cunt rubbed raw by the rough and violent penetration.  ");
-            player.dynStats("tou", -.5, "sen", 1, "lus", -5, "cor", 1);
+            player.dynStats(["tou", -.5], ["sens", 1], ["lust", -5], ["cor", 1]);
         }
         //Preggers chance!
         player.knockUp(PREGNANCY_MINOTAUR, INCUBATION_MINOTAUR);
@@ -1276,7 +1276,7 @@ MinotaurScene.getRapedByMinotaur = function(autoRape) {
         if (player.cumQ() >= 25 && player.cumQ() < 250) outputText("squirting thick ropes of cum over the cave.  ");
         if (player.cumQ() >= 250 && player.cumQ() < 500) outputText("erupting potent ropes of seed in thick bursts, splattering the cave walls and floors.  ");
         if (player.cumQ() >= 500) outputText("erupting a thick torrent of seed that seems to go on forever, spurred by the constant pressure of the huge minotaur cock.  You paint the cave wall with cum, the beast egging you on as it roughly jacks your " + player.cockDescript(0) + ".  You are vaguely aware of your orgasm dragging on and on, until eventually your orgasm stops, leaving a sizable puddle of cum on the floor.  ");
-        player.dynStats("lib", .5, "sen", 1, "cor", 1);
+        player.dynStats(["lib", .5], ["sens", 1], ["cor", 1]);
     }
     outputText("The bull-man relaxes for a moment, then shoves you off of him and to the cold ground. You pass out as a strange sense of euphoria washes over you while copious quantities of monstrous cum escape your distended ");
     if (player.hasVagina()) outputText("pussy.");

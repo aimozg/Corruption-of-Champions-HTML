@@ -29,7 +29,7 @@ battleMenu = function() {
     if (monster.refName == "sandtrap") addButton(7, "Climb", wait);
     else addButton(7, "Wait", wait);
     addButton(8, "Fantasize", fantasize);
-    if (player.hasStatusEffect(StatusEffects.Bind) {
+    if (player.hasStatusEffect(StatusEffects.Bind)) {
         menu();
         addButton(0, "Struggle", struggle);
         addButton(1, "Wait", wait);
@@ -48,11 +48,11 @@ tease = function(justText) {
     //Go on!
 	if (!justText) clearOutput();
     //You can't tease a blind guy!
-    if (monster.hasStatusEffect(StatusEffects.Blind) {
+    if (monster.hasStatusEffect(StatusEffects.Blind)) {
         outputText("You do your best to tease " + monster.a + monster.refName + " with your body. It doesn't work - you blinded " + monster.himHer + ", remember?<br><br>", true);
         return;
     }
-    if (player.hasStatusEffect(StatusEffects.Sealed && player.statusEffectValue(StatusEffects.Sealed, 2) == 1) {
+    if (player.hasStatusEffect(StatusEffects.Sealed) && player.statusEffectValue(StatusEffects.Sealed, 2) == 1) {
         outputText("You do your best to tease " + monster.a + monster.refName + " with your body. Your artless twirls have no effect, as <b>your ability to tease is sealed.</b><br><br>", true);
         return;
     }
@@ -75,7 +75,7 @@ flee = function(callHook) { //There are 4 states. Undefined means proceed to esc
         monster.onPcRunAttempt();
         return;
     }*/
-    if (inCombat() && player.hasStatusEffect(StatusEffects.Sealed && player.statusEffectValue(StatusEffects.Sealed, 2) == 4) {
+    if (inCombat() && player.hasStatusEffect(StatusEffects.Sealed) && player.statusEffectValue(StatusEffects.Sealed, 2) == 4) {
         outputText("You try to run, but you just can't seem to escape. <b>Your ability to run was sealed, and now you've wasted a chance to attack!</b><br><br>");
         success = false;
     }
@@ -89,15 +89,15 @@ flee = function(callHook) { //There are 4 states. Undefined means proceed to esc
         outputText("You flex the muscles in your back and, shaking clear of the sand, burst into the air! Wasting no time you fly free of the sandtrap and its treacherous pit. \"<i>One day your wings will fall off, little ant,</i>\" the snarling voice of the thwarted androgyne carries up to you as you make your escape. \"<i>And I will be waiting for you when they do!</i>\"");
         success = true;
     }
-    if (monster.hasStatusEffect(StatusEffects.GenericRunDisabled/* || urtaQuest.isUrta()*/) {
+    if (monster.hasStatusEffect(StatusEffects.GenericRunDisabled)/* || urtaQuest.isUrta()*/) {
         outputText("You can't escape from this fight!");
         success = null;
     }
-    if (monster.hasStatusEffect(StatusEffects.Level && monster.statusEffectv1(StatusEffects.Level) < 4) {
+    if (monster.hasStatusEffect(StatusEffects.Level) && monster.statusEffectv1(StatusEffects.Level) < 4) {
         outputText("You're too deeply mired to escape! You'll have to <b>climb</b> some first!");
         success = null;
     }
-    if (monster.hasStatusEffect(StatusEffects.RunDisabled) {
+    if (monster.hasStatusEffect(StatusEffects.RunDisabled)) {
         outputText("You'd like to run, but you can't scale the walls of the pit with so many demonic hands pulling you down!");
         success = null;
     }
@@ -150,7 +150,7 @@ flee = function(callHook) { //There are 4 states. Undefined means proceed to esc
             outputText("You make a quick dash for the door and attempt to escape! ");
         }*/
         //Stuck!
-        /*else */if (player.hasStatusEffect(StatusEffects.NoFlee) {
+        /*else */if (player.hasStatusEffect(StatusEffects.NoFlee)) {
             if (monster.refName == "goblin")
                 outputText("You try to flee but get stuck in the sticky white goop surrounding you.<br><br>");
             else
@@ -186,8 +186,8 @@ flee = function(callHook) { //There are 4 states. Undefined means proceed to esc
     if (escapeMod > 50) escapeMod = 50;
     //Modifier based on conditions
     if (player.canFly()) escapeMod -= 20;
-    if (player.tailType == TailType.RACCOON && player.earType == EarType.RACCOON && player.findPerk(PerkLib.Runner) >= 0) escapeMod -= 25;
-    if (monster.hasStatusEffect(StatusEffects.Stunned)
+    if (player.tailType == TailType.RACCOON && player.earType == EarType.RACCOON && player.hasPerk(PerkLib.Runner)) escapeMod -= 25;
+    if (monster.hasStatusEffect(StatusEffects.Stunned))
         escapeMod -= 50;
     else { //Big tits doesn't matter as much if ya can fly!
         if (player.biggestTitSize() >= 35) escapeMod += 5;
@@ -225,8 +225,8 @@ flee = function(callHook) { //There are 4 states. Undefined means proceed to esc
     //Ember is SPUCIAL
     /*if (monster.name == "Ember") {
         //GET AWAY
-        if (player.spe > rand(monster.spe + escapeMod) || (player.findPerk(PerkLib.Runner) >= 0 && rand(100) < 50)) {
-            if (player.findPerk(PerkLib.Runner) >= 0) 
+        if (player.spe > rand(monster.spe + escapeMod) || (player.hasPerk(PerkLib.Runner) && rand(100) < 50)) {
+            if (player.hasPerk(PerkLib.Runner))
                 outputText("Using your skill at running, y");
             else 
                 outputText("Y");
@@ -253,7 +253,7 @@ flee = function(callHook) { //There are 4 states. Undefined means proceed to esc
         }*/
         /*else */if (player.canFly()) //Fliers flee!
             outputText(capitalize(monster.a) + monster.refName + " can't catch you.");
-        else if (player.tailType == TailType.RACCOON && player.earType == EarType.RACCOON && player.findPerk(PerkLib.Runner) >= 0) //sekrit benefit: if you have coon ears, coon tail, and Runner perk, change normal Runner escape to flight-type escape
+        else if (player.tailType == TailType.RACCOON && player.earType == EarType.RACCOON && player.hasPerk(PerkLib.Runner)) //sekrit benefit: if you have coon ears, coon tail, and Runner perk, change normal Runner escape to flight-type escape
             outputText("Using your running skill, you build up a head of steam and jump, then spread your arms and flail your tail wildly; your opponent dogs you as best " + monster.heShe + " can, but stops and stares dumbly as your spastic tail slowly propels you several meters into the air! You leave " + monster.himHer + " behind with your clumsy, jerky, short-range flight.");
         else //Non-fliers flee
             outputText(capitalize(monster.a) + monster.refName + " rapidly disappears into the shifting landscape behind you.");
@@ -263,7 +263,7 @@ flee = function(callHook) { //There are 4 states. Undefined means proceed to esc
         success = true;
     }
     //Runner perk chance
-    else if (player.findPerk(PerkLib.Runner) >= 0 && rand(100) < 50) {
+    else if (player.hasPerk(PerkLib.Runner) && rand(100) < 50) {
         inCombat = false;        outputText("Thanks to your talent for running, you manage to escape.");
 
         if (monster.name == "Izma") {
@@ -283,7 +283,7 @@ flee = function(callHook) { //There are 4 states. Undefined means proceed to esc
             else
                 outputText(capitalize(monster.a) + monster.refName + " manages to grab your " + player.legs() + " and drag you back to the ground before you can fly away!");
         }
-        else if (player.tailType == TailType.RACCOON && player.earType == EarType.RACCOON && player.findPerk(PerkLib.Runner) >= 0) // >>>>>>[P] FAIL
+        else if (player.tailType == TailType.RACCOON && player.earType == EarType.RACCOON && player.hasPerk(PerkLib.Runner)) // >>>>>>[P] FAIL
             outputText("Using your running skill, you build up a head of steam and jump, but before you can clear the ground more than a foot, your opponent latches onto you and drags you back down with a thud!");
         else { //Nonflyer messages
             //Huge balls messages
@@ -368,38 +368,38 @@ wait = function() {
         }
     }
     else outputText("You decide not to take any action this round.<br><br>");
-    /*if (monster.hasStatusEffect(StatusEffects.PCTailTangle) {
+    /*if (monster.hasStatusEffect(StatusEffects.PCTailTangle)) {
         monster.kitsuneWait();
     }
 
     }
-    else if (monster.hasStatusEffect(StatusEffects.MinotaurEntangled) {
+    else if (monster.hasStatusEffect(StatusEffects.MinotaurEntangled)) {
         clearOutput();
         outputText("You sigh and relax in the chains, eying the well-endowed minotaur as you await whatever rough treatment he desires to give. His musky, utterly male scent wafts your way on the wind, and you feel droplets of your lust dripping down your thighs. You lick your lips as you watch the pre-cum drip from his balls, eager to get down there and worship them. Why did you ever try to struggle against this fate?<br><br>");
         player.changeLust(30 + rand(5), true);
         combatRoundOver();
     }
-    else if (player.hasStatusEffect(StatusEffects.Whispered) {
+    else if (player.hasStatusEffect(StatusEffects.Whispered)) {
         clearOutput();
         outputText("You shake off the mental compulsions and ready yourself to fight!<br><br>");
         player.removeStatusEffect(StatusEffects.Whispered);
         combatRoundOver();
     }
-    else if (player.hasStatusEffect(StatusEffects.HarpyBind) {
+    else if (player.hasStatusEffect(StatusEffects.HarpyBind)) {
         clearOutput();
         outputText("The brood continues to hammer away at your defenseless self. ");
         player.changeHP(-(80 + rand(40)), true);
         combatRoundOver();
     }
-    else if (monster.hasStatusEffect(StatusEffects.QueenBind) {
+    else if (monster.hasStatusEffect(StatusEffects.QueenBind)) {
         monster.ropeStruggles(true);
     }
-    /*else if (player.hasStatusEffect(StatusEffects.GooArmorBind) {
+    /*else if (player.hasStatusEffect(StatusEffects.GooArmorBind)) {
         clearOutput();
         outputText("Suddenly, the goo-girl leaks half-way out of her heavy armor and lunges at you. You attempt to dodge her attack, but she doesn't try and hit you - instead, she wraps around you, pinning your arms to your chest. More and more goo latches onto you - you'll have to fight to get out of this.");
         player.addStatusValue(StatusEffects.GooArmorBind, 1, 1);
         if (player.statusEffectValue(StatusEffects.GooArmorBind, 1) >= 5) {
-            if (monster.hasStatusEffect(StatusEffects.Spar)
+            if (monster.hasStatusEffect(StatusEffects.Spar))
                 Valeria.pcWinsValeriaSparDefeat();
             else
                 Valeria.gooArmorBeatsUpPC();
@@ -407,10 +407,10 @@ wait = function() {
         }
         combatRoundOver();
     }
-    else if (player.hasStatusEffect(StatusEffects.HolliConstrict) {
+    else if (player.hasStatusEffect(StatusEffects.HolliConstrict)) {
         monster.waitForHolliConstrict(true);
     }
-    else if (player.hasStatusEffect(StatusEffects.TentacleBind) {
+    else if (player.hasStatusEffect(StatusEffects.TentacleBind)) {
         clearOutput();
         if (player.cocks.length > 0)
             outputText("The creature continues spiraling around your cock, sending shivers up and down your body. You must escape or this creature will overwhelm you!");
@@ -420,17 +420,17 @@ wait = function() {
         player.changeLust((8 + player.sen / 10), true);
         combatRoundOver();
     }
-    else if (player.hasStatusEffect(StatusEffects.IsabellaStunned) {
+    else if (player.hasStatusEffect(StatusEffects.IsabellaStunned)) {
         clearOutput();
         outputText("You wobble about for some time but manage to recover. Isabella capitalizes on your wasted time to act again.<br><br>");
         player.removeStatusEffect(StatusEffects.IsabellaStunned);
     }
-    else if (player.hasStatusEffect(StatusEffects.Stunned) {
+    else if (player.hasStatusEffect(StatusEffects.Stunned)) {
         clearOutput();
         outputText("You wobble about, stunned for a moment. After shaking your head, you clear the stars from your vision, but by then you've squandered your chance to act.<br><br>");
         player.removeStatusEffect(StatusEffects.Stunned);
     }
-    else if (player.hasStatusEffect(StatusEffects.Confusion) {
+    else if (player.hasStatusEffect(StatusEffects.Confusion)) {
         clearOutput();
         outputText("You shake your head and file your memories in the past, where they belong. It's time to fight!<br><br>n");
         player.removeStatusEffect(StatusEffects.Confusion);
@@ -549,8 +549,8 @@ function startCombat(enemy, immediate) {
 
 function fatigueRecovery() {
     player.changeFatigue(-1, false);
-    if (player.findPerk(PerkLib.SpeedyRecovery) >= 0) player.changeFatigue(-1, false);
-    if (player.findPerk(PerkLib.EnlightenedNinetails) >= 0 || player.findPerk(PerkLib.CorruptedNinetails) >= 0) player.changeFatigue(-(1+rand(3)), false);
+    if (player.hasPerk(PerkLib.SpeedyRecovery)) player.changeFatigue(-1, false);
+    if (player.hasPerk(PerkLib.EnlightenedNinetails) || player.hasPerk(PerkLib.CorruptedNinetails)) player.changeFatigue(-(1+rand(3)), false);
 }
 function teaseXP(XP) {
     while(XP > 0) {
