@@ -81,11 +81,6 @@ declare namespace JojoScene {
 	function jojoCamp():void;
 	function jojoCampCorrupt():void;
 }
-declare namespace Places {
-	namespace Farm {
-		function farmExploreEncounter():void;
-	}
-}
 declare namespace RathazulScene {
 	function campRathazul():void;
 }
