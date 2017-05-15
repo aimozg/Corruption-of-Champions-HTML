@@ -29,33 +29,21 @@ declare namespace BeeGirlScene {
 }
 declare namespace ConsumableEffects {
 	function beeTFs(typ:int):void;
-	function blackSpellbook():void;
-	function bodyLotion():void;
 	function canineTFs(typ:int):void;
 	function cowTFs(tainted:boolean, enhanced:boolean):void;
 	function demonTFs(type:int, purified:boolean):void;
 	function equineTFs():void;
 	function felineTFs():void;
-	function fishFillet():void;
 	function goblinTFs():void;
-	function hairDye():void;
 	function harpyTFs(typ:int):void;
 	function humanTFs():void;
 	function impTFs():void;
-	function lactaid():void;
 	function lizardTFs():void;
-	function lustDraft(fuck?:boolean):void;
 	function minotaurTFs():void;
-	function minotaurCum(purified:boolean):void;
 	function pigTFs():void;
-	function scholarsTea():void;
 	function slimeTFs():void;
 	function snakeTFs():void;
-	function skinOil():void;
 	function succubiDelight(purified:boolean):void;
-	function tatteredScroll():void;
-	function vitalityTincture():void;
-	function whiteSpellBook():void;
 }
 declare namespace GiacomoScene {
 	function giacomoEncounter():void;

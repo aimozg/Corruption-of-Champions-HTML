@@ -962,10 +962,10 @@ MinotaurScene.takeMinoCumDirectly = function() {
     player.dynStats(["sens", 1], ["cor", 1]);
     player.changeLust(-55);
     //bonus sensitivity if unsensitive.
-    if (player.sens < 80) player.dynStats("sen", 1);
-    if (player.sens < 60) player.dynStats("sen", 1);
-    if (player.sens < 40) player.dynStats("sen", 1);
-    if (player.sens < 20) player.dynStats("sen", 1);
+    if (player.sens < 80) player.dynStats("sens", 1);
+    if (player.sens < 60) player.dynStats("sens", 1);
+    if (player.sens < 40) player.dynStats("sens", 1);
+    if (player.sens < 20) player.dynStats("sens", 1);
     //+15 addiction
     player.minoCumAddiction(15);
     cleanupAfterCombat();
@@ -1367,7 +1367,7 @@ MinotaurScene.getOralRapedByMinotaur = function() {
     //last pg
     outputText("The minotaur grunts a few last times.  Finished with you, it lifts your " + player.leg() + " and pulls you off its " + monster.cockDescriptShort(0) + ". The huge cock-head slides through your throat, gets jammed behind your teeth, and finally pulls free with a loud sucking sound. Cum pours from your throat and over your face, and the minotaur sprays a few final loads across your bloated stomach. The minotaur drops you in the cum-pool and walks away, leaving you to cradle your distended belly and swoon as his drug-like sperm addles your mind.  You pass out with a blissful smile.");
 
-    player.dynStats("sen", 1);
+    player.dynStats("sens", 1);
     player.minoCumAddiction(10);
     cleanupAfterCombat();
     player.orgasm();

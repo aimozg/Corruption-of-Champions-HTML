@@ -328,7 +328,7 @@ GreenSlimeScene.femaleRapesOoze = function() {
     }
     outputText("filling you past full and flowing out along the creature's cock, leaving you with a slight bulge at your belly and a pool of green fluids on the ground beneath you.  You gasp and hold your breath as you lay on the creature, its grip slowly loosening.  Its cock slides out of you and a flood of liquid pours out of your " + player.vaginaDescript(0) + " as it begins to leak out from under you, gently letting you onto the ground.  You tremble on the ground for a few moments as you recover your wits, and once you do you realize that the creature has left.  You find no trace of the creature's presence afterward except a thin trail of green fluid leading to the nearby waters.");
 
-    player.dynStats("sen", 3);
+    player.dynStats("sens", 3);
     cleanupAfterCombat();
     player.orgasm();
 };
@@ -420,7 +420,7 @@ GreenSlimeScene.maleRapesOoze = function() {
 
         outputText("  The thing seems to clamp down on you even tighter as you pull out, and you relish the sensation.  Its tight ass leaves your " + player.cockDescript(0) + " almost perfectly clean afterward, a glob of white still stuck inside the creature as it changes back into its original, amorphous state.  The cloud disperses as the slime slinks off.");
     }
-    player.dynStats("sen", 3);
+    player.dynStats("sens", 3);
     cleanupAfterCombat();
     player.orgasm();
 };
@@ -495,7 +495,7 @@ GreenSlimeScene.oozeRapesYouVaginally = function() {
             //Single
             else outputText("Your member climaxes as well, and you pull a hand to cover your eyes and face as your jism explodes onto yourself.  Your other hand slides to the base of your " + player.cockDescript(0) + " and squeezes as you coat your chest in semen.");
         }
-        player.dynStats("sen", 4);
+        player.dynStats("sens", 4);
     }
 //standard result
     else {
@@ -543,7 +543,7 @@ GreenSlimeScene.oozeRapesYouVaginally = function() {
             else outputText("Your own member finally reaches its climax as well, and you open your mouth as jism explodes onto your face and chest.  Your hands slide to the base of your " + player.cockDescript(0) + " and squeeze as you release thick ropes of ejaculate onto yourself, coating your face and chest as you relish its salty taste.  ");
         }
         outputText("You pant as the creature holds perfectly still for a minute, then slowly lets you down as its erection slides out of you.  When the last of its dick finally pops out, a rush of its green slime flows out of you and onto the ground.  The creature leaves you to recover your strength, retreating into the nearby water.");
-        player.dynStats("sen", 4);
+        player.dynStats("sens", 4);
     }
 cleanupAfterCombat();
     player.orgasm();
@@ -660,7 +660,7 @@ GreenSlimeScene.oozeButtRapesYou = function() {
     else if (player.cockTotal() > 0) outputText("The additional pressure against your prostate finally pushes you over the edge and you come hard, spraying your load against the ground.  Thick ropes of jizm spray onto the ground as the feeling wracks your body.  ", false)
     outputText("You shudder beneath the creature as it slowly begins to pull out of you, which brings another moan to your lips.  When it finally pops free of your body you feel a deluge of fluid rush from your ass and onto the ground.  You recover yourself as the creature retreats back into the waters, leaving nothing but a trail of slime leading to the water's edge.");
 
-    player.dynStats("sen", 4);
+    player.dynStats("sens", 4);
     cleanupAfterCombat();
     player.orgasm();
 };
@@ -872,7 +872,7 @@ GreenSlimeScene.serviceLowCorruptionHighLust = function() {
         }
     }
 
-    player.dynStats("sen", 3);
+    player.dynStats("sens", 3);
     cleanupAfterCombat();
     player.orgasm();
 };
@@ -898,7 +898,7 @@ GreenSlimeScene.serviceLowCorruption = function() {
         outputText("The throbbing of the slime's " + monster.cockDescriptShort(0) + " continues to grow stronger until the creature surprises you by reforming its arms and reaching up to grab you as you grasp him, holding your hands at the tip of its cock.  A fraction of a moment later the thing visibly arches its back off the ground and erupts into your palm, a thick jet of its green fluid splashing fiercely against your hands and spilling down the length of its penis, soaking both of your hands and even splashing onto your nearby lap.  You watch the creature's face with a mixture of shock and a sudden surge of excitement, its erection and face both turning smooth and featureless, before its cock slowly recedes back into its body.  The slime slowly begins to retreat as you return to your senses, looking down at your hands covered in the creature's green fluids.  When you look up again the creature is gone.<br>");
     }
     player.slimeFeed();
-    player.dynStats("sen", 2);
+    player.dynStats("sens", 2);
     cleanupAfterCombat();
 };
 

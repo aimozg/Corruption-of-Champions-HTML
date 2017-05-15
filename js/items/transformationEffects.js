@@ -92,7 +92,7 @@ ConsumableEffects.beeTFs = function(type) {
         if (player.skinType == SkinType.FUR) outputText(player.hairColor + " " + player.skinDesc);
         else outputText(player.skinTone + " " + player.skinDesc);
         outputText(" remains. <b>You've lost a row of breasts!</b>");
-        player.dynStats("sen", -5);
+        player.dynStats("sens", -5);
         player.removeBreastRow(player.breastRows.length - 1, 1);
     }
     //Antennae
@@ -197,7 +197,7 @@ ConsumableEffects.beeTFs = function(type) {
             player.cocks[0].cockLength = rand(3) + 8;
             player.cocks[0].cockThickness = 2;
             player.orgasm();
-            player.dynStats("sen", 10);
+            player.dynStats("sens", 10);
         }
         else if (player.cocks.length > 1) {
             var biggest = player.biggestCockIndex();
@@ -206,7 +206,7 @@ ConsumableEffects.beeTFs = function(type) {
             player.cocks[0].cockThickness	+= Math.sqrt(0.2 * player.cocks[biggest].cArea());
             player.removeCock(biggest, 1);
             player.orgasm();
-            player.dynStats("sen", 5);
+            player.dynStats("sens", 5);
         }
         else if (player.cocks[0].cArea() < 100) {
             outputText("<br><br>Your " + player.cockDescript(0) + " suddenly becomes rock hard and incredibly sensitive to the touch. You pull away your " + player.armor.equipmentName + ", and start to masturbate furiously as it rapidly swells in size. When the change finally finishes, you realize that your " + player.cockDescript(0) + " has both grown much longer and wider! <b>");
@@ -218,7 +218,7 @@ ConsumableEffects.beeTFs = function(type) {
             outputText("</b>");
             player.cocks[0].cockLength += (rand(3) + 4) * mult; //4 to 6 inches in length
             player.cocks[0].cockThickness += (0.1 * rand(5) + 0.5) * mult; //0.5 to 1 inches in thickness
-            player.dynStats("sen", 5);
+            player.dynStats("sens", 5);
         }
         else if (player.cocks[0].cockType != CockTypesEnum.BEE && player.race() == "bee-morph") {
             outputText("<br><br>Your huge member suddenly starts to hurt, especially the tip of the thing. At the same time, you feel your length start to get incredibly sensitive and the base of your shaft starts to itch. You tear off your " + player.armor.equipmentName + " and watch in fascination as your " + player.cockDescript(0) + " starts to change. The shaft turns black, while becoming hard and smooth to the touch, while the base develops a mane of four inch long yellow bee hair. As the transformation continues, your member grows even larger than before. However, it is the tip that keeps your attention the most, as a much finer layer of short yellow hairs grow around it. Its appearance isn’t the thing that you care about right now, it is the pain that is filling it.<br><br>");
@@ -227,7 +227,7 @@ ConsumableEffects.beeTFs = function(type) {
             player.cocks[0].cockType = CockTypesEnum.BEE;
             player.cocks[0].cockLength += 5 * mult;
             player.cocks[0].cockThickness += mult;
-            player.dynStats("sen", 15);
+            player.dynStats("sens", 15);
         }
         else {
             if (mult > 0) {
@@ -238,7 +238,7 @@ ConsumableEffects.beeTFs = function(type) {
             else {
                 outputText("<br><br>The effects of the honey don’t seem to focus on your groin this time and you have a feeling that your " + player.cockDescript(0) + " hasn't grown at all! Perhaps you've reached the upper limit of cock growth from special honey?");
             }
-            player.dynStats("sen", 3);
+            player.dynStats("sens", 3);
         }
         if (player.cor >= 5) {
             outputText("<br><br>Your mind feels surprisingly clear of the twisted thoughts that have plagued it as of late, but you find yourself feeling more and more aroused than usual.");
@@ -495,7 +495,7 @@ ConsumableEffects.canineTFs = function(type) {
                 if (temp3 < .06) outputText("Your " + Appearance.cockNoun(CockTypesEnum.DOG) + " feels unusually tight in your sheath as your knot grows.");
                 if (temp3 >= .06 && temp3 <= .12) outputText("Your " + Appearance.cockNoun(CockTypesEnum.DOG) + " pops free of your sheath, thickening nicely into a bigger knot.");
                 if (temp3 > .12) outputText("Your " + Appearance.cockNoun(CockTypesEnum.DOG) + " surges free of your sheath, swelling thicker with each passing second. Your knot bulges out at the base, growing far beyond normal.");
-                player.dynStats("sen", .5, "lus", 5 * crit);
+                player.dynStats("sens", .5, "lus", 5 * crit);
             }
             //Grow dogdick with big knot
             else {
@@ -561,7 +561,7 @@ ConsumableEffects.canineTFs = function(type) {
             if (temp3 < .06) outputText("<br><br>Your " + player.cockDescript(temp2) + " feels unusually tight in your sheath as your knot grows.");
             if (temp3 >= .06 && temp3 <= .12) outputText("<br><br>Your " + player.cockDescript(temp2) + " pops free of your sheath, thickening nicely into a bigger knot.");
             if (temp3 > .12) outputText("<br><br>Your " + player.cockDescript(temp2) + " surges free of your sheath, swelling thicker with each passing second. Your knot bulges out at the base, growing far beyond normal.");
-            player.dynStats("sen", .5, "lus", 5 * crit);
+            player.dynStats("sens", .5, "lus", 5 * crit);
             changes++;
         }
         //Cock Xform if player has free cocks.
@@ -582,7 +582,7 @@ ConsumableEffects.canineTFs = function(type) {
             //Hooooman
             if (player.cocks[temp3].cockType == CockTypesEnum.HUMAN) {
                 outputText("<br><br>Your " + player.cockDescript(temp3) + " clenches painfully, becoming achingly, throbbingly erect. A tightness seems to squeeze around the base, and you wince as you see your skin and flesh shifting forwards into a canine-looking sheath. You shudder as the crown of your " + player.cockDescript(temp3) + " reshapes into a point, the sensations nearly too much for you. You throw back your head as the transformation completes, your " + Appearance.cockNoun(CockTypesEnum.DOG) + " much thicker than it ever was before. <b>You now have a dog-cock.</b>");
-                player.dynStats("sen", 10, "lus", 5 * crit);
+                player.dynStats("sens", 10, "lus", 5 * crit);
             }
             //Horse
             if (player.cocks[temp3].cockType == CockTypesEnum.HORSE) {
@@ -592,23 +592,23 @@ ConsumableEffects.canineTFs = function(type) {
                 else player.cocks[temp3].cockLength -= .5;
                 player.cocks[temp3].cockThickness += .5;
 
-                player.dynStats("sen", 4, "lus", 5 * crit);
+                player.dynStats("sens", 4, "lus", 5 * crit);
             }
             //Tentacular Tuesday!
             if (player.cocks[temp3].cockType == CockTypesEnum.TENTACLE) {
                 outputText("<br><br>Your " + player.cockDescript(temp3) + " coils in on itself, reshaping and losing its plant-like coloration as it thickens near the base, bulging out in a very canine-looking knot. Your skin bunches painfully around the base, forming into a sheath. <b>You now have a dog-cock.</b>");
-                player.dynStats("sen", 4, "lus", 5 * crit);
+                player.dynStats("sens", 4, "lus", 5 * crit);
             }
             //Misc
             if (player.cocks[temp3].cockType > 4) { //TODO Was cockType.Index. Forgot what replaces that.
                 outputText("<br><br>Your " + player.cockDescript(temp3) + " trembles, reshaping itself into a shiny red doggie-dick with a fat knot at the base. <b>You now have a dog-cock.</b>");
-                player.dynStats("sen", 4, "lus", 5 * crit);
+                player.dynStats("sens", 4, "lus", 5 * crit);
             }
             temp = 0;
             //Demon
             if (player.cocks[temp3].cockType == CockTypesEnum.DEMON) {
                 outputText("<br><br>Your " + player.cockDescript(temp3) + " color shifts red for a moment and begins to swell at the base, but within moments it smooths out, retaining its distinctive demonic shape, only perhaps a bit thicker.");
-                player.dynStats("sen", 1, "lus", 2 * crit);
+                player.dynStats("sens", 1, "lus", 2 * crit);
                 temp = 1;
             }
             //Xform it!
@@ -1072,7 +1072,7 @@ ConsumableEffects.cowTFs = function(tainted, enhanced) {
         else outputText("<br><br>You feel a little weight added to your chest as your " + player.breastDescript(0) + " seem to inflate and settle in a larger size.");
         player.growTits(1 + rand(3), 1, false, 3);
         changes++;
-        player.dynStats("sen", .5);
+        player.dynStats("sens", .5);
         boobsGrew = true;
     }
     //Remove feathery hair
@@ -1089,7 +1089,7 @@ ConsumableEffects.cowTFs = function(tainted, enhanced) {
         outputText("<br><br>You gasp as your " + player.breastDescript(0) + " feel like they are filling up with something.  Within moments, a drop of milk leaks from your " + player.breastDescript(0) + "; <b> you are now lactating</b>.", false);
         player.breastRows[0].lactationMultiplier = 1.25;
         changes++;
-        player.dynStats("sen", .5);
+        player.dynStats("sens", .5);
     }
     //Quad nipples and other 'special enhanced things.
     if (enhanced) {
@@ -1144,7 +1144,7 @@ ConsumableEffects.cowTFs = function(tainted, enhanced) {
             if ((player.nippleLength < 1.5 && tainted) || (!tainted && player.nippleLength < 1)) {
                 outputText("  Your " + player.nippleDescript(0) + "s swell up, growing larger to accommodate your increased milk flow.");
                 player.nippleLength += .25;
-                player.dynStats("sen", .5);
+                player.dynStats("sens", .5);
             }
             changes++;
         }
@@ -1158,7 +1158,7 @@ ConsumableEffects.cowTFs = function(tainted, enhanced) {
             if ((player.nippleLength < 1.5 && tainted) || (!tainted && player.nippleLength < 1)) {
                 outputText("  Your " + player.nippleDescript(0) + "s swell up, growing larger to accommodate your increased milk flow.");
                 player.nippleLength += .25;
-                player.dynStats("sen", .5);
+                player.dynStats("sens", .5);
             }
             changes++;
         }
@@ -1170,7 +1170,7 @@ ConsumableEffects.cowTFs = function(tainted, enhanced) {
                 if ((player.nippleLength < 1.5 && tainted) || (!tainted && player.nippleLength < 1)) {
                     outputText("  Your " + player.nippleDescript(0) + "s swell up, growing larger to accommodate your increased milk flow.");
                     player.nippleLength += .25;
-                    player.dynStats("sen", .5);
+                    player.dynStats("sens", .5);
                 }
                 changes++;
             }
@@ -1178,7 +1178,7 @@ ConsumableEffects.cowTFs = function(tainted, enhanced) {
                 if (rand(2) == 0) outputText("<br><br>Your breasts suddenly feel less full, it seems you aren't lactating at quite the level you were.");
                 else outputText("<br><br>The insides of your breasts suddenly feel bloated.  There is a spray of milk from them, and they settle closer to a more natural level of lactation.");
                 changes++;
-                player.dynStats("sen", .5);
+                player.dynStats("sens", .5);
                 player.boostLactation(-1);
             }
         }
@@ -2170,7 +2170,7 @@ ConsumableEffects.felineTFs = function() {
             }
             //(big sensitivity boost)
             outputText(" Although the package is smaller, it feels even more sensitive – as if it retained all sensation of its larger size in its smaller form.");
-            player.dynStats("sen", 5);
+            player.dynStats("sens", 5);
             //Make note of other dicks changing
             if (temp2 == 1) outputText(" Upon further inspection, all your " + Appearance.cockNoun(CockTypesEnum.CAT) + "s have shrunk!");
             changes++;
@@ -2410,7 +2410,7 @@ ConsumableEffects.goblinTFs = function() {
         if (player.skinType == SkinType.FUR) outputText(player.hairColor + " " + player.skinDesc);
         else outputText(player.skinTone + " " + player.skinDesc);
         outputText(" remains. <b>You've lost a row of breasts!</b>");
-        player.dynStats("sen", -5);
+        player.dynStats("sens", -5);
         player.removeBreastRow(player.breastRows.length - 1, 1);
     }
     //Skin/fur
@@ -2760,7 +2760,7 @@ ConsumableEffects.humanTFs = function() {
         else
             outputText(player.skinTone + " " + player.skinDesc);
         outputText(" remains. <b>You've lost a row of breasts!</b>");
-        player.dynStats("sen", -5);
+        player.dynStats("sens", -5);
         player.removeBreastRow(player.breastRows.length - 1, 1);
         changes++;
     }
@@ -2787,7 +2787,7 @@ ConsumableEffects.humanTFs = function() {
     //Fertility Decrease:
     if (player.hasVagina() && rand(3) == 0 && changes < changeLimit) {
         outputText("<br><br>The vague numbness in your skin sinks slowly downwards, and you put a hand on your lower stomach as the sensation centers itself there. ");
-        player.dynStats("sen", -2);
+        player.dynStats("sens", -2);
         //High fertility:
         if (player.fertility >= 30) outputText("It feels like your overcharged reproductive organs have simmered down a bit.");
         //Average fertility:
@@ -3029,7 +3029,7 @@ ConsumableEffects.lizardTFs = function() {
     //-Reduces sensitivity.
     if (player.sens > 20 && changes < changeLimit && rand(3) == 0) {
         outputText("<br><br>The sensation of prickly pins and needles moves over your body, leaving your senses a little dulled in its wake.");
-        player.dynStats("sen", -1);
+        player.dynStats("sens", -1);
         changes++;
     }
     //Raises libido greatly to 50, then somewhat to 75, then slowly to 100.
@@ -3513,7 +3513,7 @@ ConsumableEffects.harpyTFs = function(type) {
         else outputText("<br><br>An itch starts on your groin and fades before you can take action. Curious about the intermittent sensation, <b>you peek under your " + player.armor.equipmentName + " to discover your brand new vagina, complete with pussy lips and a tiny clit.</b>");
         player.createVagina();
         player.clitLength = .25;
-        player.dynStats("sen", 10);
+        player.dynStats("sens", 10);
         player.genderCheck();
     }
     //-Remove extra breast rows
@@ -3526,7 +3526,7 @@ ConsumableEffects.harpyTFs = function(type) {
         if (player.skinType == SkinType.FUR) outputText(player.hairColor + " " + player.skinDesc);
         else outputText(player.skinTone + " " + player.skinDesc);
         outputText(" remains. <b>You've lost a row of breasts!</b>");
-        player.dynStats("sen", -5);
+        player.dynStats("sens", -5);
         player.removeBreastRow(player.breastRows.length - 1, 1);
     }
     //-Shrink tits if above DDs.
@@ -3793,15 +3793,15 @@ ConsumableEffects.minotaurTFs = function() {
         if (rand(2) == 0 && player.sens > 10) {
             if (player.tou > 75) {
                 outputText("<br><br>It becomes much harder to feel anything through your leathery skin.");
-                player.dynStats("sen", -3);
+                player.dynStats("sens", -3);
             }
             if (player.tou <= 75 && player.tou > 50) {
                 outputText("<br><br>The level of sensation from your skin diminishes noticeably.");
-                player.dynStats("sen", -2);
+                player.dynStats("sens", -2);
             }
             if (player.tou <= 50) {
                 outputText("<br><br>Your sense of touch diminishes due to your tougher hide.");
-                player.dynStats("sen", -3);
+                player.dynStats("sens", -3);
             }
         }
         changes++;
@@ -3886,7 +3886,7 @@ ConsumableEffects.minotaurTFs = function() {
             if (player.skinType == SkinType.FUR) outputText(player.hairColor + " " + player.skinDesc);
             else outputText(player.skinTone + " " + player.skinDesc);
             outputText(" remains. <b>You've lost a row of breasts!</b>");
-            player.dynStats("sen", -5);
+            player.dynStats("sens", -5);
             player.removeBreastRow(player.breastRows.length - 1, 1);
         }
         //Shrink boobages till they are normal
@@ -4200,7 +4200,7 @@ ConsumableEffects.snakeTFs = function() {
                 outputText("  By the time the transformation has finished, <b>your tongue has changed into a long, forked snake-tongue.</b>");
             }
             player.tongueType = TongueType.SNAKE;
-            player.dynStats("sen", 5);
+            player.dynStats("sens", 5);
             changes++;
         }
     }
@@ -4265,11 +4265,11 @@ ConsumableEffects.slimeTFs = function () {
     //sensitivity moves towards 50
     if (player.sens < 50) {
         outputText("<br><br>The slippery slime soaks into your " + player.skinDesc + ", making it tingle with warmth, sensitive to every touch.");
-        player.dynStats("sen", 1);
+        player.dynStats("sens", 1);
     }
     else if (player.sens > 50) {
         outputText("<br><br>The slippery slime numbs your " + player.skinDesc + " slightly, leaving behind only gentle warmth.");
-        player.dynStats("sen", -1);
+        player.dynStats("sens", -1);
     }
     //Commented out in the original
     /*Calculate goopiness
@@ -4425,7 +4425,7 @@ ConsumableEffects.trapOil = function() {
 //Sensitivity Increase:
     if (player.sens < 70 && player.hasCock() && rand(3) == 0 && changes < changeLimit) {
         outputText("<br><br>A light breeze brushes over you and your skin tingles.  You have become more sensitive to physical sensation.");
-        player.dynStats("sen", 5);
+        player.dynStats("sens", 5);
         changes++;
     }
 //Libido Increase:
@@ -4541,12 +4541,12 @@ ConsumableEffects.trapOil = function() {
         //buttChange(30,false,false,false);
         if (player.ass.analLooseness < 3) player.ass.analLooseness++;
         changes++;
-        player.dynStats("sen", 2);
+        player.dynStats("sens", 2);
     }
 //Fertility Decrease:
     if (player.hasVagina() && rand(4) == 0 && changes < changeLimit) {
         outputText("<br><br>The vague numbness in your skin sinks slowly downwards, and you put a hand on your lower stomach as the sensation centers itself there.  ");
-        player.dynStats("sen", -2);
+        player.dynStats("sens", -2);
         //High fertility:
         if (player.fertility >= 30) outputText("It feels like your overcharged reproductive organs have simmered down a bit.");
         //Average fertility:
@@ -4653,7 +4653,7 @@ ConsumableEffects.trapOil = function() {
         if (player.cor < 50) outputText("  After a few cautious touches you decide it doesn't feel any different- it does certainly look odd, though.");
         else outputText("  After a few cautious touches you decide it doesn't feel any different - the sheer bizarreness of it is a big turn on though, and you feel it beginning to shine with anticipation at the thought of using it.");
         outputText("  <b>Your vagina is now ebony in color.</b>");
-        player.dynStats("sen", 2);
+        player.dynStats("sens", 2);
         player.changeLust(10);
         player.vaginaType(5);
         changes++;

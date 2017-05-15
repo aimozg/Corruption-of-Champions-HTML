@@ -616,7 +616,7 @@ GooGirlScene.genderlessLoseToGooGal = function() {
 
     outputText("You awaken with a sputtering hack, water and gooey " + monster.gooColor() + " cum spilling from your lungs. You've been returned to shore and other than a full-body soreness and a splitting headache, you seem none the worse for wear. Who knew cute little slimes could be so aggressive when they don't have sex organs to suck on?");
     player.slimeFeed();
-    player.dynStats("sen", 4);
+    player.dynStats("sens", 4);
     cleanupAfterCombat();
     player.orgasm();
 };
@@ -645,7 +645,7 @@ GooGirlScene.dudeLoseToGooGal = function() {
     else outputText("The girl's expression goes from pleased triumph to mild panic when your orgasm shows no sign of flagging, load after load racing into her body. She quickly snakes her tongue out of your urethra and tries to pull off of your " + player.cockDescript(x) + ", but her arm is too deep in your ass and she finds herself stuck! You rest your hands on the " + monster.gooColor4() + " sludge of her goopy hair, fingers sinking into her slime as she tries to make room for your gushing, ivory torrent.  You clench your eyes in pleasure and surrender yourself to the feeling, your groin a font of creamy seed.  When you finally slow and open your eyes, you're a little surprised to find that the girl has become almost entirely white!  Her translucent skin retains a bit of the lake's " + monster.skinTone + " hue, but top to bottom, the goo-girl's body swirls with your cum, leaving her with the fattened appearance of pale pregnancy.");
     outputText("  Her arm slides out of your rump and the goo-girl practically rolls into the lake, splashing into the depths lazily. It sure didn't feel like you lost that fight, you reflect while taking delicious swallows of cold air.");
     player.slimeFeed();
-    player.dynStats("sen", 4);
+    player.dynStats("sens", 4);
     cleanupAfterCombat();
     player.orgasm();
 };
@@ -666,7 +666,7 @@ GooGirlScene.hermLoseToGooGal = function() {
 
     outputText("When you finally run dry, every muscle in your body aches with exhaustion and it feels like you haven't had anything to drink in months.  The slime slowly disentangles herself from your twitching form, ejecting you from the womb-like ardor of her squishy interior.  When she reforms her slender body, the goo-girl's belly bulges with your creamy load.  She gives you a beaming smile and pats her belly, sending ripples through her body with each wobbling slap.  The girl waves goodbye and slides back into the lake, giving you enough time to catch your breath and let your body recover.");
 
-    player.dynStats("sen", 4);
+    player.dynStats("sens", 4);
     player.slimeFeed();
     cleanupAfterCombat();
     player.orgasm();
@@ -720,7 +720,7 @@ GooGirlScene.femaleLoseToGooGal = function() {
             player.knockUp(PREGNANCY_GOO_GIRL, INCUBATION_GOO_GIRL, 1, 1);
         }
     }
-    player.dynStats("sen", 4);
+    player.dynStats("sens", 4);
     player.slimeFeed();
     cleanupAfterCombat();
     player.orgasm();

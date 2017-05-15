@@ -2276,7 +2276,7 @@ AmilyScene.determineAmilySexEvent = function () { // May need to force a false b
         //Slight affection gain?
         gameFlags[AMILY_AFFECTION] += 1 + rand(2);
         player.orgasm();
-        player.dynStats("sen", -1);
+        player.dynStats("sens", -1);
         doNext(Camp.returnToCampUseOneHour);
     };
 
@@ -2349,7 +2349,7 @@ AmilyScene.determineAmilySexEvent = function () { // May need to force a false b
         //outputText(images.showImage("amily-forest-reverse-cowgirl"));
         outputText("You decide to let her take the dominant position, relax (as much as you can with a beautiful, hot and very wet little mouse-girl sitting on you and fondling you) and simply enjoy her attentions. Amily obviously knows what she is doing - though you have no idea HOW she knows - and manages to bring you nearly to the climax before drawing back a little and letting you calm down.  She repeats this several times until you're nearly going crazy.  Just when you think you can't stand it anymore, she removes her tail from your cock and instead uses it to lightly bind your hands. You could easily move your hands, but decide not to. Grinning at you, she hovers a moment over your cock before slowly sinking down. You somehow manage to avoid cumming as soon as you enter her, but it's really, really hard. Amily's tail draws your 'bound' hands onto her breasts, while hers start caressing yours as she begins slowly riding you. Soon, the speed increases, and it isn't long before you both orgasm.<br><br>");
         player.orgasm();
-        player.dynStats("sen", -1);
+        player.dynStats("sens", -1);
         AmilyScene.amilySexMidPartIV();
     };
 
@@ -2359,7 +2359,7 @@ AmilyScene.determineAmilySexEvent = function () { // May need to force a false b
 
         outputText("You decide to take a more active role and start caressing her, kneading her breasts and making sure she enjoys it just as much as you do. Soon, Amily can't hold herself back and sinks down on you, beginning to ride you for all she's worth. It doesn't take you two long to reach the climax.<br><br>");
         player.orgasm();
-        player.dynStats("sen", -1);
+        player.dynStats("sens", -1);
         AmilyScene.amilySexMidPartIV();
     };
 
@@ -2469,7 +2469,7 @@ AmilyScene.determineAmilySexEvent = function () { // May need to force a false b
         gameFlags[AMILY_AFFECTION] += 2 + rand(4);
         gameFlags[AMILY_FUCK_COUNTER]++;
         player.orgasm();
-        player.dynStats("sen", -1);
+        player.dynStats("sens", -1);
         AmilyScene.amilyPreggoChance();
         doNext(Camp.returnToCampUseOneHour);
     };
@@ -2514,7 +2514,7 @@ AmilyScene.determineAmilySexEvent = function () { // May need to force a false b
         gameFlags[AMILY_AFFECTION] += 2 + rand(4);
         gameFlags[AMILY_FUCK_COUNTER]++;
         player.orgasm();
-        player.dynStats("sen", -1);
+        player.dynStats("sens", -1);
         doNext(Camp.returnToCampUseOneHour);
     };
 

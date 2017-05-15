@@ -1281,7 +1281,7 @@ class Player extends Creature {
 		 this.dynStats("str", this.statusEffectValue(StatusEffects.LizanBlowpipe, 1));
 		 this.dynStats("tou", this.statusEffectValue(StatusEffects.LizanBlowpipe, 2));
 		 this.dynStats("spe", this.statusEffectValue(StatusEffects.LizanBlowpipe, 3));
-		 this.dynStats("sen", -this.statusEffectValue(StatusEffects.LizanBlowpipe, 4));
+		 this.dynStats("sens", -this.statusEffectValue(StatusEffects.LizanBlowpipe, 4));
 		 this.removeStatusEffect(StatusEffects.LizanBlowpipe);
 		 }*/
 		//while (this.hasStatusEffect(StatusEffects.IzmaBleed)) this.removeStatusEffect(StatusEffects.IzmaBleed);
@@ -1410,6 +1410,17 @@ class Player extends Creature {
 	fertilizedEggs():number {
 		// TODO
 		return 0;
+	}
+	goIntoHeat(output:boolean, intensity:int = 1):boolean {
+		// TODO
+		return false;
+	}
+	goIntoRut(output:boolean, intensity:int = 1):boolean {
+		// TODO
+		return false;
+	}
+	minoCumAddiction(delta:number):void {
+		// TODO
 	}
 }
 

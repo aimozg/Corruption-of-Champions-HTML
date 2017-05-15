@@ -346,7 +346,7 @@ TentacleBeastScene.tentacleLossRape = function() {
         else outputText("Your cum has overfilled the creature!<br><br>");
         outputText("One last jerk from the creature breaks your hold and it pulls itself away from your member, excess cum spilling everywhere and flying through the air as it flops about. Clearly overwhelmed, the beast lumbers clumsily back into the bush. You laugh to yourself as you made the creature taste its own proverbial medicine as its efforts to overwhelm you completely backfired.");
 
-        player.dynStats("str", 0.5, "spe", -.5, "inte", -1, "lib", 5, "sen", 1, "cor", 1);
+        player.dynStats("str", 0.5, "spe", -.5, "inte", -1, "lib", 5, "sens", 1, "cor", 1);
         monster.HP = 0;
         if (player.HP == 0) player.HP++;
         if (inCombat()) {
@@ -438,7 +438,7 @@ TentacleBeastScene.tentacleLossRape = function() {
             if (player.balls > 0) outputText("r " + player.ballsDescriptLight());
             outputText(" empty and you turn around to leave, giving the spunk covered mass a swift kick as a reminder of your superiority.");
             //end (victory)
-            player.dynStats("tou", .5, "spe", -.5, "inte", -.5, "lib", 1, "sen", 1, "cor", 1);
+            player.dynStats("tou", .5, "spe", -.5, "inte", -.5, "lib", 1, "sens", 1, "cor", 1);
             monster.HP = 0;
             if (player.HP == 0) player.HP++;
             if (inCombat()) {
@@ -502,7 +502,7 @@ TentacleBeastScene.tentacleLossRape = function() {
         //[Male]
         else outputText("You feel your " + player.nippleDescript(0) + "s dribbling milk as the tentacles attempt their retreat.  You realize the beast has nowhere near drained you and you grin eagerly as your " + player.cockDescript(0) + " throbs mightily.  You reach back and seize the nearest knobby tentacle, the beast offering no resistance as you shove your " + player.cockDescript(0) + " into the tight, puckered orifice.  You moan in delight, grunting happily as you fuck the tight hole wildly.  The thought of turning the tables on the raping beast drives you closer to the edge; soon you bury all of your cock into the tight fuck tool and unload your massive torrent of cum into the tentacle.  Your hot cum gushes into the beast and you can feel the tentacle throb and squirm in protest as you fill the beast even more.  After your " + player.cockDescript(0) + " slips free the beast lets out a final gurgle of defeat and slithers away into the forest.", false);
 
-        player.dynStats("tou", .5, "spe", -.5, "inte", -.5, "lib", 1, "sen", 1, "cor", 1);
+        player.dynStats("tou", .5, "spe", -.5, "inte", -.5, "lib", 1, "sens", 1, "cor", 1);
         player.boostLactation(.5);
         monster.HP = 0;
         if (player.HP == 0) player.HP++;
@@ -519,7 +519,7 @@ TentacleBeastScene.tentacleLossRape = function() {
     }
     // Generic loss scenes that catch the rest and send to rape continuation scene.
     if (player.gender == 1) {
-        player.dynStats("str", -1, "inte", -1, "lib", 5, "sen", 2, "lus", 25, "cor", 1);
+        player.dynStats("str", -1, "inte", -1, "lib", 5, "sens", 2, "lus", 25, "cor", 1);
         if (player.cor < 75) outputText("It grabs you before you can get away!<br><br>While you attempt to resist the abomination, its raw muscle mass is too much. ");
         outputText("It pins you to the ground easily. You immediately feel a sharp, horrible pain ");
         if (player.cockTotal() > 1) outputText("at the base of your " + player.multiCockDescriptLight() + ".");
@@ -532,7 +532,7 @@ TentacleBeastScene.tentacleLossRape = function() {
     }
     if (player.gender == 2) {
         player.slimeFeed();
-        player.dynStats("spe", -1, "inte", -1, "lib", 5, "sen", 3, "lus", 20, "cor", 1);
+        player.dynStats("spe", -1, "inte", -1, "lib", 5, "sens", 3, "lus", 20, "cor", 1);
         if (player.cor < 75) outputText("It grabs you before you can get away!<br><br>While you struggle valiantly, the beast's raw might is more than a match for you. ");
         outputText("Tentacles burst from the mass and bind your arms, legs, and midriff. ");
         if (player.cor < 75) outputText("You struggle to break free, but the creature only constricts you further, ensuring your immobility. ");
@@ -545,7 +545,7 @@ TentacleBeastScene.tentacleLossRape = function() {
     }
     if (player.gender == 3) {
         player.slimeFeed();
-        player.dynStats("spe", -1, "inte", -1, "lib", 5, "sen", 4, "lus", 35, "cor", 2);
+        player.dynStats("spe", -1, "inte", -1, "lib", 5, "sens", 4, "lus", 35, "cor", 2);
         if (player.cor < 75) outputText("While you attempt to resist the abomination, its raw muscle mass is too much. ");
         outputText("It pins you to the ground easily. You immediately feel a sharp, horrible pain at the base of your ");
         if (player.cockTotal() > 1) outputText("cocks");
@@ -764,7 +764,7 @@ TentacleBeastScene.centaurLossGendered = function() {
     }
     outputText("The tentacles holding you release, leaking fluids everywhere.  You delight in giving one of the larger ones a hard stomp, as a reminder not to trifle with you.");
     //end (victory)
-    player.dynStats("tou", .5, "spe", -.5, "inte", -.5, "lib", 1, "sen", 1, "cor", 1);
+    player.dynStats("tou", .5, "spe", -.5, "inte", -.5, "lib", 1, "sens", 1, "cor", 1);
     player.boostLactation(.5);
     monster.HP = 0;
     if (player.HP == 0) player.HP++;
