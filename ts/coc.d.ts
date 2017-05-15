@@ -24,6 +24,7 @@ declare class Amily extends Creature {
 
 }
 declare namespace AmilyScene {
+	function start():void;
 	function pcBirthsAmilysKidsQuestVersion():void;
 }
 declare namespace Areas {
@@ -93,9 +94,6 @@ declare class Tamani extends Creature {
 }
 declare class TentacleBeast extends Creature {
 
-}
-declare namespace TownRuins {
-	function exploreVillageRuin():void;
 }
 
 declare let amily: Amily;
