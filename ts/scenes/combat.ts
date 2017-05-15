@@ -60,7 +60,7 @@ function tease(justText: boolean = false): void {
 		return;
 	}
 	//Proceed!
-	teaseMain(justText);
+	Teases.teaseMain(justText);
 	combatRoundOver();
 }
 

@@ -10,7 +10,6 @@ declare interface HTMLElement {
 	tooltipText?: string;
 }
 
-declare function gameOver():void;
 declare function magicMenu():void;
 declare function physicalSpecials():void;
 declare function mentalSpecials():void;

@@ -60,4 +60,16 @@ namespace PerkLib {
 	export const Androgyny                = new PerkType("Androgyny", "Androgyny", "TO BE ADDED");
 	export const MaraesGiftStud           = new PerkType("MaraesGiftStud", "Marae's Gift - Stud", "TO BE ADDED");
 	export const StaffChanneling          = new PerkType("StaffChanneling", "Staff Channeling", "TO BE ADDED");
+	export const Seduction                = new PerkType("Seduction", "Seduction", "TO BE ADDED");
+	export const SluttySeduction          = new PerkType("SluttySeduction", "Slutty Seduction", "TO BE ADDED");
+	export const BimboBody                = new PerkType("BimboBody", "Bimbo Body", "TO BE ADDED");
+	export const BroBody                  = new PerkType("BroBody", "Bro Body", "TO BE ADDED");
+	export const BroBrains                = new PerkType("BroBrains", "Bro Brains", "TO BE ADDED");
+	export const FutaForm                 = new PerkType("FutaForm", "Futa Form", "TO BE ADDED");
+	export const SensualLover             = new PerkType("SensualLover", "Sensual Lover", "TO BE ADDED");
+	export const BroodMother              = new PerkType("BroodMother", "Brood Mother", "TO BE ADDED");
+	export const Feeder                   = new PerkType("Feeder", "Feeder", "TO BE ADDED");
+	export const BulgeArmor               = new PerkType("BulgeArmor", "Bulge Armor", "TO BE ADDED");
+	export const HistoryWhore             = new PerkType("HistoryWhore", "History: Whore", "TO BE ADDED");
+	export const BigClit                  = new PerkType("BigClit", "Big Clit", "TO BE ADDED");
 }
