@@ -15,7 +15,6 @@ declare function magicMenu():void;
 declare function physicalSpecials():void;
 declare function mentalSpecials():void;
 declare function newGamePlusMod():number;
-declare function teaseMain(justText?:boolean):void;
 
 declare class Amily extends Creature {
 
