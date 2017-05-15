@@ -97,7 +97,7 @@ namespace Camp {
 	 }
 	 */
 
-	function campFollowersMenu() {
+	export function campFollowersMenu(): void {
 		clearOutput();
 		displaySprite();
 		menu();
@@ -105,27 +105,31 @@ namespace Camp {
 		if (gameFlags[RATHAZUL_CAMP] > 0) addButton(1, "Rathazul", RathazulScene.campRathazul, null, null, null, "Visit with Rathazul to see what alchemical supplies and services he has available at the moment.");
 		addButton(14, "Back", doCamp);
 	}
-	function campLoversMenu() {
+
+	export function campLoversMenu() {
 		clearOutput();
 		menu();
 		addButton(14, "Back", doCamp);
 	}
-	function campSlavesMenu() {
+
+	export function campSlavesMenu() {
 		clearOutput();
 		displaySprite();
 		menu();
 		if (gameFlags[JOJO_CAMP] == 2) addButton(0, "Jojo", JojoScene.jojoCampCorrupt, null, null, null, "Call your corrupted pet into camp in order to relieve your desires in a variety of sexual positions? He's ever so willing after your last encounter with him.");
 		addButton(14, "Back", doCamp);
 	}
+
 	//ACTIONS
-	function doMasturbate() {
+	export function doMasturbate(): void {
 		clearOutput();
 		outputText("(Placeholder) You masturbate furiously, cumming buckets.");
 		player.orgasm();
 		Time.advanceMinutes(30 - Math.floor(player.sens / 4));
 		doNext(doCamp);
 	}
-	function doSleep() {
+
+	export function doSleep(): void {
 		//For now
 		clearOutput();
 		outputText("You lie down and sleep for eight hours.");
@@ -134,42 +138,52 @@ namespace Camp {
 		doNext(doCamp);
 		Time.advanceHours(8);
 	}
+
 	//UTILS
 	export function returnToCampUseOneHour() {
 		Time.advanceHours(1);
 		doCamp();
 	}
+
 	export function returnToCampUseTwoHours() {
 		Time.advanceHours(2);
 		doCamp();
 	}
+
 	export function returnToCampUseFourHours() {
 		Time.advanceHours(4);
 		doCamp();
 	}
+
 	export function returnToCampUseEightHours() {
 		Time.advanceHours(8);
 		doCamp();
 	}
-	export function returnToCampUseCustomMinutes(minutes:number) {
+
+	export function returnToCampUseCustomMinutes(minutes: number) {
 		Time.advanceMinutes(minutes);
 		doCamp();
 	}
+
 	export function bedDesc() {
 		return "bedroll";
 	}
+
 	export function homeDesc() {
 		return "tent";
 	}
+
 	export function followersCount() {
 		let count = 0;
 		if (gameFlags[JOJO_CAMP] > 0 && gameFlags[JOJO_CORRUPTION_STAGE] < 5) count++;
 		if (gameFlags[RATHAZUL_CAMP] > 0) count++;
 		return count;
 	}
+
 	export function loversCount() {
 		return 0;
 	}
+
 	export function slavesCount() {
 		let count = 0;
 		if (gameFlags[JOJO_CAMP] > 0 && gameFlags[JOJO_CORRUPTION_STAGE] >= 5) count++;

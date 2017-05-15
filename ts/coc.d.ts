@@ -48,9 +48,6 @@ declare namespace ConsumableEffects {
 	function snakeTFs():void;
 	function succubiDelight(purified:boolean):void;
 }
-declare namespace GiacomoScene {
-	function giacomoEncounter():void;
-}
 declare class GooGirl extends Creature {
 	gooColor4():string;
 }
@@ -68,10 +65,6 @@ declare namespace JojoScene {
 }
 declare namespace MinotaurScene {
 	function encounterMinotaur():void;
-}
-declare namespace RathazulScene {
-	function campRathazul():void;
-	function encounterRathazul():void;
 }
 declare class Tamani extends Creature {
 
