@@ -9,7 +9,7 @@ class SandTrap extends Creature {
 		if (rand(3) == 0) gameFlags[FERTILE_SANDTRAP] = 1;
 		//Name and references
 		this.a = "the ";
-		this.name = "sandtrap" //TODO Silly Mode name is "sand tarp".
+		this.name = "sandtrap"; //TODO Silly Mode name is "sand tarp".
 		this.refName = this.name;
 		this.isAre = "is";
 		this.heShe = "";
@@ -127,7 +127,7 @@ class SandTrap extends Creature {
 		return gameFlags[TRAP_LEVEL];
 	}
 
-	public static sandTrapWait() {
+	public static sandTrapWait():void {
 		clearOutput();
 //TODO spriteSelect(97);
 		// First, mark that the player climbed...
@@ -156,7 +156,7 @@ class SandTrap extends Creature {
 		combatRoundOver();
 	}
 
-	public doAI() {
+	public doAI():void {
 		// If you're high enough in the cave to be at the top, the Sand Trap will try to grab and yank you back down.
 		if (gameFlags[TRAP_LEVEL] == 4 && gameFlags[CLIMBED_TRAP_THIS_ROUND] == 0) SandTrap.grabAttack();
 		// Otherwise, try pheramones
@@ -187,7 +187,7 @@ class SandTrap extends Creature {
 		}
 // Got caught
 		else {
-			var damage = (10 + player.lib / 10);
+			let damage = (10 + player.lib / 10);
 			outputText("  Despite ducking away from the jet of fluid as best you can, you cannot avoid some of the stuff splashing upon your arms and face.  The substance feels oddly warm and oily, and though you quickly try to wipe it off it sticks resolutely to your skin and the smell hits your nose.  Your heart begins to beat faster as warmth radiates out from it; you feel languid, light-headed and sensual, eager to be touched and led by the hand to a sandy bed...  Shaking your head, you try to stifle what the foreign pheromones are making you feel.");
 			damage = Math.round(damage);
 			player.changeLust(damage);
@@ -225,7 +225,7 @@ namespace SandTrapScene {
 	//------------
 
 	//Win Scenes
-	export function sandTrapWin () {
+	export function sandTrapWin():void {
 		clearOutput();
 	// TODO Sprite spriteSelect(97);
 		//Reset loss repeat counter
@@ -239,9 +239,9 @@ namespace SandTrapScene {
 			outputText("<br><br>Before you go, you take in the helpless body of your would-be ambusher.  What do you do?");
 			menu();
 			//TODO Track Down this Status Effect and see if it needs replacing: if (player.isNaga() && player.hasStatusEffect(StatusEffects.Naga && player.gender > 0 && player.faceType == FaceType.SNAKE_FANGS) addButton(0, "Naga3Some", nagaThreesomeWithSandTrap);
-			if (player.hasCock() && player.str >= 60) addButton(1, "UseYourCock", cockWin) //stickWanginSandgina
-			if (player.hasVagina()) addButton(2, "RideVaginal", vaginaWin) //rideDatSandTarp
-			if (player.gender > 0) addButton(3, "Handjob", handjobWin)// useSandTarpsHands
+			if (player.hasCock() && player.str >= 60) addButton(1, "UseYourCock", cockWin); //stickWanginSandgina
+			if (player.hasVagina()) addButton(2, "RideVaginal", vaginaWin); //rideDatSandTarp
+			if (player.gender > 0) addButton(3, "Handjob", handjobWin);// useSandTarpsHands
 			//TODO Paizuri Scene - if (player.hasVagina() && player.biggestTitSize() >= 4 && player.armorName == "lusty maiden's armor") bikiniTits = createCallBackFunction2((player.armor as LustyMaidensArmor).lustyMaidenPaizuri,player,monster);
 			addButton(4, "Leave", cleanupAfterCombat);
 		}
@@ -252,7 +252,7 @@ namespace SandTrapScene {
 		clearOutput();
 		//TODO spriteSelect(97);
 		//Requires: Penis and str requirement
-		var x = player.cockThatFits(80);
+		let x = player.cockThatFits(80);
 		if (x < 0) x = player.smallestCockIndex();
 		outputText("You bend into the sand and allow the slope to slowly carry you down to the bottom and the defeated sandtrap.  Its six black eyes regard you with a mixture of lust and resentment as you slowly discard your clothes, revelling in the hot desert sun upon your naked form.  As the soft powder delivers you to its side it tries to curl its hands around your thighs.  Whether this is one last attempt to drag you down or because it is trying to curry your favor somehow you don't know, but you aren't having any of it.  You catch its hands, easily overpowering it.  It uses its other pair to try to pathetically prise itself out of your grasp; you find that its wrists are thin enough for you to reach your hands around both and hold all four of its arms quite comfortably.  You beam triumphantly at the helpless sandtrap, who glowers in response.");
 		outputText("<br><br>You take a moment to look your strange conquest over.  Even up close you can't tell from its thin, fey beauty whether it is male or female.  Although it is affecting to look angry at you, its sculpted cheeks are quite flushed and there is a definite undercurrent of desire in its eyes; you suspect your display of strength and dominance appeals to it on some perverse, animalistic level.  Still smiling victoriously, you bend your face into it, deliberately invading its personal space, silently demonstrating who is in charge here.  It can't hold your gaze and, blushing, looks downwards.  This submissive demureness sends heat rushing towards your " + player.multiCockDescriptLight() + "; the desire to fuck builds in you, to plough, to sink your cock into this strange, eerily beautiful creature, to establish once and for all who is giving and who is receiving around here... the only question is, how?  Its slim, androgyne upper body is devoid of obvious sexual features.  Your eyes roam steadily downwards.  Where its insect half meets its human half, where its cock should be, it instead has a genital slit; from this is emerging a long, black prong, dripping with clear oil.  Your show of dominance is turning this creature on, and it is powerless to disguise it.  It looks up at you with timid hopefulness... but you are in no mood for that.  There is a definite air of femininity to this creature, a pheromone scent which speaks directly to your " + player.cockDescript(0) + ", makes you hard");

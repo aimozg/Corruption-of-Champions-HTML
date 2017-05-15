@@ -10,12 +10,12 @@ declare interface HTMLElement {
 	tooltipText?: string;
 }
 
-declare function cleanupAfterCombat():void;
-declare function combatRoundOver():void;
 declare function gameOver():void;
-declare function inCombat():boolean;
+declare function magicMenu():void;
+declare function physicalSpecials():void;
+declare function mentalSpecials():void;
 declare function newGamePlusMod():number;
-declare function startCombat(monster:Creature):void;
+declare function teaseMain(justText?:boolean):void;
 
 declare class Amily extends Creature {
 
@@ -23,6 +23,9 @@ declare class Amily extends Creature {
 declare namespace AmilyScene {
 	function start():void;
 	function pcBirthsAmilysKidsQuestVersion():void;
+}
+declare class Anemone extends Creature {
+	applyVenom(arg1:number):void;
 }
 declare namespace BeeGirlScene {
 	function beeEncounter():void;
@@ -87,5 +90,4 @@ declare namespace TentacleBeastScene {
 }
 
 declare let amily: Amily;
-declare let monster: Creature;
 declare let tamanipreg: Tamani;
