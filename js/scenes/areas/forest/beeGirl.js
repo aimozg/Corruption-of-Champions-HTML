@@ -609,7 +609,7 @@ BeeGirlScene.beeEncounterSheBeatsYouRegularlyAndYouLetHerLaysEggs = function(cle
     }
     outputText("Once the last of the eggs are pushed deep inside your bowels, the bee girl sighs and slowly removes the knotted implement that was filling your " + player.buttDescript() + ".  She sets you back down on the flower and gives you a full mouth kiss before saying <i>“Zzzee you next time...”</i>  In a few moments, you drift off to sleep.  You wake up several hours later, feeling giddy, and you notice that something wet is leaking from your anus.<br><br>");
     player.orgasm();
-    player.dynStats("int", -.5);
+    player.dynStats("inte", -.5);
     player.slimeFeed();
     if (rand(2) == 0) player.buttKnockUp(PREGNANCY_BEE_EGGS, INCUBATION_BEE, 1, 1); //Anal bee pregnancy!
     player.buttChange(25, true);
@@ -775,7 +775,7 @@ BeeGirlScene.beeEncounterDutyTalk = function() {
     clearOutput();
 //spriteSelect(6);
     outputText("The handmaiden seems to be quite happy to talk to you for a little while.  She is quite interested in the tales you have to share, and you have a chance to hear a bit about the world from her.  After the two of you have been talking for awhile, you notice that she has been running her hand over her lady bits and you ask her about it.  <i>“Oh?  Well, I’m juzzzt zzzo horny right now, do you think you could help me out with that?  You can keep zzzome of the honey for later, and it could do zzzome incredible thingzzz to you.”</i>  Do you take her up on her offer?”</i>");
-    if (player.inte < 50) player.dynStats("int", 0.5);
+    if (player.inte < 50) player.dynStats("inte", 0.5);
     doYesNo(BeeGirlScene.freeHoneyEvent, BeeGirlScene.beeEncounterDutyLeave);
 };
 
@@ -1033,7 +1033,7 @@ BeeGirlScene.beeEncounterClassicSex = function(postCombat) {
             outputText("When you awaken, you're covered in honey and what you can only assume is the lubrication from her ovipositor. You stand with a bit of a struggle and notice that in your wild state you seem to have devastated the little clearing, as it's covered with broken trees and trampled plants. A thin trail of honey leads away from the devastation into the undergrowth.");
         }
         player.orgasm();
-        player.dynStats("int", -.5);
+        player.dynStats("inte", -.5);
         player.slimeFeed();
         //Anal bee pregnancy!
         if (rand(3) == 0) player.buttKnockUp(PREGNANCY_BEE_EGGS, INCUBATION_BEE, 1, 1);
@@ -1056,7 +1056,7 @@ BeeGirlScene.beeEncounterClassicSex = function(postCombat) {
         outputText("You awaken, your nose full of a honey like scent, some strange fluid on your back, and the feeling of something leaking from you.");
         player.buttChange(25, true);
         player.orgasm();
-        player.dynStats("int", -.5);
+        player.dynStats("inte", -.5);
         //Anal bee pregnancy!
         if (rand(3) == 0) player.buttKnockUp(PREGNANCY_BEE_EGGS, INCUBATION_BEE, 1, 1);
     }
@@ -1104,7 +1104,7 @@ BeeGirlScene.beeEncounterClassicSex = function(postCombat) {
         //Recovery
         outputText("Eventually you realize she is no longer feeding you honey, and the bee-girl pulls her shriveled organ from your rectum.  She pats you on the head and begins to stagger away, honey dripping from between her thighs and her once bloated rear-abdomen now looking more appropriate for her thin frame.");
         player.orgasm();
-        player.dynStats("int", -.5);
+        player.dynStats("inte", -.5);
         player.slimeFeed();
         //Anal bee pregnancy!
         if (rand(3) == 0) player.buttKnockUp(PREGNANCY_BEE_EGGS, INCUBATION_BEE, 1, 1);
@@ -1995,7 +1995,7 @@ BeeGirlScene.beeRapesYou = function() {
                     outputText("Despite everything, you realize that you feel oddly good; a warm tingling sensation ripples through your whole body every time you move and the pain from the stingers appears to have disappeared entirely. With a smile you kind of hope the next time you meet a bee-girl you will be victorious, so you can show her how to please you properly.", false);
                 }
                 
-                player.dynStats("int", -.5);
+                player.dynStats("inte", -.5);
             }
             //[Male without testicles:
             else if (player.gender == 1 && player.balls == 0) {
@@ -2013,7 +2013,7 @@ BeeGirlScene.beeRapesYou = function() {
 
                 outputText("The combination of the lust filled poisons, pain and shame at your utter defeat and humiliation drive you to black out, welcoming the blissful darkness.<br><br>");
                 outputText("When you awake, despite everything, you realize that you feel oddly good; a warm tingling sensation ripples through your whole body every time you move and the pain from the stingers appears to have disappeared entirely. With a smile you kind of hope the next time you meet a bee-girl you will be victorious, so you can show her how to please you properly.", false);
-                player.dynStats("int", -.5, "lus=", 100);
+                player.dynStats("inte", -.5, "lus=", 100);
             }
             //[Female:
             else if (player.gender == 2) {
@@ -2040,7 +2040,7 @@ BeeGirlScene.beeRapesYou = function() {
                     outputText("You awake in a puddle of femcum, the scent wafting up to you and making your stomach churn. You manage to settle it and stagger to your hooves, wobbly walking away using trees to steady yourself.<br><br>");
                     outputText("Despite everything, you realize that you feel oddly good; a warm tingling sensation ripples through your whole body every time you move and the pain from the stingers appears to have disappeared entirely. With a smile you kind of hope the next time you meet a bee-girl you will be victorious, so you can show her how to please you properly.", false);
                 }
-                player.dynStats("int", -.5, "lus=", 100);
+                player.dynStats("inte", -.5, "lus=", 100);
             }
             //[Herm:
             else if (player.gender == 3) {
@@ -2069,7 +2069,7 @@ BeeGirlScene.beeRapesYou = function() {
                     outputText("You awake in a puddle of various sexual fluids, the scent wafting up to you and making your stomach churn. You manage to settle it and stagger to your hooves, wobbly walking away using trees to steady yourself.<br><br>");
                     outputText("Despite everything, you realize that you feel oddly good; a warm tingling sensation ripples through your whole body every time you move and the pain from the stingers appears to have disappeared entirely. With a smile you kind of hope the next time you meet a bee-girl you will be victorious, so you can show her how to please you properly.", false);
                 }
-                player.dynStats("int", -.5, "lus=", 100);
+                player.dynStats("inte", -.5, "lus=", 100);
             }
             //[Genderless:
             else {
@@ -2085,7 +2085,7 @@ BeeGirlScene.beeRapesYou = function() {
 
                 outputText("The malevolent bee-girls continue their ministrations though, delighting in the way your body is reacting. The combination of the lust filled poisons, pain and shame at your utter defeat and humiliation drive you to black out, welcoming the blissful darkness.<br><br>");
                 outputText("You awake in a couple of hours and stagger to your hooves, wobbly walking away using trees to steady yourself.  Despite everything, you realize that you feel oddly good; a warm tingling sensation ripples through your whole body every time you move and the pain from the stingers appears to have disappeared entirely. With a smile you kind of hope the next time you meet a bee-girl you will be victorious, so you can show her how to please you properly.", false);
-                player.dynStats("int", -.5, "lus=", 100);
+                player.dynStats("inte", -.5, "lus=", 100);
             }
         }
         //Lust:
@@ -2144,7 +2144,7 @@ BeeGirlScene.beeRapesYou = function() {
                 outputText("She pays no attention to that though, and busies herself with inserting her ovipositor inside it. The thick lubrication allows it quick entrance, and soon she's pumping her fluids into your bowels. The sensation proves too much for you and you begin to shake violently, incapable of touching yourself and alleviating the dreadful pressure.<br><br>");
                 outputText("She seems to understand your problem though and, wanting to help you with your needs, begins to stroke where your genitals should be with her 'feet'. As she does this she starts to hum, a sound that obliterates what few thoughts you had left and which causes her entire body to vibrate. The mix of sensations is enough to stop you from shaking, but the pressure doesn't go away and you pass out as she continues her task.<br><br>");
             }
-            player.dynStats("int", -.5, "lus=", 100);
+            player.dynStats("inte", -.5, "lus=", 100);
             //Anal bee pregnancy!
             player.buttKnockUp(PREGNANCY_BEE_EGGS, INCUBATION_BEE, 1, 1);
         }
@@ -2184,7 +2184,7 @@ BeeGirlScene.beeRapesYou = function() {
             outputText("You awaken, your nose full of a honey like scent, some strange fluid on your back, and the feeling of something leaking from you.");
             player.slimeFeed();
 
-            player.dynStats("int", -.5);
+            player.dynStats("inte", -.5);
             //Anal bee pregnancy!
             if (rand(3) == 0) player.buttKnockUp(PREGNANCY_BEE_EGGS, INCUBATION_BEE, 1, 1);
             player.buttChange(25, true, true, false);
@@ -2217,7 +2217,7 @@ BeeGirlScene.beeRapesYou = function() {
             else outputText("Your moans are muffled by the honeyed pussy on your face, and you hear her starting to squeal loudly. Her thighs clamp tightly around your ears, grinding harder into your face as her stinger picks up the pace.  ");
             outputText("It gets harder and harder to breathe, the thick flow of honey threatening to suffocate you as the bee-girl reaches her climax.  You feel your body finally succumbing to the pleasure and oxygen deprivation and cum HARD, the world going comfortably dark as you lose your grip on consciousness.");
             player.slimeFeed();
-            player.dynStats("int", -.5);
+            player.dynStats("inte", -.5);
             cleanupAfterCombat();
             player.orgasm();
             return;

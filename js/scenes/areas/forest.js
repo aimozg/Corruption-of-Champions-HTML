@@ -62,9 +62,9 @@ Areas.Forest.explore = function() {
                     player.dynStats("tou", 0.5);
                 //Mod intelligence
                 if (player.inte < 50)
-                    player.dynStats("int", 1);
+                    player.dynStats("inte", 1);
                 else if (player.inte < 75)
-                    player.dynStats("int", 0.5);
+                    player.dynStats("inte", 0.5);
             }
             else {
                 outputText("As you wander in the forest, you keep ");

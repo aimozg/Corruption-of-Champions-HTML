@@ -726,7 +726,7 @@ else if (player.gender == 3) {
 }
 outputText("<br>");
 player.orgasm();
-dynStats("str", rand(2),"tou", rand(2), "spe", rand(2), "int", rand(2), "cor", 1);
+dynStats("str", rand(2),"tou", rand(2), "spe", rand(2), "inte", rand(2), "cor", 1);
 inventory.takeItem(consumables.CERUL_P, playerMenu);
 }
 }*/

@@ -113,7 +113,7 @@ function finishAttributes() {
 	player.dynStats("str", tempStr);
 	player.dynStats("tou", tempTou);
 	player.dynStats("spe", tempSpe);
-	player.dynStats("int", tempInt);
+	player.dynStats("inte", tempInt);
 	tempStr = 0;
 	tempTou = 0;
 	tempSpe = 0;

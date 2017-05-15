@@ -142,9 +142,9 @@ JojoScene.routeJojoEncounter = function() {
             player.dynStats("tou", 0.5);
         //Mod intelligence
         if (player.inte < 50)
-            player.dynStats("int", 1);
+            player.dynStats("inte", 1);
         else if (player.inte < 75)
-            player.dynStats("int", 0.5);
+            player.dynStats("inte", 0.5);
         return;
     }
     //If Jojo is encounterable.
@@ -259,7 +259,7 @@ JojoScene.meditateInForest = function() {
    displaySprite("jojo");
     clearOutput();
     outputText("Jojo smiles and leads you off the path to a small peaceful clearing. There is a stump in the center, polished smooth and curved in a way to be comfortable. He gestures for you to sit, and instructs you to meditate.<br><br>An indeterminate amount of time passes, but you feel more in control of yourself. Jojo congratulates you, but offers a warning as well. \"<i>Be ever mindful of your current state, and seek me out before you lose yourself to the taints of this world. Perhaps someday this tainted world can be made right again.</i>\"");
-    player.dynStats("str", 0.5, "tou", 0.5, "int", 0.5, "lib", -1, "cor", (-1 - player.countCockSocks("alabaster")));
+    player.dynStats("str", 0.5, "tou", 0.5, "inte", 0.5, "lib", -1, "cor", (-1 - player.countCockSocks("alabaster")));
     gameFlags[JOJO_MEDITATION_COUNTER]++;
     if (gameFlags[JOJO_MEDITATION_COUNTER] >= 5) {
         outputText("<br><br>Jojo nods respectfully at you when the meditation session is over and smiles. ");
@@ -770,7 +770,7 @@ JojoScene.jojoFollowerMeditate = function(doClear) {
         if (player.str < 45) player.dynStats("str", 1); //Str boost to 45
         if (player.tou < 45) player.dynStats("tou", 1); //Tou boost to 45
         if (player.spe < 75) player.dynStats("spe", 1); //Speed boost to 75
-        if (player.inte < 80) player.dynStats("int", 1); //Int boost to 80
+        if (player.inte < 80) player.dynStats("inte", 1); //Int boost to 80
         if (player.lib > 0) player.dynStats("lib", -1); //Libido lower to 15
         flags[JOJO_LAST_MEDITATION] = time.days;
         gameFlags[JOJO_MEDITATION_COUNTER]++;

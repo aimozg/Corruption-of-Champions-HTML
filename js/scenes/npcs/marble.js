@@ -40,7 +40,7 @@ MarbleScene.applyMarblesMilk = function() {
     //Remove withdrawl if applicable
     if (player.hasStatusEffect(StatusEffects.MarbleWithdrawl)) {
         player.removeStatusEffect(StatusEffects.MarbleWithdrawl);
-        dynStats(["tou", 5], ["int", 5]);
+        dynStats(["tou", 5], ["inte", 5]);
     }*/
     //The message for the effect wearing off varies depends on your addiction level.
     //If the player is addicted to her milk, they gain the withdrawal effect when it wears off, reducing player's inte and tou by 5

@@ -1216,7 +1216,7 @@ class Player extends Creature {
 		while (this.hasStatusEffect(StatusEffects.Blind)) this.removeStatusEffect(StatusEffects.Blind);
 		//if (this.hasStatusEffect(StatusEffects.SheilaOil)) this.removeStatusEffect(StatusEffects.SheilaOil);
 		/*if (this.hasStatusEffect(StatusEffects.TwuWuv)) {
-		 this.dynStats("int", this.statusEffectValue(StatusEffects.TwuWuv, 1));
+		 this.dynStats("inte", this.statusEffectValue(StatusEffects.TwuWuv, 1));
 		 this.removeStatusEffect(StatusEffects.TuvWuv);
 		 }*/
 		if (this.hasStatusEffect(StatusEffects.Bind)) this.removeStatusEffect(StatusEffects.Bind);

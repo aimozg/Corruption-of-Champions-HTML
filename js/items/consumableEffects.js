@@ -123,10 +123,10 @@ ConsumableEffects.scholarsTea = function() {
     outputText("Following the merchant's instructions, you steep and drink the tea. Its sharp taste fires up your palate and in moments, you find yourself more alert and insightful. As your mind wanders, a creative, if somewhat sordid, story comes to mind. It is a shame that you do not have writing implements as you feel you could make a coin or two off what you have conceived. The strange seller was not lying about the power of the tea.");
     if (rand(3) == 0) outputText(player.modTone(15, 1));
     //Now NERFED!
-    if (player.inte < 40) player.dynStats("int", 1.5 + rand(4));
-    else if (player.inte < 60) player.dynStats("int", 1 + rand(3));
-    else if (player.inte < 80) player.dynStats("int", 0.5 + rand(2));
-    else player.dynStats("int", 0.2 + rand(2));
+    if (player.inte < 40) player.dynStats("inte", 1.5 + rand(4));
+    else if (player.inte < 60) player.dynStats("inte", 1 + rand(3));
+    else if (player.inte < 80) player.dynStats("inte", 0.5 + rand(2));
+    else player.dynStats("inte", 0.2 + rand(2));
     player.refillHunger(10);
 };
 
@@ -363,19 +363,19 @@ ConsumableEffects.blackSpellbook = function() {
     outputText("You open the small black book, and discover it to be an instructional book on the use of black magic.  Most of it is filled with generic information about black magic - how it is drawn from emotions (typically lust), and how it has the power to affect bodies and emotions.  It also warns against using it on oneself, as it is difficult to draw on your emotions while meddling with your own body.  In no time at all you've read the whole thing, but it disappears into thin air before you can put it away.", true);
     if (player.inte < 30) {
         outputText("<br><br>You feel greatly enlightened by your time spent reading.");
-        player.dynStats("int", 4);
+        player.dynStats("inte", 4);
     }
     else if (player.inte < 60) {
         outputText("<br><br>Spending some time reading was probably good for you, and you definitely feel smarter for it.");
-        player.dynStats("int", 2);
+        player.dynStats("inte", 2);
     }
     else if (player.inte < 80) {
         outputText("<br><br>After reading the small tome your already quick mind feels invigorated.");
-        player.dynStats("int", 1);
+        player.dynStats("inte", 1);
     }
     else {
         outputText("<br><br>The contents of the book did little for your already considerable intellect.");
-        player.dynStats("int", .6);
+        player.dynStats("inte", .6);
     }
 //Smart enough for arouse and doesnt have it
     if (player.inte >= 25 && player.spells.arouse == 0) {
@@ -401,19 +401,19 @@ ConsumableEffects.whiteSpellBook = function() {
     outputText("You open the white tome, and discover it to be an instructional book on the use of white magic.  Most of it is filled with generic information about white magic - how it is drawn for mental focus, is difficult to use when tired or aroused, and can be used to create and control energy.  In no time at all you've read the whole thing, but it disappears into thin air before you can put it away.", true);
     if (player.inte < 30) {
         outputText("<br><br>You feel greatly enlightened by your time spent reading.");
-        player.dynStats("int", 4);
+        player.dynStats("inte", 4);
     }
     else if (player.inte < 60) {
         outputText("<br><br>Spending some time reading was probably good for you, and you definitely feel smarter for it.");
-        player.dynStats("int", 2);
+        player.dynStats("inte", 2);
     }
     else if (player.inte < 80) {
         outputText("<br><br>After reading the small tome your already quick mind feels invigorated.");
-        player.dynStats("int", 1);
+        player.dynStats("inte", 1);
     }
     else {
         outputText("<br><br>The contents of the book did little for your already considerable intellect.");
-        player.dynStats("int", .6);
+        player.dynStats("inte", .6);
     }
     //Smart enough for arouse and doesnt have it
     if (player.inte >= 25 && player.spells.chargeWeapon == 0) {

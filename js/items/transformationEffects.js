@@ -60,7 +60,7 @@ ConsumableEffects.beeTFs = function(type) {
     //(removes tentacle hair status, restarts hair growth if not prevented by reptile status)
     //Intelligence Boost
     if (changes < changeLimit && rand(2) == 0 && player.inte < 80) {
-        player.dynStats("int", 0.1 * (80 - player.inte));
+        player.dynStats("inte", 0.1 * (80 - player.inte));
         outputText("<br><br>You spend a few moments analyzing the taste and texture of the honey's residue, feeling awfully smart.");
         changes++;
     }
@@ -340,7 +340,7 @@ ConsumableEffects.canineTFs = function(type) {
         changes++;
     }
     if (player.inte > 30 && rand(3) == 0 && changes < changeLimit && type != 3) {
-        player.dynStats("int", (-1 * crit));
+        player.dynStats("inte", (-1 * crit));
         outputText("<br><br>You feel ");
         if (crit > 1) outputText("MUCH ");
         outputText("dumber.");
@@ -1574,27 +1574,27 @@ ConsumableEffects.equineTFs = function() {
             outputText("<br><br>You let out a throaty \"Neiiiigh\" as your animalistic instincts take over.");
         }
         if (player.inte < 10 && player.inte > 5) {
-            player.dynStats("int", -1);
+            player.dynStats("inte", -1);
             outputText("<br><br>You smile vacantly as you drink the potion, knowing you're just a big dumb animal who loves to fuck.");
             changes++;
         }
         if (player.inte <= 20 && player.inte >= 10) {
-            player.dynStats("int", -2);
+            player.dynStats("inte", -2);
             outputText("<br><br>You find yourself looking down at the empty bottle in your hand and realize you haven't thought ANYTHING since your first sip.");
             changes++;
         }
         if (player.inte <= 30 && player.inte > 20) {
-            player.dynStats("int", -3);
+            player.dynStats("inte", -3);
             outputText("<br><br>You smile broadly as your cares seem to melt away. A small part of you worries that you're getting dumber.");
             changes++;
         }
         if (player.inte <= 50 && player.inte > 30) {
-            player.dynStats("int", -4);
+            player.dynStats("inte", -4);
             outputText("<br><br>It becomes harder to keep your mind focused as your intellect diminishes.");
             changes++;
         }
         if (player.inte > 50) {
-            player.dynStats("int", -5);
+            player.dynStats("inte", -5);
             outputText("<br><br>Your usually intelligent mind feels much more sluggish.");
             changes++;
         }
@@ -2027,7 +2027,7 @@ ConsumableEffects.felineTFs = function() {
         }
         else //High intelligence
             outputText("<br><br>You start to feel a bit dizzy, but the sensation quickly passes. Thinking hard on it, you mentally brush away the fuzziness that seems to permeate your brain and determine that this fruit may have actually made you dumber. It would be best not to eat too much of it.");
-        player.dynStats("int", -1);
+        player.dynStats("inte", -1);
         changes++;
     }
     //LIBIDO

@@ -75,7 +75,7 @@ Areas.Lake.explore = function () {
                     }
                 }
                 else {
-                    player.dynStats("int", 1);
+                    player.dynStats("inte", 1);
                 }
             }
             doNext(Camp.returnToCampUseOneHour);

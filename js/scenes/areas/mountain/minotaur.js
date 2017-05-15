@@ -657,7 +657,7 @@ MinotaurScene.girlRapeAMinotaur = function() {
     outputText("He passes out with a contented sigh, balls shrunk down to the size of baseballs and his cock still dribbling cum.  You pull yourself to your feet unsteadily, drunk with pleasure as you stagger away, clamping your " + player.vaginaDescript(0) + " down unconsciously to hold in his wonderful seed.");
     if (player.vaginalCapacity() < monster.cockArea(0)) outputText("<br><br>Mixed with the sheer sexual pleasure, you feel a diffuse pain and numbness coming from your much-abused " + player.vaginaDescript(0) + ", but decide with a smile that it was well worth it as his cum numbs away the last of the pain.");
 
-    player.dynStats(["spe", -.5], ["int", -.5], ["sens", 1.5], ["cor", 1]);
+    player.dynStats(["spe", -.5], ["inte", -.5], ["sens", 1.5], ["cor", 1]);
     //Preggers chance!
     player.knockUp(PREGNANCY_MINOTAUR, INCUBATION_MINOTAUR); //TODO Add in player pregnancy progression for mino pregnancy.
     cleanupAfterCombat();
@@ -679,7 +679,7 @@ MinotaurScene.minotaurGetsRapedByHerms = function() {
     outputText("Your " + player.cockDescript(0) + " quivers from his tightness, each beat of his powerful heart squeezing you tightly in his rear passage.   Through your foggy mind, you come to realize that your hips are pistoning against him with disturbing speed, burning away what's left of your reason with white-hot lust and minotaur spunk.  You slap his ass as you fuck him, humiliating the beast, leering down at him as he moos and moans hopelessly.   At last the pleasure overwhelms you, and you fire your spunk into him like a cannon, your hips still fucking him with unthinking determination.   Jizz sputters from his tail-hole with each thrust, splattering over his ass-cheeks.  A sudden blast of inhuman warmth fills you as the beast begins to cum, huge blasts pouring directly into your womb with every thrust of monstrous meat into your " + player.vaginaDescript(0) + ".<br><br>");
     outputText("Your orgasms drag on, until at last your belly is distended with the stuff and his ass is full of your cum.  With a lurch and a pop, you stagger free of him, barely able to walk with so much of his heavenly spunk inside you.  Even now your body tingles with unnatural pleasure and warmth.  Giggling, you realize the beast is passed out at your feet, his balls half as big as before. ");
 
-    player.dynStats(["spe", -.5], ["int", -.5], ["sens", 1.5], ["cor", 1]);
+    player.dynStats(["spe", -.5], ["inte", -.5], ["sens", 1.5], ["cor", 1]);
     //Preggers chance!
     player.knockUp(PREGNANCY_MINOTAUR, INCUBATION_MINOTAUR);
     cleanupAfterCombat();
