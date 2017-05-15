@@ -71,12 +71,6 @@ declare class Tamani extends Creature {
 declare namespace TamaniScene {
 	function encounterTamani():void;
 }
-declare class TentacleBeast extends Creature {
-
-}
-declare namespace TentacleBeastScene {
-	function encounter():void;
-}
 
 declare let amily: Amily;
 declare let tamanipreg: Tamani;
