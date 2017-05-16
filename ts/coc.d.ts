@@ -45,14 +45,6 @@ declare namespace ConsumableEffects {
 	function snakeTFs():void;
 	function succubiDelight(purified:boolean):void;
 }
-declare class GooGirl extends Monster {
-	public doAI(): void;
-	gooColor4():string;
-}
-declare namespace GooGirlScene {
-	function encounterGooGirl():void;
-	function spyOnGooAndOozeSex():void;
-}
 declare namespace GreenSlimeScene {
 	function encounterSlime():void;
 }
