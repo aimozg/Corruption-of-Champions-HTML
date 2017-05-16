@@ -1,4 +1,4 @@
-class Naga extends Creature {
+class Naga extends Monster {
 	public venom = 100;
 
 	constructor() {

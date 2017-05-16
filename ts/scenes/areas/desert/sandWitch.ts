@@ -1,6 +1,6 @@
 addToGameFlags(SAND_WITCH_RAPED);
 
-class SandWitch extends Creature {
+class SandWitch extends Monster {
     constructor() {
         super();
         //Name and references

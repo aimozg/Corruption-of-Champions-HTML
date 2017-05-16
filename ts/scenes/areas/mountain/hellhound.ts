@@ -1,7 +1,7 @@
 /**
  * Created by aimozg on 04.01.14.
  */
-class Hellhound extends Creature {
+class Hellhound extends Monster {
 	constructor() {
 		super();
 		//Name and references

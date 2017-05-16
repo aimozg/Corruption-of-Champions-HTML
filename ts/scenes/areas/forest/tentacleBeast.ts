@@ -51,7 +51,7 @@
 
 addToGameFlags(TENTACLE_COOL_DOWN, TENTACLE_BIND, TENTACLE_BAD_END, TENTACLE_GENDERLESS_CENTAUR);
 
-class TentacleBeast extends Creature {
+class TentacleBeast extends Monster {
 	//Monster definition
 	//Name and references
 	constructor() {

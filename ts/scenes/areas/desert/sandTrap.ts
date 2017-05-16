@@ -2,7 +2,7 @@
  * Ported by Matraia on 10/7/16.
  */
 
-class SandTrap extends Creature {
+class SandTrap extends Monster {
 	constructor() {
 		super();
 		//1/3 have fertilized eggs!

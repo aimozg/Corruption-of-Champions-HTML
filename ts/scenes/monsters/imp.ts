@@ -1,4 +1,4 @@
-class Imp extends Creature {
+class Imp extends Monster {
 	constructor() {
 		super();
 		//Name and references

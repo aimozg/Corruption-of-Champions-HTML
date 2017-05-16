@@ -10,20 +10,19 @@ declare interface HTMLElement {
 	tooltipText?: string;
 }
 
-declare function magicMenu():void;
-declare function physicalSpecials():void;
-declare function mentalSpecials():void;
 declare function newGamePlusMod():number;
 
-declare class Amily extends Creature {
-
+declare class Amily extends Monster {
+	public doAI(): void;
 }
 declare namespace AmilyScene {
 	function start():void;
 	function pcBirthsAmilysKidsQuestVersion():void;
 }
-declare class Anemone extends Creature {
+declare class Anemone extends Monster {
 	applyVenom(arg1:number):void;
+
+	public doAI(): void;
 }
 declare namespace BeeGirlScene {
 	function beeEncounter():void;
@@ -46,7 +45,8 @@ declare namespace ConsumableEffects {
 	function snakeTFs():void;
 	function succubiDelight(purified:boolean):void;
 }
-declare class GooGirl extends Creature {
+declare class GooGirl extends Monster {
+	public doAI(): void;
 	gooColor4():string;
 }
 declare namespace GooGirlScene {
@@ -64,8 +64,8 @@ declare namespace JojoScene {
 declare namespace MinotaurScene {
 	function encounterMinotaur():void;
 }
-declare class Tamani extends Creature {
-
+declare class Tamani extends Monster {
+	public doAI(): void;
 }
 declare namespace TamaniScene {
 	function encounterTamani():void;

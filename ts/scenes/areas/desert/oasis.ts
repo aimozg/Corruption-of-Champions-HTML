@@ -317,7 +317,7 @@ namespace OasisScene {
 	}
 }
 
-class DemonPack extends Creature {
+class DemonPack extends Monster {
 	constructor() {
 		super();
 		//Name and references

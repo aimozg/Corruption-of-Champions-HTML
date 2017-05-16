@@ -66,7 +66,7 @@ namespace Debug {
     // Fight a creature
     //----------
 
-    function fightCreature() {
+    function fightCreature(): void {
         clearOutput();
         startCombat(new TentacleBeast());
     }

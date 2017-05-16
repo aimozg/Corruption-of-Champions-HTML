@@ -776,9 +776,9 @@ namespace GoblinScene {
 	}
 }
 
-class Goblin extends Creature {
+class Goblin extends Monster {
 	constructor() {
-		super()
+		super();
 		//Name and references
 		this.a          = "the ";
 		this.name       = "goblin";

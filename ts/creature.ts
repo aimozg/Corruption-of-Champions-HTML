@@ -38,9 +38,6 @@ class Creature {
 	public additionalXP                     = 0;
 	public lustVuln                         = 1;
 	public temperment                       = 0;
-	// Monster loot
-	public drops: Item[]                    = [];
-	public dropThresholds: number[]         = [];
 	// Appearance
 	public gender: Gender                   = Gender.NONE; //0 genderless, 1 male, 2 female, 3 hermaphrodite
 	public tallness                         = 36; //Height in inches
@@ -128,9 +125,6 @@ class Creature {
 	public buttPregnancyIncubation          = 0;
 	public buttPregnancyEventArr: number[]  = [];
 	public buttPregnancyEventNum            = 0;
-	//Victory/defeat
-	public victory: () => void              = cleanupAfterCombat;
-	public defeat: () => void               = cleanupAfterCombat;
 
 	public get armorName():string {
 		return this.armor.equipmentName
@@ -529,46 +523,6 @@ class Creature {
 		}
 	}
 
-	//------------
-	// ITEMS/DROPS
-	//------------
-	public clearDrops(): void {
-		this.drops          = [];
-		this.dropThresholds = [];
-	}
-
-	public addDrop(item: Item, chance: number): void {
-		//Chance is in percentage.
-		this.drops.push(item);
-		if (this.dropThresholds.length == 0) {
-			this.dropThresholds.push(chance);
-		} else {
-			let currentThreshold                            = this.dropThresholds[this.dropThresholds.length - 1];
-			this.dropThresholds[this.dropThresholds.length] = currentThreshold + chance;
-		}
-	}
-
-	public dropItem(): any {
-		let roll      = rand(100);
-		let dropIndex = -1;
-		for (let i = 0; i < this.dropThresholds.length; i++) {
-			if (roll < this.dropThresholds[i]) {
-				dropIndex = i;
-				break;
-			}
-		}
-		if (dropIndex == -1)
-			return undefined;
-		return this.drops[dropIndex];
-	}
-
-	public getTotalDropPercents(): number {
-		let sum = 0;
-		for (const dropThreshold of this.dropThresholds) {
-			sum += dropThreshold;
-		}
-		return sum;
-	}
 
 	//------------
 	// STATS/PERKS
@@ -3269,4 +3223,60 @@ class Creature {
 		}
 	}
 
+}
+
+abstract class Monster extends Creature {
+	// Monster loot
+	public drops: Item[]            = [];
+	public dropThresholds: number[] = [];
+	//Victory/defeat
+	public victory: () => void      = cleanupAfterCombat;
+	public defeat: () => void       = cleanupAfterCombat;
+
+	constructor() {
+		super();
+	}
+
+	//------------
+	// ITEMS/DROPS
+	//------------
+	public clearDrops(): void {
+		this.drops          = [];
+		this.dropThresholds = [];
+	}
+
+	public addDrop(item: Item, chance: number): void {
+		//Chance is in percentage.
+		this.drops.push(item);
+		if (this.dropThresholds.length == 0) {
+			this.dropThresholds.push(chance);
+		} else {
+			let currentThreshold                            = this.dropThresholds[this.dropThresholds.length - 1];
+			this.dropThresholds[this.dropThresholds.length] = currentThreshold + chance;
+		}
+	}
+
+	public dropItem(): any {
+		let roll      = rand(100);
+		let dropIndex = -1;
+		for (let i = 0; i < this.dropThresholds.length; i++) {
+			if (roll < this.dropThresholds[i]) {
+				dropIndex = i;
+				break;
+			}
+		}
+		if (dropIndex == -1)
+			return undefined;
+		return this.drops[dropIndex];
+	}
+
+	public getTotalDropPercents(): number {
+		let sum = 0;
+		for (const dropThreshold of this.dropThresholds) {
+			sum += dropThreshold;
+		}
+		return sum;
+	}
+
+	public abstract doAI(): void;
 }

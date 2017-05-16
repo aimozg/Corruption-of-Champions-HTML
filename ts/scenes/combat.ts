@@ -1,4 +1,4 @@
-let monster: Creature;
+let monster: Monster;
 let currentTurn  = 0;
 let currentRound = 0;
 
@@ -542,7 +542,7 @@ function inCombat():boolean {
 	return playerMenu == battleMenu;
 }
 
-function startCombat(enemy:Creature, immediate:boolean=false):void {
+function startCombat(enemy: Monster, immediate: boolean = false): void {
 	currentTurn  = 0;
 	currentRound = 0;
 	playerMenu   = battleMenu;

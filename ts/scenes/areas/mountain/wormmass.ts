@@ -29,7 +29,7 @@
  For further information and license requests, Dxasmodeus may be contacted through private message at the Futanari Palace. http://www.futanaripalace.com/forum.php. */
 
 
-class WormMass extends Creature {
+class WormMass extends Monster {
 	constructor() {
 		super();
 		//Name and references
