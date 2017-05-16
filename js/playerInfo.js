@@ -703,7 +703,7 @@ function appearanceScreen() {
                     if (player.balls > 0)
                         outputText("balls plenty of room to breathe");
                     else if (player.hasCock())
-                        outputText(player.multiCockDescript() + " plenty of room to swing");
+	                    outputText(Appearance.multiCockDescript(player) + " plenty of room to swing");
                     else if (player.hasVagina())
                         outputText(player.vaginaDescript() + " a nice, wide berth");
                     else outputText("vacant groin plenty of room");
@@ -1252,9 +1252,9 @@ function appearanceScreen() {
         temp = 0;
         rando = rand(4);
         if (player.isTaur())
-            outputText("<br>Between hind legs of your bestial body you have grown " + player.multiCockDescript() + "!<br>");
+	        outputText("<br>Between hind legs of your bestial body you have grown " + Appearance.multiCockDescript(player) + "!<br>");
         else
-            outputText("<br>Where a penis would normally be located, you have instead grown " + player.multiCockDescript() + "!<br>");
+	        outputText("<br>Where a penis would normally be located, you have instead grown " + Appearance.multiCockDescript(player) + "!<br>");
         while(temp < player.cocks.length) {
 
             //middle cock description

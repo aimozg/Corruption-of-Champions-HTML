@@ -711,13 +711,13 @@ MinotaurScene.rapeMinotaurTentacles = function() {
     else {
         outputText("The minotaur drops his arm");
         if (monster.weapon == "axe") outputText(", letting his axe clatter to the floor");
-        outputText(". Transfixed by your " + player.multiCockDescript() + " in front of his face, he barely notices as you walk closer.  ");
+	    outputText(". Transfixed by your " + Appearance.multiCockDescript(player) + " in front of his face, he barely notices as you walk closer.  ");
     }
     outputText("You grab his arm firmly, making certain there will be no retaliation during the pleasure. By the look on his face, and the state of his torn, rolled up loincloth, though, you doubt that will be a problem.  ");
-    if (player.cor < 25) outputText("You cry, petting his hair, smoothing it across his horns, justifying to yourself that you are raping this beast because this is how this world works as you maneuver your " + player.multiCockDescript() + " towards his tailhole.  ");
-    if (player.cor >= 25 && player.cor < 50) outputText("You smoothly guide your " + player.multiCockDescript() + " toward his tailhole.  ");
-    if (player.cor >= 50 && player.cor < 80) outputText("You roughly grab him, slamming him close to your " + player.multiCockDescript() + " - just how this beast likes it.  ");
-    if (player.cor >= 80) outputText("You grin and roughly pull his horns towards your " + player.multiCockDescript() + ", ready to roughly ride this beast.  ");
+	if (player.cor < 25) outputText("You cry, petting his hair, smoothing it across his horns, justifying to yourself that you are raping this beast because this is how this world works as you maneuver your " + Appearance.multiCockDescript(player) + " towards his tailhole.  ");
+	if (player.cor >= 25 && player.cor < 50) outputText("You smoothly guide your " + Appearance.multiCockDescript(player) + " toward his tailhole.  ");
+	if (player.cor >= 50 && player.cor < 80) outputText("You roughly grab him, slamming him close to your " + Appearance.multiCockDescript(player) + " - just how this beast likes it.  ");
+	if (player.cor >= 80) outputText("You grin and roughly pull his horns towards your " + Appearance.multiCockDescript(player) + ", ready to roughly ride this beast.  ");
 //Mixed dix
     if (player.cockTotal() != player.countCocksOfType(CockTypesEnum.TENTACLE)) {
         mismatched = true;
@@ -799,7 +799,7 @@ MinotaurScene.rapeMinotaurTentacle = function() {
     }
     if (player.cocks.length > 2 && temp != 1) {
         temp = 1;
-        outputText("It's not enough! Your other dicks demand attention too! Fortunately, he has a large hole for you to abuse... you stuff as many of your " + player.multiCockDescript() + " as you can, the rest hanging underneath him, slapping against his sack. ");
+	    outputText("It's not enough! Your other dicks demand attention too! Fortunately, he has a large hole for you to abuse... you stuff as many of your " + Appearance.multiCockDescript(player) + " as you can, the rest hanging underneath him, slapping against his sack. ");
     }
     if (player.clitLength > 6) {
         outputText("Eager for more stimulation, you muse that your clit's big enough to fuck with, so why not!? You take your fingers, spit on them, and slide them into place, opening him up wider to accept your " + player.clitDescript() + ". It's so sensitive, sliding into that tight hole, and the sensations are driving you wild as you hump against him with your dick-like clit.  ");
@@ -808,7 +808,7 @@ MinotaurScene.rapeMinotaurTentacle = function() {
     if (player.vaginas.length > 0) {
         temp = 2;
         outputText("You're a woman, and it's about time you got some pussy action too!  You slide your " + player.vaginaDescript(0) + " onto " + player.cockDescript(x) + "-wrapped minotaur-prick, further driving the beast mad with lust.  He plaintatively groans, struggling to get his dick free or to cum, you aren't quite sure.  ");
-        outputText("Eventually, the moment is right.  You smile as you feel a boiling heat building in your groin, surging through your " + player.multiCockDescript() + " in a tide of white-hot pleasure.  You groan and shiver, lost in the pleasure until you begin to calm down.  ");
+	    outputText("Eventually, the moment is right.  You smile as you feel a boiling heat building in your groin, surging through your " + Appearance.multiCockDescript(player) + " in a tide of white-hot pleasure.  You groan and shiver, lost in the pleasure until you begin to calm down.  ");
         if (player.cumQ() < 50) outputText("Your cock made quite a mess of things, and when you pull him out, your " + player.vaginaDescript(0) + " makes a wet sucking sound.  ");
         if (player.cumQ() >= 50 && player.cumQ() < 400) outputText("Your cock made quite a mess of things inside your " + player.vaginaDescript(0) + ".  As you pull free, cum drips freely down your thighs.  The heavenly scent of minotaur spunk fills your nose, and begin scooping the mixed jizz up to sample.  ");
         if (player.cumQ() >= 400) outputText("Your cock made quite a mess of things inside your " + player.vaginaDescript(0) + ".  As you pull free, a river of cum pours from betwixt your thighs.  The heavenly scent of minotaur spunk fills your nose, and you begin scooping the mixed jizz up to sample.  ");
@@ -818,7 +818,7 @@ MinotaurScene.rapeMinotaurTentacle = function() {
         temp = 2;
         outputText("You're feeling a little kinky so you step in front of him, offering him a little bit more, pushing yourself down onto his meaty dick.  You slowly push down, enjoying every inch as it travels down your " + player.assholeDescript() + ", the pre leaking from it acting as a lubricant as his tentacle-wrapped cock works its way inside you.  ");
         //Ass cum
-        outputText("Eventually, the moment is right.  You smile as you feel a boiling heat building in your groin, surging through your " + player.multiCockDescript() + " in a tide of white-hot pleasure.  You groan and shiver, lost in the pleasure until you begin to calm down.  ");
+		outputText("Eventually, the moment is right.  You smile as you feel a boiling heat building in your groin, surging through your " + Appearance.multiCockDescript(player) + " in a tide of white-hot pleasure.  You groan and shiver, lost in the pleasure until you begin to calm down.  ");
         if (player.cumQ() < 50) outputText("Your cock in his ass made a mess of things, and when you pull out, it makes a wet sucking sound, trying to keep you inside.  ");
         if (player.cumQ() >= 50 && player.cumQ() < 400) outputText("Your cock in his ass spills forth, creating a puddle which will mat his fur later.  ");
         if (player.cumQ() >= 400) outputText("Your cock is blasted free from his ass by the force of your ejaculation, splattering rivers of spoo over the ground.  A river of the stickiness pours from his violated asshole, sticking in the fur of his thighs.  ");
