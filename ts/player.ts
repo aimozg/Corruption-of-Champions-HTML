@@ -1422,6 +1422,11 @@ class Player extends Creature {
 	minoCumAddiction(delta:number):void {
 		// TODO
 	}
+
+	minotaurAddicted(): boolean {
+		// TODO
+		return false;
+	}
 }
 
 

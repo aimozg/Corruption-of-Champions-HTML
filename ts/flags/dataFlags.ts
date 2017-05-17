@@ -5,68 +5,66 @@
 //------------
 // META FLAGS
 //------------
-const SFW_MODE                          = "SFW_Mode"; // Is the game in SFW mode?
+const SFW_MODE = "SFW_Mode"; // Is the game in SFW mode?
 
 
 //------------
 // STATS
 //------------
-const TIMES_TRANSFORMED                 = "Times_Transformed";
-const TIMES_ORGASMED                    = "Times_Orgasmed";
-const PC_FETISH                         = "PC_Fetish"; // Used in lust attack in combatTeases file
-const IMPS_KILLED                       = "Imps_Killed"; // How many Imps has the player killed?
-const COMBAT_BONUS_XP_VALUE             = "Combat_Bonus_XP_Value";
-const SLIME_CRAVING                     = "Slime_Craving"; // Replaces Slime Craving status effect.
-const GOOGIRL_BIRTHS                    = "GooGirl_Births";
-const HORSE_WARNING                     = "Horse_Warning"; // In Danger of Drinking Too Much Equinum
+const TIMES_TRANSFORMED     = "Times_Transformed";
+const TIMES_ORGASMED        = "Times_Orgasmed";
+const PC_FETISH             = "PC_Fetish"; // Used in lust attack in combatTeases file
+const IMPS_KILLED           = "Imps_Killed"; // How many Imps has the player killed?
+const COMBAT_BONUS_XP_VALUE = "Combat_Bonus_XP_Value";
+const SLIME_CRAVING         = "Slime_Craving"; // Replaces Slime Craving status effect.
+const GOOGIRL_BIRTHS        = "GooGirl_Births";
+const HORSE_WARNING         = "Horse_Warning"; // In Danger of Drinking Too Much Equinum
 
 
 //------------
 // MISC
 //------------
-const HAIR_GROWTH_STOPPED_BECAUSE_LIZARD= "Hair_Growth_Stopped";
-const EVER_INFESTED                     = "Ever_Infested"; // Has the PC ever been infested with worms?
-const MEANINGLESS_CORRUPTION            = "Meaningless_Corruption"; //Unknown, used in Goblin victory code.
-const INFESTED                          = "Infested"; // Currently infested with worms.
-const HYPER_HAPPY                       = "Hyper_Happy";
-const PregnancyType
-.
-CORRUPTION = "PregnancyType.Corruption"; // Used in Phouka pregnancy
+const HAIR_GROWTH_STOPPED_BECAUSE_LIZARD = "Hair_Growth_Stopped";
+const EVER_INFESTED                      = "Ever_Infested"; // Has the PC ever been infested with worms?
+const MEANINGLESS_CORRUPTION             = "Meaningless_Corruption"; //Unknown, used in Goblin victory code.
+const INFESTED                           = "Infested"; // Currently infested with worms.
+const HYPER_HAPPY                        = "Hyper_Happy";
+const PREGNANCY_CORRUPTION               = "PregnancyType.Corruption"; // Used in Phouka pregnancy
 
 //------------
 // CODEX
 //------------
 //Codex Entry, will be used at a point.
-const CODEX_ENTRY_ANEMONES              = "Codex_Entry_Anemones";
-const CODEX_ENTRY_ARACHNES              = "Codex_Entry_Arachnes";
-const CODEX_ENTRY_BEHEMOTH              = "Codex_Entry_Behemoth";
-const CODEX_ENTRY_ECHIDNAS              = "Codex_Entry_Echidnas";
-const CODEX_ENTRY_FETISHFOLLOWERS       = "Codex_Entry_FetishFollowers";
-const CODEX_ENTRY_GIANTBEES             = "Codex_Entry_GiantBees";
-const CODEX_ENTRY_GOBLINS               = "Codex_Entry_Goblins";
-const CODEX_ENTRY_GOOGIRLS              = "Codex_Entry_GooGirls";
-const CODEX_ENTRY_HARPIES               = "Codex_Entry_Harpies";
-const CODEX_ENTRY_HELLHOUNDS            = "Codex_Entry_Hellhounds";
-const CODEX_ENTRY_IMPS                  = "Codex_Entry_Imps";
-const CODEX_ENTRY_LABOVINES             = "Codex_Entry_Labovines";
-const CODEX_ENTRY_LIZANS                = "Codex_Entry_Lizans";
-const CODEX_ENTRY_MAGIC                 = "Codex_Entry_Magic";
-const CODEX_ENTRY_MINOTAURS             = "Codex_Entry_Minotaurs";
-const CODEX_ENTRY_NAGAS                 = "Codex_Entry_Nagas";
-const CODEX_ENTRY_ORCS                  = "Codex_Entry_Orcs";
-const CODEX_ENTRY_RHINOCEROS            = "Codex_Entry_Rhinoceros";
-const CODEX_ENTRY_SALAMANDERS           = "Codex_Entry_Salamanders";
-const CODEX_ENTRY_SANDWITCHES           = "Codex_Entry_SandWitches";
-const CODEX_ENTRY_SATYRS                = "Codex_Entry_Satyrs";
-const CODEX_ENTRY_SHARKGIRLS            = "Codex_Entry_SharkGirls";
-const CODEX_ENTRY_SUCCUBUS              = "Codex_Entry_Succubus";
-const CODEX_ENTRY_ZEBRAS                = "Codex_Entry_Zebras";
+const CODEX_ENTRY_ANEMONES        = "Codex_Entry_Anemones";
+const CODEX_ENTRY_ARACHNES        = "Codex_Entry_Arachnes";
+const CODEX_ENTRY_BEHEMOTH        = "Codex_Entry_Behemoth";
+const CODEX_ENTRY_ECHIDNAS        = "Codex_Entry_Echidnas";
+const CODEX_ENTRY_FETISHFOLLOWERS = "Codex_Entry_FetishFollowers";
+const CODEX_ENTRY_GIANTBEES       = "Codex_Entry_GiantBees";
+const CODEX_ENTRY_GOBLINS         = "Codex_Entry_Goblins";
+const CODEX_ENTRY_GOOGIRLS        = "Codex_Entry_GooGirls";
+const CODEX_ENTRY_HARPIES         = "Codex_Entry_Harpies";
+const CODEX_ENTRY_HELLHOUNDS      = "Codex_Entry_Hellhounds";
+const CODEX_ENTRY_IMPS            = "Codex_Entry_Imps";
+const CODEX_ENTRY_LABOVINES       = "Codex_Entry_Labovines";
+const CODEX_ENTRY_LIZANS          = "Codex_Entry_Lizans";
+const CODEX_ENTRY_MAGIC           = "Codex_Entry_Magic";
+const CODEX_ENTRY_MINOTAURS       = "Codex_Entry_Minotaurs";
+const CODEX_ENTRY_NAGAS           = "Codex_Entry_Nagas";
+const CODEX_ENTRY_ORCS            = "Codex_Entry_Orcs";
+const CODEX_ENTRY_RHINOCEROS      = "Codex_Entry_Rhinoceros";
+const CODEX_ENTRY_SALAMANDERS     = "Codex_Entry_Salamanders";
+const CODEX_ENTRY_SANDWITCHES     = "Codex_Entry_SandWitches";
+const CODEX_ENTRY_SATYRS          = "Codex_Entry_Satyrs";
+const CODEX_ENTRY_SHARKGIRLS      = "Codex_Entry_SharkGirls";
+const CODEX_ENTRY_SUCCUBUS        = "Codex_Entry_Succubus";
+const CODEX_ENTRY_ZEBRAS          = "Codex_Entry_Zebras";
 
 //------------
 // CAMP FLAGS
 //------------
 
-const CAMP_WALL_PROGRESS                = "Camp_Wall_Progress";
+const CAMP_WALL_PROGRESS = "Camp_Wall_Progress";
 
 //------------
 // SPELLS
@@ -79,7 +77,7 @@ const CAMP_WALL_PROGRESS                = "Camp_Wall_Progress";
 //const KNOWS_BLIND                       = "Knows_Blind";
 //const KNOWS_WHITEFIRE                   = "Knows_Whitefire";
 
-const SPELLS_CAST                       = "Spells_Cast";
+const SPELLS_CAST = "Spells_Cast";
 
 //------------
 // FOLLOWERS
@@ -89,7 +87,6 @@ const RATHAZUL_MET                      = "Rathazul_Met";
 const RATHAZUL_CAMP                     = "Rathazul_Camp";
 const RATHAZUL_PURCHASE_COUNTER         = "Rathazul_Purchase_Counter";
 const RATHAZUL_ARMOUR_COUNTER           = "Rathazul_Armour_Counter";
-
 //Jojo
 const JOJO_MET                          = "Jojo_Met";
 const JOJO_CAMP                         = "Jojo_Camp";
@@ -100,7 +97,6 @@ const JOJO_TRAINING_COUNTER             = "Jojo_Training_Counter";
 const JOJO_TRAINING_UNLOCKED            = "Jojo_Training_Unlocked";
 const JOJO_NIGHT_WATCH                  = "Jojo_Night_Watch";
 const JOJO_BIMBO_STATE                  = "Jojo_Bimbo_State";
-
 //Marble
 const MARBLE_MET                        = "Marble_Met";
 const MARBLE_CAMP                       = "Marble_Camp";
@@ -110,11 +106,10 @@ const MARBLE_WARNING                    = "Marble_Warning";
 const NO_MORE_MARBLE                    = "No_More_Marble";
 const MARBLE_RAPE_ATTEMPTED             = "Marble_Rape_Attempted";
 const MURBLE_FARM_TALK_LEVELS           = "Marble_Farm_Talk_Levels";
-
 //Amily
-const AMILY_VILLAGE_ACCESSIBLE			= "Amily_Village_Accessible"; // Can you access the Town Ruins?
-const AMILY_VILLAGE_EXPLORED             = "Amily_Village_Explored";  // How many times has the TownRuins been explored? Used in achievement.
-const AMILY_MET                         = "Amily_Met" // Has Amily been met yet?
+const AMILY_VILLAGE_ACCESSIBLE          = "Amily_Village_Accessible"; // Can you access the Town Ruins?
+const AMILY_VILLAGE_EXPLORED            = "Amily_Village_Explored";  // How many times has the TownRuins been explored? Used in achievement.
+const AMILY_MET                         = "Amily_Met"; // Has Amily been met yet?
 const AMILY_PC_GENDER                   = "Amily_PC_Gender"; // Used for gender checks with Amily to switch between scenes.
 const AMILY_MET_AS                      = "Amily_Met_As"; // Marks the player gender that met with Amily.
 const AMILY_OFFER_ACCEPTED              = "Amily_Offer_Accepted"; // You've taken up Amily's offer to breed her.
@@ -140,7 +135,7 @@ const AMILY_HERM_TIMES_FUCKED_BY_FEMPC  = "Amily_Herm_Times_Fucked_By_FemPC";
 const AMILY_HERM_QUEST                  = "Amily_Herm_Quest";
 const PC_TIMES_BIRTHED_AMILYKIDS        = "PC_Times_Birthed_Amilykids";
 const AMILY_VISITING_URTA               = "Amily_Visiting_Urta";
-const CREATE_POTENT_MIXTURE        = "Amily_Drank_Potent_Mixture";
+const CREATE_POTENT_MIXTURE             = "Amily_Drank_Potent_Mixture";
 const AMILY_BIRTH_TOTAL                 = "Amily_Birth_Total";
 const AMILY_CORRUPTION_PATH             = "Amily_Corruption_Path";
 const AMILY_TREE_FLIPOUT                = "Amily_Tree_Flipout";
@@ -159,13 +154,12 @@ const AMILY_CLOTHING                    = "Amily_Clothing";
 //=================
 
 // Pregnancy event arrays
-const INCUBATION_MOUSE_EVENT            = [336, 280, 216, 180, 120, 72, 48, 32]; // Event flags for Mouse Pregnancy
-const INCUBATION_AMILY_EVENT            = [150, 120, 100, 96, 90, 72, 48]; // Special array for Amily pregnancy in Town Ruins.
-const INCUBATION_SAND_WITCH_EVENT       = [142, 96];
-const INCUBATION_TAMANI_EVENT           = [219, 96, 48];
-
+const INCUBATION_MOUSE_EVENT      = [336, 280, 216, 180, 120, 72, 48, 32]; // Event flags for Mouse Pregnancy
+const INCUBATION_AMILY_EVENT      = [150, 120, 100, 96, 90, 72, 48]; // Special array for Amily pregnancy in Town Ruins.
+const INCUBATION_SAND_WITCH_EVENT = [142, 96];
+const INCUBATION_TAMANI_EVENT     = [219, 96, 48];
 // Misc Pregnancy flags
-const PC_PENDING_PREGGERS               = "PC_Pending_Preggers"; // Unsure what this is for. Used in Amily Herm Quest.
+const PC_PENDING_PREGGERS         = "PC_Pending_Preggers"; // Unsure what this is for. Used in Amily Herm Quest.
 
 //------------
 // ENCOUNTERS
@@ -173,19 +167,15 @@ const PC_PENDING_PREGGERS               = "PC_Pending_Preggers"; // Unsure what 
 //--[[ NON-COMBAT ]]--
 //Callu
 const MET_OTTERGIRL                     = "Met_OtterGirl";
-
 //Giacomo
 const GIACOMO_MET                       = "Giacomo_Met";
 const GIACOMO_WORMS_OFFERED             = "Giacomo_Worms_Offered";
-
 //Lumi
 const LUMI_MET                          = "Lumi_Met";
-
 //Marcus & Lucia
 const WANDERER_MET                      = "Wanderer_Met";
 const WANDERER_DEMON                    = "Wanderer_Demon";
 const WANDERER_EPILOGUE                 = "Wanderer_Epilogue";
-
 //Tamani and Tamani's Daughters
 const TAMANI_MET                        = "Tamani_Met";
 const TAMANI_TIME_OUT                   = "Tamani_Time_Out";
@@ -197,14 +187,11 @@ const TAMANI_DEFEAT_COUNTER             = "Tamani_Defeat_Counter";
 const TAMANI_TIMES_IMPREGNATED          = "Tamani_Times_Impregnated";
 const TAMANI_PREGNANCY_COUNT            = "Tamani_Pregnancy_Count"; //Current litter
 const TIMES_OVIPOSITED_TAMANI           = "Times_Oviposited_Tamani";
-
-
 //Whitney & Farm
 const FARM_DISABLED                     = "Farm_Disabled";
 const FARM_CORRUPTION_STARTED           = "Farm_Corruption_Started";
 const MET_WHITNEY                       = "Met_Whitney";
 const WHITNEY_FLIPPED_OUT_OVER_KELLY    = "Whitney_Flipped_Out_Over_Kelly";
-
 const KELT_MET                          = "Kelt_Met";
 const KELT_SUBMISSIVENESS               = "Kelt_Submissiveness";
 const NEVER_RESIST_KELT                 = "Never_Resist_Kelt";
@@ -226,83 +213,73 @@ const KELLY_DISOBEYING_COUNTER          = "Kelly_Disobeying_Counter";
 const KELLY_VAGINALLY_FUCKED_COUNT      = "Kelly_Vaginally_Fucked_Count";
 
 //--[[ COMBAT ]]--
+
 //Minotaur
-const MINOTAUR_TF2                      = "Minotaur_TF2"; //One-time silly mode scene.
-const MINOTAUR_AND_COWGIRL              = "Minotaur_And_CowGirl";
-
-const HAS_SEEN_MINO_AND_COWGIRL         = "Has_Seen_Mino_And_Cowgirl";
-const MINOTAUR_CUM_ADDICT               = "Minotaur_Cum_Addict" // Replacment for status effect. Marks if you are an addict or not.
-const MINOTAUR_CUM_ADDICTION_STATE      = "Minotaur_Cum_Addiction_State"; // What stage of addiction are you at?
-const MINOTAUR_CUM_ADDICTION_TRACKER       = "Minotaur_Cum_Addiction_Tracker"; //How much cum? (0-120)
-const TIME_SINCE_LAST_CONSUMED_MINOTAUR_CUM = "Time_Since_Last_Consumed_Minotaur_Cum" // Timer for cum problems
-const EVER_DRANK_MINOCUM                    = "Ever_Drank_Minocum" // Used for playerinfo menu
-const MINOTAUR_CUM_REALLY_ADDICTED_STATE    = "Minotaur_Cum_Really_Addicted_State"
-
+const MINOTAUR_TF2                          = "Minotaur_TF2"; //One-time silly mode scene.
+const MINOTAUR_AND_COWGIRL                  = "Minotaur_And_CowGirl";
+const HAS_SEEN_MINO_AND_COWGIRL             = "Has_Seen_Mino_And_Cowgirl";
+const MINOTAUR_CUM_ADDICT                   = "Minotaur_Cum_Addict"; // Replacment for status effect. Marks if you are an addict or not.
+const MINOTAUR_CUM_ADDICTION_STATE          = "Minotaur_Cum_Addiction_State"; // What stage of addiction are you at?
+const MINOTAUR_CUM_ADDICTION_TRACKER        = "Minotaur_Cum_Addiction_Tracker"; //How much cum? (0-120)
+const TIME_SINCE_LAST_CONSUMED_MINOTAUR_CUM = "Time_Since_Last_Consumed_Minotaur_Cum"; // Timer for cum problems
+const EVER_DRANK_MINOCUM                    = "Ever_Drank_Minocum"; // Used for playerinfo menu
+const MINOTAUR_CUM_REALLY_ADDICTED_STATE    = "Minotaur_Cum_Really_Addicted_State";
 //Naga
-const NAGA_LAST_ENCOUNTERED_AS_NAGA     = "Naga_Last_Encountered_As_Naga"; //0 indicates player isn't naga, 1 indicates player is naga, 2 indicates player is naga but hostile.
-const NAGA_FUCKED_AS_NAGA               = "Naga_Fucked_As_Naga";
-
+const NAGA_LAST_ENCOUNTERED_AS_NAGA         = "Naga_Last_Encountered_As_Naga"; //0 indicates player isn't naga, 1 indicates player is naga, 2 indicates player is naga but hostile.
+const NAGA_FUCKED_AS_NAGA                   = "Naga_Fucked_As_Naga";
 //Sand Trap
-const SANDTRAP_LOSS_REPEATS             = "Sandtrap_Loss_Repeats"; //Used for Sandtrap bad end tracking
-const TIMES_ENCOUNTERED_SAND_TRAPS      = "Times_Encountered_Sand_Traps";
-const TRAP_LEVEL                        = "Trap_Level"; // What level of the sand trap are you on?
-const CLIMBED_TRAP_THIS_ROUND           = "Climbed_Trap_This_Round"; // Did you try climbing this round?
-const FERTILE_SANDTRAP                  = "Fertile_Sandtrap";
-
+const SANDTRAP_LOSS_REPEATS                 = "Sandtrap_Loss_Repeats"; //Used for Sandtrap bad end tracking
+const TIMES_ENCOUNTERED_SAND_TRAPS          = "Times_Encountered_Sand_Traps";
+const TRAP_LEVEL                            = "Trap_Level"; // What level of the sand trap are you on?
+const CLIMBED_TRAP_THIS_ROUND               = "Climbed_Trap_This_Round"; // Did you try climbing this round?
+const FERTILE_SANDTRAP                      = "Fertile_Sandtrap";
 //Sand Witch
-const SAND_WITCH_RAPED                  = "Sand_Witch_Raped";
-
+const SAND_WITCH_RAPED                      = "Sand_Witch_Raped";
 //Bee Girl
-const BEE_GIRL_COMBAT_WINS_WITHOUT_RAPE = "Bee_Girl_Combat_Wins_Without_Rape";
-const BEE_GIRL_COMBAT_WINS_WITH_RAPE    = "Bee_Girl_Combat_Wins_With_Rape";
-const BEE_GIRL_COMBAT_LOSSES            = "Bee_Girl_Combat_Losses";
-const BEE_BAD_END_WARNING               = "Bee_Bad_End_Warning";
-const FORCE_BEE_TO_PRODUCE_HONEY        = "Force_Bee_To_Produce_Honey";
-
+const BEE_GIRL_COMBAT_WINS_WITHOUT_RAPE     = "Bee_Girl_Combat_Wins_Without_Rape";
+const BEE_GIRL_COMBAT_WINS_WITH_RAPE        = "Bee_Girl_Combat_Wins_With_Rape";
+const BEE_GIRL_COMBAT_LOSSES                = "Bee_Girl_Combat_Losses";
+const BEE_BAD_END_WARNING                   = "Bee_Bad_End_Warning";
+const FORCE_BEE_TO_PRODUCE_HONEY            = "Force_Bee_To_Produce_Honey";
 //Goo Girl
-const GOOGIRL_CONSECUTIVE_LOSSES        = "GooGirl_Consecutive_Losses";
-const TIMES_FUCKED_NORMAL_GOOS          = "Times_Fucked_Normal_Goos";
-const GOO_TFED_MEAN                     = "Goo_TFed_Mean";
-const GOO_TFED_NICE                     = "Goo_TFed_Nice";
-const PC_KNOWS_ABOUT_BLACK_EGGS         = "PC_Knows_About_Black_Eggs"; //May need to move this one, and possibly integrate with Amily?
-const TIMES_THOUGHT_ABOUT_GOO_RECRUITMENT = "Times_Thought_About_Goo_Recruitment";
-
+const GOOGIRL_CONSECUTIVE_LOSSES            = "GooGirl_Consecutive_Losses";
+const TIMES_FUCKED_NORMAL_GOOS              = "Times_Fucked_Normal_Goos";
+const GOO_TFED_MEAN                         = "Goo_TFed_Mean";
+const GOO_TFED_NICE                         = "Goo_TFed_Nice";
+const PC_KNOWS_ABOUT_BLACK_EGGS             = "PC_Knows_About_Black_Eggs"; //May need to move this one, and possibly integrate with Amily?
+const TIMES_THOUGHT_ABOUT_GOO_RECRUITMENT   = "Times_Thought_About_Goo_Recruitment";
 //Green Goo
-const TIMES_MET_OOZE                    = "Times_Met_Ooze";
-
+const TIMES_MET_OOZE                        = "Times_Met_Ooze";
 //Oasis Demons
-const OASIS_DEMONS_ACCEPT               = "Oasis_Demons_Accept";
-
+const OASIS_DEMONS_ACCEPT                   = "Oasis_Demons_Accept";
 //Tentacle Beast
-const TENTACLE_COOL_DOWN                = "Tentacle_Cool_Down";
-const TENTACLE_BIND                     = "Tentacle_Bind";
-const TENTACLE_BAD_END                  = "Tentacle_Bad_End";
-const TENTACLE_GENDERLESS_CENTAUR       = "Tentacle_Genderless_Centaur" //Unknown flag 00247;
-
+const TENTACLE_COOL_DOWN                    = "Tentacle_Cool_Down";
+const TENTACLE_BIND                         = "Tentacle_Bind";
+const TENTACLE_BAD_END                      = "Tentacle_Bad_End";
+const TENTACLE_GENDERLESS_CENTAUR           = "Tentacle_Genderless_Centaur"; //Unknown flag 00247;
 //Worms
-
-const WORM_INFEST_ATTEMPTED             = "Worm_Infest_Attempted";
-const MET_WORMS                         = "Met_Worms";
-const WORMS_FETISH                      = "Worms_Fetish"; //0 = Not Encountered, 1 = Partially on, 2 = Fully on, 3 = Off
+const WORM_INFEST_ATTEMPTED = "Worm_Infest_Attempted";
+const MET_WORMS             = "Met_Worms";
+const WORMS_FETISH          = "Worms_Fetish"; //0 = Not Encountered, 1 = Partially on, 2 = Fully on, 3 = Off
 
 //------------
 // KEY ITEMS
 //------------
 // Racks
 
-const HAS_KEY_ITEM                          = "Has_Key_Item"; // Does the player have any key items?
-const HAS_ARMOR_RACK                        = "Has_Armor_Rack"; // Does the player have the armor rack?
-const HAS_WEAPON_RACK                       = "Has_Weapon_Rack"; // Does the player have the weapon rack?
-const HAS_EQUIPMENT_RACK                    = "Has_Equipment_Rack"; // Does the player have the equipment rack?
+const HAS_KEY_ITEM       = "Has_Key_Item"; // Does the player have any key items?
+const HAS_ARMOR_RACK     = "Has_Armor_Rack"; // Does the player have the armor rack?
+const HAS_WEAPON_RACK    = "Has_Weapon_Rack"; // Does the player have the weapon rack?
+const HAS_EQUIPMENT_RACK = "Has_Equipment_Rack"; // Does the player have the equipment rack?
 
 //---------
 // PLOT VARIABLES
 //---------
 
-const FACTORY_SHUTDOWN                      = "Factory_Shutdown"; // Is the factory on, shut down, or destroyed?
+const FACTORY_SHUTDOWN = "Factory_Shutdown"; // Is the factory on, shut down, or destroyed?
 
 //---------
 // PLAYER TRANSFORMATIONS
 //---------
 
-const HAS_BLACK_NIPPLES                     = "Has_Black_Nipples";
+const HAS_BLACK_NIPPLES = "Has_Black_Nipples";
