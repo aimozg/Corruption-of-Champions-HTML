@@ -59,11 +59,11 @@ namespace Camp {
 		//player.HP = 100;
 		//outputText(player.gender + "<br>");
 		//outputText("AmilyMet = " + gameFlags[AMILY_MET] + "<br>");
-		//if (!player.isPregnant()) { player.knockUpForce(PREGNANCY_AMILY, 100); }
+		//if (!player.isPregnant()) { player.knockUpForce(PregnancyType.AMILY, 100); }
 		//outputText("Player pregnancy counter is " + player.pregnancyIncubation + "<br>");
 		//outputText("Player knockedup by " + player.pregnancyType + "<br>");
 
-		//if (!amily.isPregnant()) amily.knockUpForce(PREGNANCY_PLAYER, INCUBATION_MOUSE);
+		//if (!amily.isPregnant()) amily.knockUpForce(PregnancyType.PLAYER, INCUBATION_MOUSE);
 		//outputText("Amily pregnancy counter is " + amily.pregnancyIncubation + "<br>");
 		//outputText("Player knockedup by " + amily.pregnancyType + "<br>");
 		//outputText("Player pregnancy event counter is " + amily.pregnancyEventNum + "<br><br>");

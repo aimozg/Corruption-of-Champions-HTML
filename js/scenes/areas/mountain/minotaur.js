@@ -377,7 +377,7 @@ MinotaurScene.joinBeingAMinoCumSlut = function() {
     }
     //Chance to impregnate PC, get mino-fix, and maybe relief from feeder perk.
     player.minoCumAddiction(10);
-    player.knockUp(PREGNANCY_MINOTAUR, INCUBATION_MINOTAUR);
+	player.knockUp(PregnancyType.MINOTAUR, INCUBATION_MINOTAUR);
     if (player.hasStatusEffect(StatusEffects.Feeder)) {
         //You've now been milked, reset the timer for that
         player.addStatusValue(StatusEffects.Feeder, 1, 1);
@@ -659,7 +659,7 @@ MinotaurScene.girlRapeAMinotaur = function() {
 
     player.dynStats(["spe", -.5], ["inte", -.5], ["sens", 1.5], ["cor", 1]);
     //Preggers chance!
-    player.knockUp(PREGNANCY_MINOTAUR, INCUBATION_MINOTAUR); //TODO Add in player pregnancy progression for mino pregnancy.
+	player.knockUp(PregnancyType.MINOTAUR, INCUBATION_MINOTAUR); //TODO Add in player pregnancy progression for mino pregnancy.
     cleanupAfterCombat();
     player.orgasm();
 };
@@ -681,7 +681,7 @@ MinotaurScene.minotaurGetsRapedByHerms = function() {
 
     player.dynStats(["spe", -.5], ["inte", -.5], ["sens", 1.5], ["cor", 1]);
     //Preggers chance!
-    player.knockUp(PREGNANCY_MINOTAUR, INCUBATION_MINOTAUR);
+	player.knockUp(PregnancyType.MINOTAUR, INCUBATION_MINOTAUR);
     cleanupAfterCombat();
     player.orgasm();
 };
@@ -1268,7 +1268,7 @@ MinotaurScene.getRapedByMinotaur = function(autoRape) {
             player.dynStats(["tou", -.5], ["sens", 1], ["lust", -5], ["cor", 1]);
         }
         //Preggers chance!
-        player.knockUp(PREGNANCY_MINOTAUR, INCUBATION_MINOTAUR);
+	    player.knockUp(PregnancyType.MINOTAUR, INCUBATION_MINOTAUR);
     }
     if (player.cockTotal() > 0 && (player.sens + rand(40) > 50)) {
         outputText("You orgasm, ");

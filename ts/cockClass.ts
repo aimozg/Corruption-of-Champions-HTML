@@ -3,6 +3,7 @@ class Cock {
 	public knotMultiplier = 1;
 	//Other
 	public isPierced      = false;
+	public pShortDesc     = "";
 	public sock           = "";
 
 	public constructor(public cockLength    = 5.5,

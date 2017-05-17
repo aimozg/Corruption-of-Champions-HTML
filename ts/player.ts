@@ -1424,8 +1424,4 @@ class Player extends Creature {
 	}
 }
 
-let tempStr = 0;
-let tempTou = 0;
-let tempSpe = 0;
-let tempInt = 0;
 

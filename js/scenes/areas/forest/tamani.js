@@ -403,7 +403,7 @@ TamaniScene.tamaniBeaten = function() {
     outputText("\n\nAt last, the bloated bitch slides into the gooey green puddle with a splash, freeing your ovipositor to retract.  She immediately begins snoring, clearly as satisfied as you.  What a strange creature.");
     gameFlags[TIMES_OVIPOSITED_TAMANI]++;
     //Don't encounter Tamani for 3 days if fertilized
-    if (player.fertilizedEggs() == 0) tamanipreg.knockUpForce(PREGNANCY_DRIDER_EGGS, 72);
+	if (player.fertilizedEggs() == 0) tamanipreg.knockUpForce(PregnancyType.DRIDER_EGGS, 72);
     player.dumpEggs();
     cleanupAfterCombat();
     player.orgasm();
@@ -1059,7 +1059,7 @@ TamaniScene.tamaniStartFight = function() {
 
 TamaniScene.tamaniKnockUp = function() {
     if (tamanipreg.isPregnant()) return; //Already preggers
-    tamanipreg.knockUpForce(PREGNANCY_PLAYER, 216, INCUBATION_TAMANI_EVENT); //Nine day long pregnancy
+	tamanipreg.knockUpForce(PregnancyType.PLAYER, 216, INCUBATION_TAMANI_EVENT); //Nine day long pregnancy
     tamanipreg.eventFill(INCUBATION_TAMANI_EVENT); //Converts hours into minutes for finer event tracking.
     //Determine how many kids...
     gameFlags[TAMANI_PREGNANCY_COUNT] = 2;
@@ -1173,7 +1173,7 @@ TamaniScene.tamaniBirthScene = function() {
 };
 
 TamaniScene.tamaniGivesBirth = function() {
-    if (tamanipreg.pregnancyType == PREGNANCY_PLAYER) { //Don't want drider eggs to add to her daughers
+	if (tamanipreg.pregnancyType == PregnancyType.PLAYER) { //Don't want drider eggs to add to her daughers
         gameFlags[TAMANI_NUMBER_OF_DAUGHTERS] += gameFlags[TAMANI_PREGNANCY_COUNT];
         gameFlags[TAMANI_PREGNANCY_COUNT] = 0;
         gameFlags[TAMANI_TIMES_IMPREGNATED]++;

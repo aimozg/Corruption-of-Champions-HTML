@@ -130,3 +130,7 @@ function createMapFromPairs<V>(src:[string|number,V][]): {[index:string]:V} {
 function clamp(min:number,x:number,max:number):number {
 	return x < min ? min : x > max ? max : x;
 }
+
+function InCollection<T>(needle: T, ...haystack: T[]): boolean {
+	return haystack.indexOf(needle) >= 0;
+}

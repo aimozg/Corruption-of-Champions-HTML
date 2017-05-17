@@ -1016,7 +1016,7 @@ JojoScene.getVagFuckedByMouse = function() {
     player.dynStats(["sens", 1], ["cor", -1]);
     flags[JOJO_VAGINAL_CATCH_COUNTER]++;
     flags[JOJO_SEX_COUNTER]++;
-    //player.knockUp(PregnancyStore.PREGNANCY_JOJO, PregnancyStore.INCUBATION_MOUSE + 82, (jojoCumQ() < 2000 ? 100 - (jojoCumQ() / 50) : 60));
+	//player.knockUp(PregnancyStore.PregnancyType.JOJO, PregnancyStore.INCUBATION_MOUSE + 82, (jojoCumQ() < 2000 ? 100 - (jojoCumQ() / 50) : 60));
     player.orgasm();
     player.slimeFeed();
     doNext(Camp.returnToCampUseOneHour);
@@ -1096,7 +1096,7 @@ JojoScene.loseToJojo = function() {
                 outputText("You black out as Jojo cums AGAIN, forcing a river of spunk from your already over-filled uterus.");
                 player.cuntChange(monster.cocks[0].cockThickness, true);
                 //Preggers chance!
-                //player.knockUp(PregnancyStore.PREGNANCY_MOUSE, PregnancyStore.INCUBATION_MOUSE + 82, 101); //Jojo's kids take longer for some reason
+	            //player.knockUp(PregnancyStore.PregnancyType.MOUSE, PregnancyStore.INCUBATION_MOUSE + 82, 101); //Jojo's kids take longer for some reason
             }
             if (player.gender == 0) {
                 outputText("Too aroused to think, you just bend over, displaying your bum and wiggling enticingly. The mouse doesn't hesitate, and he thrusts his " + monster.cockDescriptShort(0) + " with painful force. You stagger from the size and struggle to stay conscious as he fucks you like a mad beast, hammering your ass with incredible force.");
@@ -1196,7 +1196,7 @@ JojoScene.jojosFirstRape = function() {
             outputText(" Gouts of milk erupt from your nipples, spraying continually as you cum. The poor mouse is soaked from head to toe, your cream utterly drenching the monk.");
         outputText("<br><br>You stand on wobbly legs, happy to have so thoroughly fucked such a chaste and good-natured creature. You vow to do it again soon, realizing you feel more clearheaded, if a bit more evil.");
         //Preggers chance!
-        //player.knockUp(PregnancyStore.PREGNANCY_JOJO, PregnancyStore.INCUBATION_MOUSE + 82); //Jojo's kids take longer for some reason
+	    //player.knockUp(PregnancyStore.PregnancyType.JOJO, PregnancyStore.INCUBATION_MOUSE + 82); //Jojo's kids take longer for some reason
     }
     else if (player.gender == 3) { //Hermaphrodites
         outputText("You push him hard, following through to pin his small frame. He struggles but you twist his arm expertly and hold him down with your larger bodyweight. He squirms as you tear off the bottom of his outfit, protesting mightily as you force him into the dirt and expose his toned bottom.<br><br>");
@@ -1248,7 +1248,7 @@ JojoScene.jojosSecondRape = function() {
         if (player.cockTotal() == 3) outputText("A multitude of thick cum-streams splatter over Jojo from head to waist as your " + player.multiCockDescriptLight() + " hose him down. ");
         outputText("<br><br>Satisfied at last, you pull yourself away from the dazed mouse. His shaft is still swollen with need, his hands irresistibly stroking it, eyes vacant. You're going to corrupt him so much more next time.<br><br>");
         //Preggers chance!
-        //player.knockUp(PregnancyStore.PREGNANCY_JOJO, PregnancyStore.INCUBATION_MOUSE + 82); //Jojo's kids take longer for some reason
+	    //player.knockUp(PregnancyStore.PregnancyType.JOJO, PregnancyStore.INCUBATION_MOUSE + 82); //Jojo's kids take longer for some reason
     }
     player.orgasm();
     player.dynStats(["lib", -10], ["cor", 4]);
@@ -1324,7 +1324,7 @@ JojoScene.jojosThirdRape = function() {
             player.dynStats(["lib", 2], ["cor", 1]);
         }
         //Preggers chance!
-        //player.knockUp(PregnancyStore.PREGNANCY_JOJO, PregnancyStore.INCUBATION_MOUSE + 82); //Jojo's kids take longer for some reason
+	    //player.knockUp(PregnancyStore.PregnancyType.JOJO, PregnancyStore.INCUBATION_MOUSE + 82); //Jojo's kids take longer for some reason
     }
     if (player.gender == 3) { //Hermaphrodites
         if (player.isBiped()) outputText("You spread your legs and crook your finger");
@@ -1365,7 +1365,7 @@ JojoScene.jojosThirdRape = function() {
             player.dynStats(["lib", 2], ["cor", 1]);
         }
         //Preggers chance!
-        //player.knockUp(PregnancyStore.PREGNANCY_JOJO, PregnancyStore.INCUBATION_MOUSE + 82); //Jojo's kids take longer for some reason
+	    //player.knockUp(PregnancyStore.PregnancyType.JOJO, PregnancyStore.INCUBATION_MOUSE + 82); //Jojo's kids take longer for some reason
     }
 }
 
@@ -1468,7 +1468,7 @@ JojoScene.jojosFourthRape = function() {
         }
         player.cuntChange(3, true);
         //Preggers chance!
-        //player.knockUp(PregnancyStore.PREGNANCY_JOJO, PregnancyStore.INCUBATION_MOUSE + 82); //Jojo's kids take longer for some reason
+	    //player.knockUp(PregnancyStore.PregnancyType.JOJO, PregnancyStore.INCUBATION_MOUSE + 82); //Jojo's kids take longer for some reason
         //The end
         if (player.lib > 50 && player.cor > 80) {
             outputText("<br><br><b>You feel a familiar power growing within you and decide to unleash it.</b> You grab the prayer beads from his outfit and spit on them, making them slick and wet. Holding them below his flagging cock, you focus on the demonic visions in your mind, slowly but constantly milking larger and larger dollops of cum onto the once holy beads. Jojo moans as he comes to understand your intent, and turns around, shaking his lithe mouse-bum at you. You lean over him, whispering into his ear, \"<i>Each defiled bead I push into you is going to make you more of a willing slut. More of a willing receptacle for demon cum. More of a fountain of desire waiting to be tapped by Succubi. More my toy.</i>\"<br><br>");
@@ -1611,7 +1611,7 @@ JojoScene.corruptJojoVaginalGentle = function() {
     }
     outputText("You cry out in pleasure as your orgasm floods through your body, causing your juices to splash out around your mouse slut's cock" + (player.hasCock() ? ", and your own " + player.multiCockDescriptLight() + " to explode with thick splashes of your hot cum across his chest and belly" : "") + ". You stay seated on his hips until your orgasm fades, then with a sigh of pleasure you stand off of him and dismiss him with a wave of your hand.  ");
     //Preggers chance!
-    //player.knockUp(PregnancyStore.PREGNANCY_JOJO, PregnancyStore.INCUBATION_MOUSE + 82); //Jojo's kids take longer for some reason
+	//player.knockUp(PregnancyStore.PregnancyType.JOJO, PregnancyStore.INCUBATION_MOUSE + 82); //Jojo's kids take longer for some reason
     player.orgasm();
     player.dynStats("cor", 0.5);
     doNext(Camp.returnToCampUseOneHour);

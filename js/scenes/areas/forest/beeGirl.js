@@ -611,7 +611,7 @@ BeeGirlScene.beeEncounterSheBeatsYouRegularlyAndYouLetHerLaysEggs = function(cle
     player.orgasm();
     player.dynStats("inte", -.5);
     player.slimeFeed();
-    if (rand(2) == 0) player.buttKnockUp(PREGNANCY_BEE_EGGS, INCUBATION_BEE, 1, 1); //Anal bee pregnancy!
+	if (rand(2) == 0) player.buttKnockUp(PregnancyType.BEE_EGGS, INCUBATION_BEE, 1, 1); //Anal bee pregnancy!
     player.buttChange(25, true);
     doNext(Camp.returnToCampUseFourHours);
 };
@@ -736,7 +736,7 @@ BeeGirlScene.beeEncounterAfraidRepeatSex = function() {
     }
     outputText("The two of you remain connected to one another for the better part of an hour.  Despite all the other sources of pleasure available to you here, you find yourself focusing the most on the organ inserted into your rear end.  The handmaiden seems to catch onto this, and start to pull her organ in and out of your back entrance.  Each time the lowest knot on her passes through your hole, both of you let out great moans of pleasure.<br><br>");
     outputText("Eventually, her supply of eggs runs out, and she thanks you for the time that you spent together.  With the amount of pleasure you experienced, there is no question in your mind that it was quite worth it.  She does hand you a gift as a final thank you for your service before flying off.<br><br>");
-    if (!player.isButtPregnant()) player.buttKnockUpForce(PREGNANCY_BEE_EGGS, INCUBATION_BEE);
+	if (!player.isButtPregnant()) player.buttKnockUpForce(PregnancyType.BEE_EGGS, INCUBATION_BEE);
     player.orgasm();
     player.slimeFeed();
     switch (rand(10)) {
@@ -1036,7 +1036,7 @@ BeeGirlScene.beeEncounterClassicSex = function(postCombat) {
         player.dynStats("inte", -.5);
         player.slimeFeed();
         //Anal bee pregnancy!
-        if (rand(3) == 0) player.buttKnockUp(PREGNANCY_BEE_EGGS, INCUBATION_BEE, 1, 1);
+	    if (rand(3) == 0) player.buttKnockUp(PregnancyType.BEE_EGGS, INCUBATION_BEE, 1, 1);
         player.buttChange(25, true);
     }
 //NON TAURS
@@ -1058,7 +1058,7 @@ BeeGirlScene.beeEncounterClassicSex = function(postCombat) {
         player.orgasm();
         player.dynStats("inte", -.5);
         //Anal bee pregnancy!
-        if (rand(3) == 0) player.buttKnockUp(PREGNANCY_BEE_EGGS, INCUBATION_BEE, 1, 1);
+		if (rand(3) == 0) player.buttKnockUp(PregnancyType.BEE_EGGS, INCUBATION_BEE, 1, 1);
     }
 //non-dicked version
     else {
@@ -1107,7 +1107,7 @@ BeeGirlScene.beeEncounterClassicSex = function(postCombat) {
         player.dynStats("inte", -.5);
         player.slimeFeed();
         //Anal bee pregnancy!
-        if (rand(3) == 0) player.buttKnockUp(PREGNANCY_BEE_EGGS, INCUBATION_BEE, 1, 1);
+		if (rand(3) == 0) player.buttKnockUp(PregnancyType.BEE_EGGS, INCUBATION_BEE, 1, 1);
         player.buttChange(25, true);
     }
     if (postCombat) {
@@ -2146,7 +2146,7 @@ BeeGirlScene.beeRapesYou = function() {
             }
             player.dynStats("inte", -.5, "lus=", 100);
             //Anal bee pregnancy!
-            player.buttKnockUp(PREGNANCY_BEE_EGGS, INCUBATION_BEE, 1, 1);
+	        player.buttKnockUp(PregnancyType.BEE_EGGS, INCUBATION_BEE, 1, 1);
         }
         player.slimeFeed();
         cleanupAfterCombat();
@@ -2186,7 +2186,7 @@ BeeGirlScene.beeRapesYou = function() {
 
             player.dynStats("inte", -.5);
             //Anal bee pregnancy!
-            if (rand(3) == 0) player.buttKnockUp(PREGNANCY_BEE_EGGS, INCUBATION_BEE, 1, 1);
+	        if (rand(3) == 0) player.buttKnockUp(PregnancyType.BEE_EGGS, INCUBATION_BEE, 1, 1);
             player.buttChange(25, true, true, false);
 
             cleanupAfterCombat();

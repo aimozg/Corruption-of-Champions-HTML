@@ -2645,7 +2645,7 @@ AmilyScene.determineAmilySexEvent = function () { // May need to force a false b
         //(If player is preg
 
         if (player.isPregnant()) {
-            if (player.pregnancyType == PREGNANCY_AMILY)
+	        if (player.pregnancyType == PregnancyType.AMILY)
          outputText("\"<i>Boy, this is weird.  I'm a woman and I'm going to be a dad.");
          else outputText("\"<i>After you give birth to this baby come and see me when you're ready for mine.  This is really weird, I'm a woman and I can't wait to be a dad.");
          }
@@ -2653,7 +2653,7 @@ AmilyScene.determineAmilySexEvent = function () { // May need to force a false b
          else {
          outputText("\"<i>Let's see if you'll be a mommy from this load... If not, well, I guess we'll have to try again.");
          //PREGGO CHECK HERE
-         player.knockUp(PREGNANCY_AMILY, INCUBATION_MOUSE);
+	        player.knockUp(PregnancyType.AMILY, INCUBATION_MOUSE);
          player.eventFill(INCUBATION_MOUSE_EVENT);
          }
 
@@ -2832,7 +2832,7 @@ AmilyScene.determineAmilySexEvent = function () { // May need to force a false b
         //25% + gradually increasing cumQ bonus
         if (rand(4) == 0 || player.cumQ() > rand(1000)) {
 
-            amily.knockUpForce(PREGNANCY_PLAYER, INCUBATION_MOUSE - 182, INCUBATION_AMILY_EVENT);
+	        amily.knockUpForce(PregnancyType.PLAYER, INCUBATION_MOUSE - 182, INCUBATION_AMILY_EVENT);
 
         }
     };
@@ -3947,7 +3947,7 @@ AmilyScene.rapeCorruptAmily4Epilogue = function () {
 //Add corrupted amily flag here
             gameFlags[AMILY_FOLLOWER] = 2;
 //Change to normal mouse pregnancy
-            if (player.pregnancyType == PREGNANCY_AMILY) player.knockUpForce(PREGNANCY_MOUSE, player.pregnancyIncubation);
+	if (player.pregnancyType == PregnancyType.AMILY) player.knockUpForce(PregnancyType.MOUSE, player.pregnancyIncubation);
 //Set other flags if Amily is moving in for the first time
 //if (flags[kFLAGS.UNKNOWN_FLAG_NUMBER_00173] == 0) { //Corruption freakout flag. Not sure if we need to wrap it like this
             gameFlags[AMILY_CUP_SIZE] = 5;

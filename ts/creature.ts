@@ -2331,7 +2331,7 @@ class Creature {
 	}
 
 //Rewritten!
-	public mf(male: string, female: string): any {
+	public mf(male: string, female: string): string {
 		//if (femWeight()) return female;
 		//else return male;
 		//Dicks?
@@ -2359,24 +2359,20 @@ class Creature {
 		}
 	}
 
-	public maleFemaleHerm(caps: boolean): any {
-		if (this.gender == 0) {
-			if (caps) return this.mf("Genderless", "Fem-genderless");
-			else return this.mf("genderless", "fem-genderless");
+	public maleFemaleHerm(caps: boolean = false): string {
+		let f: (s: string) => string = caps ? capitalize : s => s;
+		switch (this.gender) {
+			case Gender.NONE:
+				return f(this.mf("genderless", "fem-genderless"));
+			case Gender.MALE:
+				return f(this.mf("male", "dickgirl"));
+			case Gender.FEMALE:
+				return f(this.mf("cuntboy", "female"));
+			case Gender.HERM:
+				return f(this.mf("maleherm", "hermaphrodite"));
+			default:
+				return "<b>Gender error!</b>";
 		}
-		else if (this.gender == 1) {
-			if (caps) return this.mf("Male", "Dickgirl");
-			else return this.mf("male", "dickgirl");
-		}
-		else if (this.gender == 2) {
-			if (caps) return this.mf("Cuntboy", "Female");
-			else return this.mf("cuntboy", "female");
-		}
-		else if (this.gender == 3) {
-			if (caps) return this.mf("Maleherm", "Hermaphrodite");
-			else return this.mf("maleherm", "hermaphrodite");
-		}
-		else return "<b>Gender error!</b>";
 	}
 
 //------------

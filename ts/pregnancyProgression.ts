@@ -85,7 +85,7 @@ namespace pregnancyProgression {
 				statControl = 0; // Reset stat controller
 				if (gameFlags[AMILY_FOLLOWER] == 2 || gameFlags[AMILY_CORRUPTION_PATH] > 0) player.knockUpForce(PregnancyType.MOUSE, player.pregnancyIncubation);
 				if (gameFlags[AMILY_VISITING_URTA] == 1 || gameFlags[AMILY_VISITING_URTA] == 2) player.knockUpForce(PregnancyType.MOUSE, player.pregnancyIncubation);
-				//if (prison.inPrison) player.knockUpForce(PregnancyStore.PREGNANCY_MOUSE, player.pregnancyIncubation);
+				//if (prison.inPrison) player.knockUpForce(PregnancyStore.PregnancyType.MOUSE, player.pregnancyIncubation);
 			}
 
 			//Give birth to pure Amily's kids
@@ -109,7 +109,7 @@ namespace pregnancyProgression {
 
 			//Give birth to generic mice and Jojo's / Joy's babies
 			/*
-			 if (player.pregnancyIncubation == 1 && (player.pregnancyType == PregnancyStore.PREGNANCY_MOUSE || player.pregnancyType == PregnancyStore.PREGNANCY_JOJO)) {
+			 if (player.pregnancyIncubation == 1 && (player.pregnancyType == PregnancyStore.PregnancyType.MOUSE || player.pregnancyType == PregnancyStore.PregnancyType.JOJO)) {
 			 player.boostLactation(.01);
 			 outputText("<br>You wake up suddenly to strong pains and pressures in your gut. As your eyes shoot wide open, you look down to see your belly absurdly full and distended. You can feel movement underneath the skin, and watch as it is pushed out in many places, roiling and squirming in disturbing ways. The feelings you get from inside are just as disconcerting. You count not one, but many little things moving around inside you. There are so many, you can't keep track of them.<br><br>");
 			 if (player.vaginas.length == 0) {
@@ -119,7 +119,7 @@ namespace pregnancyProgression {
 			 }
 
 			 //Main Text here
-			 if (player.pregnancyType == PregnancyStore.PREGNANCY_JOJO && (getGame().monk < 0 || flags[kFLAGS.JOJO_BIMBO_STATE] >= 3) && !prison.inPrison) {
+			 if (player.pregnancyType == PregnancyStore.PregnancyType.JOJO && (getGame().monk < 0 || flags[kFLAGS.JOJO_BIMBO_STATE] >= 3) && !prison.inPrison) {
 			 if (flags[kFLAGS.JOJO_BIMBO_STATE] >= 3) {
 			 kGAMECLASS.joyScene.playerGivesBirthToJoyBabies();
 			 return true;
