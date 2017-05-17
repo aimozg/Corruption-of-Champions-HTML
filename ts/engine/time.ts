@@ -22,7 +22,7 @@ namespace Time {
 			increment();
 			player.pregnancyAdvance(); // Advances the Player's pregnancy.
 			amily.pregnancyAdvance(); // Advances Amily's pregnancy.
-			tamanipreg.pregnancyAdvance(); //Advances Tamani's pregnancy.
+			TamaniScene.tamanipreg.pregnancyAdvance(); //Advances Tamani's pregnancy.
 		}
 		//pregnancyProgression.updatePregnancy(); // Outputs the results of the Player's pregnancy flags once time passes.
 	}

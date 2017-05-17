@@ -23,10 +23,11 @@ namespace KeyItems {
 	export const CockMilkerInstalled   = new KeyItemType("Cock Milker - Installed at Whitney's Farm");
 	//Keys
 	//Storage Containers
-	export const ArmorRack     = new KeyItemType("Equipment Rack - Armor");
-	export const WeaponRack    = new KeyItemType("Equipment Rack - Weapons");
-	export const ShieldRack    = new KeyItemType("Equipment Rack - Shields");
+	export const ArmorRack      = new KeyItemType("Equipment Rack - Armor");
+	export const WeaponRack     = new KeyItemType("Equipment Rack - Weapons");
+	export const ShieldRack     = new KeyItemType("Equipment Rack - Shields");
 	//Others
-	export const Bow           = new KeyItemType("Bow");
-	export const PotentMixture = new KeyItemType("Potent Mixture");
+	export const Bow            = new KeyItemType("Bow");
+	export const PotentMixture  = new KeyItemType("Potent Mixture");
+	export const TamanisSatchel = new KeyItemType("Tamani's Satchel");
 }

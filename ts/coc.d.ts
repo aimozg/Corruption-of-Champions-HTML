@@ -50,15 +50,5 @@ declare namespace JojoScene {
 	function jojoCampCorrupt():void;
 	function routeJojoEncounter():void;
 }
-declare namespace MinotaurScene {
-	function encounterMinotaur():void;
-}
-declare class Tamani extends Monster {
-	public doAI(): void;
-}
-declare namespace TamaniScene {
-	function encounterTamani():void;
-}
 
 declare let amily: Amily;
-declare let tamanipreg: Tamani;
