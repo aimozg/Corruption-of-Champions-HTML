@@ -33,9 +33,9 @@ function attributeMenu(): void {
 	}
 	//Subtract attributes
 	if (tempStr > 0) addButton(5, "STR -", subtractAttribute, "str");
-	if (tempTou > 0) addButton(6, "TOU +", subtractAttribute, "tou");
-	if (tempSpe > 0) addButton(7, "SPE +", subtractAttribute, "spe");
-	if (tempInt > 0) addButton(8, "INTE +", subtractAttribute, "inte");
+	if (tempTou > 0) addButton(6, "TOU -", subtractAttribute, "tou");
+	if (tempSpe > 0) addButton(7, "SPE -", subtractAttribute, "spe");
+	if (tempInt > 0) addButton(8, "INTE -", subtractAttribute, "inte");
 	//Reset & Done
 	addButton(4, "Reset", resetAttributes);
 	addButton(9, "Done", finishAttributes);
