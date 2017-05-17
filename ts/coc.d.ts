@@ -45,10 +45,5 @@ declare namespace ConsumableEffects {
 	function snakeTFs():void;
 	function succubiDelight(purified:boolean):void;
 }
-declare namespace JojoScene {
-	function jojoCamp():void;
-	function jojoCampCorrupt():void;
-	function routeJojoEncounter():void;
-}
 
 declare let amily: Amily;

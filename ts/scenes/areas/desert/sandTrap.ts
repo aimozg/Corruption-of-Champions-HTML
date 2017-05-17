@@ -764,7 +764,7 @@ namespace SandTrapScene {
 	function sandTrapBadEndFight ():void {
 		clearOutput();
 		//TODO SPrite spriteSelect(97);
-		outputText("You shake yourself out of your fog, clench your [weapon] and grit your teeth.  You are your own person, dammit, and you will show this creature just what that means!  The Sandtrap slowly lowers its arms and looks at you with almost parental disappointment as you march into its pit with the obvious intention of beating the crap out of it.  \"<i>You want to dance again, Flytrap?</i>\" it sighs.  \"<i>I would prefer that you look at yourself and accept what you are, but I will force you to accept it if that is what you wish.</i>\""); //TODO Take out Bracket in text.
+		outputText("You shake yourself out of your fog, clench your " + player.weaponName + " and grit your teeth.  You are your own person, dammit, and you will show this creature just what that means!  The Sandtrap slowly lowers its arms and looks at you with almost parental disappointment as you march into its pit with the obvious intention of beating the crap out of it.  \"<i>You want to dance again, Flytrap?</i>\" it sighs.  \"<i>I would prefer that you look at yourself and accept what you are, but I will force you to accept it if that is what you wish.</i>\""); //TODO Take out Bracket in text.
 //(If fight won, resets counter)
 		gameFlags[CLIMBED_TRAP_THIS_ROUND] = 0;
 		gameFlags[TRAP_LEVEL]              = 2;

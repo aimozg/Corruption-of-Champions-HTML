@@ -49,6 +49,15 @@ namespace PerkLib {
 	export const MinotaurCumAddict        = new PerkType("MinoCumAddict", "Minotaur Cum Addict", "TO BE ADDED");
 	export const Masochist                = new PerkType("Masochist", "Masochist", "TO BE ADDED");
 	export const HistoryAlchemist         = new PerkType("H.Alchemist", "Alchemist History", "TO BE ADDED");
+	export const HistoryFighter           = new PerkType("H.Fighter", "Fighter History", "TO BE ADDED");
+	export const HistoryHealer            = new PerkType("H.Healer", "Healer History", "TO BE ADDED");
+	export const HistoryReligious         = new PerkType("H.Religious", "Religious History", "TO BE ADDED");
+	export const HistoryScholar           = new PerkType("H.Scholar", "Scholar History", "TO BE ADDED");
+	export const HistorySlut              = new PerkType("H.Slut", "Slut History", "TO BE ADDED");
+	export const HistorySlacker           = new PerkType("H.Slacker", "Slacker History", "TO BE ADDED");
+	export const HistorySmith             = new PerkType("H.Smith", "Smith History", "TO BE ADDED");
+	export const HistoryFortune           = new PerkType("H.Fortune", "Fortune History", "TO BE ADDED");
+	export const Enlightened              = new PerkType("Enlightened", "Enlightened", "TO BE ADDED");
 	export const TransformationResistance = new PerkType("T.Resist", "Transformation Resistance", "TO BE ADDED");
 	export const Oviposition              = new PerkType("Oviposit", "Oviposition", "TO BE ADDED");
 	export const MessyOrgasms             = new PerkType("MessyOrgasms", "Messy Orgasms", "TO BE ADDED");

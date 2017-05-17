@@ -1427,6 +1427,11 @@ class Player extends Creature {
 		// TODO
 		return false;
 	}
+
+	countCockSocks(sock: string): number {
+		//TODO
+		return 0;
+	}
 }
 
 
