@@ -8,6 +8,7 @@
       <excludeFolder url="file://$MODULE_DIR$/js/items/specialConsumables" />
       <excludeFolder url="file://$MODULE_DIR$/js/scenes/areas/desert" />
       <excludeFolder url="file://$MODULE_DIR$/js/scenes/areas/lake" />
+      <excludeFolder url="file://$MODULE_DIR$/js/scenes/areas/mountain" />
       <excludeFolder url="file://$MODULE_DIR$/js/scenes/monsters" />
       <excludeFolder url="file://$MODULE_DIR$/js/scenes/places" />
     </content>
