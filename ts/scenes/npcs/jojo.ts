@@ -79,8 +79,8 @@ class Jojo extends Monster {
 			case 0:
 				if (gameFlags[JOJO_CORRUPTION_STAGE] >= 2) {
 					Jojo.selfCorruption();
-					break;
 				} else this.attack();
+				break;
 			default:
 				this.attack();
 		}
