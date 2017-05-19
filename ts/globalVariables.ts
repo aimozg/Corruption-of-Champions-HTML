@@ -47,6 +47,7 @@ let exploration = {
 //var flags = [0] * 3000; //For legacy purposes only.
 let gameFlags:{
 	[index:string]:number
-} = {
-
-};
+} = {};
+let gameStrings: {
+	[index: string]: string;
+} = {};

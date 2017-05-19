@@ -12,9 +12,6 @@ declare interface HTMLElement {
 
 declare function newGamePlusMod():number;
 
-declare class Amily extends Monster {
-	public doAI(): void;
-}
 declare namespace AmilyScene {
 	function start():void;
 	function pcBirthsAmilysKidsQuestVersion():void;
@@ -23,9 +20,6 @@ declare class Anemone extends Monster {
 	applyVenom(arg1:number):void;
 
 	public doAI(): void;
-}
-declare namespace BeeGirlScene {
-	function beeEncounter():void;
 }
 declare namespace ConsumableEffects {
 	function beeTFs(typ:int):void;

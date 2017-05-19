@@ -178,12 +178,13 @@ namespace Data {
 			saveData.player.pregnancyEventNum = player.pregnancyEventNum;
 
 			//Amily Pregnancy - This may need to go into an array for better saving?
-			saveData.amilypregnancyIncubation = amily.pregnancyIncubation;
-			saveData.amilypregnancyType = amily.pregnancyType;
-			saveData.amilypregnancyEventArr = amily.pregnancyEventArr;
+			let amily                             = AmilyScene.amilypreg;
+			saveData.amilypregnancyIncubation     = amily.pregnancyIncubation;
+			saveData.amilypregnancyType           = amily.pregnancyType;
+			saveData.amilypregnancyEventArr       = amily.pregnancyEventArr;
 			saveData.amilybuttPregnancyIncubation = amily.buttPregnancyIncubation;
-			saveData.amilybuttPregnancyType = amily.buttPregnancyType;
-			saveData.amilypregnancyEventNum = amily.pregnancyEventNum;
+			saveData.amilybuttPregnancyType       = amily.buttPregnancyType;
+			saveData.amilypregnancyEventNum       = amily.pregnancyEventNum;
 
 
 			//Spells
@@ -311,6 +312,7 @@ namespace Data {
 			player.pregnancyEventNum = saveData.player.pregnancyEventNum;
 
 			//Amily Pregnancy Load
+			let amily = AmilyScene.amilypreg;
 			if (saveData.amilypregnancyIncubation == undefined) {
 				amily.pregnancyIncubation = 0;
 			}
@@ -420,7 +422,7 @@ namespace Data {
 		return holding;
 	}
 
-	export function fixSave() {
+	export function fixSave(): void {
 		//Fix body parts
 		if (player.race != undefined)
 			delete player.race; //Reset variable
@@ -507,4 +509,7 @@ namespace Data {
 //Add to Data Flags
 function addToGameFlags(...flags:string[]):void {
 	for (const flag of flags) gameFlags[flag] = 0;
+}
+function addToGameStrings(...flags: string[]): void {
+	for (const flag of flags) gameStrings[flag] = "";
 }

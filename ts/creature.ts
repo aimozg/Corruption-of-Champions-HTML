@@ -3274,5 +3274,7 @@ abstract class Monster extends Creature {
 		return sum;
 	}
 
-	public abstract doAI(): void;
+	public doAI(): void {
+		this.attack();
+	}
 }
