@@ -6,9 +6,7 @@
       <excludeFolder url="file://$MODULE_DIR$/js/engine" />
       <excludeFolder url="file://$MODULE_DIR$/js/flags" />
       <excludeFolder url="file://$MODULE_DIR$/js/items/specialConsumables" />
-      <excludeFolder url="file://$MODULE_DIR$/js/scenes/areas" />
-      <excludeFolder url="file://$MODULE_DIR$/js/scenes/monsters" />
-      <excludeFolder url="file://$MODULE_DIR$/js/scenes/places" />
+      <excludeFolder url="file://$MODULE_DIR$/js/scenes" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
