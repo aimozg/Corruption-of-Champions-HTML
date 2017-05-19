@@ -35,7 +35,7 @@ class Cock {
 		if (this.cockThickness > 40) this.cockThickness = 40;
 	}
 
-	public increaseCock(amount: number):void {
+	public increaseCock(amount: number): number {
 		//Diminishing returns!
 		if (!hyperHappy) {
 			if (this.cockLength >= 30 && this.cockLength < 50)
@@ -53,6 +53,7 @@ class Cock {
 		this.cockLength += amount;
 		//Apply hard cap
 		if (this.cockLength > 240) this.cockLength = 240;
+		return amount;
 	}
 
 	public cArea(): number {

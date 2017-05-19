@@ -1903,7 +1903,7 @@ class Creature {
 		}
 	}
 
-	public shrinkTits(ignore_hyper_happy: boolean): void {
+	public shrinkTits(ignore_hyper_happy: boolean = false): void {
 		if (hyperHappy && !ignore_hyper_happy) return;
 		if (this.breastRows.length == 1) {
 			if (this.breastRows[0].breastRating > 0) {
