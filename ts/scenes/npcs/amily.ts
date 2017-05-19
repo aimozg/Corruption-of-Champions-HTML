@@ -1361,7 +1361,7 @@ namespace AmilyScene {
 		clearOutput();
 
 		// Get a random conversation out of the 15 options
-		var convo = rand(15);
+		let convo = rand(15);
 		// Bump past convo #12 if she's already at camp because it doesn't make much sense by this point.
 		if (convo == 12 && amilyFollower()) convo++;
 		//Girls dont get to listen to amily talk about being knocked up.
@@ -1922,7 +1922,7 @@ namespace AmilyScene {
 	function amilySexHappens(): void {
 		clearOutput();
 
-		var x = player.cockThatFits(61);
+		const x = player.cockThatFits(61);
 		//If too big
 		if (x == -1 && player.hasCock()) {
 			outputText("Amily looks between your legs and doubles over laughing, \"<i>There is no way that thing is fitting inside of me!  You need to find a way to shrink that thing down before we get in bed!</i>\"");
@@ -2206,7 +2206,7 @@ namespace AmilyScene {
 	function amilySexSitAndWatch(): void {
 		clearOutput();
 
-		var x = player.cockThatFits(61);
+		const x = player.cockThatFits(61);
 		outputText("You stay right where you are, not wanting to spoil the show. By the time that she is visibly starting to drip girlcum and approaches you, clearly ready to move on to the main event, your " + player.cockDescript(x) + " is iron-hard.<br><br>");
 		// 50? Really? Seems excessive!
 		player.changeLust(50);
@@ -2312,7 +2312,7 @@ namespace AmilyScene {
 	function amilySexYouStrip(): void {
 		clearOutput();
 
-		var x = player.cockThatFits(61);
+		const x = player.cockThatFits(61);
 		outputText("It is your turn to give her a mischievous smile back. Feeling turned on and excited, and remembering the elders in the village telling you that fair is only fair, you decide to give her a little show of her own. Standing up, you tilt your head back and thrust out your chest, trying to look enticing. As Amily watches, at first bemused and then pleased, you slowly strip off your " + player.armor.equipmentName + ", working hard to make it as sensual and suggestive as possible. You show off your body for her, leisurely stroking your own limbs and down your midriff to finally reveal that which lies inside your pants; your " + player.cockDescript(x) + ". Amily is definitely appreciative of the show.<br><br>");
 		amilySexMidPartIII();
 		//continueWithMoreMidLevelAmilySex();
@@ -2322,7 +2322,7 @@ namespace AmilyScene {
 	function amilySexGetTheFunStarted(): void {
 		clearOutput();
 
-		var x = player.cockThatFits(61);
+		const x = player.cockThatFits(61);
 		outputText("Too horny to think of anything else than what lies ahead, you hastily remove your " + player.armor.equipmentName + ".  Amily smiles at what she can see, enjoying the sight of your body and your " + player.cockDescript(x) + "<br><br>");
 		amilySexMidPartIII();
 		//continueWithMoreMidLevelAmilySex();
@@ -2399,7 +2399,7 @@ namespace AmilyScene {
 	function amilyHighAffectionSex(): void {
 
 
-		var x = player.cockThatFits(61);
+		const x = player.cockThatFits(61);
 		outputText("Amily really didn't waste any time getting to her hidden bedroom, sprinting as fast as she could with you in tow.");
 
 		if (amily.isPregnant()) outputText("  Even in a slightly pregnant state, she goes surprisingly fast, though she's also rather cautious of her small bump.");
@@ -2886,7 +2886,7 @@ namespace AmilyScene {
 			outputText("hissing in pain"); // This sound a bit wrong for what should look like a human...
 
 		outputText(" as the strongest contraction yet hits – she's crowning! Immediately your hands dive down to hover under her vagina as a small, pink, naked and wriggling thing slips between their parted lips. The little body is surprisingly light in your hands, but it squeaks loudly as it draws its first breath – correction, HER first breath. It's a ");
-		var amilyKid = "girl";
+		let amilyKid = "girl";
 		if ((player.gender == 3 || gameFlags[AMILY_WANG_LENGTH] > 0) && rand(2) == 0) amilyKid = "herm";
 		if (player.gender == 3 && gameFlags[AMILY_WANG_LENGTH] > 0) amilyKid = "herm";
 		outputText(amilyKid + ".<br><br>");
