@@ -12,10 +12,6 @@ declare interface HTMLElement {
 
 declare function newGamePlusMod():number;
 
-declare namespace AmilyScene {
-	function start():void;
-	function pcBirthsAmilysKidsQuestVersion():void;
-}
 declare class Anemone extends Monster {
 	applyVenom(arg1:number):void;
 

@@ -167,24 +167,24 @@ namespace AmilyScene {
 	//timeAware.push(pregnancy);
 
 
-	function amilySprite() {
+	function amilySprite(): void {
 		if (gameFlags[AMILY_NOT_FURRY] > 0) displaySprite("amily_defurr");
 		else displaySprite("amily");
 	}
 
 	// Used for later checks when Amily is a follower. - COMPLETE
-	function amilyFollower() {
+	function amilyFollower(): boolean {
 		if (gameFlags[AMILY_FOLLOWER] > 0) {
 			//Amily not a follower while visiting Urta
 			if (gameFlags[AMILY_VISITING_URTA] != 0) {
 				return true;
-			}
-			else return false;
+			} else return false;
 		}
+		return false;
 	}
 
 	// A check function to see if Amily is corrupt or not. - COMPLETE
-	function amilyCorrupt() {
+	function amilyCorrupt(): boolean {
 		return gameFlags[AMILY_FOLLOWER] == 2;
 	}
 
@@ -194,7 +194,7 @@ namespace AmilyScene {
 
 
 	// start begins encounters in the Town Ruins - MAIN WORK LOOP. CLEAN OTHER LOOPS BEFORE RETURNING HERE
-	function start() {
+	export function start(): void {
 		// BOOKKEEPING
 		menu();
 		// set initial gender flag, these may need to be changed throughout!
@@ -559,7 +559,7 @@ namespace AmilyScene {
 	}
 
 	// Standard meeting loop after first time - COMPLETE
-	function amilyStandardMeeting() {
+	function amilyStandardMeeting(): void {
 		clearOutput();
 		// Amily does NOT like seeing the player change gender
 		outputText("Curious on how Amily is holding up, you head back into the ruined village. This time you don't bother trying to hide your presence, hoping to attract Amily's attention quicker. After all, she did say that the place is basically empty of anyone except her, and you can otherwise handle a measly Imp or Goblin.<br><br>");
@@ -643,7 +643,7 @@ namespace AmilyScene {
 	}
 
 	// Failsafe function to return player to camp. - COMPLETE
-	function amilyMeetingFailed() {
+	function amilyMeetingFailed(): void {
 		outputText("You shouldn't have reached this failsafe message. Printing default message and allowing return to camp.<br><br>");
 
 		outputText("You enter the ruined village cautiously. There are burnt-down houses, smashed-in doorways, ripped-off roofs... everything is covered with dust and grime. You explore for an hour, but you cannot find any sign of another living being, or anything of value. The occasional footprint from an imp or a goblin turns up in the dirt, but you don't see any of the creatures themselves. It looks like time and passing demons have stripped the place bare since it was originally abandoned. Finally, you give up and leave. You feel much easier when you're outside of the village – you had the strangest sensation of being watched while you were in there.");
@@ -653,7 +653,7 @@ namespace AmilyScene {
 	//MALE MEETINGS AFTER INITIAL REJECTION
 
 	// Male PC rejected Amily's offer, meets her again - COMPLETE
-	function amilyRemeetingContinued() {
+	function amilyRemeetingContinued(): void {
 		clearOutput();
 
 		outputText("\"<i>So, have you changed your mind? Have you come to help me out?</i>\" Amily asks curiously.<br><br>");
@@ -667,7 +667,7 @@ namespace AmilyScene {
 	}
 
 	// Accept offer the second time, move to sex loops. - COMPLETE
-	function secondTimeAmilyOfferedAccepted() {
+	function secondTimeAmilyOfferedAccepted(): void {
 		clearOutput();
 
 		outputText("You tell her that, yes – you'll give her the children she wants. She smiles pleasantly and tells you to follow her.<br><br>");
@@ -677,7 +677,7 @@ namespace AmilyScene {
 	}
 
 	// Refuse offer politely a second time. No affection boost. No change to the encounters. - COMPLETE
-	function secondTimeAmilyRefuseAgain() {
+	function secondTimeAmilyRefuseAgain(): void {
 		clearOutput();
 
 		outputText("You shake your head gently and explain that your position has not changed. Amily looks annoyed, but respects your decision.<br><br>");
@@ -689,7 +689,7 @@ namespace AmilyScene {
 	}
 
 	// Talking to Amily again after offer refusal - COMPLETE
-	function repeatAmilyTalk() {
+	function repeatAmilyTalk(): void {
 		clearOutput();
 
 		outputText("You tell her that you only wanted to talk.<br><br>");
@@ -699,7 +699,7 @@ namespace AmilyScene {
 
 	// This text needs updating. Looks like it was originally going to shut out the whole ruins, but there could still be racks and/or Shouldra encounters the player would want to encounter. Leaving text as is for now. Otherwise Complete.
 	// Shuts off Amily encounters
-	function tellAmilyToGetLost() {
+	function tellAmilyToGetLost(): void {
 
 		outputText("You jeer at Amily that you have no interest in a hypocrite who claims to be pure but is really just like everything else in this tainted world; no higher purpose other than her next fuck.<br><br>");
 
@@ -714,7 +714,7 @@ namespace AmilyScene {
 	// IF MALE OFFER IS ACCEPTED FIRST TIME
 
 	// Male PC accepts Amily's offer eagerly. (Consider changing this response to Lusty. It's a bit beyond eager...) - COMPLETE
-	function acceptAmilysOfferEagerly() {
+	function acceptAmilysOfferEagerly(): void {
 		clearOutput();
 		menu();
 
@@ -739,7 +739,7 @@ namespace AmilyScene {
 	}
 
 	// Male PC accepts Amily's offer hesitantly. - COMPLETE
-	function acceptAmilysOfferHesitantly() {
+	function acceptAmilysOfferHesitantly(): void {
 		clearOutput();
 		menu();
 
@@ -766,7 +766,7 @@ namespace AmilyScene {
 	}
 
 	// Refuse Amily's Offer. Impress her! - COMPLETE
-	function refuseAmilysOffer() {
+	function refuseAmilysOffer(): void {
 		clearOutput();
 		menu();
 
@@ -789,7 +789,7 @@ namespace AmilyScene {
 	}
 
 	// Refuse Amily because she's a mouse and mice are gross. - COMPLETE
-	function amilyNoFur() {
+	function amilyNoFur(): void {
 		clearOutput();
 		menu();
 
@@ -807,7 +807,7 @@ namespace AmilyScene {
 	//MALE DESPERATE AMILY ENCOUNTERS
 
 	//Accept Amily Desperate Plea - COMPLETE
-	function desperateAmilyPleaAcceptHer() {
+	function desperateAmilyPleaAcceptHer(): void {
 		clearOutput();
 
 		//set accepted flag
@@ -820,7 +820,7 @@ namespace AmilyScene {
 	}
 
 	//Let Amily Down Gently, shuts off her encounters - NEED TEL'ADRE TO FINISH
-	function desperateAmilyPleaTurnDown() {
+	function desperateAmilyPleaTurnDown(): void {
 		clearOutput();
 
 		outputText("You softly tell her that you're sorry, but it just can't be helped. You have a quest to fulfill, and you don't even know if you'll be staying around instead of going home when it's over. That's even assuming you succeed, and don't end up dead in a ditch somewhere. You can't countenance taking a lover with something like that hanging over your head. Besides, you tell Amily that she should have more respect for her body than what this plan of hers entails, anyway.<br><br>");
@@ -842,7 +842,7 @@ namespace AmilyScene {
 	}
 
 	//Be an ass and turn her down bluntly- COMPLETE
-	function desperateAmilyPleaTurnDownBlunt() {
+	function desperateAmilyPleaTurnDownBlunt(): void {
 
 		clearOutput();
 		outputText("Without mercy or hesitation, you tell her that there is indeed something wrong with her: You could never be attracted to a woman that looks like a pest and should be hiding in a granary.<br><br>");
@@ -866,7 +866,7 @@ namespace AmilyScene {
 
 	//Lesbian Love Confession:- COMPLETE
 
-	function amilyLesbian() {
+	function amilyLesbian(): void {
 
 		clearOutput();
 		outputText("Strangely, you don't need to seek Amily out this time; she's waiting for you. You ask her if something is wrong, and she shakes her head... but she looks kind of embarrassed as she does so.<br><br>");
@@ -882,7 +882,7 @@ namespace AmilyScene {
 	}
 
 	// Admit you want Lesbian Mouse Lovin - COMPLETE
-	function amilyLesbianStopHer() {
+	function amilyLesbianStopHer(): void {
 
 		clearOutput();
 		outputText("Before she can get too far, though, your hand shoots out and clasps her shoulder. She starts to question what you're doing, but you spin her around and pull her into a tight embrace, telling her that you feel the same way. Shyly, she offers her lips to you, and you kiss them eagerly. When you seperate for breath, you ask if she wants to see what it's like with another woman. Her eyes glazed, she nods at you wordlessly and starts leading you away down the street.<br><br>");
@@ -893,7 +893,7 @@ namespace AmilyScene {
 
 	// Deny the Mousie Lesbian Mouse Lovin. Old comment in here about you having other relationships and shutting off her encounter.
 	// - NEED URTA AND MARBLE TO FINISH
-	function amilyLesbianLetHerGo() {
+	function amilyLesbianLetHerGo(): void {
 
 		clearOutput();
 		/*(If player is already locked into a relationship):
@@ -912,7 +912,7 @@ namespace AmilyScene {
 	// HERM PLAYER ENCOUNTERS
 
 	// Make Amily a Herm for dual pregnancy action. - COMPLETE. TEST ITEM CONSUMPTION AT SOME POINT.
-	function makeAmilyAHerm() {
+	function makeAmilyAHerm(): void {
 
 		clearOutput();
 		outputText("You talk to Amily about how she and you have grown to know each other well, so well that she has been willing to have sex with you despite her aversion to hermaphrodites.<br><br>");
@@ -942,7 +942,7 @@ namespace AmilyScene {
 	}
 
 	// Question dislike of herms. - COMPLETE
-	function whyNotHerms() {
+	function whyNotHerms(): void {
 
 		clearOutput();
 		outputText("As you head into the ruined village to find Amily, your thoughts drift yet again to the strange conundrum that has been puzzling you. You haven't failed to realize that Amily initially seemed to want to talk to you about her plans for reviving her people, but after realizing your bi-gendered nature, she insists on dropping the subject if it ever comes up.<br><br>");
@@ -973,7 +973,7 @@ namespace AmilyScene {
 	}
 
 	//"Maybe Herms Aren't So Bad": - COMPLETE
-	function hermRenegotiate() {
+	function hermRenegotiate(): void {
 
 		clearOutput();
 		outputText("Yet again, you find yourself wandering through the ruined village where Amily stalks. Not entirely sure if you want to speak to her, you turn and are about to leave when you hear the sound of a rock plinking off of a wall. Looking around, you find Amily has joined you, looking apologetic.<br><br>");
@@ -1017,9 +1017,9 @@ namespace AmilyScene {
 	function amilyNewGenderConfrontation(): void {
 
 		clearOutput();
-		var sex                    = null;
+		let sex                    = null;
 		//Remember old gender.
-		var oldGender              = gameFlags[AMILY_PC_GENDER];
+		let oldGender              = gameFlags[AMILY_PC_GENDER];
 		//Re-init old gender so we don't get caught in a loop!
 		gameFlags[AMILY_PC_GENDER] = player.gender;
 		//Called from mid-way through remeeting's intro!
@@ -1972,7 +1972,8 @@ namespace AmilyScene {
 	}
 
 	// Switches sex scenes with Amily depending on gender, pregnancy, and other things - COMPLETE
-	function determineAmilySexEvent(): void { // May need to force a false boolean to determine if sex is forced
+	function determineAmilySexEvent(): void {
+		// May need to force a false boolean to determine if sex is forced
 		// Set the sex variable to none
 
 		// Assume Amily isn't forcing you to fuck her.
@@ -2245,7 +2246,7 @@ namespace AmilyScene {
 
 	// Low Affection Section 3 (final) - COMPLETE
 	function amilySexPartIII(): void {
-		var x = player.cockThatFits(61);
+		let x = player.cockThatFits(61);
 
 		//outputText(images.showImage("amily-forest-plainfuck"));
 		outputText("The time couldn't be any more right for either of you, and you both sink onto the bedding that Amily has prepared. Lying side by side, Amily guides you with surprising efficiency into her entry, and then, once you are comfortably inside, she begins to thrust, her cunt gripping your " + player.cockDescript(x) + " like a vice.<br><br>");
@@ -3438,7 +3439,7 @@ namespace AmilyScene {
 
 	//COMPLETE
 	function rapeCorruptAmily1Male(): void {
-		var x = player.cockThatFits(61);
+		let x = player.cockThatFits(61);
 		if (x < 0) x = 0;
 		player.removeKeyItem(KeyItems.PotentMixture);
 		clearOutput();
@@ -3504,7 +3505,7 @@ namespace AmilyScene {
 
 	function rapeCorruptAmily2Male(): void {
 		clearOutput();
-		var x = player.cockThatFits(61);
+		let x = player.cockThatFits(61);
 		if (x < 0) x = 0;
 		outputText("You unceremoniously shove your " + player.cockDescript(x) + " into her maw. ");
 		//[(if PC has a huge dick)
@@ -3960,7 +3961,7 @@ namespace AmilyScene {
 			&& gameFlags[AMILY_OFFERED_DEFURRY] == 1
 			&& player.hasItem(Items.Consumables.GoldenSeed)
 			&& (player.hasItem(Items.Consumables.LBlackEgg) || player.hasItem(Items.Consumables.BlackEgg))
-			&& (player.hasItem(Items.Consumables.SuccubiMilkPurified) || amilyCorrupt() == true && player.hasItem(Items.Consumables.SuccubiMilk)) == true;
+			&& (player.hasItem(Items.Consumables.SuccubiMilkPurified) || amilyCorrupt() && player.hasItem(Items.Consumables.SuccubiMilk)) == true;
 	}
 
 	// COMPLETE
