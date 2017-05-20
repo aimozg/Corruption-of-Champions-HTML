@@ -37,7 +37,7 @@ class Item {
 		this.value       = 6; //The value in gems. Defaults at 6.
 
 		//Add to library for lookup.
-		ItemLib[this.id] = this;
+		if (itemId!="") ItemLib[this.id] = this;
 	}
 
 	public getTooltipDescription():string {
@@ -112,5 +112,18 @@ namespace Items {
 	Items.NOTHING.attack        = 0;
 	export namespace Weapons {
 
+	}
+	export function monsterWeapon(name:string,attack:number=0,verb:string="punch"):Item {
+		let i = new Item("",name,name,ITEM_TYPE_WEAPON);
+		i.equipmentName = name;
+		i.verb = verb;
+		i.attack = attack;
+		return i;
+	}
+	export function monsterArmor(name:string,defense:number=0):Item {
+		let i = new Item("",name,name,ITEM_TYPE_ARMOUR);
+		i.equipmentName = name;
+		i.defense = defense;
+		return i;
 	}
 }

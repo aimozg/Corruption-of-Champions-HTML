@@ -82,18 +82,8 @@ class TentacleBeast extends Monster {
 		this.XP                   = 0;
 		this.gems                 = rand(15) + 5;
 		//Battle variables
-		this.weapon               = Items.NOTHING;
-		this.weapon.equipmentName = "whip-tendril";
-		this.weapon.verb          = "thorny tendril";
-		this.weapon.attack        = 1;
-		this.shield               = Items.NOTHING;
-		this.armor                = Items.NOTHING;
-		this.armor.equipmentName  = "rubbery skin";
-		this.armor.defense        = 1;
-		this.upperGarment         = Items.NOTHING;
-		this.lowerGarment         = Items.NOTHING;
-		this.accessory1           = Items.NOTHING;
-		this.accessory2           = Items.NOTHING;
+		this.weapon = Items.monsterWeapon("whip-tendril",1,"thorny tendril");
+		this.armor = Items.monsterArmor("rubbery skin",1);
 		this.bonusHP              = 250;
 		this.additionalXP         = 0;
 		this.lustVuln             = 0.8;

@@ -15,7 +15,7 @@ class Cock {
 		return (this.cockLength * this.cockThickness)
 	}
 
-	public thickenCock(amount: number): void {
+	public thickenCock(amount: number): number {
 		//Diminishing returns!
 		if (!hyperHappy) {
 			if (this.cockThickness >= 6 && this.cockThickness < 10)
@@ -33,6 +33,7 @@ class Cock {
 		this.cockThickness += amount;
 		//Apply hard cap
 		if (this.cockThickness > 40) this.cockThickness = 40;
+		return amount;
 	}
 
 	public increaseCock(amount: number): number {

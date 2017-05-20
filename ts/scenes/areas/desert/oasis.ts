@@ -3,7 +3,7 @@
 namespace OasisScene {
 	addToGameFlags(OASIS_DEMONS_ACCEPT);
 	// Oasis Encounters Start
-	export function oasisEncounter():void {
+	export function oasisEncounter(): void {
 		// TODO spriteSelect(46);
 		//Find oasis, sit there.
 		clearOutput();
@@ -19,16 +19,16 @@ namespace OasisScene {
 		addButton(1, "Fight", oasisFight);
 		addButton(2, "Run Away", oasisRunAway);
 	}
-
+	
 	// Choose to fight the demons
-	export function oasisFight():void {
+	export function oasisFight(): void {
 		startCombat(new DemonPack());
 		// TODO spriteSelect(46);
 		playerMenu(); // TODO CHECK THIS
 	}
-
+	
 	// Choose to run from the demons
-	export function oasisRunAway():void {
+	export function oasisRunAway(): void {
 		//TODO spriteSelect(46);
 		clearOutput();
 		//Run away successfully if fast enough.  80 speed = autosuccess.
@@ -42,7 +42,7 @@ namespace OasisScene {
 			doNext(playerMenu);
 		}
 	}
-
+	
 	//Talk with the Demons
 	export function oasisTalk() {
 		//TODO spriteSelect(46);
@@ -56,9 +56,9 @@ namespace OasisScene {
 		addButton(0, "Stay", oasisTalkAccept);
 		addButton(1, "Leave", oasisTalkDecline);
 	}
-
+	
 	// Decline Demon invitation
-	export function oasisTalkDecline():void {
+	export function oasisTalkDecline(): void {
 		//TODO spriteSelect(46);
 		clearOutput();
 		outputText("You consider the invitation, but do your best to politely decline. The little giggle this produces in a small implike creature in the back of the group send chills down your spine and you turn to go, but as you do so you catch the eye of the leader. His grin has widened, as if he knows something that you do not. With a deliberate slowness he starts to chuckle, and your worst fears are confirmed when you hear the words 'Silly creature. The offer to feast is never denied. Take it alive and kicking.'<br><br>");
@@ -67,9 +67,9 @@ namespace OasisScene {
 		startCombat(new DemonPack());
 		doNext(playerMenu);
 	}
-
+	
 	//Accept Demon invitation
-	export function oasisTalkAccept():void {
+	export function oasisTalkAccept(): void {
 		//TODO spriteSelect(46);
 		clearOutput();
 		//You slut!
@@ -81,9 +81,9 @@ namespace OasisScene {
 		gameFlags[OASIS_DEMONS_ACCEPT]++;
 		doNext(oasisSexing);
 	}
-
+	
 	// Oasis Sex Scenes
-	export function oasisSexing():void {
+	export function oasisSexing(): void {
 		//TODO spriteSelect(46);
 		player.slimeFeed();
 		//New screen
@@ -203,15 +203,15 @@ namespace OasisScene {
 			doNext(playerMenu);
 		}
 	}
-
+	
 	//Desert Tribe Bad End
-	export function oasisBadEnd():void {
+	export function oasisBadEnd(): void {
 		// TODO spriteSelect(46);
 		//You get this ending if you are a fully corrupt female/herm/centaur with low intelligence and had over 5-10 'Feast' encounters with the Desert Tribe, once the leader starts laying a claim on you because of your large clit
 		clearOutput();
 		outputText("You fuck for hours, 'feasting' with the demons. Pain, pleasure and exhaustion intermingle; no matter how hard you try to cling to consciousness, you are in no state to concentrate enough to succeed. You dangle over the edge for what seems like eternity before an orgasm stronger than any other hits you like a solid wall. You black out...<br><br>");
 		//[If female/herm]
-
+		
 		outputText("After passing out from your latest orgy with the desert tribe, you wake up to find yourself still naked and laying on your back. ");
 		//[If female/herm]
 		if (!player.isTaur()) outputText("Your feet are locked up in shackles, though with a chain long enough to leave you room to move or walk without problems. ");
@@ -233,9 +233,9 @@ namespace OasisScene {
 		outputText("Flushing red in embarrassment at his words, you reluctantly follow after the leader and the rest of the tribe in obedience. You mull over what the leader had just said in your mind, and can't help but wonder what your future would be like if you remained with them.");
 		doNext(oasisBadEndEpilogue);
 	}
-
+	
 	// Oasis Bad End Two
-	export function oasisBadEndEpilogue():void {
+	export function oasisBadEndEpilogue(): void {
 		//TODO spriteSelect(46);
 		clearOutput();
 		outputText("After one year");
@@ -257,8 +257,8 @@ namespace OasisScene {
 	 applyTease(lustDelta);
 	 }
 	 */
-
-	export function demonWin():void {
+	
+	export function demonWin(): void {
 		clearOutput();
 		if (monster.HP <= 0) {
 			outputText("You strike out and the last of the demons tumbles to the ground with a thud. You stand there for a second surrounded by dead or unconscious demons feeling like a god of battle. Then you realize that if a god of battle does exist he lives on a demonic plane like this, so to avoid insulting him you take your hands off your hips and your " + player.legs() + " off the head of the demon leader before you start to search the bodies.");
@@ -277,13 +277,13 @@ namespace OasisScene {
 		outputText("  Do you rape them?");
 		doYesNo(rapeDemons, cleanupAfterCombat);
 	}
-
-	export function rapeDemons():void {
+	
+	export function rapeDemons(): void {
 		clearOutput();
 		outputText("You open your arms and step into the throng of eager demons. They jump eagerly to touch you, becoming more and more lust-frenzied every second. You take the nearest demon and throw it to the ground and without a moment's thought the rest of the group leap to join you in a thoughtless madness of lust...");
 		doNext(oasisSexing);
 	}
-
+	
 	export function demonLose() {
 		clearOutput();
 		if (player.gender == 0) {
@@ -332,54 +332,51 @@ class DemonPack extends Monster {
 		this.battleDesc = "The group is composed of roughly twenty tan-skinned demons, mostly humanoid in shape with many and varied corruptions across the mob. You see demonic high heels, twisting horns and swinging cocks of all shapes and sizes. There even seems to be a bull head in there somewhere. You also make out plenty of breasts ranging from tiny ones to a pair that requires a second person to carry them, and with those breasts a wide range of pussies, dripping and dry, sometimes nestled below some form of demonic dick.  The small tribe carries no weapons and what little clothing they wear is well-shredded, except for one hefty male wearing a cloak of what appears to be snakeskin across his broad shoulders.";
 		// TODO Silly Code to add later + (game.silly() ? "  You spot an odd patch that reads, \"<i>41st Engineer Company: Vaginal Clearance</i>\" on his shoulder." : "");";
 		//Core stats
-		this.str                  = 80;
-		this.tou                  = 10;
-		this.spe                  = 10;
-		this.inte                 = 5;
-		this.lib                  = 50;
-		this.sens                 = 60;
-		this.cor                  = 80;
+		this.str            = 80;
+		this.tou            = 10;
+		this.spe            = 10;
+		this.inte           = 5;
+		this.lib            = 50;
+		this.sens           = 60;
+		this.cor            = 80;
 		//Combat stats
-		this.HP                   = this.maxHP();
-		this.lust                 = 30;
-		this.fatigue              = 0;
+		this.HP             = this.maxHP();
+		this.lust           = 30;
+		this.fatigue        = 0;
 		//Advancement
-		this.level                = 6;
-		this.XP                   = 0;
-		this.gems                 = rand(25) + 10;
+		this.level          = 6;
+		this.XP             = 0;
+		this.gems           = rand(25) + 10;
 		//Battle variables
-		this.weapon               = Items.NOTHING;
-		this.shield               = Items.NOTHING;
-		this.armor                = Items.NOTHING;
-		this.upperGarment         = Items.NOTHING;
-		this.lowerGarment         = Items.NOTHING;
-		this.accessory1           = Items.NOTHING;
-		this.accessory2           = Items.NOTHING;
-		this.weapon.equipmentName = "claws";
-		this.weapon.verb          = "claw";
-		this.armor.equipmentName  = "demonic skin";
-		this.bonusHP              = 200;
-		this.additionalXP         = 0;
-		this.lustVuln             = 1;
+		this.weapon         = Items.NOTHING;
+		this.shield         = Items.NOTHING;
+		this.armor          = Items.NOTHING;
+		this.upperGarment   = Items.NOTHING;
+		this.lowerGarment   = Items.NOTHING;
+		this.accessory1     = Items.NOTHING;
+		this.accessory2     = Items.NOTHING;
+		this.weapon         = Items.monsterWeapon("claws", 0, "claw");
+		this.armor          = Items.monsterArmor("demonic skin");
+		this.bonusHP        = 200;
+		this.additionalXP   = 0;
+		this.lustVuln       = 1;
 		//this.temperment = TEMPERMENT_LOVE_GRAPPLES; TODO Temperment System
-
 		this.drops          = [];
 		this.dropThresholds = [];
-
 		//Appearance
-		this.gender      = 0; //0 genderless, 1 male, 2 female, 3 hermaphrodite
-		this.tallness    = rand(8) + 70;
-		this.skinTone    = "red";
-		this.skinType    = 0;
-		this.skinAdj     = "";
-		this.skinDesc    = "skin";
-		this.hairType    = 0;
-		this.hairColor   = "black";
-		this.hairLength  = 15;
-		this.beardStyle  = 0;
-		this.beardLength = 0;
-		this.furColor    = "";
-
+		this.gender         = 0; //0 genderless, 1 male, 2 female, 3 hermaphrodite
+		this.tallness       = rand(8) + 70;
+		this.skinTone       = "red";
+		this.skinType       = 0;
+		this.skinAdj        = "";
+		this.skinDesc       = "skin";
+		this.hairType       = 0;
+		this.hairColor      = "black";
+		this.hairLength     = 15;
+		this.beardStyle     = 0;
+		this.beardLength    = 0;
+		this.furColor       = "";
+		
 		//Head
 		this.earType      = 0;
 		this.eyeType      = 0;
@@ -398,13 +395,13 @@ class DemonPack extends Monster {
 		this.tailVenom    = 0;
 		this.tailRecharge = 0;
 		this.wingType     = 0;
-
+		
 		this.femininity = 50;
 		this.tone       = 0;
 		this.thickness  = 0;
 		this.hipRating  = HIP_RATING_AMPLE + 2;
 		this.buttRating = BUTT_RATING_LARGE;
-
+		
 		//Sexual Characteristics
 		//Cocks
 		this.createCock(18, 2);
@@ -420,25 +417,25 @@ class DemonPack extends Monster {
 		this.ass.analWetness   = ANAL_WETNESS_SLIME_DROOLING;
 		//Breasts
 		this.createBreastRow(0, 0);
-
+		
 		//Drops
 		this.clearDrops(); //Need to be called before populating the item arrays.
 		this.addDrop(Items.Consumables.SuccubiMilk, 25);
 		this.addDrop(Items.Consumables.IncubiDraft, 25);
 		this.addDrop(Items.Consumables.OviElixir, 25);
 		this.addDrop(Items.Consumables.BlackBook, 25);
-
+		
 		//Victory/defeat
 		this.victory = OasisScene.demonWin;
 		this.defeat  = OasisScene.demonLose;
-
+		
 	}
-
+	
 	doAI() {
 		if (rand(2) == 0) DemonPack.packAttack();
 		else DemonPack.lustAttack();
 	}
-
+	
 	// PackAttack taken from Combat.as. Need to see if this is used elsewhere and see if it's worth it to generalize the function
 	public static packAttack() {
 		//Determine if dodged!
@@ -478,7 +475,7 @@ class DemonPack extends Monster {
 		}
 		combatRoundOver();
 	};
-
+	
 	public static lustAttack() {
 		if (player.lust < 35) {
 			outputText("The " + monster.name + " press in close against you and although they fail to hit you with an attack, the sensation of their skin rubbing against yours feels highly erotic.");
@@ -500,6 +497,6 @@ class DemonPack extends Monster {
 		player.changeLust(10 + player.sens / 10);
 		combatRoundOver();
 	};
-
+	
 }
 

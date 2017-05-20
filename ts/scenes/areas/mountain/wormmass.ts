@@ -59,10 +59,8 @@ class WormMass extends Monster {
 		this.XP                   = 0;
 		this.gems                 = 0;
 		//Battle variables
-		this.weapon               = Items.NOTHING;
-		this.weapon.equipmentName = "worm";
-		this.weapon.verb          = "slap";
-		this.armor.equipmentName  = "skin";
+		this.weapon = Items.monsterWeapon("worm",0,"slap");
+		this.armor = Items.monsterArmor("skin",0);
 		this.bonusHP              = 0;
 		this.additionalXP         = 0;
 		this.lustVuln             = 0;

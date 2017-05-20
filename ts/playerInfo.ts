@@ -18,11 +18,11 @@ function levelScreen(): void {
 function attributeMenu(): void {
 	clearOutput();
 	let {str, tou, spe, inte} = player;
-	outputText("<b>Speed:</b> " + spe + " + <b>" + tempSpe + "</b> → " + (spe + tempSpe) + "<br>");
-	outputText("You have " + player.statPoints + " points to spend.<br><br>");
-	outputText("<b></b>Strength:</b> " + str + " + <b>" + tempStr + "</b> → " + (str + tempStr) + "<br>");
-	outputText("<b>Toughness:</b> " + tou + " + <b>" + tempTou + "</b> → " + (tou + tempTou) + "<br>");
-	outputText("<b>Intelligence:</b> " + inte + " + <b>" + tempInt + "</b> → " + (inte + tempInt) + "<br>");
+	outputText(`You have ${player.statPoints} points to spend.<br><br>`);
+	outputText(`<b>Speed:</b> ${spe} + <b>${tempSpe}</b> → ${spe + tempSpe}<br>`);
+	outputText(`<b>Strength:</b> ${str} + <b>${tempStr}</b> → ${str + tempStr}<br>`);
+	outputText(`<b>Toughness:</b> ${tou} + <b>${tempTou}</b> → ${tou + tempTou}<br>`);
+	outputText(`<b>Intelligence:</b> ${inte} + <b>${tempInt}</b> → ${inte + tempInt}<br>`);
 	menu();
 	//Add attributes
 	if (player.statPoints > 0) {

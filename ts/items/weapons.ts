@@ -26,6 +26,8 @@ namespace Items {
 			get verb():string {
 				return (player.hasPerk(PerkLib.StaffChanneling) ? "shot" : "smack"); //TODO Test this
 			}
+			//noinspection JSUnusedLocalSymbols
+			set verb(value:string) {}
 		}
 		export const WizardStaff = new WizardStaffClass();
 

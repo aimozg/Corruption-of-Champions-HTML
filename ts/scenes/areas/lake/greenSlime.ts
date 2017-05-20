@@ -1,5 +1,5 @@
 class GreenSlime extends Monster {
-
+	
 	constructor() {
 		super();
 		//Name and references
@@ -11,30 +11,28 @@ class GreenSlime extends Monster {
 		this.himHer     = "it";
 		this.hisHer     = "its";
 		this.battleDesc = "The green slime has a normally featureless face that sits on top of wide shoulders that sprout into thick, strong arms. Its torso fades into an indistinct column that melds into the lump of ooze on the ground that serves as a makeshift form of locomotion.";
-
+		
 		//Stats
-		this.str                  = 12;
-		this.tou                  = 13;
-		this.spe                  = 35;
-		this.inte                 = 42;
-		this.lib                  = 45;
-		this.sens                 = 45;
-		this.cor                  = 60;
+		this.str        = 12;
+		this.tou        = 13;
+		this.spe        = 35;
+		this.inte       = 42;
+		this.lib        = 45;
+		this.sens       = 45;
+		this.cor        = 60;
 		//Combat stats
-		this.bonusHP              = 30;
-		this.HP                   = this.maxHP();
-		this.lust                 = 30;
-		this.fatigue              = 0;
+		this.bonusHP    = 30;
+		this.HP         = this.maxHP();
+		this.lust       = 30;
+		this.fatigue    = 0;
 		//Advancement
-		this.level                = 2;
-		this.gems                 = 1 + rand(5);
+		this.level      = 2;
+		this.gems       = 1 + rand(5);
 		//Battle variables
-		this.weapon.equipmentName = "hands";
-		this.weapon.verb          = "slap";
-		this.armor.equipmentName  = "gelatinous skin";
-		this.lustVuln             = 1;
-		this.temperment           = 3; //Temperment Love Grapples
-
+		this.weapon     = Items.monsterWeapon("hands", 0, "slap");
+		this.armor      = Items.monsterArmor("gelatinous skin", 0);
+		this.lustVuln   = 1;
+		this.temperment = 3; //Temperment Love Grapples
 		//Appearance
 		this.tallness   = rand(8) + 80;
 		this.hipRating  = HIP_RATING_AMPLE;
@@ -49,18 +47,18 @@ class GreenSlime extends Monster {
 		this.cumMultiplier     = 3;
 		this.hoursSinceCum     = 20;
 		this.createCock(18, 2, CockTypesEnum.HUMAN);
-
+		
 		//Drops
 		this.clearDrops(); //Need to be called before populating the item arrays.
 		this.addDrop(Items.Weapons.Pipe, 10);
 		this.addDrop(Items.Consumables.WetCloth, 45);
 		this.addDrop(Items.Materials.GreenGel, 45);
-
+		
 		//Victory/defeat
 		this.victory = GreenSlimeScene.greenSlimeWin;
 		this.defeat  = GreenSlimeScene.greenSlimeLose;
 	}
-
+	
 	//------------
 	// COMBAT
 	//------------
@@ -80,12 +78,12 @@ class GreenSlime extends Monster {
 		}
 		combatRoundOver();
 	}
-
+	
 	static lustAttack(): void {
 		outputText("The creature surges forward slowly with a swing that you easily manage to avoid.  You notice traces of green liquid spurt from the creature as it does, forming a thin mist that makes your skin tingle with excitement when you inhale it. ");
 		player.changeLust(player.lib / 10 + 8, true);
 	}
-
+	
 	static lustReduction(): void {
 		outputText("The creature collapses backwards as its cohesion begins to give out, and the faint outline of eyes and a mouth form on its face.  Its chest heaves as if it were gasping, and the bolt upright erection it sports visibly quivers and pulses before relaxing slightly. ");
 		monster.changeLust(-13, true);
@@ -132,9 +130,9 @@ namespace GreenSlimeScene {
 		}
 		//Player's stats suck and you should feel bad.
 		if (gameFlags[FACTORY_SHUTDOWN] == 1) outputText("<br><br><b>You are amazed to encounter a slime creature with the factory shut down - most of them have disappeared.</b>");
-
+		
 	}
-
+	
 	export function greenSlimeWin(): void {
 		clearOutput();
 		outputText("You smile in satisfaction as the " + monster.name + " collapses, unable to continue fighting.");
@@ -160,7 +158,7 @@ namespace GreenSlimeScene {
 		}
 		cleanupAfterCombat();
 	}
-
+	
 	function slimeVictoryRape(): void {
 		//Service for lower corruption
 		if (player.cor <= 33) {
@@ -176,13 +174,13 @@ namespace GreenSlimeScene {
 			//female or futa
 			else if (player.gender > 0) femaleRapesOoze();
 		}
-
+		
 	}
-
+	
 	function rapeOozeWithMilk(): void {
 		clearOutput();
 		outputText("You look over the ooze, wondering what to do about your need to nurse now that it has lost cohesion. After a while of puzzling things out, you decide to wing it, " + player.clothedOrNaked("removing the top of your " + player.armorName + " and ") + "pressing the mess of a monster to your " + player.breastDescript(0) + " and giving it a squeeze to get the milk to it. The slime responds almost immediately, applying pressure from the base of your " + player.breastDescript(0) + " to the tip of your " + player.nippleDescript(0) + ", earning it a shot of milk to your immense satisfaction. As it tends to your " + player.nippleDescript(0) + ", it slowly works its way down your body, almost lovingly ");
-
+		
 		// [If male-
 		if (player.gender == 1) {
 			outputText("caressing your " + player.multiCockDescriptLight());
@@ -214,9 +212,9 @@ namespace GreenSlimeScene {
 		else if (player.gender == 1) outputText("Your hands grip the ground as the slime has left you nothing to do; adding your fingers to the mix feels like it'd be an insult to the creature's expert work.  ");
 		//[if female or Herm-
 		else outputText("Your hands fly to your " + player.vaginaDescript(0) + " and frantically plunge your fingers in and out of it.  You wish the slime would engulf it as well.  ");
-
+		
 		outputText("You cum many times into the mass, but that's not what truly matters to you. It's an extremely welcome, mind-shatteringly satisfying bonus, but not the main event. What does matter is the slow, meticulous draining of milk from both of your " + player.breastDescript(0) + " at once that the ooze is doing for you. Feeling that it's on the last of your milk, you urge the ooze on, trying to get it to crank up its work on your now-overly sensitive ");
-
+		
 		//[if male-
 		if (player.gender == 1) {
 			outputText(player.multiCockDescriptLight());
@@ -232,7 +230,7 @@ namespace GreenSlimeScene {
 			outputText(" and " + player.clitDescript() + " and ");
 		}
 		outputText(player.breastDescript(0) + ".<br><br>");
-
+		
 		outputText("Unfortunately, you seem to have done a little too much to it in your battle before. The ooze slides off, leaving you hanging on the edge of orgasm. Deciding you just won't stand for this, you scoop up most the mess left by the monster and use it as a masturbation aid, achieving sweet release by ");
 		if (player.gender == 1) outputText("feverishly jacking yourself off with it.  The cool feel of it contrasts enough to send you over the edge relatively quickly, and you release your cum into it.  You drop most of its bulk ");
 		//[if female-
@@ -241,13 +239,13 @@ namespace GreenSlimeScene {
 		else if (player.gender == 3) outputText("feverishly jacking yourself off with it while rapidly entering it in and out of your " + player.vaginaDescript(0) + " by way of your fingers.  The cool feel of it contrasts enough to send you over the edge relatively quickly.  You release your cum into it while it absorbs the juices from your " + player.vaginaDescript(0) + ".  You drop some of its bulk ");
 		//[if genderless-
 		else outputText("rubbing it over your " + player.assholeDescript() + ".  The cool feel of it contrasts enough to send you over the edge relatively quickly, and you drop it as you feel your muscles spasm with the phantom orgasm ");
-
+		
 		outputText("while using the rest of it to coat your " + player.nippleDescript(0) + " in order to give it the last of your milk.<br><br>");
-
+		
 		outputText("Now empty, you leave the ooze in the pile it's in and walk away, feeling somewhat disappointed by the lackluster ending of it all, but overall satisfied with the fact that you've nursed.<br><br>");
-
+		
 		//set lust to 0, increase sensitivity slightly
-
+		
 		player.dynStats("lib", .2);
 		//You've now been milked, reset the timer for that
 		let s    = player.findStatusEffectByType(StatusEffects.Feeder)!!;
@@ -256,7 +254,7 @@ namespace GreenSlimeScene {
 		cleanupAfterCombat();
 		player.orgasm();
 	}
-
+	
 	function femaleRapesOoze(): void {
 		player.slimeFeed();
 		outputText("You feel a stirring inside your feminine side as you eye the slime's throbbing erection, and decide to take advantage of its current state to satisfy your own urges.  You strip off your clothes and walk forward, straddling the creature's thighs and running a hand over its member.  You pull it in against your body and stroke the soft, velvety, and just slightly moist shaft,");
@@ -333,12 +331,12 @@ namespace GreenSlimeScene {
 			outputText("not as thick as semen, ");
 		}
 		outputText("filling you past full and flowing out along the creature's cock, leaving you with a slight bulge at your belly and a pool of green fluids on the ground beneath you.  You gasp and hold your breath as you lay on the creature, its grip slowly loosening.  Its cock slides out of you and a flood of liquid pours out of your " + player.vaginaDescript(0) + " as it begins to leak out from under you, gently letting you onto the ground.  You tremble on the ground for a few moments as you recover your wits, and once you do you realize that the creature has left.  You find no trace of the creature's presence afterward except a thin trail of green fluid leading to the nearby waters.");
-
+		
 		player.dynStats("sens", 3);
 		cleanupAfterCombat();
 		player.orgasm();
 	}
-
+	
 	function maleRapesOoze(): void {
 		clearOutput();
 		outputText("Noting your own erectness, you decide that the unusual nature of the thing in front of you is of, at best, minor concern, and resolve to fuck it to satisfy your own desires.<br><br>");
@@ -424,14 +422,14 @@ namespace GreenSlimeScene {
 			else outputText("exploding inside it, your load filling the space around your cock with a white, milky fluid.");
 			//vaginal orgasm text
 			if (player.vaginas.length > 0) outputText("  As you pump your jizz into the creature an almost electrical shock runs through your body, starting from your " + player.vaginaDescript(0) + " and radiating outwards.");
-
+			
 			outputText("  The thing seems to clamp down on you even tighter as you pull out, and you relish the sensation.  Its tight ass leaves your " + player.cockDescript(0) + " almost perfectly clean afterward, a glob of white still stuck inside the creature as it changes back into its original, amorphous state.  The cloud disperses as the slime slinks off.");
 		}
 		player.dynStats("sens", 3);
 		cleanupAfterCombat();
 		player.orgasm();
 	}
-
+	
 	export function greenSlimeLose(): void {
 		//WORMS
 		/*
@@ -442,7 +440,7 @@ namespace GreenSlimeScene {
 		 */
 		slimeLoss();
 	}
-
+	
 	function slimeLoss(): void {
 		if (gameFlags[SFW_MODE] == 1) return; //No rape in SFW mode.
 		clearOutput();
@@ -452,11 +450,11 @@ namespace GreenSlimeScene {
 				case 0:
 					oozeRapesYouVaginally();
 					break;
-
+				
 				case 1:
 					oozeRapesYouOrally();
 					break;
-
+				
 				case 2:
 					oozeButtRapesYou();
 					break;
@@ -468,14 +466,14 @@ namespace GreenSlimeScene {
 				case 0:
 					oozeRapesYouOrally();
 					break;
-
+				
 				case 1:
 					oozeButtRapesYou();
 					break;
 			}
 		}
 	}
-
+	
 	function oozeRapesYouVaginally(): void {
 		player.slimeFeed();
 		outputText("You collapse under the beating from the slime's soft but heavy fists, dazed and disoriented.  The creature lunges at you with surprising speed, grabbing you by the ankles and pulling you towards it.  You try to pull away as it pulls you up against its trunk, momentarily fearful that it's going to try and absorb you.  ");
@@ -567,7 +565,7 @@ namespace GreenSlimeScene {
 		cleanupAfterCombat();
 		player.orgasm();
 	}
-
+	
 	function oozeRapesYouOrally(): void {
 		player.slimeFeed();
 		outputText("You collapse under the beating from the slime's soft but heavy fists, dazed and disoriented.  The creature surges forward, covering you and forcing you to the ground as it rests on your gut, putting just enough of its apparently enormous weight onto you to keep you pinned.  It leans forward, its massive upper body easily shadowing you, and ");
@@ -623,7 +621,7 @@ namespace GreenSlimeScene {
 		cleanupAfterCombat();
 		player.orgasm();
 	}
-
+	
 	function oozeButtRapesYou(): void {
 		player.slimeFeed();
 		outputText("You collapse under the beating from the slime's soft but heavy fists, dazed and disoriented.  You weakly try to resist as the slime rolls you onto your stomach and lifts your " + player.buttDescript() + " into the air as it takes up a position behind you.  It holds your head against the ground with one hand and strips off your clothes with the other, pressing its trunk up against you.  Its skin is soft, velvety, and firm, but it is also easily pliable.  You feel something grow out of its body and almost instantly realize what's going on.  The slime rubs its moist cock between your cheeks for a moment, before pulling back.  You realize with a tiny bit of fear that the creature's tool must be massive – over a foot, at least, and several inches wide!  It runs its tip over your ");
@@ -678,12 +676,12 @@ namespace GreenSlimeScene {
 		//mangasm
 		else if (player.cockTotal() > 0) outputText("The additional pressure against your prostate finally pushes you over the edge and you come hard, spraying your load against the ground.  Thick ropes of jizm spray onto the ground as the feeling wracks your body.  ");
 		outputText("You shudder beneath the creature as it slowly begins to pull out of you, which brings another moan to your lips.  When it finally pops free of your body you feel a deluge of fluid rush from your ass and onto the ground.  You recover yourself as the creature retreats back into the waters, leaving nothing but a trail of slime leading to the water's edge.");
-
+		
 		player.dynStats("sens", 4);
 		cleanupAfterCombat();
 		player.orgasm();
 	}
-
+	
 	function serviceLowCorruptionHighLust(): void {
 		player.slimeFeed();
 		clearOutput();
@@ -891,12 +889,12 @@ namespace GreenSlimeScene {
 				outputText("You barely notice as the creature's erection recedes and it slides out from under you, leaving you utterly satisfied.  When you do finally recover your senses you find no other traces of its presence.");
 			}
 		}
-
+		
 		player.dynStats("sens", 3);
 		cleanupAfterCombat();
 		player.orgasm();
 	}
-
+	
 	function serviceLowCorruption(): void {
 		clearOutput();
 		outputText("You seem unable to pull your eyes away from the creature, clearly helpless and distressed in its current state.  Carefully, you step forward, the slime barely registering your presence any longer.  It momentarily grimaces as if in agony, and you decide that you can't simply leave it like this.");

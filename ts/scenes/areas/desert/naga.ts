@@ -29,11 +29,8 @@ class Naga extends Monster {
 		this.level                = 2;
 		this.gems                 = 5 + rand(15);
 		//Battle variables
-		this.weapon.equipmentName = "fist";
-		this.weapon.attack        = 3;
-		this.weapon.verb          = "punch";
-		this.armor.equipmentName  = "scales";
-		this.armor.defense        = 5;
+		this.weapon = Items.monsterWeapon("fist",3);
+		this.armor = Items.monsterArmor("scales",5);
 		this.lustVuln             = 1;
 		this.temperment           = 2; //TEMPERMENT_RANDOM_GRAPPLES. CHECK THIS.
 

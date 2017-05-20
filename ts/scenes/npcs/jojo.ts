@@ -16,23 +16,20 @@ class Jojo extends Monster {
 		else
 			this.battleDesc = "He wears loose white clothes wrapped in prayer beads and tattered prayer papers.";
 		//Core stats
-		this.str  = 35;
-		this.tou  = 40;
-		this.spe  = 65;
-		this.inte = 55;
-		this.lib  = 15;
-		this.sens = 40;
-		this.cor  = 15 * gameFlags[JOJO_CORRUPTION_STAGE];
-		if (this.cor < 0) this.cor = 0; //Ensure it doesn't goes into negative if you proceed to unlock sex scenes.
+		this.str      = 35;
+		this.tou      = 40;
+		this.spe      = 65;
+		this.inte     = 55;
+		this.lib      = 15;
+		this.sens     = 40;
+		this.cor      = clamp(0, 15 * gameFlags[JOJO_CORRUPTION_STAGE], 100);
 		//Advancement
-		this.level                = 4;
-		this.gems                 = rand(5) + 2;
+		this.level    = 4;
+		this.gems     = rand(5) + 2;
 		//Battle variables
-		this.weapon.equipmentName = "fists";
-		this.weapon.verb          = "punch";
-		this.armor.equipmentName  = "robes";
-		this.lustVuln             = 0.9;
-
+		this.weapon   = Items.monsterWeapon("fist", 0, "punch");
+		this.armor    = Items.monsterArmor("robes", 0);
+		this.lustVuln = 0.9;
 		//Sexual Characteristics
 		this.createCock(7.5, 1.8);
 		this.balls         = 2;
@@ -65,12 +62,12 @@ class Jojo extends Monster {
 			if (player.gender == 1 || player.gender == 3) this.ass.analLooseness = 4;
 			this.battleDesc = "Jojo is an anthropomorphic mouse with immaculate white fur. Though he stands only four feet tall, he is covered in lean muscle and moves with incredible speed. He's naked, with a large tainted throbbing member bouncing at attention. A fuzzy sack with painfully large looking balls dangles between his legs.";
 		}
-
+		
 		//Victory/defeat
 		this.victory = JojoScene.defeatedJojo;
 		this.defeat  = JojoScene.loseToJojo;
 	}
-
+	
 	//------------
 	// COMBAT
 	//------------
@@ -86,7 +83,7 @@ class Jojo extends Monster {
 		}
 		combatRoundOver();
 	}
-
+	
 	static selfCorruption() {
 		switch (gameFlags[JOJO_CORRUPTION_STAGE]) {
 			case 2:
@@ -121,18 +118,18 @@ namespace JojoScene {
 		JOJO_TRAINING_COUNTER, JOJO_TRAINING_UNLOCKED, JOJO_NIGHT_WATCH, JOJO_TIMES_TALKED_WITH, JOJO_LAST_MEDITATION,
 		JOJO_TIMES_TRAINED_WITH, JOJO_RAPE_DISABLED, JOJO_ANAL_XP, JOJO_SEX_COUNTER, JOJO_ANAL_CATCH_COUNTER,
 		JOJO_VAGINAL_CATCH_COUNTER, JOJO_LITTERS_AMILY_REACTION_COUNTER, JOJO_LITTERS, JOJO_BLOWJOB_XP);
-
+	
 	//------------
 	// UTILS
 	//------------
 	function jojoSprite(): void {
 		displaySprite("jojo"); //Currently, no tentacle variant.
 	}
-
+	
 	function jojoCumQ(): number {
 		return 25;
 	}
-
+	
 	//------------
 	// SCENES
 	//------------
@@ -165,7 +162,7 @@ namespace JojoScene {
 			corruptJojoEncounter();
 		}
 	}
-
+	
 	function lowCorruptionJojoEncounter(): void {
 		clearOutput();
 		jojoSprite();
@@ -185,7 +182,7 @@ namespace JojoScene {
 		menu();
 		doYesNo(acceptJojosApology, refuseJojosApology);
 	}
-
+	
 	//Apology Choices
 	function acceptJojosApology(): void {
 		clearOutput();
@@ -193,7 +190,7 @@ namespace JojoScene {
 		outputText("“<i>Thanks, it’s a relief to meet a friendly face,</i>” he says, his mouth breaking into a smile. “<i>Oh, where are my manners!</i>”<br><br>");
 		lowCorruptionIntro();
 	}
-
+	
 	function refuseJojosApology(): void {
 		clearOutput();
 		outputText("With a smile you curl up a fist and knock the unsuspecting mouse morph upside the head, causing him drop his staff and rub the spot where you slugged him. As he looks up at you you give his angry expression a shrug, telling him that now the two of you are even.<br><br>");
@@ -201,7 +198,7 @@ namespace JojoScene {
 		outputText("It’s all water under the bridge to you now; after all you did slug him real good. The two of you agree to start over.<br><br>");
 		lowCorruptionIntro();
 	}
-
+	
 	//Intro
 	function lowCorruptionIntro(): void {
 		clearOutput();
@@ -216,7 +213,7 @@ namespace JojoScene {
 		addButton(1, "Leave", Camp.returnToCampUseOneHour);
 		if (player.cor > 10 && player.lust >= 33 && player.gender > 0 && gameFlags[JOJO_RAPE_DISABLED] <= 0 && gameFlags[JOJO_CORRUPTION_STAGE] >= 0) addButton(4, "Rape", jojoRape, false, null, null, "Rape the poor monk mouse-morph." + (player.cor < 50 ? " Why would you do that?" : ""));
 	}
-
+	
 	function highCorruptionJojoEncounter(): void {
 		jojoSprite();
 		outputText("While marvelling at the strange trees and vegetation of the forest, the bushes ruffle ominously. A bush seems to explode into a flurry of swirling leaves and movement. Before you can react you feel your " + player.feet() + " being swept out from under you, and land hard on your back.");
@@ -230,7 +227,7 @@ namespace JojoScene {
 		addButton(1, "Decline", Camp.returnToCampUseOneHour);
 		if (player.cor > 10 && player.lust >= 33 && player.gender > 0 && gameFlags[JOJO_RAPE_DISABLED] <= 0 && gameFlags[JOJO_CORRUPTION_STAGE] >= 0) addButton(2, "Rape", jojoRape, false, null, null, "Rape the poor monk mouse-morph." + (player.cor < 50 ? " Why would you do that?" : ""));
 	}
-
+	
 	//Repeat encounter
 	function repeatJojoEncounter(): void {
 		clearOutput();
@@ -249,7 +246,7 @@ namespace JojoScene {
 		}
 		if (player.gender > 0 && player.lust >= 33 && gameFlags[JOJO_RAPE_DISABLED] == 0) addButton(2, "Rape", jojoRape, false, null, null, "Rape the poor monk mouse-morph." + (player.cor < 25 ? " Why would you do that?" : ""));
 	}
-
+	
 	function corruptJojoEncounter(): void {
 		jojoSprite();
 		outputText("You are enjoying a peaceful walk through the woods when Jojo drops out of the trees ahead, ");
@@ -259,7 +256,7 @@ namespace JojoScene {
 		if (gameFlags[JOJO_CORRUPTION_STAGE] == 5) outputText("panting and nude, his fur rustling in the breeze, a twitching behemoth of a cock pulsing between his legs.");
 		startCombat(new Jojo());
 	}
-
+	
 	function meditateInForest(): void {
 		displaySprite("jojo");
 		clearOutput();
@@ -298,7 +295,7 @@ namespace JojoScene {
 			outputText("<br><br>He bows his head sadly and dismisses you.");
 		doNext(Camp.returnToCampUseTwoHours);
 	}
-
+	
 	function acceptJojoIntoYourCamp(): void {
 		jojoSprite();
 		if (gameFlags[JOJO_RAPE_COUNTER] > 0/* || gameFlags[JOJO_MOVE_IN_DISABLED] == 1*/) {
@@ -311,7 +308,7 @@ namespace JojoScene {
 		}
 		doNext(Camp.returnToCampUseOneHour);
 	}
-
+	
 	export function jojoCamp(): void {
 		clearOutput();
 		jojoSprite();
@@ -355,7 +352,7 @@ namespace JojoScene {
 			jojoCampMenu();
 		}
 	}
-
+	
 	function jojoCampMenu(): void {
 		//Normal Follower Choices
 		if (gameFlags[JOJO_NIGHT_WATCH] > 0) {
@@ -372,19 +369,19 @@ namespace JojoScene {
 		if (player.lust >= 33 && gameFlags[JOJO_CORRUPTION_STAGE] <= -3) addButton(8, "Sex", pureJojoSexMenu, null, null, null, "Initiate sexy time with the mouse-morph.");
 		addButton(14, "Leave", Camp.campFollowersMenu);
 	}
-
+	
 	function acceptOfferOfHelp(): void { //[Yes]
 		clearOutput();
 		outputText("<i>“Thank Marae. You’re much stronger than I, my friend... to hold so much corruption and still retain your will. But let us not tempt fate,”</i> he says before the two of you get to it.<br><br>");
 		jojoFollowerMeditate();
 	}
-
+	
 	function refuseOfferOfHelp(): void { //[No]
 		clearOutput();
 		outputText("You assure Jojo you're fine, and that you'll consider his offer. “<i>But... I... we...</i>” he stammers. “<i>Alright, but please do not let the corruption get the better of you. You’re my friend and I couldn't bear to lose you to its vile influence.</i>” He recomposes himself and asks, “<i>So... is there anything I can assist you with?</i>”<br><br>");
 		jojoCampMenu();
 	}
-
+	
 	//Appearance
 	function jojoAppearance(): void {
 		clearOutput();
@@ -396,7 +393,7 @@ namespace JojoScene {
 		menu();
 		doNext(jojoCamp);
 	}
-
+	
 	//Talk
 	function talkMenu(): void {
 		menu();
@@ -420,7 +417,7 @@ namespace JojoScene {
 		if (gameFlags[JOJO_CORRUPTION_STAGE] <= -3) removeButton(9);
 		addButton(14, "Back", jojoCamp);
 	}
-
+	
 	//Jojo’s Past, Village Convo
 	function jojoTalkVillage(): void {
 		clearOutput();
@@ -438,7 +435,7 @@ namespace JojoScene {
 			outputText("Looks like Jojo’s childhood wasn’t so bad. A little sickly sweet and void of wet pussies and drooling dicks but not bad. You tell him you’re happy to have him near you and he smiles for ear to ear, ignorant of your thoughts.<br><br>");
 		doNext(Camp.returnToCampUseOneHour); // Dunno where exactly to kick back to, fuck it, back to camp yo!
 	}
-
+	
 	//Joining the Monks convo
 	function jojoTalkJoiningTheMonks(): void {
 		clearOutput();
@@ -451,7 +448,7 @@ namespace JojoScene {
 		outputText("Jojo wears this quiet little smile as he finishes. Then he chuckles and says, “<i>Thank you for the memories, [name]. I enjoy our talks.</i>”<br><br>");
 		doNext(Camp.returnToCampUseOneHour);
 	}
-
+	
 	//Fall of the Monks convo
 	function jojoTalkFallOfTheMonks(): void {
 		clearOutput();
@@ -465,7 +462,7 @@ namespace JojoScene {
 		outputText("You can tell the story has affected him, but you’re surprised to hear the resolve in his voice and see the defiant strength in his eyes. Excusing yourself, you rise and leave him to do as he will.<br><br>");
 		doNext(Camp.returnToCampUseOneHour);
 	}
-
+	
 	//Forest Convo
 	function jojoTalkForestConvo(): void {
 		clearOutput();
@@ -502,7 +499,7 @@ namespace JojoScene {
 		outputText("Looking renewed and at peace despite the emotional storm you know must be raging within his tiny frame Jojo returns to what he was doing after thanking you for giving him new purpose.<br><br>");
 		doNext(Camp.returnToCampUseOneHour);
 	}
-
+	
 	//Yourself - Origin
 	function jojoTalkYourOrigin(): void {
 		clearOutput();
@@ -540,7 +537,7 @@ namespace JojoScene {
 		outputText("Jojo smiles now that he has gotten to know you a little better. After a little bit more small talk, the two of you decide the conversation is over and part ways.<br><br>");
 		doNext(Camp.returnToCampUseOneHour);
 	}
-
+	
 	//Dungeon Convo: Factory
 	//Requirements: Completed Demon Factory -- gameFlags[FACTORY_SHUTDOWN] > 0
 	function jojoTalkFactory(): void {
@@ -559,7 +556,7 @@ namespace JojoScene {
 		outputText("Once the two of you are done discussing the demonic factory Jojo excuses himself to think on what you’ve told him.<br><br>");
 		doNext(Camp.returnToCampUseOneHour);
 	}
-
+	
 	//Dungeon Convo: Sand Cave
 	//Requirements: Completed Sand Witch Dungeon
 	/*function jojoTalkSandCave():void {
@@ -628,7 +625,7 @@ namespace JojoScene {
 	 outputText("Having concluded the conversation the two of you stand and Jojo gives you an appreciative pat on the shoulder, seeming more fond of you.<br><br>");
 	 doNext(Camp.returnToCampUseOneHour);
 	 }*/
-
+	
 	//Training
 	// Initiate first time as a talk option, and then display as a "base menu" option?
 	function apparantlyJojoDOESlift(): void {
@@ -657,7 +654,7 @@ namespace JojoScene {
 			if (player.fatigue >= player.maxFatigue() - 60) {
 				outputText("You ask the monk to continue your training; but he shakes his head.<br><br>");
 				outputText("“<i>Not yet [name]. Your body must be fit and rested before our training sessions. Rest first, and come back to me later.</i>”<br><br>");
-
+				
 				menu();
 				doNext(jojoCamp);
 				return;
@@ -665,7 +662,7 @@ namespace JojoScene {
 			if (player.cor >= (25 + player.corruptionTolerance())) {
 				outputText("You ask the monk to continue your training; but he shakes his head.<br><br>");
 				outputText("“<i>I fear that your time would be better spend meditating before we continue your training. Would you like to do so now?</i>”<br><br>");
-
+				
 				menu();
 				doYesNo(jojoFollowerMeditate, jojoCamp);
 				return;
@@ -744,7 +741,7 @@ namespace JojoScene {
 		menu();
 		doNext(Camp.returnToCampUseOneHour);
 	}
-
+	
 	function jojoFollowerMeditate(doClear: boolean = false): void {
 		if (doClear) clearOutput();
 		if (gameFlags[JOJO_LAST_MEDITATION] == time.days) {
@@ -773,7 +770,7 @@ namespace JojoScene {
 		}
 		doNext(Camp.returnToCampUseOneHour);
 	}
-
+	
 	function jojoDefenseToggle(): void {
 		clearOutput();
 		if (gameFlags[JOJO_NIGHT_WATCH] > 0) {
@@ -786,7 +783,7 @@ namespace JojoScene {
 		}
 		doNext(jojoCamp);
 	}
-
+	
 	function wormRemoval(): void {
 		clearOutput();
 		outputText("\"<i>Excellent, young one,</i>\" Jojo continues. \"<i>Your dedication to purification is admirable. Relax and know that the parasites will leave you soon.</i>\"<br><br>");
@@ -805,7 +802,7 @@ namespace JojoScene {
 		player.orgasm();
 		doNext(Camp.returnToCampUseOneHour);
 	}
-
+	
 	//Consensual Jojo sex scenes!
 	function offerSexFirstTime(): void {
 		clearOutput();
@@ -819,20 +816,20 @@ namespace JojoScene {
 		gameFlags[JOJO_CORRUPTION_STAGE] = -1;
 		doYesNo(agreeToMeditate, noThanksToMeditate);
 	}
-
+	
 	function agreeToMeditate(): void {
 		clearOutput();
 		outputText("You decide that it would help you clear your head, and accept his offer. He motions for you to sit down beside him.");
 		doNext(jojoFollowerMeditate);
 	}
-
+	
 	function noThanksToMeditate(): void {
 		clearOutput();
 		outputText("You shake your head, telling him that it'll be fine, and leave.");
 		doNext(playerMenu);
 		Time.advanceMinutes(25);
 	}
-
+	
 	function offerSexFirstTimeHighAffection(): void {
 		clearOutput();
 		outputText("You've been spending great time with Jojo. You've meditated with him, you've discussed with him and you've even trained with him! Now's the time to ask him out.");
@@ -844,7 +841,7 @@ namespace JojoScene {
 		addButton(1, "Drop It", noThanksToMeditate);
 		if (player.inte >= 60 && player.cor <= 10) addButton(2, "Confront", confrontChastity);
 	}
-
+	
 	function confrontChastity(): void {
 		clearOutput();
 		outputText("He cannot keep his vows forever. After all, he's missing out on the pleasure! He probably never knew how he would feel if he has a perfect cock that fits perfectly in his butthole or his cock that fits perfectly in a vagina or an anus. He should be fine as long as he stays faithful to you.");
@@ -857,7 +854,7 @@ namespace JojoScene {
 		gameFlags[JOJO_CORRUPTION_STAGE] = -3;
 		doNext(pureJojoSexMenu);
 	}
-
+	
 	function pureJojoSexMenu(): void {
 		//Capacity
 		let capacity = 40;
@@ -884,7 +881,7 @@ namespace JojoScene {
 		addButton(3, "Blow Him", suckJojosCock, null, null, null, "Suck Jojo's cock and get a taste of mouse cum!");
 		addButton(14, "Nevermind", jojoCampMenu);
 	}
-
+	
 	function anallyFuckTheMouseButtSlut(): void {
 		//Capacity
 		let capacity = 40;
@@ -957,7 +954,7 @@ namespace JojoScene {
 		player.orgasm();
 		doNext(Camp.returnToCampUseOneHour);
 	}
-
+	
 	function getAnallyFuckedByMouseYouSlut(): void {
 		let isVirgin = (player.looseness(false) == 0);
 		clearOutput();
@@ -983,7 +980,7 @@ namespace JojoScene {
 		player.slimeFeed();
 		doNext(Camp.returnToCampUseOneHour);
 	}
-
+	
 	function getVagFuckedByMouse(): void {
 		let isVirgin = player.vaginas[0].virgin;
 		clearOutput();
@@ -1018,7 +1015,7 @@ namespace JojoScene {
 		player.slimeFeed();
 		doNext(Camp.returnToCampUseOneHour);
 	}
-
+	
 	function giveBirthToPureJojoBabies(): void {
 		outputText("Pain shoots through you as they pull open your cervix forcefully, causing you to cry out involuntarily. Jojo comes running to you and says, \"<i>I sense something happening, is it time?</i>\" You scream, \"<i>No, I just like screaming in pain. YES, IT'S TIME!\" You grip the ground and pant and push as the pains of labor overwhelm you. Jojo grips your hand tightly and seemed to be saying some prayers. You feel comforted for a second by the prayers before the pain brings you back to reality. You feel your hips being forcibly widened by the collective mass of the creatures moving down your birth canal. You spread your legs wide, laying your head back with groans and cries of agony as the first child moves out of your womb, through your cervix, down and into your twat. Your lips part and, with a grunt, you expel the first child into Jojo’s waiting hand. Jojo looks at it was if it the most beautiful thing he’s ever seen. He holds it up to you so you can see your firstborn; it’s a little mouselet with large innocent eyes, even larger ears, a cute, sniffling nose, and a long slender pink tail. Jojo helps hold it to your [chest], where it eagerly takes hold of your [nipples] and starts to suckle. As it drinks, it starts to grow larger, and fur the same color as your own hair starts to cover its body. It quickly drinks its fill and then detaches, its father putting it aside, which is good, because by this time there’s another baby waiting for its turn... and another... and another...<br><br>");
 		outputText("Soon, you are back to your old self again, lying down in exhaustion with Jojo sitting nearby, your many rambunctious offspring already starting to walk and play around you.<br><br>");
@@ -1035,7 +1032,7 @@ namespace JojoScene {
 		else outputText("\"<i>Look at them all. You... I never I would be able to have kids when my village was destroyed, but you made it happen. Thank you,</i>\" Jojo tells you sincerely. You ask him how they were going to raise them. Jojo frowned thoughtfully and says, \"<i>Hmm, you’re right...we can’t raise them here... I know of a place we can send them. It’s safe from corruption and it should do till we find better arrangements.</i>\" As sad as you were about sending your kids away, you agree with Jojo; it’s was for the best. You're too exhausted to keep your eyes open for long, but he promises watch them and even as you fall asleep, he’s gathering up your children and taking them away.<br><br>");
 		gameFlags[JOJO_LITTERS]++;
 	}
-
+	
 	function suckJojosCock(): void {
 		clearOutput();
 		if (gameFlags[JOJO_BLOWJOB_XP] <= 0) outputText("You tell Jojo that you feel like it’s his turn to be pleasured. " + player.clothedOrNaked("You remove your [armor] and ") + "Jojo hesitantly drops his pants, revealing his sheathed cock.");
@@ -1057,7 +1054,7 @@ namespace JojoScene {
 		player.slimeFeed();
 		doNext(Camp.returnToCampUseOneHour);
 	}
-
+	
 	//Corruption Route for the Bastards!
 	export function loseToJojo(): void {
 		clearOutput();
@@ -1110,7 +1107,7 @@ namespace JojoScene {
 		}
 		cleanupAfterCombat();
 	}
-
+	
 	export function defeatedJojo(): void {
 		let hpVictory = player.HP <= 0;
 		if (player.lust > 33 && player.gender > 0) {
@@ -1122,7 +1119,7 @@ namespace JojoScene {
 			cleanupAfterCombat();
 		}
 	}
-
+	
 	function postCombatRape(): void {
 		outputText(" You " + player.clothedOrNakedLower("disrobe and ") + "prepare to ");
 		if (gameFlags[JOJO_CORRUPTION_STAGE] == 5)
@@ -1131,7 +1128,7 @@ namespace JojoScene {
 			outputText("teach the uppity monk a lesson...<br><br>");
 		doNext(createCallBackFunction(jojoRape, true));
 	}
-
+	
 	function jojoRape(postCombat: boolean): void {
 		if (!postCombat) clearOutput();
 		jojoSprite();
@@ -1160,7 +1157,7 @@ namespace JojoScene {
 		doNext(Camp.returnToCampUseOneHour);
 		if (postCombat) cleanupAfterCombat();
 	}
-
+	
 	function jojosFirstRape(): void {
 		outputText("You pretend to agree, and follow Jojo into the woods. You bide your time, waiting for him to relax. Eventually the mouse stumbles, and you have your chance!<br><br>");
 		if (player.gender == 1) { //Males
@@ -1221,7 +1218,7 @@ namespace JojoScene {
 		player.dynStats(["lib", -10], ["cor", 4]);
 		gameFlags[JOJO_CORRUPTION_STAGE]++;
 	}
-
+	
 	function jojosSecondRape(): void {
 		outputText("The poor mouse is already hard... his cock is throbbing eagerly as it protrudes through the opening in his robe, looking nearly eight inches long. You're pretty sure it wasn't that big last time.<br><br>");
 		if (player.gender == 1) {
@@ -1250,7 +1247,7 @@ namespace JojoScene {
 		player.dynStats(["lib", -10], ["cor", 4]);
 		gameFlags[JOJO_CORRUPTION_STAGE]++;
 	}
-
+	
 	function jojosThirdRape(): void {
 		outputText("It's no wonder the monk's body has betrayed him so thoroughly, his " + monster.cockDescriptShort(0) + " is nearly ten inches long, pulsing with hot need.<br><br>");
 		if (player.gender == 1) { //Males
@@ -1364,7 +1361,7 @@ namespace JojoScene {
 			//player.knockUp(PregnancyStore.PregnancyType.JOJO, PregnancyStore.INCUBATION_MOUSE + 82); //Jojo's kids take longer for some reason
 		}
 	}
-
+	
 	function jojosFourthRape(): void {
 		outputText("Jojo flops down, eyes filled with anticipation. His self-control has really slipped away. The corrupted and horny mouse on display here is anathema to the studious monk you met before. His cock is close to a foot long and over two inches thick, veiny with arousal.<br><br>");
 		if (player.gender == 1) { //Male Version
@@ -1484,7 +1481,7 @@ namespace JojoScene {
 			gameFlags[JOJO_CAMP] = 2;
 		}
 	}
-
+	
 	function jojosFifthRape(): void {
 		clearOutput();
 		outputText("Jojo smiles serenely, pleased at the outcome, a foot of tumescent mouse-meat bobbing at attention.<br><br>");
@@ -1497,7 +1494,7 @@ namespace JojoScene {
 			player.dynStats("lib", -4);
 		}
 	}
-
+	
 	//Slave Menu
 	export function jojoCampCorrupt(): void {
 		jojoSprite();
@@ -1507,7 +1504,7 @@ namespace JojoScene {
 		if (player.lust >= 33) addButton(0, "Sex", corruptJojoSexMenu);
 		addButton(14, "Back", playerMenu);
 	}
-
+	
 	function corruptJojoSexMenu() {
 		menu();
 		if (player.hasVagina()) {
@@ -1528,7 +1525,7 @@ namespace JojoScene {
 		if (player.biggestTitSize() >= 2) addButton(6, (player.biggestLactation() > 1 ? "Suckle" : "Breasts"), corruptJojoBreasts); //All ya need is bewbs
 		addButton(14, "Back", jojoCampCorrupt);
 	}
-
+	
 	function corruptJojoBJCruel(): void {
 		clearOutput();
 		const x = player.biggestCockIndex();
@@ -1547,7 +1544,7 @@ namespace JojoScene {
 		player.dynStats("cor", 1);
 		doNext(Camp.returnToCampUseOneHour);
 	}
-
+	
 	function corruptJojoBJGentle(): void {
 		clearOutput();
 		const x = player.biggestCockIndex();
@@ -1567,7 +1564,7 @@ namespace JojoScene {
 		player.dynStats("cor", 0.5);
 		doNext(Camp.returnToCampUseOneHour);
 	}
-
+	
 	function corruptJojoCunnilingus(): void {
 		clearOutput();
 		outputText("You decide to finally reward your slut for all his service to you, summoning him to your camp for pleasure. He meekly appears at your bidding and you direct him to lie down on the ground before you. He does as you ask and you gently spread his legs, settling down between them.  ");
@@ -1587,7 +1584,7 @@ namespace JojoScene {
 		player.dynStats("cor", 0.5);
 		doNext(Camp.returnToCampUseOneHour);
 	}
-
+	
 	function corruptJojoVaginalGentle(): void {
 		clearOutput();
 		outputText("Feeling the urge to be filled, you summon your mouse slut to you and smile as he quickly responds, moving to kneel before you reverently. You let your hand caress the side of his head, then order him to lay back.  ");
@@ -1614,7 +1611,7 @@ namespace JojoScene {
 		player.dynStats("cor", 0.5);
 		doNext(Camp.returnToCampUseOneHour);
 	}
-
+	
 	function corruptJojoVaginalSmother(): void {
 		clearOutput();
 		outputText("You feel the need to gain a little sexual relief and a mischievous idea comes to your mind, making you grin wickedly. You slip off into the jungle to seek out your monk mouse fuck toy, and when you find him, you practically pounce atop him, pinning him to his back. He struggles in surprise until he realizes that it is you, at which point he blushes and tries to look away, unable to help the erection that you are sitting against as you straddle him.  ");
@@ -1631,7 +1628,7 @@ namespace JojoScene {
 		player.dynStats("cor", 1);
 		doNext(Camp.returnToCampUseOneHour);
 	}
-
+	
 	function corruptJojoAnalCruel(): void {
 		clearOutput();
 		const x = player.biggestCockIndex();
@@ -1649,7 +1646,7 @@ namespace JojoScene {
 		player.dynStats("cor", 1);
 		doNext(Camp.returnToCampUseOneHour);
 	}
-
+	
 	function corruptJojoAnalGentle(): void {
 		clearOutput();
 		const x = player.biggestCockIndex();
@@ -1668,7 +1665,7 @@ namespace JojoScene {
 		player.dynStats("cor", 0.5);
 		doNext(Camp.returnToCampUseOneHour);
 	}
-
+	
 	function corruptJojoAnalSmother(): void {
 		clearOutput();
 		outputText("You feel the need to gain a little sexual relief and a mischievous idea comes to your mind, making you grin wickedly. You slip off into the jungle to seek out your monk mouse fuck toy, and when you find him, you practically pounce atop him, pinning him to his back. He struggles in surprise until he realizes that it is you, at which point he blushes and tries to look away, unable to help the erection that you are sitting against as you straddle him.  ");
@@ -1689,7 +1686,7 @@ namespace JojoScene {
 		player.dynStats("cor", 1);
 		doNext(Camp.returnToCampUseOneHour);
 	}
-
+	
 	function corruptJojoBreasts(): void { //Should only be available to players with biggestBreastSize > 2
 		clearOutput();
 		outputText("You lay yourself out for a quiet moment of self pleasure, your hands moving to your breasts and fondling them gently, when the sound of a snapping twig brings your attention to the edge of camp. Jojo stands timidly, half hidden within the shadows just outside your encampment, watching you with a look of submissive desire. You smile and lift your hand, beckoning him towards you with a crook of your finger.  ");

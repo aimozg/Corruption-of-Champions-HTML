@@ -8,10 +8,3 @@ declare interface HTMLElement {
 	tooltipText?: string;
 }
 
-declare function newGamePlusMod():number;
-
-declare class Anemone extends Monster {
-	applyVenom(arg1:number):void;
-
-	public doAI(): void;
-}

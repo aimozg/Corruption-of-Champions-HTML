@@ -31,9 +31,8 @@ class SandWitch extends Monster {
         this.level = 3;
         this.gems = 5 + rand(15);
         //Battle variables
-        this.weapon.equipmentName = "feet";
-        this.weapon.verb = "kick";
-        this.armor.equipmentName = "robes";
+        this.weapon = Items.monsterWeapon("feet",0,"kick");
+        this.armor = Items.monsterArmor("robes");
         this.lustVuln = 1;
 
         //Appearance

@@ -1411,11 +1411,11 @@ class Player extends Creature {
 		// TODO
 		return 0;
 	}
-	goIntoHeat(output:boolean, intensity:int = 1):boolean {
+	goIntoHeat(output:boolean, intensity:number = 1):boolean {
 		// TODO
 		return false;
 	}
-	goIntoRut(output:boolean, intensity:int = 1):boolean {
+	goIntoRut(output:boolean, intensity:number = 1):boolean {
 		// TODO
 		return false;
 	}
@@ -1432,6 +1432,10 @@ class Player extends Creature {
 		//TODO
 		return 0;
 	}
+}
+function newGamePlusMod():number {
+	// TODO
+	return 0;
 }
 
 

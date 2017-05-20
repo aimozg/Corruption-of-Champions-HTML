@@ -20,7 +20,7 @@ namespace Teases {
 		//==============================
 		//Determine basic success chance.
 		//==============================
-		let chance = 60;
+		chance = 60;
 		//5% chance for each tease level.
 		chance += player.teaseLevel * 5;
 		//Extra chance for sexy undergarments.
@@ -51,7 +51,7 @@ namespace Teases {
 		//==============================
 		//Determine basic damage.
 		//==============================
-		let damage = 6 + rand(3);
+		damage = 6 + rand(3);
 		if (player.hasPerk(PerkLib.SensualLover)) {
 			damage += 2;
 		}

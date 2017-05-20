@@ -83,6 +83,7 @@ namespace Inventory {
 							 nextAction: () => void = playerMenu,
 							 overrideAbandon: () => void = nextAction,
 							 source: ItemSlot | null     = null): void {
+		callNext = nextAction;
 		/*if (itype == null) {
 		 CoC_Settings.error("takeItem(null)");
 		 return;
@@ -93,7 +94,7 @@ namespace Inventory {
 		if (temp >= 0) { //First slot go!
 			player.itemSlots[temp].quantity++;
 			outputText("You place " + itype.longName + " in your " + inventorySlotName[temp] + " pouch, giving you " + player.itemSlots[temp].quantity + " of them.");
-			itemGoNext();
+			itemGoNext(nextAction);
 			return;
 		}
 		//If not done, then put it in an empty spot!
@@ -107,7 +108,7 @@ namespace Inventory {
 		}
 		if (overrideAbandon != null) //callOnAbandon only becomes important if the inventory is full
 			callOnAbandon = overrideAbandon;
-		else callOnAbandon = callNext;
+		else callOnAbandon = nextAction;
 		//OH NOES! No room! Call replacer functions!
 		takeItemFull(itype, true, source);
 	}
@@ -271,12 +272,12 @@ namespace Inventory {
 	}
 
 	// Uncertain
-	export function itemGoNext() {
-		if (callNext != null) {
+	export function itemGoNext(next:()=>void = callNext):void {
+		if (next != null) {
 			/*if (inCombat())
 			 callNext();
 			 else*/
-			doNext(callNext);
+			doNext(next);
 		}
 	}
 

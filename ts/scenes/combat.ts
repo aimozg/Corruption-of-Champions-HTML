@@ -199,7 +199,7 @@ function flee(callHook:boolean=false):void {
 		if (player.ballSize >= 72 && player.balls > 0) escapeMod += 10;
 	}
 	//ANEMONE OVERRULES NORMAL RUN
-	if (monster instanceof Anemone) {
+	/*if (monster instanceof Anemone) {
 		//Autosuccess - less than 60 lust
 		if (player.lust < 60) {
 			clearOutput();
@@ -223,7 +223,7 @@ function flee(callHook:boolean=false):void {
 				success = false;
 			}
 		}
-	}
+	}*/
 	//Ember is SPUCIAL
 	/*if (monster.name == "Ember") {
 	 //GET AWAY

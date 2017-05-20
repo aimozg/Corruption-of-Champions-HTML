@@ -72,6 +72,7 @@ class Creature {
 	public tailVenom                        = 0;
 	public tailRecharge                     = 0;
 	public wingType: WingType               = WingType.NONE;
+	public wingDesc: string                 = "non-existant";
 	// Body sliders
 	public femininity                       = 50;
 	public tone                             = 0;

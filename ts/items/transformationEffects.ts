@@ -1,9 +1,9 @@
 namespace ConsumableEffects {
 	export function beeTFs(type: number): void {
-		var pure        = type == 1;
-		var special     = type == 2;
-		var changes     = 0;
-		var changeLimit = 1;
+		const pure      = type == 1;
+		const special   = type == 2;
+		let changes     = 0;
+		let changeLimit = 1;
 		//Chances of boosting the change limit.
 		if (rand(2) == 0) changeLimit++;
 		if (rand(2) == 0) changeLimit++;
@@ -30,7 +30,7 @@ namespace ConsumableEffects {
 				outputText("<br><br>At first you feel your baby struggle against the honey, then it seems to grow content and enjoy it.");
 			}
 			gameFlags[PREGNANCY_CORRUPTION]--;
-			if (pure) return false; //No transformative effects for the player because the pure honey was absorbed by the baby - Special honey will keep on giving
+			if (pure) return; //No transformative effects for the player because the pure honey was absorbed by the baby - Special honey will keep on giving
 		}
 		//Corruption reduction
 		if (changes < changeLimit && pure) { //Special honey will also reduce corruption, but uses different text and is handled separately
@@ -123,7 +123,7 @@ namespace ConsumableEffects {
 			else outputText("breast.");
 			changes++;
 			//Loop through and reset nipples
-			for (var temp = 0; temp < player.breastRows.length; temp++) {
+			for (let temp = 0; temp < player.breastRows.length; temp++) {
 				player.breastRows[temp].nipplesPerBreast = 1;
 			}
 		}
@@ -184,7 +184,7 @@ namespace ConsumableEffects {
 		}
 		if (special) { //All the speical honey effects occur after any normal bee transformations (if the player wasn't a full bee morph)
 			//Cock growth multiplier.
-			var mult = 1.0;
+			let mult = 1.0;
 			if (player.cocks[0].cArea() >= 140) mult -= 0.2;
 			if (player.cocks[0].cArea() >= 180) mult -= 0.2;
 			if (player.cocks[0].cArea() >= 220) mult -= 0.2;
@@ -201,7 +201,7 @@ namespace ConsumableEffects {
 				player.dynStats("sens", 10);
 			}
 			else if (player.cocks.length > 1) {
-				var biggest = player.biggestCockIndex();
+				const biggest = player.biggestCockIndex();
 				outputText("<br><br>The effects of the honey move towards your groin, and into your " + player.multiCockDescriptLight() + ", causing them to stand at attention. They quiver for a moment, and feel rather itchy. Suddenly you are overwhelmed with pleasure as <b>your " + player.cockDescript(biggest) + " is absorbed into your " + player.cockDescript(0) + "!</b> You grab onto the merging cock and pump it with your hands as it increases in size and you cum in pleasure. Your " + player.cockDescript(0) + " seems a lot more sensitive now...");
 				player.cocks[0].cockLength += 5 * Math.sqrt(0.2 * player.cocks[biggest].cArea());
 				player.cocks[0].cockThickness += Math.sqrt(0.2 * player.cocks[biggest].cArea());
@@ -243,7 +243,7 @@ namespace ConsumableEffects {
 			}
 			if (player.cor >= 5) {
 				outputText("<br><br>Your mind feels surprisingly clear of the twisted thoughts that have plagued it as of late, but you find yourself feeling more and more aroused than usual.");
-				var corLoss = Math.min(0.1 * player.cor + 5, player.cor);
+				let corLoss = Math.min(0.1 * player.cor + 5, player.cor);
 				player.dynStats(["cor", -corLoss], ["lib", corLoss]); //Lose corruption and gains that much libido
 			}
 			else {
@@ -263,12 +263,12 @@ namespace ConsumableEffects {
 	}
 
 	export function canineTFs(type: number): void {
-		var temp2       = 0;
-		var temp3       = 0;
-		var crit        = (rand(10) / 10) + 0.5;
+		let temp2       = 0;
+		let temp3       = 0;
+		const crit      = (rand(10) / 10) + 0.5;
 		//Set up changes and changeLimit
-		var changes     = 0;
-		var changeLimit = 1;
+		let changes     = 0;
+		let changeLimit = 1;
 		if (rand(2) == 0) changeLimit++;
 		if (rand(2) == 0) changeLimit++;
 		if (player.hasPerk(PerkLib.HistoryAlchemist)) changeLimit++;
@@ -301,7 +301,7 @@ namespace ConsumableEffects {
 		//------------
 		// BAD END
 		//------------
-		/*if (type <= 0 && crit > 1 && player.skinType == SkinType.FUR && player.faceType == FaceType.DOG && player.earType == EarType.DOG && player.lowerBody == LowerBodyType.DOG && player.tailType == TailType.DOG && rand(2) == 0 && player.findStatusAffect(StatusAffects.DogWarning) >= 0 && player.findPerk(PerkLib.TransformationResistance) < 0) {
+		/*if (type <= 0 && crit > 1 && player.skinType == SkinType.FUR && player.faceType == FaceType.DOG && player.earType == EarType.DOG && player.lowerBody == LowerBodyType.DOG && player.tailType == TailType.DOG && rand(2) == 0 && player.findStatusAffect(StatusAffects.DogWarning) >= 0 && !player.hasPerk(PerkLib.TransformationResistance)) {
 		 temp = rand(2);
 		 if (temp == 0) {
 		 outputText("<br><br>As you swallow the pepper, you note that the spicy hotness on your tongue seems to be spreading. Your entire body seems to tingle and burn, making you feel far warmer than normal, feverish even. Unable to stand it any longer you tear away your clothes, hoping to cool down a little. Sadly, this does nothing to aid you with your problem. On the bright side, the sudden feeling of vertigo you've developed is more than enough to take your mind off your temperature issues. You fall forward onto your hands and knees, well not really hands and knees to be honest. More like paws and knees. That can't be good, you think for a moment, before the sensation of your bones shifting into a quadrupedal configuration robs you of your concentration. After that, it is only a short time before your form is remade completely into that of a large dog, or perhaps a wolf. The distinction would mean little to you now, even if you were capable of comprehending it. ");
@@ -325,7 +325,7 @@ namespace ConsumableEffects {
 		// STATS CHANGES
 		//------------
 		if (type == 3) {
-			player.dynStats(["lib", 2 + rand(4)], ["lust", 5 + rand(5),] ["cor", 2 + rand(4)]);
+			player.dynStats(["lib", 2 + rand(4)], ["lust", 5 + rand(5)], ["cor", 2 + rand(4)]);
 			outputText("<br><br>You feel yourself relaxing as gentle warmth spreads through your body. Honestly you don't think you'd mind running into a demon or monster right now, they'd make for good entertainment.");
 			if (player.cor < 50) outputText(" You shake your head, blushing hotly. Where did that thought come from?");
 		}
@@ -471,7 +471,7 @@ namespace ConsumableEffects {
 			if (player.cockTotal() > 0) {
 				//biggify knots
 				if (player.countCocksOfType(CockTypesEnum.DOG) > 0) {
-					var temp = 0;
+					let temp = 0;
 					//set temp2 to first dogdick for initialization
 					while (temp < player.cocks.length) {
 						if (player.cocks[temp].cockType == CockTypesEnum.DOG) {
@@ -536,6 +536,7 @@ namespace ConsumableEffects {
 		//2. Knot Size++
 		//3. cumMultiplier++ (to max of 1.5)
 		if (player.cocks.length > 0) {
+			let temp:number;
 			//Grow knot on smallest knotted dog cock
 			if (type != 4 && player.countCocksOfType(CockTypesEnum.DOG) > 0 && ((changes < changeLimit && rand(1.4) == 0) || type == 1)) {
 				temp = 0;
@@ -569,7 +570,7 @@ namespace ConsumableEffects {
 			//Cock Xform if player has free cocks.
 			if (player.countCocksOfType(CockTypesEnum.DOG) < player.cocks.length && ((changes < changeLimit && rand(1.6)) || type == 1) == 0) {
 				//Select first human cock
-				temp  = player.cocks.length;
+				let temp  = player.cocks.length;
 				temp2 = 0;
 				while (temp > 0 && temp2 == 0) {
 					temp--;
@@ -684,7 +685,7 @@ namespace ConsumableEffects {
 				if (player.breastRows.length < 3 && rand(2) == 0 && changes < changeLimit) {
 					player.createBreastRow();
 					//Store temp to the index of the newest row
-					temp = player.breastRows.length - 1;
+					let temp = player.breastRows.length - 1;
 					//Breasts are too small to grow a new row, so they get bigger first
 					//But ONLY if player has a vagina (dont want dudes weirded out)
 					if (player.vaginas.length > 0 && player.breastRows[0].breastRating <= player.breastRows.length) {
@@ -733,9 +734,9 @@ namespace ConsumableEffects {
 				//If already has max doggie breasts!
 				else if (rand(2) == 0) {
 					//Check for size mismatches, and move closer to spec!
-					temp       = player.breastRows.length;
+					let temp       = player.breastRows.length;
 					temp2      = 0;
-					var evened = false;
+					let evened = false;
 					//Check each row, and if the row above or below it is
 					while (temp > 1 && temp2 == 0) {
 						temp--;
@@ -955,9 +956,9 @@ namespace ConsumableEffects {
 	export function cowTFs(tainted: boolean, enhanced: boolean) {
 		player.slimeFeed();
 		//Changes done
-		var changes     = 0;
+		let changes     = 0;
 		//Change limit
-		var changeLimit = 1;
+		let changeLimit = 1;
 		if (rand(2) == 0) changeLimit++;
 		if (rand(3) == 0) changeLimit++;
 		if (rand(3) == 0) changeLimit++;
@@ -965,9 +966,9 @@ namespace ConsumableEffects {
 		if (player.hasPerk(PerkLib.TransformationResistance)) changeLimit--;
 		if (enhanced) changeLimit += 2;
 		//Temporary storage
-		var temp  = 0;
-		var temp2 = 0;
-		var temp3 = 0;
+		let temp  = 0;
+		let temp2 = 0;
+		let temp3 = 0;
 
 		//ItemUseText:
 		clearOutput();
@@ -1066,7 +1067,7 @@ namespace ConsumableEffects {
 			}
 		}
 		//Sex bits - girly
-		var boobsGrew = false;
+		let boobsGrew = false;
 		//Increase player's breast size, if they are HH or bigger
 		//do not increase size, but do the other actions:
 		if (((tainted && player.biggestTitSize() <= 11) || (!tainted && player.biggestTitSize() <= 5)) && changes < changeLimit && (rand(3) == 0 || enhanced)) {
@@ -1381,12 +1382,13 @@ namespace ConsumableEffects {
 	}
 
 	export function succubiDelight(tainted: boolean) {
+		let temp;
 		player.slimeFeed();
-		var changes = 0;
-		var crit    = 1;
+		let changes = 0;
+		let crit    = 1;
 		//Determine crit multiplier (x2 or x3)
 		if (rand(4) == 0) crit += rand(2) + 1;
-		var changeLimit = 1;
+		let changeLimit = 1;
 		//Chances to up the max number of changes
 		if (rand(2) == 0) changeLimit++;
 		if (rand(2) == 0) changeLimit++;
@@ -1401,7 +1403,7 @@ namespace ConsumableEffects {
 		//Corruption increase
 		if ((player.cor < 50 || rand(2)) && tainted) {
 			outputText("<br><br>The drink makes you feel... dirty.");
-			var temp = 1;
+			temp = 1;
 			//Corrupts the uncorrupted faster
 			if (player.cor < 50) temp++;
 			if (player.cor < 40) temp++;
@@ -1470,14 +1472,14 @@ namespace ConsumableEffects {
 	export function equineTFs(): void {
 		player.slimeFeed();
 		//Changes and change limit
-		var changes     = 0;
-		var changeLimit = 1;
+		let changes     = 0;
+		let changeLimit = 1;
 		//Temporary storage
-		var temp        = 0;
-		var temp2       = 0;
-		var temp3       = 0;
+		let temp        = 0;
+		let temp2       = 0;
+		let temp3       = 0;
 		//Store location of cock to be changed
-		var old         = 0;
+		const old       = 0;
 		//Chance to raise limit
 		if (rand(2) == 0) changeLimit++;
 		if (rand(3) == 0) changeLimit++;
@@ -1955,11 +1957,11 @@ namespace ConsumableEffects {
 	}
 
 	export function felineTFs(): void {
-		var changes     = 0;
-		var changeLimit = 1;
-		var temp        = 0;
-		var temp2       = 0;
-		var temp3       = 0;
+		let changes     = 0;
+		let changeLimit = 1;
+		let temp        = 0;
+		let temp2       = 0;
+		let temp3       = 0;
 		if (rand(2) == 0) changeLimit++;
 		if (rand(2) == 0) changeLimit++;
 		if (rand(3) == 0) changeLimit++;
@@ -2058,7 +2060,7 @@ namespace ConsumableEffects {
 		//------------
 		//Sexual changes would go here if I wasn't a tard.
 		if (rand(4) == 0 && changes < changeLimit) { //Heat
-			var intensified = player.inHeat;
+			const intensified = player.inHeat;
 			if (player.goIntoHeat(false)) {
 				if (intensified) {
 					if (rand(2) == 0)
@@ -2093,7 +2095,7 @@ namespace ConsumableEffects {
 			if (temp2 > 0) {
 				//temp3 stores how many rows are changed
 				temp3 = 0;
-				for (var k = 0; k < player.breastRows.length; k++) {
+				for (let k = 0; k < player.breastRows.length; k++) {
 					//If this row is over threshhold
 					if (player.breastRows[k].breastRating > temp2) {
 						//Big change
@@ -2118,24 +2120,27 @@ namespace ConsumableEffects {
 		}
 		//Cat dangly-doo.
 		if (player.cockTotal() > 0 && player.countCocksOfType(CockTypesEnum.CAT) < player.cockTotal() && (player.earType == EarType.CAT || rand(3) > 0) && (player.tailType == TailType.CAT || rand(3) > 0) && changes < changeLimit && rand(4) == 0) {
-			//loop through and find a non-cat wang.
-			for (var i = 0; i < (player.cockTotal()) && player.cocks[i].cockType == CockTypesEnum.CAT; i++) {
+//loop through and find a non-cat wang.
+			for (let i = 0; i < player.cockTotal(); i++) {
+				if (player.cocks[i].cockType == CockTypesEnum.CAT) continue;
+				outputText("<br><br>Your " + player.cockDescript(i) + " swells up with near-painful arousal and begins to transform. It turns pink and begins to narrow until the tip is barely wide enough to accommodate your urethra. Barbs begin to sprout from its flesh, if you can call the small, fleshy nubs barbs. They start out thick around the base of your " + Appearance.cockNoun(CockTypesEnum.HUMAN) + " and shrink towards the tip. The smallest are barely visible. <b>Your new feline dong throbs powerfully</b> and spurts a few droplets of cum. ");
+				if (!player.hasSheath()) {
+					outputText("Then, it begins to shrink and sucks itself inside your body. Within a few moments, a fleshy sheath is formed.");
+					if (player.balls > 0) outputText(" Thankfully, your balls appear untouched.");
+				}
+				else outputText("Then, it disappears back into your sheath.");
+				player.cocks[i].cockType       = CockTypesEnum.CAT;
+				player.cocks[i].knotMultiplier = 1;
+				changes++;
+				break;
 			}
-			outputText("<br><br>Your " + player.cockDescript(i) + " swells up with near-painful arousal and begins to transform. It turns pink and begins to narrow until the tip is barely wide enough to accommodate your urethra. Barbs begin to sprout from its flesh, if you can call the small, fleshy nubs barbs. They start out thick around the base of your " + Appearance.cockNoun(CockTypesEnum.HUMAN) + " and shrink towards the tip. The smallest are barely visible. <b>Your new feline dong throbs powerfully</b> and spurts a few droplets of cum. ");
-			if (!player.hasSheath()) {
-				outputText("Then, it begins to shrink and sucks itself inside your body. Within a few moments, a fleshy sheath is formed.");
-				if (player.balls > 0) outputText(" Thankfully, your balls appear untouched.");
-			}
-			else outputText("Then, it disappears back into your sheath.");
-			player.cocks[i].cockType       = CockTypesEnum.CAT;
-			player.cocks[i].knotMultiplier = 1;
-			changes++;
 		}
 		//Cat penorz shrink
 		if (player.countCocksOfType(CockTypesEnum.CAT) > 0 && rand(3) == 0 && changes < changeLimit && !hyperHappy) {
 			//loop through and find a cat wang.
 			temp = 0;
-			for (var j = 0; j < (player.cockTotal()); j++) {
+			let j:number;
+			for (j = 0; j < (player.cockTotal()); j++) {
 				if (player.cocks[j].cockType == CockTypesEnum.CAT && player.cocks[j].cockLength > 6) {
 					temp = 1;
 					break;
@@ -2275,8 +2280,8 @@ namespace ConsumableEffects {
 	}
 
 	export function goblinTFs(): void {
-		var changes     = 0;
-		var changeLimit = 1;
+		let changes     = 0;
+		let changeLimit = 1;
 		if (rand(2) == 0) changeLimit++;
 		if (rand(3) == 0) changeLimit++;
 		if (rand(4) == 0) changeLimit++;
@@ -2321,8 +2326,9 @@ namespace ConsumableEffects {
 		}
 		//Boost vaginal capacity without gaping
 		if (changes < changeLimit && rand(3) == 0 && player.hasVagina() && player.statusEffectValue(StatusEffects.BonusVCapacity, 1, 0) < 40) {
-			if (player.findStatusEffect(StatusEffects.BonusVCapacity) < 0) player.createStatusEffect(StatusEffects.BonusVCapacity, 0, 0, 0, 0);
-			player.addStatusValue(StatusEffects.BonusVCapacity, 1, 5);
+			let s = player.findStatusEffectByType(StatusEffects.BonusVCapacity);
+			if (!s) player.createStatusEffect(StatusEffects.BonusVCapacity, 5, 0, 0, 0);
+			else s.value1+=5;
 			outputText("<br><br>There is a sudden... emptiness within your " + player.vaginaDescript(0) + ". Somehow you know you could accommodate even larger... insertions.");
 			changes++;
 		}
@@ -2336,15 +2342,15 @@ namespace ConsumableEffects {
 		else if (player.cocks.length == 1 && rand(2) == 0 && changes < changeLimit && !hyperHappy) {
 			if (player.cocks[0].cockLength > 12) {
 				changes++;
-				var temp3 = 0;
+				let temp3 = 0;
 				outputText("<br><br>");
 				//Shrink said cock
 				if (player.cocks[0].cockLength < 6 && player.cocks[0].cockLength >= 2.9) {
 					player.cocks[0].cockLength -= .5;
 					temp3 -= .5;
 				}
-				temp3 += player.increaseCock(0, (rand(3) + 1) * -1);
-				player.cocks[0].lengthChange(temp3, 1);
+				temp3 += player.cocks[0].increaseCock((rand(3) + 1) * -1);
+				player.cocks[0].increaseCock(temp3);
 			}
 		}
 		//------------
@@ -2468,7 +2474,7 @@ namespace ConsumableEffects {
 			player.vaginaType(0);
 			changes++;
 		}
-		if (changes < changeLimit && rand(4) == 0 && ((player.ass.analWetness > 0 && player.findPerk(PerkLib.MaraesGiftButtslut) < 0) || player.ass.analWetness > 1)) {
+		if (changes < changeLimit && rand(4) == 0 && ((player.ass.analWetness > 0 && !player.hasPerk(PerkLib.MaraesGiftButtslut)) || player.ass.analWetness > 1)) {
 			outputText("<br><br>You feel a tightening up in your colon and your [asshole] sucks into itself. You feel sharp pain at first but that thankfully fades. Your ass seems to have dried and tightened up.");
 			player.ass.analWetness--;
 			if (player.ass.analLooseness > 1) player.ass.analLooseness--;
@@ -2483,8 +2489,8 @@ namespace ConsumableEffects {
 	}
 
 	export function humanTFs(): void {
-		var changes     = 0;
-		var changeLimit = 1;
+		let changes     = 0;
+		let changeLimit = 1;
 		if (rand(2) == 0) changeLimit++;
 		if (rand(2) == 0) changeLimit++;
 		if (player.hasPerk(PerkLib.HistoryAlchemist)) changeLimit++;
@@ -2545,7 +2551,7 @@ namespace ConsumableEffects {
 			if (player.skinType == SkinType.FUR) outputText("the skin under your " + player.furColor + " " + player.skinDesc);
 			else outputText("your " + player.skinDesc);
 			outputText(" has changed to become ");
-			temp = rand(4);
+			let temp = rand(4);
 			if (temp == 0) player.skinTone = "tan";
 			else if (temp == 1) player.skinTone = "olive";
 			else if (temp == 2) player.skinTone = "dark";
@@ -2688,7 +2694,7 @@ namespace ConsumableEffects {
 		}
 		//Increase height up to 5 feet.
 		if (rand(2) == 0 && changes < changeLimit && player.tallness < 60) {
-			var temp = rand(5) + 3;
+			let temp = rand(5) + 3;
 			//Slow rate of growth near ceiling
 			if (player.tallness > 90) temp = Math.floor(temp / 2);
 			//Never 0
@@ -2712,7 +2718,7 @@ namespace ConsumableEffects {
 		//Remove additional cocks
 		if (player.cocks.length > 1 && rand(3) == 0 && changes < changeLimit) {
 			player.removeCock(1);
-			outputText("<br><br>You have a strange feeling as your crotch tingles. " + player.clothedOrNakedLower("Opening your " + player.armor.equipmentName.equipmentName, "Looking down") + ", <b>you realize that one of your cocks have vanished completely!</b>");
+			outputText("<br><br>You have a strange feeling as your crotch tingles. " + player.clothedOrNakedLower("Opening your " + player.armor.equipmentName, "Looking down") + ", <b>you realize that one of your cocks have vanished completely!</b>");
 			player.genderCheck();
 			changes++;
 		}
@@ -2739,7 +2745,7 @@ namespace ConsumableEffects {
 		}
 		//Shrink oversized cocks
 		if (player.hasCock() && player.biggestCockLength() > 12 && rand(3) == 0 && changes < changeLimit) {
-			var idx = player.biggestCockIndex();
+			const idx = player.biggestCockIndex();
 			if (player.cocks.length == 1) outputText("<br><br>You feel a tingling sensation as your cock shrinks to a smaller size!");
 			else outputText("<br><br>You feel a tingling sensation as the largest of your cocks shrinks to a smaller size!");
 			player.cocks[idx].cockLength -= (rand(10) + 2) / 10;
@@ -2770,7 +2776,7 @@ namespace ConsumableEffects {
 		//Remove extra nipples
 		if (player.averageNipplesPerBreast() > 1 && rand(4) == 0 && changes < changeLimit) {
 			outputText("<br><br>A tightness arises in your nipples as three out of four on each breast recede completely, the leftover nipples migrating to the middle of your breasts. <b>You are left with only one nipple on each breast.</b>");
-			for (var x = 0; x < player.bRows(); x++) {
+			for (let x = 0; x < player.bRows(); x++) {
 				player.breastRows[x].nipplesPerBreast = 1;
 			}
 			changes++;
@@ -2820,13 +2826,13 @@ namespace ConsumableEffects {
 	}
 
 	export function impTFs(): void {
-		var changes     = 0;
-		var changeLimit = 1;
+		let changes     = 0;
+		let changeLimit = 1;
 		if (rand(2) == 0) changeLimit++;
 		if (player.hasPerk(PerkLib.HistoryAlchemist)) changeLimit++;
 		if (player.hasPerk(PerkLib.TransformationResistance)) changeLimit--;
 		//Consumption text
-		if (player.hasCock() > 0)
+		if (player.hasCock())
 			outputText("The food tastes strange and corrupt - you can't really think of a better word for it, but it's unclean.");
 		else
 			outputText("The food tastes... corrupt, for lack of a better word.");
@@ -2837,7 +2843,7 @@ namespace ConsumableEffects {
 		player.dynStats(["lust", 3], ["cor", 1]);
 		//Cock growth!
 		if (changes < changeLimit && player.hasCock() && player.cocks[0].cockLength < 12) {
-			var temp = player.increaseCock(0, rand(2) + 2);
+			const temp = player.cocks[0].increaseCock(rand(2) + 2);
 			outputText("<br><br>");
 			player.lengthChange(temp, 1);
 		}
@@ -2860,10 +2866,10 @@ namespace ConsumableEffects {
 	}
 
 	export function pigTFs(boar: boolean) {
-		var changes     = 0;
-		var changeLimit = 1;
-		var temp        = 0;
-		var x           = 0;
+		let changes     = 0;
+		let changeLimit = 1;
+		const temp      = 0;
+		const x         = 0;
 		if (rand(2) == 0) changeLimit++;
 		if (rand(3) == 0) changeLimit++;
 		if (boar) changeLimit++;
@@ -2874,7 +2880,7 @@ namespace ConsumableEffects {
 		//------------
 		// BAD END!
 		//------------
-		/*if (rand(5) == 0 && player.pigScore() >= 5 && player.findPerk(PerkLib.TransformationResistance) < 0) {
+		/*if (rand(5) == 0 && player.pigScore() >= 5 && !player.hasPerk(PerkLib.TransformationResistance)) {
 		 if (flags[PIG_BAD_END_WARNING] == 0) {
 		 outputText("<br><br>You find yourself idly daydreaming of flailing about in the mud, letting go of all of your troubles. Eventually, you shake off the thought. Why would you do something like that? Maybe you should cut back on all the truffles?");
 		 player.dynStats("inte", -3);
@@ -2984,8 +2990,8 @@ namespace ConsumableEffects {
 		}
 		//Change skin colour
 		if (rand(boar ? 3 : 4) == 0 && changes < changeLimit) {
-			var skinChoose     = rand(3);
-			var skinToBeChosen = "pink";
+			const skinChoose   = rand(3);
+			let skinToBeChosen = "pink";
 			if (boar) {
 				if (skinChoose == 0) skinToBeChosen = "dark brown";
 				else skinToBeChosen = "brown";
@@ -3008,9 +3014,9 @@ namespace ConsumableEffects {
 	export function lizardTFs(): void {
 		player.slimeFeed();
 		//init variables
-		var changes     = 0;
-		var changeLimit = 1;
-		var temp2       = 0;
+		let changes     = 0;
+		let changeLimit = 1;
+		let temp2       = 0;
 		//Randomly choose affects limit
 		if (rand(2) == 0) changeLimit++;
 		if (rand(2) == 0) changeLimit++;
@@ -3202,7 +3208,7 @@ namespace ConsumableEffects {
 			}
 		}
 		//-VAGs
-		if (player.hasVagina() && player.findPerk(PerkLib.Oviposition) < 0 && changes < changeLimit && rand(5) == 0 && player.lizardScore() > 3) {
+		if (player.hasVagina() && !player.hasPerk(PerkLib.Oviposition) && changes < changeLimit && rand(5) == 0 && player.lizardScore() > 3) {
 			outputText("<br><br>Deep inside yourself there is a change.  It makes you feel a little woozy, but passes quickly.  Beyond that, you aren't sure exactly what just happened, but you are sure it originated from your womb.<br>");
 			outputText("(<b>Perk Gained: Oviposition</b>)");
 			player.createPerk(PerkLib.Oviposition, 0, 0, 0, 0);
@@ -3213,7 +3219,7 @@ namespace ConsumableEffects {
 		//-Existing horns become draconic, max of 4, max length of 1'
 		if (player.hornType != HornType.DRACONIC_X4_12_INCH_LONG && changes < changeLimit && rand(5) == 0) {
 			//No dragon horns yet.
-			if (player.hornType != HornType.DRACONIC_X2 && player.hornType != HornType.DRACONIC_X4_12_INCH_LONG) {
+			if (player.hornType != HornType.DRACONIC_X2) {
 				//Already have horns
 				if (player.horns > 0) {
 					//High quantity demon horns
@@ -3290,7 +3296,7 @@ namespace ConsumableEffects {
 			//TAURS -
 			else if (player.isTaur()) outputText("<br><br>Your lower body is wracked by pain!  Once it passes, you discover that you're standing on digitigrade legs with lizard-like claws.");
 			//feet types -
-			else if (player.lowerBody == LowerBodyType.HUMAN || player.lowerBody == LowerBodyType.DOG || player.lowerBody == LowerBodyType.DEMONIC_HIGH_HEELS || player.lowerBody == LowerBodyType.DEMONIC_CLAWS || player.lowerBody == LowerBodyType.BEE || player.lowerBody == LowerBodyType.CAT || player.lowerBody == LowerBodyType.LIZARD) outputText("<br><br>You scream in agony as you feel the bones in your legs break and begin to rearrange. They change to a digitigrade shape while your feet grow claws and shift to have three toes on the front and a smaller toe on the heel.");
+			else if (player.lowerBody == LowerBodyType.HUMAN || player.lowerBody == LowerBodyType.DOG || player.lowerBody == LowerBodyType.DEMONIC_HIGH_HEELS || player.lowerBody == LowerBodyType.DEMONIC_CLAWS || player.lowerBody == LowerBodyType.BEE || player.lowerBody == LowerBodyType.CAT) outputText("<br><br>You scream in agony as you feel the bones in your legs break and begin to rearrange. They change to a digitigrade shape while your feet grow claws and shift to have three toes on the front and a smaller toe on the heel.");
 			//Else –
 			else outputText("<br><br>Pain rips through your " + player.legs() + ", morphing and twisting them until the bones rearrange into a digitigrade configuration.  The strange legs have three-toed, clawed feet, complete with a small vestigial claw-toe on the back for added grip.");
 			outputText("  <b>You have reptilian legs and claws!</b>");
@@ -3337,7 +3343,7 @@ namespace ConsumableEffects {
 				}
 				//non rare skinTone
 				else {
-					var temp = rand(5);
+					let temp = rand(5);
 					if (temp == 0) player.skinTone = "red";
 					else if (temp == 1) player.skinTone = "green";
 					else if (temp == 2) player.skinTone = "white";
@@ -3356,7 +3362,7 @@ namespace ConsumableEffects {
 				}
 				//non rare skinTone
 				else {
-					temp = rand(5);
+					let temp = rand(5);
 					if (temp == 0) player.skinTone = "red";
 					else if (temp == 1) player.skinTone = "green";
 					else if (temp == 2) player.skinTone = "white";
@@ -3371,7 +3377,7 @@ namespace ConsumableEffects {
 		}
 		//-Lizard-like face.
 		if (player.faceType != FaceType.LIZARD && player.skinType == SkinType.SCALES && player.earType == EarType.LIZARD && player.tailType == TailType.LIZARD && player.lowerBody == LowerBodyType.LIZARD && changes < changeLimit && rand(5) == 0) {
-			outputText("<br><br>Terrible agony wracks your " + player.face() + " as bones crack and shift.  Your jawbone rearranges while your cranium shortens.  The changes seem to last forever; once they've finished, no time seems to have passed.  Your fingers brush against your toothy snout as you get used to your new face.  It seems <b>you have a toothy, reptilian visage now.</b>", false);
+			outputText("<br><br>Terrible agony wracks your " + player.face() + " as bones crack and shift.  Your jawbone rearranges while your cranium shortens.  The changes seem to last forever; once they've finished, no time seems to have passed.  Your fingers brush against your toothy snout as you get used to your new face.  It seems <b>you have a toothy, reptilian visage now.</b>");
 			player.faceType = FaceType.LIZARD;
 		}
 		if (rand(4) == 0 && player.gills && changes < changeLimit) {
@@ -3396,8 +3402,8 @@ namespace ConsumableEffects {
 		//'type' refers to the variety of seed.
 		//0 == standard.
 		//1 == enhanced - increase change limit and no pre-reqs for TF
-		var changes     = 0;
-		var changeLimit = 1;
+		let changes     = 0;
+		let changeLimit = 1;
 		if (type == 1) changeLimit += 2;
 		if (rand(2) == 0) changeLimit++;
 		if (rand(2) == 0) changeLimit++;
@@ -3429,7 +3435,7 @@ namespace ConsumableEffects {
 		//antianemone corollary:
 		if (changes < changeLimit && player.hairType == 4 && rand(2) == 0) {
 			//-insert anemone hair removal into them under whatever criteria you like, though hair removal should precede abdomen growth; here's some sample text:
-			outputText("<br><br>As you down the seed, your head begins to feel heavier.  Reaching up, you notice your tentacles becoming soft and somewhat fibrous.  Pulling one down reveals that it feels soft and fluffy, almost feathery; you watch as it dissolves into many thin, feathery strands.  <b>Your hair is now like that of a harpy!</b>", false);
+			outputText("<br><br>As you down the seed, your head begins to feel heavier.  Reaching up, you notice your tentacles becoming soft and somewhat fibrous.  Pulling one down reveals that it feels soft and fluffy, almost feathery; you watch as it dissolves into many thin, feathery strands.  <b>Your hair is now like that of a harpy!</b>");
 			player.hairType = 1; //TODO Is This Hairtype Correct?
 			changes++;
 		}
@@ -3453,7 +3459,7 @@ namespace ConsumableEffects {
 				outputText("<br><br>A passing flush colors your " + player.face() + " for a second as you daydream about sex. You blink it away, realizing the item seems to have affected your libido.");
 				if (player.hasVagina()) outputText(" The moistness of your " + player.vaginaDescript() + " seems to agree.");
 				else if (player.hasCock()) outputText(" The hardness of " + player.sMultiCockDesc() + " seems to agree.");
-				player.changeLust("lust", 5);
+				player.changeLust(5);
 			}
 			//(sub 75 lib)
 			else if (player.lib < 75) outputText("<br><br>Heat, blessed heat, works through you from head to groin, leaving you to shudder and fantasize about the sex you could be having right now.<br><br>");
@@ -3556,7 +3562,7 @@ namespace ConsumableEffects {
 		if (changes < changeLimit && player.hasCock() && player.countCocksOfType(CockTypesEnum.AVIAN) < player.cockTotal() && rand(type == 1 ? 4 : 10) == 0) { //2.5x chance if magic seed.
 			changes++;
 			outputText("<br><br>You feel a strange tingling sensation in your cock as erection forms. You " + player.clothedOrNakedLower("open up your " + player.armor.equipmentName + " and", "") + " look down to see " + (player.cockTotal() == 1 ? "your cock" : "one of your cocks") + " shifting! By the time the transformation's complete, you notice it's tapered, red, and ends in a tip. When you're not aroused, your cock rests nicely in a newly-formed sheath. <b>You now have an avian penis!</b>");
-			for (var i = 0; i < player.cocks.length; i++) {
+			for (let i = 0; i < player.cocks.length; i++) {
 				if (player.cocks[i].cockType != CockTypesEnum.AVIAN) {
 					player.cocks[i].cockType = CockTypesEnum.AVIAN;
 					return;
@@ -3579,7 +3585,7 @@ namespace ConsumableEffects {
 			if (player.skinType == SkinType.FUR) outputText("the skin under your " + player.hairColor + " " + player.skinDesc);
 			else outputText("your " + player.skinDesc);
 			outputText(" has changed to become ");
-			var temp = rand(4);
+			const temp = rand(4);
 			if (temp == 0) player.skinTone = "tan";
 			else if (temp == 1) player.skinTone = "olive";
 			else if (temp == 2) player.skinTone = "dark";
@@ -3732,9 +3738,9 @@ namespace ConsumableEffects {
 	export function minotaurTFs(): void {
 		player.slimeFeed();
 		//Changes done
-		var changes     = 0;
+		let changes     = 0;
 		//Change limit
-		var changeLimit = 1;
+		let changeLimit = 1;
 		if (rand(2) == 0) changeLimit++;
 		if (rand(3) == 0) changeLimit++;
 		if (rand(3) == 0) changeLimit++;
@@ -3742,9 +3748,9 @@ namespace ConsumableEffects {
 		if (player.hasPerk(PerkLib.TransformationResistance)) changeLimit--;
 		if (changeLimit == 1) changeLimit = 2;
 		//Temporary storage
-		var temp  = 0;
-		var temp2 = 0;
-		var temp3 = 0;
+		let temp  = 0;
+		let temp2 = 0;
+		let temp3 = 0;
 		//Set up output
 		clearOutput();
 		outputText("You drink the bubbling red fluid, tasting the tangy iron after-taste.");
@@ -3834,7 +3840,7 @@ namespace ConsumableEffects {
 			player.removePerk(PerkLib.Oviposition)
 		}
 		//Restore arms to become human arms again
-		if (rand(4) == 0) restoreArms(tfSource);
+		if (rand(4) == 0) restoreArms("minotaurTf");
 		//+hooves
 		if (player.lowerBody != LowerBodyType.HOOFED) {
 			if (changes < changeLimit && rand(3) == 0) {
@@ -3938,8 +3944,8 @@ namespace ConsumableEffects {
 		}
 		//Boosts cock size up to 36"x5".
 		if (changes < changeLimit && rand(2) == 0 && player.cocks.length > 0) {
-			var selectedCock = -1;
-			for (var i = 0; i < player.cocks.length; i++) {
+			let selectedCock = -1;
+			for (let i = 0; i < player.cocks.length; i++) {
 				if (player.cocks[i].cockType == CockTypesEnum.HORSE && (player.cocks[i].cockLength < 36 || player.cocks[i].cockThickness < 5)) {
 					selectedCock = i;
 					break;
@@ -3974,8 +3980,8 @@ namespace ConsumableEffects {
 		}
 		//Morph dick to horsediiiiick
 		if (player.cocks.length > 0 && rand(2) == 0 && changes < changeLimit) {
-			var selectedCockValue = -1; //Changed as selectedCock and i caused duplicate var warnings
-			for (var indexI = 0; indexI < player.cocks.length; indexI++) {
+			let selectedCockValue = -1; //Changed as selectedCock and i caused duplicate var warnings
+			for (let indexI = 0; indexI < player.cocks.length; indexI++) {
 				if (player.cocks[indexI].cockType != CockTypesEnum.HORSE) {
 					selectedCockValue = indexI;
 					break;
@@ -4148,8 +4154,8 @@ namespace ConsumableEffects {
 	export function snakeTFs(): void {
 		player.slimeFeed();
 		clearOutput();
-		var changes     = 0;
-		var changeLimit = 1;
+		let changes     = 0;
+		let changeLimit = 1;
 		if (rand(2) == 0) changeLimit++;
 		if (rand(2) == 0) changeLimit++;
 		if (player.hasPerk(PerkLib.HistoryAlchemist)) changeLimit++;
@@ -4249,7 +4255,7 @@ namespace ConsumableEffects {
 	}
 
 	export function slimeTFs(): void {
-		//var tfSource = "gooGasmic";
+		let tfSource = "gooGasmic";
 		clearOutput();
 		outputText("You take the wet cloth in hand and rub it over your body, smearing the strange slime over your " + player.skinDesc + " slowly.");
 		//Stat changes
@@ -4278,7 +4284,7 @@ namespace ConsumableEffects {
 		 }*/
 		//Cosmetic changes based on 'goopyness'
 		// Standard Ovipoisitor removal
-		if (rand(5) == 0 && changes >= changeLimit && player.hasPerk(PerkLib.Oviposition) && player.lizardScore() < 8) {
+		if (rand(5) == 0 && /*changes >= changeLimit && */player.hasPerk(PerkLib.Oviposition) && player.lizardScore() < 8) {
 			outputText("<br><br>Another change in your uterus ripples through your reproductive systems. Somehow you know you've lost a little bit of reptilian reproductive ability.<br>");
 			outputText("(<b>Perk Lost: Oviposition</b>)<br>");
 			player.removePerk(PerkLib.Oviposition)
@@ -4309,7 +4315,7 @@ namespace ConsumableEffects {
 			}
 			if (player.hairColor != "green" && player.hairColor != "purple" && player.hairColor != "blue" && player.hairColor != "cerulean" && player.hairColor != "emerald") {
 				outputText("  Stranger still, the hue of your semi-liquid hair changes to ");
-				var blah = rand(10);
+				let blah = rand(10);
 				if (blah <= 2) player.hairColor = "green";
 				else if (blah <= 4) player.hairColor = "purple";
 				else if (blah <= 6) player.hairColor = "blue";
@@ -4329,7 +4335,7 @@ namespace ConsumableEffects {
 			player.skinAdj  = "slimy";
 			if (player.skinTone != "green" && player.skinTone != "purple" && player.skinTone != "blue" && player.skinTone != "cerulean" && player.skinTone != "emerald") {
 				outputText("  Stranger still, your skintone changes to ");
-				var blaht = rand(10);
+				const blaht = rand(10);
 				if (blaht <= 2) player.skinTone = "green";
 				else if (blaht <= 4) player.skinTone = "purple";
 				else if (blaht <= 6) player.skinTone = "blue";
@@ -4397,8 +4403,8 @@ namespace ConsumableEffects {
 
 	export function trapOil(): void {
 		clearOutput();
-		var changes     = 0;
-		var changeLimit = 1;
+		let changes     = 0;
+		let changeLimit = 1;
 		if (rand(2) == 0) changeLimit++;
 		if (rand(3) == 0) changeLimit++;
 		if (rand(3) == 0) changeLimit++;
@@ -4457,7 +4463,7 @@ namespace ConsumableEffects {
 		//Breast Loss: (towards A cup)
 		if (player.biggestTitSize() > 1 && rand(4) == 0 && changes < changeLimit) {
 			outputText("<br><br>You gasp as you feel a compressing sensation in your chest and around your [fullChest].  The feeling quickly fades however, leaving you feeling like you have lost a considerable amount of weight from your upper body.");
-			var temp = 0;
+			let temp = 0;
 			while (temp < player.bRows()) {
 				if (player.breastRows[temp].breastRating > 70) player.breastRows[temp].breastRating -= rand(3) + 15;
 				else if (player.breastRows[temp].breastRating > 50) player.breastRows[temp].breastRating -= rand(3) + 10;
@@ -4474,7 +4480,7 @@ namespace ConsumableEffects {
 			outputText("<br><br>You feel a vague swelling sensation in your [fullChest], and you frown downwards.  You seem to have gained a little weight on your chest.  Not enough to stand out, but- you cup yourself carefully- certainly giving you the faintest suggestion of boobs.");
 			player.breastRows[0].breastRating = 1;
 			if (player.bRows() > 1) {
-				temp = 1;
+				let temp = 1;
 				while (temp < player.bRows()) {
 					if (player.breastRows[temp].breastRating < 1) player.breastRows[temp].breastRating = 1;
 				}
@@ -4495,7 +4501,7 @@ namespace ConsumableEffects {
 			if (player.cockTotal() == 1) outputText("it seems");
 			else outputText("they seem");
 			outputText(" to have become smaller.");
-			temp = 0;
+			let temp = 0;
 			while (temp < player.cockTotal()) {
 				if (player.cocks[temp].cockLength >= 3.5) {
 					//Shrink said cock
@@ -4568,7 +4574,7 @@ namespace ConsumableEffects {
 			if (rand(4) == 0 && changes < changeLimit) {
 				if (player.femininity < 70 && player.femininity >= 60) {
 					outputText("<br><br>You laugh as you feel your features once again soften, before stopping abruptly.  Your laugh sounded more like a girly giggle than anything else.  Feeling slightly more sober, you touch the soft flesh of your face prospectively.  The trap oil has changed you profoundly, making your innate maleness... difficult to discern, to say the least.  You suspect you could make yourself look even more like a girl now if you wanted to.");
-					if (player.findPerk(PerkLib.Androgyny) < 0) {
+					if (!player.hasPerk(PerkLib.Androgyny)) {
 						player.createPerk(PerkLib.Androgyny, 0, 0, 0, 0);
 						outputText("<br><br>(<b>Perk Gained: Androgyny</b>)");
 					}
@@ -4599,7 +4605,7 @@ namespace ConsumableEffects {
 					player.femininity = 30;
 					//Masculinity Increase Final (max masculinity allowed increased by +10):
 					outputText("<br><br>You laugh as you feel your features once again soften, before stopping abruptly.  Your laugh sounded more like a boyish crow than anything else.  Feeling slightly more sober, you touch the defined lines of your face prospectively.  The trap oil has changed you profoundly, making your innate femaleness... difficult to discern, to say the least.  You suspect you could make yourself look even more like a boy now if you wanted to.");
-					if (player.findPerk(PerkLib.Androgyny) < 0) {
+					if (!player.hasPerk(PerkLib.Androgyny)) {
 						player.createPerk(PerkLib.Androgyny, 0, 0, 0, 0);
 						outputText("<br><br>(<b>Perk Gained: Androgyny</b>)");
 					}
@@ -4727,7 +4733,7 @@ namespace ConsumableEffects {
 	 break;
 
 	 default:
-	 if (player.findPerk(PerkLib.Oviposition) < 0) return 0;
+	 if (!player.hasPerk(PerkLib.Oviposition)) return 0;
 	 if (player.lizardScore() >= 8) return 0; // Still high, so don't remove Oviposition yet!
 	 if (tfSource != "superHummus") {
 	 outputText("<br><br>Another change in your uterus ripples through your reproductive systems."
@@ -4742,8 +4748,8 @@ namespace ConsumableEffects {
 
 
 	function updateClaws(clawType: number = ClawType.NORMAL): string {
-		var clawTone    = "";
-		var oldClawTone = player.clawTone;
+		let clawTone      = "";
+		const oldClawTone = player.clawTone;
 
 		switch (clawType) {
 			case ClawType.DRAGON:
@@ -4809,11 +4815,11 @@ namespace ConsumableEffects {
 
 	function restoreArms(tfSource: string): number {
 		//trace('called restoreArms("' + tfSource + '")');
-		var message = "";
+		let message = "";
 
 		if (tfSource == "gooGasmic") {
 			// skin just turned gooey. Now lets fix unusual arms.
-			var hasClaws = player.clawType != ClawType.NORMAL;
+			const hasClaws = player.clawType != ClawType.NORMAL;
 
 			message = "\n\n";
 			if (player.armType == ArmType.HARPY) {
