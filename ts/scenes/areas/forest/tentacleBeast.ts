@@ -284,6 +284,7 @@ namespace TentacleBeastScene {
 			 } else
 			 game.forest.tentacleBeastScene.tentacleLossRape();
 			 } else { */
+			doNext(tentacleLossRape);
 		}
 		else {
 			outputText("You give up on fighting, too aroused to resist any longer.  Shrugging, you walk into the writhing mass...<br><br>");
