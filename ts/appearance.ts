@@ -1,3 +1,5 @@
+///<reference path="appearanceEnums.ts"/>
+
 // Eventually, this should contain the entire char appearance.
 // At the moment, it's pretty piecemeal.
 // TODO remove when we have proper enums for this

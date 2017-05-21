@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
-    "module": "amd",
+    "module"   : "amd",
     "sourceMap": true,
-    "target": "es5",
-    "strict": true,
-    "outDir": "js/"
+    "target"   : "es5",
+    "strict"   : true,
+    "outFile"  : "js/coc.js"
   },
   "include": [
     "ts/**/*"
